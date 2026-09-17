@@ -36,6 +36,31 @@ a {
 }
 
 /* ==================================
+   VARIABLES (Modo Oscuro)
+================================== */
+
+[data-theme="dark"] {
+  --rosa-fondo: #0f0a0d;          /* Fondo general muy oscuro con un tinte sutil acorde */
+  --rosa-brillante: #f472b6;      /* Fucsia un poco más vibrante para contraste */
+  --rosa-oscuro: #f472b6;
+  --rosa-suave: #2a1622;          /* Bordes y fondos secundarios oscuros */
+  --texto-oscuro: #fdf2f8;        /* Texto principal claro */
+  --texto-secundario: #d1a3be;    /* Texto secundario legible en oscuro */
+  --card-bg: #1a1017;           /* Fondo de las tarjetas en oscuro */
+  --contacto-bg: #1a1017;
+}
+
+/* Aplicamos las variables a las tarjetas y elementos que usaban blanco fijo */
+.card, .contact-item {
+  background: var(--card-bg) !important;
+}
+
+.tech-stack-general span {
+  background: var(--card-bg);
+}
+
+
+/* ==================================
    BODY
 ================================== */
 
