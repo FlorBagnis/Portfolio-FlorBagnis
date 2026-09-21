@@ -427,8 +427,15 @@
 
   <!-- Script de Modo Oscuro -->
   <script>
+// Evita que el navegador recuerde la posición previa y fuerza el inicio arriba
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+
     const toggleButton = document.getElementById('theme-toggle');
     const currentTheme = localStorage.getItem('theme');
+
 
     // Si el usuario ya había elegido un tema antes, lo aplicamos
     if (currentTheme) {
