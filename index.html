@@ -10,24 +10,29 @@
   />
   <title>Florencia Bagnis | Frontend Developer</title>
 
+  <!-- Favicon principal optimizado -->
   <link rel="icon" type="image/png" href="./favicon.png">
   
+  <!-- Font Awesome -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
   />
 
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
+  <!-- Botón de Modo Oscuro -->
   <button id="theme-toggle" aria-label="Cambiar modo oscuro" style="position: fixed; top: 20px; right: 20px; z-index: 1000; background: var(--rosa-suave); border: 1px solid var(--rosa-brillante); color: var(--rosa-brillante); padding: 10px 14px; border-radius: 50%; cursor: pointer; font-size: 18px; transition: 0.3s;">
     🌙
   </button>
   
   <div class="container">
 
+    <!-- HEADER -->
     <header>
       <h1>
         Florencia Bagnis
@@ -77,6 +82,7 @@
       </div>
     </header>
 
+    <!-- SOBRE MÍ -->
     <section id="sobre-mi">
       <h2>Sobre mí</h2>
 
@@ -104,13 +110,14 @@
       </p>
     </section>
 
+    <!-- TECNOLOGÍAS -->
     <section id="tecnologias">
       <h2>
         <i class="fas fa-code"></i>
         Tecnologías y herramientas
       </h2>
 
-      <h3 class="tech-title">Frontend & Datos</h3>
+      <h3 class="tech-title">Frontend & Backend / Datos</h3>
       <div class="tech-stack-general highlight">
         <span>
           <i class="fab fa-html5"></i>
@@ -133,8 +140,12 @@
           JavaScript
         </span>
         <span>
+          <i class="fab fa-php"></i>
+          PHP
+        </span>
+        <span>
           <i class="fas fa-database"></i>
-          SQL
+          MySQL / SQL
         </span>
       </div>
 
@@ -159,6 +170,7 @@
       </div>
     </section>
 
+    <!-- PROYECTOS -->
     <section id="proyectos">
       <h2>
         <i class="fas fa-folder-open"></i>
@@ -167,6 +179,7 @@
 
       <div class="projects-grid">
 
+        <!-- PROYECTO 1: CALCULADORA -->
         <article class="card">
           <h3>
             Calculadora de Tasas
@@ -212,6 +225,7 @@
           </div>
         </article>
 
+        <!-- PROYECTO 2: HONEYMOON -->
         <article class="card">
           <h3>
             Honeymoon
@@ -261,6 +275,7 @@
           </div>
         </article>
 
+        <!-- PROYECTO 3: MENSUALES -->
         <article class="card">
           <h3>
             Mensuales
@@ -310,6 +325,7 @@
           </div>
         </article>
 
+        <!-- PROYECTO 4: GESTOR DE PRODUCTOS -->
         <article class="card">
           <h3>
             Gestor de Productos
@@ -328,15 +344,16 @@
             Aplicación desarrollada para administrar un catálogo de productos. Permite dar de alta nuevos artículos, visualizar el listado completo, modificar información existente y eliminar registros mediante operaciones SQL (INSERT, SELECT, UPDATE y DELETE).
           </p>
           <div class="project-tags">
+            <span>PHP</span>
+            <span>MySQL</span>
             <span>SQL</span>
             <span>HTML5</span>
             <span>CSS3</span>
-            <span>JavaScript</span>
           </div>
           <div class="buttons">
             <a
               class="button"
-              href="URL_DEMO_AQUI"
+              href="https://florbagnis.github.io/crud-php-mysql/"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -345,7 +362,7 @@
             </a>
             <a
               class="button secondary"
-              href="URL_REPO_GITHUB_AQUI"
+              href="https://github.com/FlorBagnis/crud-php-mysql"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -358,6 +375,7 @@
       </div>
     </section>
 
+    <!-- CONTACTO -->
     <section id="contacto">
       <h2>
         <i class="fas fa-envelope"></i>
@@ -397,6 +415,7 @@
       </div>
     </section>
 
+    <!-- FOOTER -->
     <footer>
       <p>
         Desarrollado por Florencia Bagnis
@@ -406,10 +425,12 @@
 
   </div>
 
+  <!-- Script de Modo Oscuro -->
   <script>
     const toggleButton = document.getElementById('theme-toggle');
     const currentTheme = localStorage.getItem('theme');
 
+    // Si el usuario ya había elegido un tema antes, lo aplicamos
     if (currentTheme) {
       document.documentElement.setAttribute('data-theme', currentTheme);
       if (currentTheme === 'dark') {
@@ -417,6 +438,7 @@
       }
     }
 
+    // Función para cambiar de modo al hacer clic
     toggleButton.addEventListener('click', () => {
       let theme = document.documentElement.getAttribute('data-theme');
       if (theme === 'dark') {
