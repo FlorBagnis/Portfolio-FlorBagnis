@@ -1,10 +1,9 @@
 # 💼 Portfolio | Florencia Bagnis
 
-Este repositorio contiene el código fuente de mi portfolio personal, donde presento algunos de los proyectos que desarrollé durante mi formación en Desarrollo Web y mi experiencia en Customer Support.
-
-<img width="1869" height="883" alt="image" src="https://github.com/user-attachments/assets/53f0cf4e-b10d-4a43-8161-4f8312a156fa" />
+<img width="1550" height="854" alt="image" src="https://github.com/user-attachments/assets/35f5235e-cf60-47f0-9701-0340bc36a073" />
 
 
+>Este repositorio contiene el código fuente de mi portfolio personal, donde presento algunos de los proyectos que desarrollé durante mi formación en Desarrollo Web y mi experiencia en Customer Support.
 
 
 ## 🌐 Portfolio Online
@@ -75,7 +74,7 @@ Mi objetivo es seguir creciendo profesionalmente en el mundo de la tecnología, 
 
 ---
 
-## 👩‍💻 Sobre mí
+## 🌸Sobre mí
 
 Soy **Customer Support Specialist** con experiencia en empresas SaaS y e-commerce.
 
@@ -85,16 +84,10 @@ Actualmente continúo ampliando mis conocimientos en desarrollo frontend para se
 
 ---
 
-## 📬 Contacto
+### 👩‍💻 Autora
 
-💼 LinkedIn  
-https://www.linkedin.com/in/florencia-bagnis
+**Florencia Bagnis**
 
-💻 GitHub  
-https://github.com/FlorBagnis
-
-🌐 Portfolio  
-https://florbagnis.github.io/Portfolio-FlorBagnis/
-
-📧 Email  
-florenciasoledadbagnis@gmail.com
+* 💼 [LinkedIn](https://www.linkedin.com/in/florencia-bagnis)
+* 💻 [Portfolio](https://florbagnis.github.io/Portfolio-FlorBagnis/)
+* 💌 [florenciasoledadbagnis@gmail.com](mailto:florenciasoledadbagnis@gmail.com)
