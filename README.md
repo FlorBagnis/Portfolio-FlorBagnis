@@ -52,6 +52,21 @@ https://github.com/FlorBagnis/coderhouse-honeymoon
 
 ---
 
+### 🛍️ Gestor de Productos (CRUD)
+
+Proyecto práctico enfocado en Backend y Gestión de Datos con PHP & MySQL.
+
+Aplicación web desarrollada para administrar un catálogo interactivo. Permite registrar nuevos artículos, consultar el listado completo, actualizar información existente y eliminar registros en base de datos.
+
+Demo:
+
+https://florbagnis.github.io/Crud-Php-Mysql/
+
+Repositorio:
+
+https://github.com/FlorBagnis/Crud-Php-Mysql
+
+
 
 
 ## 🎯 Objetivo
@@ -73,7 +88,7 @@ Actualmente continúo ampliando mis conocimientos en desarrollo frontend para se
 ## 📬 Contacto
 
 💼 LinkedIn  
-https://www.linkedin.com/in/florencia-bagnis-5043aa152/
+https://www.linkedin.com/in/florencia-bagnis
 
 💻 GitHub  
 https://github.com/FlorBagnis
