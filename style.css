@@ -336,6 +336,21 @@ section p {
 .button.secondary {
   background: var(--rosa-suave);
   color: var(--rosa-oscuro) !important;
+  border: 1.5px solid transparent;
+  transition: all .25s ease;
+}
+
+/* Borde visible y texto claro en Modo Oscuro */
+[data-theme="dark"] .button.secondary {
+  background: transparent;
+  border-color: rgba(244, 114, 182, 0.45);
+  color: #fbcfe8 !important;
+}
+
+[data-theme="dark"] .button.secondary:hover {
+  background: rgba(244, 114, 182, 0.12);
+  border-color: var(--rosa-brillante);
+  color: #ffffff !important;
 }
 
 /* ==================================
