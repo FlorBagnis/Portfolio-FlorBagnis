@@ -91,3 +91,5 @@ Actualmente continúo ampliando mis conocimientos en desarrollo frontend para se
 * 💼 [LinkedIn](https://www.linkedin.com/in/florencia-bagnis)
 * 💻 [Portfolio](https://florbagnis.github.io/Portfolio-FlorBagnis/)
 * 💌 [florenciasoledadbagnis@gmail.com](mailto:florenciasoledadbagnis@gmail.com)
+
+> 💻 Portfolio personal desarrollado para centralizar proyectos, soluciones y documentación técnica, combinando **HTML5 semántico**, **CSS moderno** (variables y soporte nativo de modo claro/oscuro) y principios de **diseño responsive y accesible** para comunicar mi perfil en la intersección de **Frontend Development**, **Customer Support** y **Operaciones**.
