@@ -340,7 +340,7 @@ section p {
   transition: all .25s ease;
 }
 
-/* Borde visible y texto claro en Modo Oscuro */
+/* Modo Oscuro: Estilo Outline de alto contraste */
 [data-theme="dark"] .button.secondary {
   background: transparent;
   border-color: rgba(244, 114, 182, 0.45);
