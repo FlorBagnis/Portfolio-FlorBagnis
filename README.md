@@ -70,6 +70,19 @@ Repositorio:
 https://github.com/FlorBagnis/Crud-Php-Mysql
 
 
+### 🌸 SQL Dev Studio & Bootcamp
+Proyecto interactivo enfocado en Bases de Datos Relacionales y Lógica Frontend con JavaScript & SQL.
+
+Simulador web desarrollado para entrenar y validar consultas SQL en tiempo real mediante tablas dinámicas. Permite corregir errores de sintaxis, practicar por niveles de dificultad (Fácil, Medio y Experto) y resolver casos operativos orientados al soporte técnico, auditoría de horas y rentabilidad en plataformas SaaS.
+
+Demo:
+
+https://florbagnis.github.io/SQL_DEV/
+
+Repositorio:
+
+https://github.com/FlorBagnis/SQL_DEV
+
 
 
 ## 🎯 Objetivo
