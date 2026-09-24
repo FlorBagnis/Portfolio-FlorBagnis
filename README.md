@@ -9,7 +9,7 @@
 ## 🌐 Portfolio Online
 
 <p align="center">
-  <a href="https://github.com/FlorBagnis/Portfolio-FlorBagnis">
+  <a href="https://florbagnis.github.io/Portfolio-FlorBagnis/">
     <img src="https://img.shields.io/badge/Ver_Portfolio-Abrir_Proyecto-ff69b4?style=for-the-badge&logo=github&logoColor=white" alt="Ver Portfolio" />
   </a>
 </p>
