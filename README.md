@@ -34,7 +34,7 @@
 Aplicación web desarrollada como proyecto personal para simular el cálculo de tasas, cuotas y montos netos.
 
 **Demo:**  
-https://florbagnis.github.io/calculadora-pagonube/
+https://calculadora-tiendanube.vercel.app/
 
 **Repositorio:**  
 https://github.com/FlorBagnis/calculadora-tiendanube
