@@ -76,6 +76,29 @@
     .gh-light { display: block !important; }
     [data-theme="dark"] .gh-light { display: none !important; }
     [data-theme="dark"] .gh-dark { display: block !important; filter: contrast(1.1) brightness(1.05); }
+
+    /* ===== Calendario GitHub en vivo ===== */
+    .gh-cal-scroll { display: none; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 10px 0; }
+    .gh-cal-scroll.ready { display: block; }
+    .gh-cal {
+      --gh-0: #f3e8ef; --gh-1: #ffc2e6; --gh-2: #ff8fd0; --gh-3: #e0389a; --gh-4: #a3125c;
+      width: max-content; margin: 0 auto; text-align: left;
+    }
+    [data-theme="dark"] .gh-cal {
+      --gh-0: rgba(255, 255, 255, 0.07); --gh-1: #6b2452; --gh-2: #b03a84; --gh-3: #ec4899; --gh-4: #f9a8d4;
+    }
+    .gh-months { position: relative; height: 16px; margin-left: 32px; font-size: 11px; color: var(--texto-secundario); }
+    .gh-months span { position: absolute; top: 0; }
+    .gh-body { display: flex; gap: 6px; }
+    .gh-days { display: grid; grid-template-rows: repeat(7, 12px); gap: 3px; width: 26px; font-size: 10px; color: var(--texto-secundario); }
+    .gh-days span { line-height: 12px; }
+    .gh-grid { display: grid; grid-auto-flow: column; grid-template-rows: repeat(7, 12px); grid-auto-columns: 12px; gap: 3px; }
+    .gh-cell { width: 12px; height: 12px; border-radius: 3px; background: var(--gh-0); }
+    .gh-cell.l1 { background: var(--gh-1); }
+    .gh-cell.l2 { background: var(--gh-2); }
+    .gh-cell.l3 { background: var(--gh-3); }
+    .gh-cell.l4 { background: var(--gh-4); }
+    .gh-legend { display: flex; align-items: center; justify-content: flex-end; gap: 4px; margin-top: 8px; font-size: 11px; color: var(--texto-secundario); }
     
     .brand-link { color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: 12px; }
     .brand-link:hover { opacity: 0.9; }
@@ -236,7 +259,27 @@
             <span class="gh-year-count" id="count-total">1,070 en total</span>
           </div>
         </div>
-        <div class="gh-chart-container">
+
+        <!-- Calendario en vivo (reemplaza a las imágenes cuando la API responde) -->
+        <div class="gh-cal-scroll" id="gh-cal-scroll">
+          <a href="https://github.com/FlorBagnis" target="_blank" rel="noopener noreferrer" title="Ver perfil en GitHub" style="display:block;">
+            <div class="gh-cal" id="gh-cal">
+              <div class="gh-months" id="gh-months"></div>
+              <div class="gh-body">
+                <div class="gh-days"><span></span><span>Lun</span><span></span><span>Mié</span><span></span><span>Vie</span><span></span></div>
+                <div class="gh-grid" id="gh-grid"></div>
+              </div>
+              <div class="gh-legend">
+                Menos
+                <span class="gh-cell"></span><span class="gh-cell l1"></span><span class="gh-cell l2"></span><span class="gh-cell l3"></span><span class="gh-cell l4"></span>
+                Más
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Respaldo: imágenes originales (se ocultan si la API responde) -->
+        <div class="gh-chart-container" id="gh-fallback">
           <a href="https://github.com/FlorBagnis" target="_blank" rel="noopener noreferrer" title="Ver perfil en GitHub">
             <img class="gh-chart gh-light" src="https://ghchart.rshah.org/ec4899/FlorBagnis" alt="Contribuciones en GitHub" />
             <img class="gh-chart gh-dark" src="https://ghchart.rshah.org/f472b6/FlorBagnis" alt="Contribuciones en GitHub Modo Oscuro" />
@@ -336,31 +379,68 @@
     });
 
     // --- Actualizador automático de contribuciones de GitHub ---
-
-   async function fetchGitHubContributions() {
+    async function fetchGitHubContributions() {
       try {
-        // Usamos una ruta alternativa más directa de la misma API de contribuciones
-        const response = await fetch('https://github-contributions-api.jogruber.de/v4/FlorBagnis');
-        const data = await response.json();
+        const res = await fetch('https://github-contributions-api.jogruber.de/v4/FlorBagnis?y=all', { cache: 'no-store' });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const data = await res.json();
+        if (!data || !data.total || !data.contributions) throw new Error('Respuesta inválida');
 
-        if (data && data.total) {
-          // Si la API responde con el total general, lo usamos para sincronizar
-          const total2026 = data.total['2026'] || 1061;
-          const total2025 = 14; 
-          const totalHistorico = total2026 + total2025;
+        // ---- Totales (todo sale de la API, nada hardcodeado) ----
+        const fmt = n => Number(n || 0).toLocaleString('en-US');
+        const thisYear = new Date().getFullYear();
+        const totalHistorico = Object.values(data.total).reduce((a, b) => a + b, 0);
 
-          document.getElementById('count-2026').textContent = `${total2026} contribuciones`;
-          document.getElementById('count-2025').textContent = `${total2025} contribuciones`;
-          document.getElementById('count-total').textContent = `${totalHistorico} en total`;
+        const labels = document.querySelectorAll('.gh-year-label');
+        if (labels[0]) labels[0].textContent = 'Año ' + thisYear;
+        if (labels[1]) labels[1].textContent = 'Año ' + (thisYear - 1);
+        document.getElementById('count-2026').textContent = `${fmt(data.total[thisYear])} contribuciones`;
+        document.getElementById('count-2025').textContent = `${fmt(data.total[thisYear - 1])} contribuciones`;
+        document.getElementById('count-total').textContent = `${fmt(totalHistorico)} en total`;
+
+        // ---- Calendario (últimas 53 semanas, empezando en domingo) ----
+        const porFecha = new Map(data.contributions.map(d => [d.date, d]));
+        const hoy = new Date(); hoy.setHours(0, 0, 0, 0);
+        const inicio = new Date(hoy);
+        inicio.setDate(inicio.getDate() - inicio.getDay() - 52 * 7);
+
+        const pad = n => String(n).padStart(2, '0');
+        const clave = d => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+        const meses = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+
+        let celdas = '', etiquetas = '', ultimoMes = -1, ultimaSemana = -10, i = 0;
+        for (let d = new Date(inicio); d <= hoy; d.setDate(d.getDate() + 1), i++) {
+          const semana = Math.floor(i / 7);
+          if (i % 7 === 0 && d.getMonth() !== ultimoMes) {
+            if (semana - ultimaSemana >= 3) {
+              etiquetas += `<span style="left:${semana * 15}px">${meses[d.getMonth()]}</span>`;
+              ultimaSemana = semana;
+            }
+            ultimoMes = d.getMonth();
+          }
+          const info = porFecha.get(clave(d));
+          const nivel = info ? info.level : 0;
+          const cant = info ? info.count : 0;
+          celdas += `<span class="gh-cell l${nivel}" title="${cant} contribuciones el ${clave(d)}"></span>`;
         }
+
+        document.getElementById('gh-grid').innerHTML = celdas;
+        document.getElementById('gh-months').innerHTML = etiquetas;
+
+        // Mostrar el calendario nuevo y ocultar las imágenes de respaldo
+        document.getElementById('gh-cal-scroll').classList.add('ready');
+        document.getElementById('gh-fallback').style.display = 'none';
       } catch (error) {
-        document.getElementById('count-2026').textContent = `1,061 contribuciones`;
-        document.getElementById('count-2025').textContent = `14 contribuciones`;
-        document.getElementById('count-total').textContent = `1,075 en total`;
+        // Si falla la API, se quedan visibles las imágenes y números de respaldo
+        console.warn('No se pudo actualizar GitHub:', error);
       }
     }
 
     fetchGitHubContributions();
+    // Vuelve a pedir los datos cuando regresas a la pestaña
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) fetchGitHubContributions();
+    });
 
     // Solución táctil para que las imágenes vuelvan a la normalidad en celulares al sacar el dedo
     const modalImages = document.querySelectorAll('#modal-tiendanube .kawaii-modal-content img, #modal-mensuales .kawaii-modal-content img');
