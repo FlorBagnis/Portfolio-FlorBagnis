@@ -66,7 +66,6 @@
     [data-theme="dark"] .gh-year-badge .gh-year-label { color: #f472b6; }
     [data-theme="dark"] .gh-year-badge .gh-year-count { color: #fdf2f8; }
     
-    /* Contenedor responsivo infalible para el gráfico de cuadraditos en celulares y PC */
     .gh-chart-container { width: 100%; display: flex; justify-content: center; overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 10px 0; }
     .gh-chart { max-width: 100%; height: auto; display: block; }
     
@@ -78,13 +77,22 @@
     .brand-link { color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: 12px; }
     .brand-link:hover { opacity: 0.9; }
 
+    /* Estilos para el Modal Kawaii de Impacto */
+    .kawaii-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 182, 193, 0.4); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 2000; justify-content: center; align-items: center; padding: 20px; }
+    .kawaii-modal.active { display: flex; }
+    .kawaii-modal-content { background: white; border: 2px solid var(--rosa-brillante); border-radius: 24px; padding: 25px; max-width: 600px; width: 100%; box-shadow: 0 15px 50px rgba(236, 72, 153, 0.25); text-align: center; position: relative; animation: modalPop 0.3s ease; }
+    [data-theme="dark"] .kawaii-modal-content { background: var(--card-bg); border-color: var(--rosa-brillante); }
+    .kawaii-modal-content img { width: 100%; max-height: 70vh; object-fit: contain; border-radius: 12px; margin-top: 15px; border: 1px solid var(--rosa-suave); }
+    .kawaii-close-btn { position: absolute; top: 15px; right: 20px; background: var(--rosa-suave); border: none; color: var(--rosa-brillante); width: 36px; height: 36px; border-radius: 50%; font-size: 16px; cursor: pointer; transition: 0.2s; display: flex; align-items: center; justify-content: center; }
+    .kawaii-close-btn:hover { background: var(--rosa-brillante); color: white; }
+    @keyframes modalPop { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+
     @media (max-width: 768px) { 
       .sticky-nav { gap: 12px; padding: 6px 16px; } 
       .sticky-nav a { font-size: 12px; } 
       .github-calendar-card { padding: 15px 10px; margin: 0 5px; }
       .gh-year-badge { min-width: 100px; padding: 8px 10px; }
       .gh-year-count { font-size: 14px; }
-      .gh-chart-container { justify-content: flex-start; }
     }
   </style>
 </head>
@@ -110,6 +118,26 @@
   </div>
   <button id="theme-toggle" aria-label="Cambiar modo oscuro" style="position: fixed; top: 16px; right: 20px; z-index: 1001; background: var(--rosa-suave); border: 1px solid var(--rosa-brillante); color: var(--rosa-brillante); padding: 9px 13px; border-radius: 50%; cursor: pointer; font-size: 17px; transition: 0.3s; box-shadow: 0 4px 15px rgba(236, 72, 153, 0.15);">🌙</button>
   <button id="back-to-top" aria-label="Volver arriba"><i class="fas fa-chevron-up"></i></button>
+
+  <!-- Modales Kawaii para las capturas -->
+  <div id="modal-tiendanube" class="kawaii-modal">
+    <div class="kawaii-modal-content">
+      <button class="kawaii-close-btn" onclick="closeModal('tiendanube')"><i class="fas fa-times"></i></button>
+      <h3 style="color: var(--rosa-brillante); margin-bottom: 5px;"><i class="fas fa-award"></i> Reconocimiento Tiendanube</h3>
+      <p style="font-size: 13px; color: var(--texto-secundario);">Mensaje del team valorando la calculadora de tasas.</p>
+      <img src="agradecimiento-tiendanube.jpg" alt="Agradecimiento de Tiendanube" />
+    </div>
+  </div>
+
+  <div id="modal-mensuales" class="kawaii-modal">
+    <div class="kawaii-modal-content">
+      <button class="kawaii-close-btn" onclick="closeModal('mensuales')"><i class="fas fa-times"></i></button>
+      <h3 style="color: var(--rosa-brillante); margin-bottom: 5px;"><i class="fas fa-heart"></i> Impacto Mensuales</h3>
+      <p style="font-size: 13px; color: var(--texto-secundario);">Comunidad utilizando la app de gestión de gastos.</p>
+      <img src="mensuales-usuarios.jpg" alt="Usuarios utilizando Mensuales" />
+    </div>
+  </div>
+
   <div class="container">
     <header>
       <h1>
@@ -177,7 +205,6 @@
         </div>
         <div class="gh-chart-container">
           <a href="https://github.com/FlorBagnis" target="_blank" rel="noopener noreferrer" title="Ver perfil en GitHub">
-            <!-- Calendario clásico de cuadraditos de GitHub en tonos rosa (ec4899 para claro y f472b6 para modo oscuro) -->
             <img class="gh-chart gh-light" src="https://ghchart.rshah.org/ec4899/FlorBagnis" alt="Contribuciones en GitHub" />
             <img class="gh-chart gh-dark" src="https://ghchart.rshah.org/f472b6/FlorBagnis" alt="Contribuciones en GitHub Modo Oscuro" />
           </a>
@@ -202,6 +229,8 @@
           <div class="buttons">
             <a class="button" href="https://calculadora-tiendanube.vercel.app" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i> Ver demo</a>
             <a class="button secondary" href="https://github.com/FlorBagnis/calculadora-tiendanube" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Ver código</a>
+            <!-- Botón de agradecimiento con estética rosa -->
+            <button class="button secondary" onclick="openModal('tiendanube')" style="border-color: var(--rosa-brillante); color: var(--rosa-brillante); cursor: pointer;"><i class="fas fa-award"></i> Ver agradecimiento</button>
           </div>
         </article>
         <article class="card" data-category="frontend">
@@ -224,6 +253,8 @@
           <div class="buttons">
             <a class="button" href="https://gastosmensuales-two.vercel.app/" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i> Ver demo</a>
             <a class="button secondary" href="https://github.com/FlorBagnis/Mensuales" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Ver código</a>
+            <!-- Botón de impacto con estética rosa -->
+            <button class="button secondary" onclick="openModal('mensuales')" style="border-color: var(--rosa-brillante); color: var(--rosa-brillante); cursor: pointer;"><i class="fas fa-heart"></i> Ver impacto</button>
           </div>
         </article>
         <article class="card" data-category="fullstack">
@@ -267,10 +298,23 @@
     if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
     window.scrollTo(0, 0);
 
-    // Recargar página al hacer clic en el nombre
     document.getElementById('reload-link').addEventListener('click', (e) => {
       e.preventDefault();
       window.location.reload();
+    });
+
+    // Funciones para abrir y cerrar los modales kawaii
+    function openModal(modalId) {
+      document.getElementById('modal-' + modalId).classList.add('active');
+    }
+    function closeModal(modalId) {
+      document.getElementById('modal-' + modalId).classList.remove('active');
+    }
+    // Cerrar haciendo clic fuera del contenido
+    window.addEventListener('click', (e) => {
+      if (e.target.classList.contains('kawaii-modal')) {
+        e.target.classList.remove('active');
+      }
     });
 
     const toggleButton = document.getElementById('theme-toggle');
@@ -288,7 +332,7 @@
       } else {
         document.documentElement.setAttribute('data-theme', 'dark');
         localStorage.setItem('theme', 'dark');
-        toggleButton.textContent = '☀️';
+        toggleButton.textContent = '☀️️';
       }
     });
 
