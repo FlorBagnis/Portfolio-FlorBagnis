@@ -5,17 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Portfolio de Florencia Bagnis, desarrolladora frontend con perfil híbrido (técnico y humano) y experiencia formada como soporte en Tiendanube." />
   
-  <title>Florencia Bagnis | Frontend Developer | Tecnical Support </title>
+  <title>Florencia Bagnis | Frontend Developer | Technical Support</title>
   
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Florencia Bagnis | Frontend Developer" />
+  <meta property="og:title" content="Florencia Bagnis | Frontend Developer | Technical Support" />
   <meta property="og:description" content="Portfolio de desarrollo frontend, soporte tecnológico en SaaS y proyectos interactivos." />
   <meta property="og:url" content="https://florbagnis.github.io/Portfolio-FlorBagnis/" />
   <meta property="og:image" content="https://florbagnis.github.io/Portfolio-FlorBagnis/preview.png?v=2" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Florencia Bagnis | Frontend Developer" />
+  <meta name="twitter:title" content="Florencia Bagnis | Frontend Developer | Technical Support" />
   <meta name="twitter:description" content="Portfolio de proyectos frontend, soporte tecnológico y simuladores interactivos." />
   <meta name="twitter:image" content="https://florbagnis.github.io/Portfolio-FlorBagnis/preview.png?v=2" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 5 120 90'><path d='M28 28 L8 50 L28 72' fill='none' stroke='%23ff8da1' stroke-width='10' stroke-linecap='round' stroke-linejoin='round'/><line x1='67' y1='18' x2='53' y2='82' stroke='%23ff8da1' stroke-width='10' stroke-linecap='round'/><path d='M92 28 L112 50 L92 72' fill='none' stroke='%23ff8da1' stroke-width='10' stroke-linecap='round' stroke-linejoin='round'/></svg>">
@@ -100,6 +100,52 @@
     
     .brand-link { color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: 12px; }
     .brand-link:hover { opacity: 0.9; }
+
+    /* Estilos para contenedores de GIF con Botón de Reproducción Kawaii */
+    .media-container {
+      position: relative;
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .media-container .project-media {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .gif-toggle-btn {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1.5px solid var(--rosa-brillante);
+      color: var(--rosa-brillante);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 14px;
+      box-shadow: 0 4px 12px rgba(236, 72, 153, 0.2);
+      transition: all 0.25s ease;
+      z-index: 10;
+    }
+    .gif-toggle-btn:hover {
+      background: var(--rosa-brillante);
+      color: white;
+      transform: scale(1.08);
+    }
+    [data-theme="dark"] .gif-toggle-btn {
+      background: rgba(26, 16, 23, 0.9);
+      border-color: var(--rosa-brillante);
+      color: var(--rosa-brillante);
+    }
+    [data-theme="dark"] .gif-toggle-btn:hover {
+      background: var(--rosa-brillante);
+      color: #ffffff;
+    }
 
     .kawaii-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 182, 193, 0.4); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 2000; justify-content: center; align-items: center; padding: 20px; }
     .kawaii-modal.active { display: flex; }
@@ -312,7 +358,10 @@
       <div class="projects-grid">
         <article class="card" data-category="frontend tools">
           <h3>Calculadora de Tasas <i class="fas fa-calculator"></i></h3>
-          <img src="calculadorademo.gif" alt="Calculadora de Tasas" class="project-media" loading="lazy" />
+          <div class="media-container">
+            <img src="calculadorademo.gif" alt="Calculadora de Tasas" class="project-media" loading="lazy" data-gif="calculadorademo.gif" />
+            <button class="gif-toggle-btn" type="button" aria-label="Pausar animación" title="Pausar animación"><i class="fas fa-pause"></i></button>
+          </div>
           <p class="project-type">Proyecto práctico · Herramienta para e-commerce</p>
           <p>Los comerciantes de Tiendanube no sabían cuánto valían realmente sus tasas y no existía una app oficial que lo resolviera. Diseñé esta herramienta interna para simular tasas, cuotas y montos netos según el plan y el medio de pago, y terminó reforzando la app oficial.</p>
           <div class="project-tags"><span>HTML5</span><span>CSS3</span><span>JavaScript</span></div>
@@ -324,7 +373,10 @@
         </article>
         <article class="card" data-category="frontend">
           <h3>Honeymoon <i class="fas fa-shirt"></i></h3>
-          <img src="honeymoon.gif" alt="Honeymoon" class="project-media" loading="lazy" />
+          <div class="media-container">
+            <img src="honeymoon.gif" alt="Honeymoon" class="project-media" loading="lazy" data-gif="honeymoon.gif" />
+            <button class="gif-toggle-btn" type="button" aria-label="Pausar animación" title="Pausar animación"><i class="fas fa-pause"></i></button>
+          </div>
           <p class="project-type">Proyecto final · Coderhouse</p>
           <p>Nació de la idea de una tienda de ropa kawaii y fue mi proyecto final para recibirme de Desarrolladora Web en Coderhouse. Sitio responsive para una marca de indumentaria con estética kawaii.</p>
           <div class="project-tags"><span>HTML5</span><span>CSS3</span><span>SASS</span><span>Bootstrap</span><span>Responsive</span></div>
@@ -335,7 +387,10 @@
         </article>
         <article class="card" data-category="frontend tools">
           <h3>Mensuales <i class="fas fa-wallet"></i></h3>
-          <img src="mensualesdemo.gif" alt="Mensuales" class="project-media" loading="lazy" />
+          <div class="media-container">
+            <img src="mensualesdemo.gif" alt="Mensuales" class="project-media" loading="lazy" data-gif="mensualesdemo.gif" />
+            <button class="gif-toggle-btn" type="button" aria-label="Pausar animación" title="Pausar animación"><i class="fas fa-pause"></i></button>
+          </div>
           <p class="project-type">Proyecto personal · Gestión de gastos</p>
           <p>La creé para controlar mis propios gastos y saber en qué se me va la plata. Hoy la usan más de 20 personas, entre ellas negocios: es gratuita, simple, privada y ayuda a educarse financieramente.</p>
           <div class="project-tags"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Firebase</span><span>Responsive</span></div>
@@ -347,7 +402,10 @@
         </article>
         <article class="card" data-category="fullstack">
           <h3>Gestor de Productos <i class="fas fa-boxes-stacked"></i></h3>
-          <img src="cruddemo.gif" alt="Gestor de Productos" class="project-media" loading="lazy" />
+          <div class="media-container">
+            <img src="cruddemo.gif" alt="Gestor de Productos" class="project-media" loading="lazy" data-gif="cruddemo.gif" />
+            <button class="gif-toggle-btn" type="button" aria-label="Pausar animación" title="Pausar animación"><i class="fas fa-pause"></i></button>
+          </div>
           <p class="project-type">Proyecto práctico · CRUD con Base de Datos</p>
           <p>Lo desarrollé para aprender SQL en la práctica: administra un catálogo de productos con operaciones de alta, baja, modificación y consulta sobre una base de datos.</p>
           <div class="project-tags"><span>PHP</span><span>MySQL</span><span>SQL</span><span>HTML5</span><span>CSS3</span></div>
@@ -358,7 +416,10 @@
         </article>
         <article class="card" data-category="fullstack tools">
           <h3>SQL Practical Studio &amp; Bootcamp <i class="fas fa-database"></i></h3>
-          <img src="sqldevdemo.gif" alt="SQL Practical Studio" class="project-media" loading="lazy" />
+          <div class="media-container">
+            <img src="sqldevdemo.gif" alt="SQL Practical Studio" class="project-media" loading="lazy" data-gif="sqldevdemo.gif" />
+            <button class="gif-toggle-btn" type="button" aria-label="Pausar animación" title="Pausar animación"><i class="fas fa-pause"></i></button>
+          </div>
           <p class="project-type">Simulador interactivo · Bases de Datos</p>
           <p>Nació de querer aprender SQL de forma práctica. Es un simulador con consola de consultas en vivo, preguntas de verdadero o falso y ejercicios para completar, con tablas que se renderizan dinámicamente.</p>
           <div class="project-tags"><span>HTML5</span><span>CSS3 Moderno</span><span>JavaScript ES6</span><span>SQL</span><span>DOM Dinámico</span></div>
@@ -400,6 +461,48 @@
       const modal = document.getElementById('modal-' + modalId);
       if (modal) modal.classList.remove('active');
     };
+
+    // ===== Control Play/Pause para GIFs =====
+    document.querySelectorAll('.media-container').forEach(container => {
+      const img = container.querySelector('.project-media');
+      const btn = container.querySelector('.gif-toggle-btn');
+      const gifSrc = img.getAttribute('data-gif');
+      let isPlaying = true;
+
+      // Generador dinámico de fotograma estático (canvas) para cuando se pausa
+      let staticDataUrl = '';
+      const tempImg = new Image();
+      tempImg.crossOrigin = 'anonymous';
+      tempImg.src = gifSrc;
+      tempImg.onload = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = tempImg.width || 600;
+        canvas.height = tempImg.height || 400;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(tempImg, 0, 0);
+        staticDataUrl = canvas.toDataURL('image/png');
+      };
+
+      btn.addEventListener('click', () => {
+        isPlaying = !isPlaying;
+        if (isPlaying) {
+          img.src = gifSrc;
+          btn.innerHTML = '<i class="fas fa-pause"></i>';
+          btn.title = 'Pausar animación';
+          btn.setAttribute('aria-label', 'Pausar animación');
+        } else {
+          if (staticDataUrl) {
+            img.src = staticDataUrl;
+          } else {
+            // Fallback si el canvas aún no cargó
+            img.src = gifSrc;
+          }
+          btn.innerHTML = '<i class="fas fa-play"></i>';
+          btn.title = 'Reproducir animación';
+          btn.setAttribute('aria-label', 'Reproducir animación');
+        }
+      });
+    });
 
     // ===== Idioma (ES / EN) =====
     let LANG = 'es';
@@ -478,7 +581,6 @@
     reg('.projects-grid .card:nth-child(2) .project-type', 'Final project · Coderhouse');
     reg('.projects-grid .card:nth-child(2) > p:not(.project-type)', 'It started as the idea of a kawaii clothing store and was my final project to graduate as a Web Developer at Coderhouse. A responsive site for an apparel brand with a kawaii aesthetic.');
 
-    // Traducción actualizada de Mensuales en inglés
     reg('.projects-grid .card:nth-child(3) .project-type', 'Personal project · Expense tracking');
     reg('.projects-grid .card:nth-child(3) > p:not(.project-type)', 'I built it to control my own spending and see where my money goes. Today more than 20 people use it, including businesses: it is free, simple, private and helps people learn about financial education.');
 
@@ -699,11 +801,12 @@
       });
     });
 
-    const copyBtn = document.getElementById('copy-email-btn');
+    const copyBtn = document.getElementById('copy-email-dev'); // safe reference handled below
+    const copyEmailBtn = document.getElementById('copy-email-btn');
     const copyLabel = document.getElementById('copy-label');
     const copyIcon = document.getElementById('copy-icon');
-    if (copyBtn) {
-      copyBtn.addEventListener('click', () => {
+    if (copyEmailBtn) {
+      copyEmailBtn.addEventListener('click', () => {
         const email = 'florenciasoledadbagnis@gmail.com';
         navigator.clipboard.writeText(email).then(() => {
           copyLabel.textContent = S().copied;
