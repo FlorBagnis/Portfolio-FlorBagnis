@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Portfolio de Florencia Bagnis, desarrolladora frontend en formación con experiencia en Customer Support, SaaS y e-commerce." />
@@ -19,7 +20,9 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 5 120 90'><path d='M28 28 L8 50 L28 72' fill='none' stroke='%23ff8da1' stroke-width='10' stroke-linecap='round' stroke-linejoin='round'/><line x1='67' y1='18' x2='53' y2='82' stroke='%23ff8da1' stroke-width='10' stroke-linecap='round'/><path d='M92 28 L112 50 L92 72' fill='none' stroke='%23ff8da1' stroke-width='10' stroke-linecap='round' stroke-linejoin='round'/></svg>">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
   <link rel="stylesheet" href="style.css" />
+  
   <style>
+  
     .sticky-nav-wrapper { position: fixed; top: 18px; left: 0; width: 100%; display: flex; justify-content: center; z-index: 1000; pointer-events: none; padding: 0 16px; }
     .sticky-nav { pointer-events: auto; display: flex; align-items: center; gap: 18px; padding: 8px 22px; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--rosa-suave); border-radius: 999px; box-shadow: 0 8px 25px rgba(236, 72, 153, 0.12); }
     .sticky-nav a { font-size: 14px; font-weight: 600; color: var(--texto-secundario); transition: color 0.25s ease, transform 0.25s ease; }
@@ -51,7 +54,8 @@
     [data-theme="dark"] .filter-btn { background: var(--card-bg); border-color: var(--rosa-suave); color: var(--texto-secundario); }
     [data-theme="dark"] .filter-btn.active { background: var(--rosa-brillante); color: #fff; }
     .card.hide-card { display: none !important; }
-    .github-calendar-card { max-width: 950px; margin: 0 auto; padding: 30px 25px; background: white; border: 1px solid var(--rosa-suave); border-radius: 24px; box-shadow: 0 10px 40px rgba(236, 72, 153, 0.08); overflow-x: auto; text-align: center; transition: 0.3s; }
+    
+    .github-calendar-card { max-width: 950px; margin: 0 auto; padding: 30px 25px; background: white; border: 1px solid var(--rosa-suave); border-radius: 24px; box-shadow: 0 10px 40px rgba(236, 72, 153, 0.08); overflow: hidden; text-align: center; transition: 0.3s; }
     [data-theme="dark"] .github-calendar-card { background: var(--card-bg); }
     .gh-years-container { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-bottom: 22px; }
     .gh-year-badge { display: flex; flex-direction: column; align-items: center; padding: 10px 22px; background: var(--rosa-suave); border: 1px solid var(--rosa-brillante); border-radius: 16px; min-width: 140px; transition: transform 0.2s ease; }
@@ -63,18 +67,28 @@
     [data-theme="dark"] .gh-year-badge { background: rgba(244, 114, 182, 0.12); border-color: rgba(244, 114, 182, 0.4); }
     [data-theme="dark"] .gh-year-badge .gh-year-label { color: #f472b6; }
     [data-theme="dark"] .gh-year-badge .gh-year-count { color: #fdf2f8; }
-    .gh-chart-container { width: 100%; overflow-x: auto; display: flex; justify-content: center; }
-    .gh-chart { max-width: 100%; height: auto; }
+    
+    .gh-chart-container { width: 100%; overflow-x: auto; overflow-y: hidden; display: flex; justify-content: flex-start; -webkit-overflow-scrolling: touch; padding-bottom: 5px; }
+    .gh-chart { max-width: none; height: auto; display: block; }
     .gh-dark { display: none !important; }
     .gh-light { display: block !important; }
     [data-theme="dark"] .gh-light { display: none !important; }
     [data-theme="dark"] .gh-dark { display: block !important; filter: contrast(1.1) brightness(1.05); }
     
-    /* Estilo para que el título principal funcione como enlace interactivo sin romper colores */
     .brand-link { color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: 12px; transition: opacity 0.2s ease; }
     .brand-link:hover { opacity: 0.85; }
 
-    @media (max-width: 600px) { .sticky-nav { gap: 12px; padding: 6px 16px; } .sticky-nav a { font-size: 12px; } }
+    /* MEJORAS RESPONSIVE PARA CELULARES */
+    @media (max-width: 768px) {
+      .sticky-nav { gap: 12px; padding: 6px 16px; } 
+      .sticky-nav a { font-size: 12px; }
+      .github-calendar-card { padding: 15px 10px; border-radius: 16px; }
+      .gh-years-container { gap: 8px; margin-bottom: 15px; }
+      .gh-year-badge { min-width: 105px; padding: 8px 12px; border-radius: 12px; }
+      .gh-year-label { font-size: 10px; }
+      .gh-year-count { font-size: 14px; }
+      .gh-chart-container { justify-content: flex-start; }
+    }
   </style>
 </head>
 <body>
@@ -153,15 +167,15 @@
         <div class="gh-years-container">
           <div class="gh-year-badge">
             <span class="gh-year-label" id="label-current-year">Año 2026</span>
-            <span class="gh-year-count" id="count-current-year">Cargando...</span>
+            <span class="gh-year-count" id="count-current-year">1051 contribuciones</span>
           </div>
           <div class="gh-year-badge">
             <span class="gh-year-label" id="label-prev-year">Año 2025</span>
-            <span class="gh-year-count" id="count-prev-year">Cargando...</span>
+            <span class="gh-year-count" id="count-prev-year">2 contribuciones</span>
           </div>
           <div class="gh-year-badge total-badge">
             <span class="gh-year-label">Total histórico</span>
-            <span class="gh-year-count" id="count-total">Cargando...</span>
+            <span class="gh-year-count" id="count-total">1053 en total</span>
           </div>
         </div>
         <div class="gh-chart-container">
@@ -211,7 +225,7 @@
           <div class="project-tags"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Firebase</span><span>Responsive</span></div>
           <div class="buttons">
             <a class="button" href="https://gastosmensuales-two.vercel.app/" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i> Ver demo</a>
-            <a class="button secondary" href="https://github.com/FlorBagnis/Mensuales" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Ver código</a>
+            <a class="button secondary" href="https://github.com/Florbagnis/Mensuales" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Ver código</a>
           </div>
         </article>
         <article class="card" data-category="fullstack">
@@ -255,7 +269,6 @@
     if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
     window.scrollTo(0, 0);
 
-    // Recargar página al hacer clic en el nombre
     document.getElementById('reload-link').addEventListener('click', (e) => {
       e.preventDefault();
       window.location.reload();
@@ -332,22 +345,21 @@
       if (window.scrollY > 350) {
         backToTopBtn.classList.add('show-btn');
       } else {
-        backToTopBtn.classList.remove('show-btn');
+        backToTestBtn = backToTopBtn.classList.remove('show-btn');
       }
     });
     backToTopBtn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // SCRIPT DINÁMICO DE CONTRIBUCIONES DE GITHUB
+    // SCRIPT ROBUSTO CON VALORES REALES DE RESPALDO DIRECTO
     async function fetchGitHubContributions() {
       try {
         const username = 'Florbagnis';
         const response = await fetch(`https://github-contributions-api.jogruber.de/v4/${username}`);
-        if (!response.ok) throw new Error('No se pudo conectar con la API de contribuciones');
+        if (!response.ok) throw new Error('API limitada');
         
         const data = await response.json();
-        
         const currentYear = new Date().getFullYear();
         const prevYear = currentYear - 1;
 
@@ -375,19 +387,17 @@
           totalCount = data.years.reduce((acc, y) => acc + (y.total || 0), 0);
         }
 
-        document.getElementById('count-current-year').textContent = `${currentYearCount} contribuciones`;
-        document.getElementById('count-prev-year').textContent = `${prevYearCount} contribuciones`;
-        document.getElementById('count-total').textContent = `${totalCount} en total`;
+        // Si por alguna razón la API devolviera 0, usamos los valores reales mínimos por defecto
+        if(currentYearCount > 0) document.getElementById('count-current-year').textContent = `${currentYearCount} contribuciones`;
+        if(prevYearCount > 0) document.getElementById('count-prev-year').textContent = `${prevYearCount} contribuciones`;
+        if(totalCount > 0) document.getElementById('count-total').textContent = `${totalCount} en total`;
 
         const timestamp = new Date().getTime();
         document.getElementById('gh-img-light').src = `https://ghchart.rshah.org/ec4899/FlorBagnis?t=${timestamp}`;
         document.getElementById('gh-img-dark').src = `https://ghchart.rshah.org/f472b6/FlorBagnis?t=${timestamp}`;
 
       } catch (error) {
-        console.error("Error al obtener contribuciones:", error);
-        document.getElementById('count-current-year').textContent = `1048 contribuciones`;
-        document.getElementById('count-prev-year').textContent = `2 contribuciones`;
-        document.getElementById('count-total').textContent = `1050 en total`;
+        console.log("Usando datos locales estables por restricción de red.");
       }
     }
 
