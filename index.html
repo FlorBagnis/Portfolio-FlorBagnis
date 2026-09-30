@@ -134,27 +134,23 @@
       .gh-year-count { font-size: 14px; }
     }
 
-
-    /* Caja de reconocimiento Tiendanube más compacta (el celular no cambia) */
+ /* Caja de reconocimiento Tiendanube más compacta (el celular no cambia) */
     #modal-tiendanube .kawaii-modal-content {
       max-width: 500px;
-      padding: 22px 24px;
+      padding: 22px 24px 38px;
       overflow: visible;
     }
     #modal-tiendanube .kawaii-modal-content img {
-      margin-top: 10px;
-      max-height: calc(100vh - 200px);
-    }
-    
-
-    /* Efectos de zoom y elevación */
-    #modal-tiendanube .kawaii-modal-content img {
+      margin-top: 14px;
+      max-height: calc(100vh - 220px);
+      transform-origin: center top;
       transition: transform 0.3s ease-in-out;
     }
     #modal-tiendanube .kawaii-modal-content img:hover {
-      transform: scale(1.05);
+      transform: scale(1.04);
     }
 
+    /* Efecto de elevación en Mensuales */
     #modal-mensuales .kawaii-modal-content img {
       transition: all 0.3s ease-in-out;
     }
@@ -163,6 +159,7 @@
       filter: drop-shadow(0 15px 30px rgba(236, 72, 153, 0.3));
     }
   </style>
+  
 </head>
 <body>
   <div class="sticky-nav-wrapper">
