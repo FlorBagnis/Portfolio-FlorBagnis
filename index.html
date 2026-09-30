@@ -994,6 +994,25 @@
       });
     }
 
+
+// COMPORTAMIENTO INTELIGENTE DE NAVBAR: SE ESCONDE AL BAJAR, APARECE AL SUBIR
+    const navWrapper = document.querySelector('.sticky-nav-wrapper');
+    let lastScrollTop = 0;
+
+    window.addEventListener('scroll', () => {
+      let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+      // Si scrollea hacia abajo y pasó el inicio, la escondemos
+      if (currentScroll > lastScrollTop && currentScroll > 150) {
+        navWrapper.classList.add('nav-hidden');
+      } else {
+        // Si sube o está arriba, vuelve a aparecer suavemente
+        navWrapper.classList.remove('nav-hidden');
+      }
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    });
+
+    
     // BOTÓN VOLVER ARRIBA
     const backToTopBtn = document.getElementById('back-to-top');
 
