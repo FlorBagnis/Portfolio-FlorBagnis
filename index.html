@@ -391,7 +391,7 @@
     // --- Actualizador automático de contribuciones de GitHub ---
     async function fetchGitHubContributions() {
       try {
-        const res = await fetch('https://github-contributions-api.jogruber.de/v4/FlorBagnis?y=all', { cache: 'no-store' });
+const res = await fetch('https://github-contributions-api.jogruber.de/v4/FlorBagnis?y=all&t=' + Date.now(), { cache: 'no-store' });
         if (!res.ok) throw new Error('HTTP ' + res.status);
         const data = await res.json();
         if (!data || !data.total || !data.contributions) throw new Error('Respuesta inválida');
@@ -447,6 +447,7 @@
     }
 
     fetchGitHubContributions();
+    
     // Vuelve a pedir los datos cuando regresas a la pestaña
     document.addEventListener('visibilitychange', () => {
       if (!document.hidden) fetchGitHubContributions();
