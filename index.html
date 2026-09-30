@@ -309,28 +309,46 @@
     </section>
 
    <!-- ACTIVIDAD EN GITHUB -->
-    <section id="github-actividad">
-      <h2>
-        <i class="fab fa-github"></i>
-        Actividad en GitHub
-      </h2>
-      <div class="github-calendar-card">
-        <a href="https://github.com/FlorBagnis" target="_blank" rel="noopener noreferrer" title="Ver perfil de GitHub">
-          <!-- Gráfico para Modo Claro (rosa vibrante) -->
-          <img
-            class="gh-chart gh-light"
-            src="https://ghchart.rshah.org/ec4899/FlorBagnis"
-            alt="Contribuciones en GitHub de Florencia Bagnis"
-          />
-          <!-- Gráfico para Modo Oscuro (rosa luminoso) -->
-          <img
-            class="gh-chart gh-dark"
-            src="https://ghchart.rshah.org/f472b6/FlorBagnis"
-            alt="Contribuciones en GitHub de Florencia Bagnis en Modo Oscuro"
-          />
-        </a>
-      </div>
-    </section> 
+    <section id="github-actividad">
+      <h2>
+        <i class="fab fa-github"></i>
+        Actividad en GitHub
+      </h2>
+
+      <div class="github-calendar-card">
+        <!-- Insignias de contribuciones por año (se llenan solas) -->
+        <div class="gh-years-container">
+          <div class="gh-year-badge">
+            <span class="gh-year-label">Año 2026</span>
+            <span class="gh-year-count" id="count-2026">Calculando...</span>
+          </div>
+          <div class="gh-year-badge">
+            <span class="gh-year-label">Año 2025</span>
+            <span class="gh-year-count" id="count-2025">--</span>
+          </div>
+          <div class="gh-year-badge total-badge">
+            <span class="gh-year-label">Total histórico</span>
+            <span class="gh-year-count" id="count-total">--</span>
+          </div>
+        </div>
+
+        <!-- Calendario visual anual de cuadritos -->
+        <div class="gh-chart-container">
+          <a href="https://github.com/FlorBagnis" target="_blank" rel="noopener noreferrer" title="Ver perfil en GitHub">
+            <img
+              class="gh-chart gh-light"
+              src="https://ghchart.rshah.org/ec4899/FlorBagnis"
+              alt="Contribuciones en GitHub de Florencia Bagnis"
+            />
+            <img
+              class="gh-chart gh-dark"
+              src="https://ghchart.rshah.org/f472b6/FlorBagnis"
+              alt="Contribuciones en GitHub de Florencia Bagnis en Modo Oscuro"
+            />
+          </a>
+        </div>
+      </div>
+    </section>
     
     <!-- PROYECTOS -->
     <section id="proyectos">
