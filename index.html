@@ -109,14 +109,21 @@
     }
 
 
-/* Efecto zoom suave para los modales */
-    #modal-tiendanube .kawaii-modal-content img,
-    #modal-mensuales .kawaii-modal-content img {
+/* Efecto zoom solo para el celular de Tiendanube */
+    #modal-tiendanube .kawaii-modal-content img {
       transition: transform 0.3s ease-in-out;
     }
-    #modal-tiendanube .kawaii-modal-content img:hover,
-    #modal-mensuales .kawaii-modal-content img:hover {
+    #modal-tiendanube .kawaii-modal-content img:hover {
       transform: scale(1.05);
+    }
+
+    /* Efecto elegante para la tablet de Mensuales (sin zoom feo, solo elevación y sombra) */
+    #modal-mensuales .kawaii-modal-content img {
+      transition: all 0.3s ease-in-out;
+    }
+    #modal-mensuales .kawaii-modal-content img:hover {
+      transform: translateY(-4px);
+      filter: drop-shadow(0 15px 30px rgba(236, 72, 153, 0.3));
     }
     
   </style>
