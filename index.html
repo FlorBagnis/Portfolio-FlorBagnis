@@ -66,14 +66,14 @@
     [data-theme="dark"] .gh-year-badge .gh-year-label { color: #f472b6; }
     [data-theme="dark"] .gh-year-badge .gh-year-count { color: #fdf2f8; }
     
-    /* Contenedor responsivo infalible para móviles y PC */
-    .gh-chart-container { width: 100%; display: flex; justify-content: center; overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 5px 0; }
-    .gh-chart { width: 100%; max-width: 100%; height: auto; display: block; border-radius: 12px; }
+    /* Contenedor responsivo infalible para el gráfico de cuadraditos en celulares y PC */
+    .gh-chart-container { width: 100%; display: flex; justify-content: center; overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 10px 0; }
+    .gh-chart { max-width: 100%; height: auto; display: block; }
     
     .gh-dark { display: none !important; }
     .gh-light { display: block !important; }
     [data-theme="dark"] .gh-light { display: none !important; }
-    [data-theme="dark"] .gh-dark { display: block !important; }
+    [data-theme="dark"] .gh-dark { display: block !important; filter: contrast(1.1) brightness(1.05); }
     
     .brand-link { color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: 12px; }
     .brand-link:hover { opacity: 0.9; }
@@ -84,7 +84,7 @@
       .github-calendar-card { padding: 15px 10px; margin: 0 5px; }
       .gh-year-badge { min-width: 100px; padding: 8px 10px; }
       .gh-year-count { font-size: 14px; }
-      .gh-chart { width: 100%; min-width: 300px; } 
+      .gh-chart-container { justify-content: flex-start; }
     }
   </style>
 </head>
@@ -177,9 +177,9 @@
         </div>
         <div class="gh-chart-container">
           <a href="https://github.com/FlorBagnis" target="_blank" rel="noopener noreferrer" title="Ver perfil en GitHub">
-            <!-- Usamos la tarjeta de perfil completa y estable en tonos rosa kawaii optimizada para celulares -->
-            <img class="gh-chart gh-light" src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=FlorBagnis&theme=vue" alt="Contribuciones en GitHub" />
-            <img class="gh-chart gh-dark" src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=FlorBagnis&theme=transparent" alt="Contribuciones en GitHub Modo Oscuro" />
+            <!-- Calendario clásico de cuadraditos de GitHub en tonos rosa (ec4899 para claro y f472b6 para modo oscuro) -->
+            <img class="gh-chart gh-light" src="https://ghchart.rshah.org/ec4899/FlorBagnis" alt="Contribuciones en GitHub" />
+            <img class="gh-chart gh-dark" src="https://ghchart.rshah.org/f472b6/FlorBagnis" alt="Contribuciones en GitHub Modo Oscuro" />
           </a>
         </div>
       </div>
