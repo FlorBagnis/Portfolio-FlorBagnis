@@ -82,7 +82,20 @@
     .kawaii-modal.active { display: flex; }
     .kawaii-modal-content { background: white; border: 2px solid var(--rosa-brillante); border-radius: 24px; padding: 25px; max-width: 600px; width: 100%; box-shadow: 0 15px 50px rgba(236, 72, 153, 0.25); text-align: center; position: relative; animation: modalPop 0.3s ease; }
     [data-theme="dark"] .kawaii-modal-content { background: var(--card-bg); border-color: var(--rosa-brillante); }
-    .kawaii-modal-content img { width: 100%; max-height: 70vh; object-fit: contain; border-radius: 12px; margin-top: 15px; border: 1px solid var(--rosa-suave); }
+    
+    /* MODIFICACIÓN CLAVE: Saca bordes/fondos molestos y añade sombra suave a la imagen limpia */
+    .kawaii-modal-content img { 
+      width: 100%; 
+      max-height: 70vh; 
+      object-fit: contain; 
+      border-radius: 12px; 
+      margin-top: 15px; 
+      border: none !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+    }
+
     .kawaii-close-btn { position: absolute; top: 15px; right: 20px; background: var(--rosa-suave); border: none; color: var(--rosa-brillante); width: 36px; height: 36px; border-radius: 50%; font-size: 16px; cursor: pointer; transition: 0.2s; display: flex; align-items: center; justify-content: center; }
     .kawaii-close-btn:hover { background: var(--rosa-brillante); color: white; }
     @keyframes modalPop { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
@@ -125,7 +138,9 @@
       <button class="kawaii-close-btn" onclick="closeModal('tiendanube')"><i class="fas fa-times"></i></button>
       <h3 style="color: var(--rosa-brillante); margin-bottom: 5px;"><i class="fas fa-award"></i> Reconocimiento Tiendanube</h3>
       <p style="font-size: 13px; color: var(--texto-secundario);">Mensaje del team valorando la calculadora de tasas.</p>
-     <img src="agradecimiento-tiendanube.jpg" alt="Agradecimiento de Tiendanube" />
+      
+      <!-- AQUÍ CAMBIAMOS EL ARCHIVO CON TU NOMBRE EXACTO -->
+      <img src="agradecimiento-tiendanube.JPG" alt="Agradecimiento de Tiendanube" />
     </div>
   </div>
 
@@ -236,6 +251,7 @@
         <article class="card" data-category="frontend">
           <h3>Honeymoon <i class="fas fa-shirt"></i></h3>
           <img src="honeymoon.gif" alt="Honeymoon" class="project-media" loading="lazy" />
+         
           <p class="project-type">Proyecto final · Coderhouse</p>
           <p>Sitio web responsive desarrollado para una marca de indumentaria inspirada en la estética kawaii.</p>
           <div class="project-tags"><span>HTML5</span><span>CSS3</span><span>SASS</span><span>Bootstrap</span><span>Responsive</span></div>
@@ -253,14 +269,17 @@
           <div class="buttons">
             <a class="button" href="https://gastosmensuales-two.vercel.app/" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i> Ver demo</a>
             <a class="button secondary" href="https://github.com/FlorBagnis/Mensuales" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Ver código</a>
+           
             <!-- Botón de impacto con estética rosa -->
             <button class="button secondary" onclick="openModal('mensuales')" style="border-color: var(--rosa-brillante); color: var(--rosa-brillante); cursor: pointer;"><i class="fas fa-heart"></i> Ver impacto</button>
           </div>
         </article>
         <article class="card" data-category="fullstack">
+          
           <h3>Gestor de Productos <i class="fas fa-boxes-stacked"></i></h3>
           <img src="cruddemo.gif" alt="Gestor de Productos" class="project-media" loading="lazy" />
           <p class="project-type">Proyecto práctico · CRUD con Base de Datos</p>
+         
           <p>Aplicación desarrollada para administrar un catálogo de productos mediante operaciones SQL.</p>
           <div class="project-tags"><span>PHP</span><span>MySQL</span><span>SQL</span><span>HTML5</span><span>CSS3</span></div>
           <div class="buttons">
@@ -269,6 +288,7 @@
           </div>
         </article>
         <article class="card" data-category="fullstack tools">
+         
           <h3>SQL Practical Studio &amp; Bootcamp <i class="fas fa-database"></i></h3>
           <img src="sqldevdemo.gif" alt="SQL Practical Studio" class="project-media" loading="lazy" />
           <p class="project-type">Simulador interactivo · Bases de Datos</p>
@@ -332,7 +352,7 @@
       } else {
         document.documentElement.setAttribute('data-theme', 'dark');
         localStorage.setItem('theme', 'dark');
-        toggleButton.textContent = '☀️️';
+        toggleButton.textContent = '☀';
       }
     });
 
