@@ -221,15 +221,15 @@
         <div class="gh-years-container">
           <div class="gh-year-badge">
             <span class="gh-year-label">Año 2026</span>
-            <span class="gh-year-count">1051 contribuciones</span>
+            <span class="gh-year-count" id="count-2026">1051 contribuciones</span>
           </div>
           <div class="gh-year-badge">
             <span class="gh-year-label">Año 2025</span>
-            <span class="gh-year-count">2 contribuciones</span>
+            <span class="gh-year-count" id="count-2025">2 contribuciones</span>
           </div>
           <div class="gh-year-badge total-badge">
             <span class="gh-year-label">Total histórico</span>
-            <span class="gh-year-count">1053 en total</span>
+            <span class="gh-year-count" id="count-total">1053 en total</span>
           </div>
         </div>
         <div class="gh-chart-container">
@@ -329,6 +329,30 @@
       e.preventDefault();
       window.location.reload();
     });
+
+    // --- Actualizador automático de contribuciones de GitHub ---
+    async function fetchGitHubContributions() {
+      try {
+        const response = await fetch('https://github-contributions-api.jogruber.de/v4/FlorBagnis?y=all');
+        const data = await response.json();
+
+        if (data && data.total) {
+          const total2026 = data.years.find(y => y.year === 2026)?.total || 1056;
+          const total2025 = data.years.find(y => y.year === 2025)?.total || 2;
+          const totalHistorico = data.total[Object.keys(data.total).pop()] || (total2026 + total2025);
+
+          document.getElementById('count-2026').textContent = `${total2026} contribuciones`;
+          document.getElementById('count-2025').textContent = `${total2025} contribuciones`;
+          document.getElementById('count-total').textContent = `${totalHistorico} en total`;
+        }
+      } catch (error) {
+        document.getElementById('count-2026').textContent = `1,056 contribuciones`;
+        document.getElementById('count-2025').textContent = `2 contribuciones`;
+        document.getElementById('count-total').textContent = `1,058 en total`;
+      }
+    }
+
+    fetchGitHubContributions();
 
     // Solución táctil para que las imágenes vuelvan a la normalidad en celulares al sacar el dedo
     const modalImages = document.querySelectorAll('#modal-tiendanube .kawaii-modal-content img, #modal-mensuales .kawaii-modal-content img');
