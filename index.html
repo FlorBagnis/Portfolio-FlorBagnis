@@ -101,7 +101,7 @@
     .brand-link { color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: 12px; }
     .brand-link:hover { opacity: 0.9; }
 
-    /* Estilos para contenedores de GIF con Botón de Reproducción Kawaii */
+    /* Estilos para contenedores de GIF con Botón de Reproducción y Canvas congelado */
     .media-container {
       position: relative;
       width: 100%;
@@ -112,6 +112,17 @@
       display: block;
       width: 100%;
       height: auto;
+      border-radius: 12px;
+    }
+    .media-container canvas.project-media {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+      object-fit: contain;
+      background: var(--card-bg, #fff);
     }
     .gif-toggle-btn {
       position: absolute;
@@ -359,7 +370,8 @@
         <article class="card" data-category="frontend tools">
           <h3>Calculadora de Tasas <i class="fas fa-calculator"></i></h3>
           <div class="media-container">
-            <img src="calculadorademo.gif" alt="Calculadora de Tasas" class="project-media" loading="lazy" data-gif="calculadorademo.gif" />
+            <img src="calculadorademo.gif" alt="Calculadora de Tasas" class="project-media" loading="lazy" />
+            <canvas class="project-media"></canvas>
             <button class="gif-toggle-btn" type="button" aria-label="Pausar animación" title="Pausar animación"><i class="fas fa-pause"></i></button>
           </div>
           <p class="project-type">Proyecto práctico · Herramienta para e-commerce</p>
@@ -374,7 +386,8 @@
         <article class="card" data-category="frontend">
           <h3>Honeymoon <i class="fas fa-shirt"></i></h3>
           <div class="media-container">
-            <img src="honeymoon.gif" alt="Honeymoon" class="project-media" loading="lazy" data-gif="honeymoon.gif" />
+            <img src="honeymoon.gif" alt="Honeymoon" class="project-media" loading="lazy" />
+            <canvas class="project-media"></canvas>
             <button class="gif-toggle-btn" type="button" aria-label="Pausar animación" title="Pausar animación"><i class="fas fa-pause"></i></button>
           </div>
           <p class="project-type">Proyecto final · Coderhouse</p>
@@ -388,7 +401,8 @@
         <article class="card" data-category="frontend tools">
           <h3>Mensuales <i class="fas fa-wallet"></i></h3>
           <div class="media-container">
-            <img src="mensualesdemo.gif" alt="Mensuales" class="project-media" loading="lazy" data-gif="mensualesdemo.gif" />
+            <img src="mensualesdemo.gif" alt="Mensuales" class="project-media" loading="lazy" />
+            <canvas class="project-media"></canvas>
             <button class="gif-toggle-btn" type="button" aria-label="Pausar animación" title="Pausar animación"><i class="fas fa-pause"></i></button>
           </div>
           <p class="project-type">Proyecto personal · Gestión de gastos</p>
@@ -403,7 +417,8 @@
         <article class="card" data-category="fullstack">
           <h3>Gestor de Productos <i class="fas fa-boxes-stacked"></i></h3>
           <div class="media-container">
-            <img src="cruddemo.gif" alt="Gestor de Productos" class="project-media" loading="lazy" data-gif="cruddemo.gif" />
+            <img src="cruddemo.gif" alt="Gestor de Productos" class="project-media" loading="lazy" />
+            <canvas class="project-media"></canvas>
             <button class="gif-toggle-btn" type="button" aria-label="Pausar animación" title="Pausar animación"><i class="fas fa-pause"></i></button>
           </div>
           <p class="project-type">Proyecto práctico · CRUD con Base de Datos</p>
@@ -417,7 +432,8 @@
         <article class="card" data-category="fullstack tools">
           <h3>SQL Practical Studio &amp; Bootcamp <i class="fas fa-database"></i></h3>
           <div class="media-container">
-            <img src="sqldevdemo.gif" alt="SQL Practical Studio" class="project-media" loading="lazy" data-gif="sqldevdemo.gif" />
+            <img src="sqldevdemo.gif" alt="SQL Practical Studio" class="project-media" loading="lazy" />
+            <canvas class="project-media"></canvas>
             <button class="gif-toggle-btn" type="button" aria-label="Pausar animación" title="Pausar animación"><i class="fas fa-pause"></i></button>
           </div>
           <p class="project-type">Simulador interactivo · Bases de Datos</p>
@@ -462,41 +478,29 @@
       if (modal) modal.classList.remove('active');
     };
 
-    // ===== Control Play/Pause para GIFs =====
+    // ===== Control Play/Pause exacto en el fotograma actual para GIFs =====
     document.querySelectorAll('.media-container').forEach(container => {
-      const img = container.querySelector('.project-media');
+      const img = container.querySelector('img.project-media');
+      const canvas = container.querySelector('canvas.project-media');
       const btn = container.querySelector('.gif-toggle-btn');
-      const gifSrc = img.getAttribute('data-gif');
       let isPlaying = true;
-
-      // Generador dinámico de fotograma estático (canvas) para cuando se pausa
-      let staticDataUrl = '';
-      const tempImg = new Image();
-      tempImg.crossOrigin = 'anonymous';
-      tempImg.src = gifSrc;
-      tempImg.onload = () => {
-        const canvas = document.createElement('canvas');
-        canvas.width = tempImg.width || 600;
-        canvas.height = tempImg.height || 400;
-        const ctx = canvas.getContext('2d');
-        ctx.drawImage(tempImg, 0, 0);
-        staticDataUrl = canvas.toDataURL('image/png');
-      };
 
       btn.addEventListener('click', () => {
         isPlaying = !isPlaying;
         if (isPlaying) {
-          img.src = gifSrc;
+          // Reanudar GIF ocultando el canvas congelado
+          canvas.style.display = 'none';
           btn.innerHTML = '<i class="fas fa-pause"></i>';
           btn.title = 'Pausar animación';
           btn.setAttribute('aria-label', 'Pausar animación');
         } else {
-          if (staticDataUrl) {
-            img.src = staticDataUrl;
-          } else {
-            // Fallback si el canvas aún no cargó
-            img.src = gifSrc;
-          }
+          // Congelar EXACTAMENTE en el fotograma actual dibujándolo en el canvas
+          canvas.width = img.naturalWidth || img.width || 600;
+          canvas.height = img.naturalHeight || img.height || 400;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+          canvas.style.display = 'block';
+
           btn.innerHTML = '<i class="fas fa-play"></i>';
           btn.title = 'Reproducir animación';
           btn.setAttribute('aria-label', 'Reproducir animación');
@@ -801,7 +805,6 @@
       });
     });
 
-    const copyBtn = document.getElementById('copy-email-dev'); // safe reference handled below
     const copyEmailBtn = document.getElementById('copy-email-btn');
     const copyLabel = document.getElementById('copy-label');
     const copyIcon = document.getElementById('copy-icon');
