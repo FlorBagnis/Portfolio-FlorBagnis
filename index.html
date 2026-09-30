@@ -1031,6 +1031,28 @@
       lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
     });
 
+        // ... acá terminan tus otras funciones de JS ...
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+
+    // --- PEGAS ACÁ EL SCRIPT NUEVO DE GITHUB ---
+    async function fetchGitHubContributions() {
+      // ... (todo el código de la API)
+    }
+
+    document.addEventListener('DOMContentLoaded', fetchGitHubContributions);
+
+  </script> <!-- ACÁ CIERRA EL SCRIPT -->
+</body>   <!-- ACÁ CIERRA EL HTML -->
+</html>
+
+    
     
     // BOTÓN VOLVER ARRIBA
     const backToTopBtn = document.getElementById('back-to-top');
