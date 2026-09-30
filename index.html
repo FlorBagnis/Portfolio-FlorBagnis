@@ -339,14 +339,13 @@
 
    async function fetchGitHubContributions() {
       try {
-        const response = await fetch('https://github-contributions-api.jogruber.de/v4/FlorBagnis?y=all');
+        // Usamos una ruta alternativa más directa de la misma API de contribuciones
+        const response = await fetch('https://github-contributions-api.jogruber.de/v4/FlorBagnis');
         const data = await response.json();
 
-        if (data && data.years) {
-          // Buscamos el año 2026 asegurándonos de que coincida sin importar si viene como número o texto
-          const obj2026 = data.years.find(y => Number(y.year) === 2026);
-          const total2026 = obj2026 ? obj2026.total : 1061;
-          
+        if (data && data.total) {
+          // Si la API responde con el total general, lo usamos para sincronizar
+          const total2026 = data.total['2026'] || 1061;
           const total2025 = 14; 
           const totalHistorico = total2026 + total2025;
 
