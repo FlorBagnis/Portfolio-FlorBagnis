@@ -66,7 +66,7 @@
     [data-theme="dark"] .gh-year-badge .gh-year-label { color: #f472b6; }
     [data-theme="dark"] .gh-year-badge .gh-year-count { color: #fdf2f8; }
     
-    /* Contenedor del gráfico 100% responsivo y adaptable en móviles */
+    /* Contenedor responsivo infalible para móviles y PC */
     .gh-chart-container { width: 100%; display: flex; justify-content: center; overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 5px 0; }
     .gh-chart { width: 100%; max-width: 100%; height: auto; display: block; border-radius: 12px; }
     
@@ -84,7 +84,7 @@
       .github-calendar-card { padding: 15px 10px; margin: 0 5px; }
       .gh-year-badge { min-width: 100px; padding: 8px 10px; }
       .gh-year-count { font-size: 14px; }
-      .gh-chart { min-width: 500px; max-width: none; } /* Permite un desplazamiento horizontal suave y legible en celulares pequeños */
+      .gh-chart { width: 100%; min-width: 300px; } 
     }
   </style>
 </head>
@@ -177,8 +177,9 @@
         </div>
         <div class="gh-chart-container">
           <a href="https://github.com/FlorBagnis" target="_blank" rel="noopener noreferrer" title="Ver perfil en GitHub">
-            <img class="gh-chart gh-light" src="https://github-readme-activity-graph.vercel.app/graph?username=FlorBagnis&theme=react&hide_border=true&color=ec4899&background=ffffff&area=true" alt="Contribuciones en GitHub" />
-            <img class="gh-chart gh-dark" src="https://github-readme-activity-graph.vercel.app/graph?username=FlorBagnis&theme=react&hide_border=true&color=f472b6&background=1a1017&area=true" alt="Contribuciones en GitHub Modo Oscuro" />
+            <!-- Usamos la tarjeta de perfil completa y estable en tonos rosa kawaii optimizada para celulares -->
+            <img class="gh-chart gh-light" src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=FlorBagnis&theme=vue" alt="Contribuciones en GitHub" />
+            <img class="gh-chart gh-dark" src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=FlorBagnis&theme=transparent" alt="Contribuciones en GitHub Modo Oscuro" />
           </a>
         </div>
       </div>
