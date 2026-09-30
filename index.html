@@ -1,17 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta
-    name="description"
-    content="Portfolio de Florencia Bagnis, desarrolladora frontend en formación con experiencia en Customer Support, SaaS y e-commerce."
-  />
+  <meta name="description" content="Portfolio de Florencia Bagnis, desarrolladora frontend en formación con experiencia en Customer Support, SaaS y e-commerce." />
   <title>Florencia Bagnis | Frontend Developer</title>
-
-
-<!-- Open Graph / Redes Sociales (LinkedIn, WhatsApp, Slack, Facebook) -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Florencia Bagnis | Frontend Developer" />
   <meta property="og:description" content="Portfolio de desarrollo frontend, soporte tecnológico en SaaS y proyectos interactivos." />
@@ -19,369 +12,67 @@
   <meta property="og:image" content="https://florbagnis.github.io/Portfolio-FlorBagnis/preview.png?v=2" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-
-  <!-- Twitter / X Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Florencia Bagnis | Frontend Developer" />
   <meta name="twitter:description" content="Portfolio de proyectos frontend, soporte tecnológico y simuladores interactivos." />
   <meta name="twitter:image" content="https://florbagnis.github.io/Portfolio-FlorBagnis/preview.png?v=2" />
-
-  
-  <!-- Favicon principal optimizado -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 5 120 90'><path d='M28 28 L8 50 L28 72' fill='none' stroke='%23ff8da1' stroke-width='10' stroke-linecap='round' stroke-linejoin='round'/><line x1='67' y1='18' x2='53' y2='82' stroke='%23ff8da1' stroke-width='10' stroke-linecap='round'/><path d='M92 28 L112 50 L92 72' fill='none' stroke='%23ff8da1' stroke-width='10' stroke-linecap='round' stroke-linejoin='round'/></svg>">
-  <!-- Font Awesome -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-  />
-
-  <!-- CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
   <link rel="stylesheet" href="style.css" />
-
   <style>
-    /* NAVBAR FLOTANTE GLASSMORPHISM */
-    .sticky-nav-wrapper {
-      position: fixed;
-      top: 18px;
-      left: 0;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      z-index: 1000;
-      pointer-events: none;
-      padding: 0 16px;
-    }
-
-    .sticky-nav {
-      pointer-events: auto;
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      padding: 8px 22px;
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid var(--rosa-suave);
-      border-radius: 999px;
-      box-shadow: 0 8px 25px rgba(236, 72, 153, 0.12);
-    }
-
-    .sticky-nav a {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--texto-secundario);
-      transition: color 0.25s ease, transform 0.25s ease;
-    }
-
-    .sticky-nav a:hover {
-      color: var(--rosa-brillante);
-      transform: translateY(-1px);
-    }
-
-    [data-theme="dark"] .sticky-nav {
-      background: rgba(26, 16, 23, 0.85);
-      border-color: rgba(244, 114, 182, 0.25);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-    }
-
-    [data-theme="dark"] .sticky-nav a {
-      color: #d1a3be;
-    }
-
-    [data-theme="dark"] .sticky-nav a:hover {
-      color: var(--rosa-brillante);
-    }
-
-    /* BOTÓN VOLVER ARRIBA */
-    #back-to-top {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: white;
-      border: 1.5px solid var(--rosa-brillante);
-      color: var(--rosa-brillante);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 998;
-      box-shadow: 0 6px 20px rgba(236, 72, 153, 0.2);
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(15px);
-      transition: all 0.3s ease;
-    }
-
-    #back-to-top.show-btn {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    #back-to-top:hover {
-      background: var(--rosa-brillante);
-      color: white;
-      transform: translateY(-3px);
-    }
-
-    [data-theme="dark"] #back-to-top {
-      background: var(--card-bg);
-      border-color: var(--rosa-brillante);
-      color: var(--rosa-brillante);
-    }
-
-    [data-theme="dark"] #back-to-top:hover {
-      background: var(--rosa-brillante);
-      color: #ffffff;
-    }
-
-    /* PÍLDORAS DE IDIOMAS & CERTIFICACIONES */
-    .skills-summary-pillbox {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 18px;
-    }
-
-    .summary-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 14px;
-      background: white;
-      border: 1px solid var(--rosa-suave);
-      border-radius: 12px;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--texto-secundario);
-      box-shadow: 0 4px 12px rgba(236, 72, 153, 0.05);
-    }
-
-    .summary-pill i {
-      color: var(--rosa-brillante);
-    }
-
-    [data-theme="dark"] .summary-pill {
-      background: var(--card-bg);
-      border-color: rgba(244, 114, 182, 0.25);
-      color: #d1a3be;
-    }
-
-    /* Estilos decorativos flotantes */
-    .kawaii-bg-decor {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-      z-index: 997;
-      overflow: hidden;
-    }
-
-    .decor-item {
-      position: absolute;
-      font-family: 'Courier New', monospace, sans-serif;
-      color: var(--rosa-brillante, #ff8da1);
-      opacity: 0.45;
-      font-weight: bold;
-      user-select: none;
-    }
-
+    .sticky-nav-wrapper { position: fixed; top: 18px; left: 0; width: 100%; display: flex; justify-content: center; z-index: 1000; pointer-events: none; padding: 0 16px; }
+    .sticky-nav { pointer-events: auto; display: flex; align-items: center; gap: 18px; padding: 8px 22px; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--rosa-suave); border-radius: 999px; box-shadow: 0 8px 25px rgba(236, 72, 153, 0.12); }
+    .sticky-nav a { font-size: 14px; font-weight: 600; color: var(--texto-secundario); transition: color 0.25s ease, transform 0.25s ease; }
+    .sticky-nav a:hover { color: var(--rosa-brillante); transform: translateY(-1px); }
+    [data-theme="dark"] .sticky-nav { background: rgba(26, 16, 23, 0.85); border-color: rgba(244, 114, 182, 0.25); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); }
+    [data-theme="dark"] .sticky-nav a { color: #d1a3be; }
+    [data-theme="dark"] .sticky-nav a:hover { color: var(--rosa-brillante); }
+    #back-to-top { position: fixed; bottom: 24px; right: 24px; width: 44px; height: 44px; border-radius: 50%; background: white; border: 1.5px solid var(--rosa-brillante); color: var(--rosa-brillante); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 998; box-shadow: 0 6px 20px rgba(236, 72, 153, 0.2); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all 0.3s ease; }
+    #back-to-top.show-btn { opacity: 1; visibility: visible; transform: translateY(0); }
+    #back-to-top:hover { background: var(--rosa-brillante); color: white; transform: translateY(-3px); }
+    [data-theme="dark"] #back-to-top { background: var(--card-bg); border-color: var(--rosa-brillante); color: var(--rosa-brillante); }
+    [data-theme="dark"] #back-to-top:hover { background: var(--rosa-brillante); color: #ffffff; }
+    .skills-summary-pillbox { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    .summary-pill { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; background: white; border: 1px solid var(--rosa-suave); border-radius: 12px; font-size: 13px; font-weight: 600; color: var(--texto-secundario); box-shadow: 0 4px 12px rgba(236, 72, 153, 0.05); }
+    .summary-pill i { color: var(--rosa-brillante); }
+    [data-theme="dark"] .summary-pill { background: var(--card-bg); border-color: rgba(244, 114, 182, 0.25); color: #d1a3be; }
+    .kawaii-bg-decor { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 997; overflow: hidden; }
+    .decor-item { position: absolute; font-family: 'Courier New', monospace, sans-serif; color: var(--rosa-brillante, #ff8da1); opacity: 0.45; font-weight: bold; user-select: none; }
     .item-1 { top: 14%; left: 4%; font-size: 1.8rem; animation: floatSparkle 7s ease-in-out infinite alternate; }
     .item-2 { top: 34%; right: 4%; font-size: 1.2rem; animation: floatTech 9s ease-in-out infinite alternate; }
     .item-3 { bottom: 22%; left: 4%; font-size: 1.5rem; animation: floatSparkle 8s ease-in-out infinite alternate-reverse; }
     .item-4 { bottom: 12%; right: 5%; font-size: 1.3rem; animation: floatTech 10s ease-in-out infinite alternate-reverse; }
-
-    @keyframes floatSparkle {
-      0% { transform: translateY(0) scale(0.9); opacity: 0.3; }
-      50% { opacity: 0.65; }
-      100% { transform: translateY(-20px) scale(1.1); opacity: 0.3; }
-    }
-
-    @keyframes floatTech {
-      0% { transform: translateY(0) rotate(-5deg); }
-      100% { transform: translateY(-22px) rotate(5deg); }
-    }
-
-    [data-theme="dark"] .decor-item {
-      color: var(--rosa-brillante, #ffb3c1);
-      opacity: 0.4;
-    }
-
-    /* Filtros interactivos */
-    .project-filters {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 35px;
-    }
-
-    .filter-btn {
-      background: white;
-      border: 1.5px solid var(--rosa-suave);
-      color: var(--texto-secundario);
-      padding: 8px 18px;
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.25s ease;
-      font-family: inherit;
-    }
-
-    .filter-btn:hover,
-    .filter-btn.active {
-      background: var(--rosa-brillante);
-      border-color: var(--rosa-brillante);
-      color: white;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(236, 72, 153, 0.25);
-    }
-
-    [data-theme="dark"] .filter-btn {
-      background: var(--card-bg);
-      border-color: var(--rosa-suave);
-      color: var(--texto-secundario);
-    }
-
-    [data-theme="dark"] .filter-btn.active {
-      background: var(--rosa-brillante);
-      color: #fff;
-    }
-
-    .card.hide-card {
-      display: none !important;
-    }
-
-    /* Actividad GitHub */
-    .github-calendar-card {
-      max-width: 950px;
-      margin: 0 auto;
-      padding: 30px 25px;
-      background: white;
-      border: 1px solid var(--rosa-suave);
-      border-radius: 24px;
-      box-shadow: 0 10px 40px rgba(236, 72, 153, 0.08);
-      overflow-x: auto;
-      text-align: center;
-      transition: 0.3s;
-    }
-
-    [data-theme="dark"] .github-calendar-card {
-      background: var(--card-bg);
-    }
-
-    .gh-years-container {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 22px;
-    }
-
-    .gh-year-badge {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 10px 22px;
-      background: var(--rosa-suave);
-      border: 1px solid var(--rosa-brillante);
-      border-radius: 16px;
-      min-width: 140px;
-      transition: transform 0.2s ease;
-    }
-
-    .gh-year-badge:hover {
-      transform: translateY(-3px);
-    }
-
-    .gh-year-label {
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      color: var(--rosa-oscuro);
-      letter-spacing: 0.5px;
-    }
-
-    .gh-year-count {
-      font-size: 19px;
-      font-weight: 800;
-      color: var(--texto-oscuro);
-      margin-top: 2px;
-    }
-
-    .gh-year-badge.total-badge {
-      background: linear-gradient(135deg, var(--rosa-brillante), var(--rosa-oscuro));
-      border: none;
-    }
-
-    .gh-year-badge.total-badge .gh-year-label,
-    .gh-year-badge.total-badge .gh-year-count {
-      color: #ffffff !important;
-    }
-
-    [data-theme="dark"] .gh-year-badge {
-      background: rgba(244, 114, 182, 0.12);
-      border-color: rgba(244, 114, 182, 0.4);
-    }
-
-    [data-theme="dark"] .gh-year-badge .gh-year-label {
-      color: #f472b6;
-    }
-
-    [data-theme="dark"] .gh-year-badge .gh-year-count {
-      color: #fdf2f8;
-    }
-
-    .gh-chart-container {
-      width: 100%;
-      overflow-x: auto;
-      display: flex;
-      justify-content: center;
-    }
-
-    .gh-chart {
-      max-width: 100%;
-      height: auto;
-    }
-
-    .gh-dark {
-      display: none !important;
-    }
-
-    .gh-light {
-      display: block !important;
-    }
-
-    [data-theme="dark"] .gh-light {
-      display: none !important;
-    }
-
-    [data-theme="dark"] .gh-dark {
-      display: block !important;
-      filter: contrast(1.1) brightness(1.05);
-    }
-
-    @media (max-width: 600px) {
-      .sticky-nav {
-        gap: 12px;
-        padding: 6px 16px;
-      }
-      .sticky-nav a {
-        font-size: 12px;
-      }
-    }
+    @keyframes floatSparkle { 0% { transform: translateY(0) scale(0.9); opacity: 0.3; } 50% { opacity: 0.65; } 100% { transform: translateY(-20px) scale(1.1); opacity: 0.3; } }
+    @keyframes floatTech { 0% { transform: translateY(0) rotate(-5deg); } 100% { transform: translateY(-22px) rotate(5deg); } }
+    [data-theme="dark"] .decor-item { color: var(--rosa-brillante, #ffb3c1); opacity: 0.4; }
+    .project-filters { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 35px; }
+    .filter-btn { background: white; border: 1.5px solid var(--rosa-suave); color: var(--texto-secundario); padding: 8px 18px; border-radius: 999px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.25s ease; font-family: inherit; }
+    .filter-btn:hover, .filter-btn.active { background: var(--rosa-brillante); border-color: var(--rosa-brillante); color: white; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(236, 72, 153, 0.25); }
+    [data-theme="dark"] .filter-btn { background: var(--card-bg); border-color: var(--rosa-suave); color: var(--texto-secundario); }
+    [data-theme="dark"] .filter-btn.active { background: var(--rosa-brillante); color: #fff; }
+    .card.hide-card { display: none !important; }
+    .github-calendar-card { max-width: 950px; margin: 0 auto; padding: 30px 25px; background: white; border: 1px solid var(--rosa-suave); border-radius: 24px; box-shadow: 0 10px 40px rgba(236, 72, 153, 0.08); overflow-x: auto; text-align: center; transition: 0.3s; }
+    [data-theme="dark"] .github-calendar-card { background: var(--card-bg); }
+    .gh-years-container { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-bottom: 22px; }
+    .gh-year-badge { display: flex; flex-direction: column; align-items: center; padding: 10px 22px; background: var(--rosa-suave); border: 1px solid var(--rosa-brillante); border-radius: 16px; min-width: 140px; transition: transform 0.2s ease; }
+    .gh-year-badge:hover { transform: translateY(-3px); }
+    .gh-year-label { font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--rosa-oscuro); letter-spacing: 0.5px; }
+    .gh-year-count { font-size: 19px; font-weight: 800; color: var(--texto-oscuro); margin-top: 2px; }
+    .gh-year-badge.total-badge { background: linear-gradient(135deg, var(--rosa-brillante), var(--rosa-oscuro)); border: none; }
+    .gh-year-badge.total-badge .gh-year-label, .gh-year-badge.total-badge .gh-year-count { color: #ffffff !important; }
+    [data-theme="dark"] .gh-year-badge { background: rgba(244, 114, 182, 0.12); border-color: rgba(244, 114, 182, 0.4); }
+    [data-theme="dark"] .gh-year-badge .gh-year-label { color: #f472b6; }
+    [data-theme="dark"] .gh-year-badge .gh-year-count { color: #fdf2f8; }
+    .gh-chart-container { width: 100%; overflow-x: auto; display: flex; justify-content: center; }
+    .gh-chart { max-width: 100%; height: auto; }
+    .gh-dark { display: none !important; }
+    .gh-light { display: block !important; }
+    [data-theme="dark"] .gh-light { display: none !important; }
+    [data-theme="dark"] .gh-dark { display: block !important; filter: contrast(1.1) brightness(1.05); }
+    @media (max-width: 600px) { .sticky-nav { gap: 12px; padding: 6px 16px; } .sticky-nav a { font-size: 12px; } }
   </style>
 </head>
-
 <body>
-
-  <!-- STICKY NAVBAR FLOTANTE GLASSMORPHISM -->
   <div class="sticky-nav-wrapper">
     <nav class="sticky-nav" aria-label="Navegación principal">
       <a href="#sobre-mi">Sobre mí</a>
@@ -391,8 +82,6 @@
       <a href="#contacto">Contacto</a>
     </nav>
   </div>
-
-<!-- ÍCONOS Y ELEMENTOS FLOTANTES TECH & KAWAII -->
   <div class="kawaii-bg-decor" aria-hidden="true">
     <span class="decor-item item-1">✦</span>
     <span class="decor-item item-2">&lt;/&gt;</span>
@@ -403,558 +92,165 @@
     <span class="decor-item item-7">🌸</span>
     <span class="decor-item item-8">✿</span>
   </div>
-
-  <!-- Botón de Modo Oscuro -->
-  <button id="theme-toggle" aria-label="Cambiar modo oscuro" style="position: fixed; top: 16px; right: 20px; z-index: 1001; background: var(--rosa-suave); border: 1px solid var(--rosa-brillante); color: var(--rosa-brillante); padding: 9px 13px; border-radius: 50%; cursor: pointer; font-size: 17px; transition: 0.3s; box-shadow: 0 4px 15px rgba(236, 72, 153, 0.15);">
-    🌙
-  </button>
-
-  <!-- Botón Volver Arriba -->
-  <button id="back-to-top" aria-label="Volver arriba">
-    <i class="fas fa-chevron-up"></i>
-  </button>
-
+  <button id="theme-toggle" aria-label="Cambiar modo oscuro" style="position: fixed; top: 16px; right: 20px; z-index: 1001; background: var(--rosa-suave); border: 1px solid var(--rosa-brillante); color: var(--rosa-brillante); padding: 9px 13px; border-radius: 50%; cursor: pointer; font-size: 17px; transition: 0.3s; box-shadow: 0 4px 15px rgba(236, 72, 153, 0.15);">🌙</button>
+  <button id="back-to-top" aria-label="Volver arriba"><i class="fas fa-chevron-up"></i></button>
   <div class="container">
-
-    <!-- HEADER -->
     <header>
-      <h1>
-        Florencia Bagnis
-        <i class="fas fa-laptop-code"></i>
-      </h1>
-
-      <p class="subtitle">
-        Frontend Developer en formación | Experiencia en soporte tecnológico
-        y desarrollo de interfaces funcionales
-      </p>
-
-      <p class="availability">
-        <i class="fas fa-circle-check"></i>
-        Disponible para trabajo remoto
-      </p>
-
+      <h1>Florencia Bagnis <i class="fas fa-laptop-code"></i></h1>
+      <p class="subtitle">Frontend Developer en formación | Experiencia en soporte tecnológico y desarrollo de interfaces funcionales</p>
+      <p class="availability"><i class="fas fa-circle-check"></i> Disponible para trabajo remoto</p>
       <div class="header-socials">
-        <a
-          href="https://www.linkedin.com/in/florencia-bagnis"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="LinkedIn de Florencia Bagnis"
-          title="LinkedIn"
-        >
-          <i class="fab fa-linkedin"></i>
-        </a>
-
-        <a
-          href="https://github.com/Florbagnis"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="GitHub de Florencia Bagnis"
-          title="GitHub"
-        >
-          <i class="fab fa-github"></i>
-        </a>
-
-        <a
-          href="./CV-Florencia-Bagnis.pdf"
-          download="CV-Florencia-Bagnis.pdf"
-          aria-label="Descargar CV de Florencia Bagnis"
-          title="Descargar CV"
-        >
-          <i class="fas fa-file-arrow-down"></i>
-          <span class="cv-label">CV</span>
-        </a>
+        <a href="https://www.linkedin.com/in/florencia-bagnis" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/Florbagnis" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="./CV-Florencia-Bagnis.pdf" download="CV-Florencia-Bagnis.pdf" aria-label="Descargar CV"><i class="fas fa-file-arrow-down"></i><span class="cv-label">CV</span></a>
       </div>
     </header>
-
-    <!-- SOBRE MÍ -->
     <section id="sobre-mi">
       <h2>Sobre mí</h2>
-
-      <p>
-        ¡Hola! Soy <strong>Florencia Bagnis</strong>, Desarrolladora Frontend y especialista en soporte técnico.
-      </p>
-
-      <p>
-        Como <strong>Support Guru en Tiendanube</strong>, desarrollé una sólida
-        capacidad para comprender las necesidades de los usuarios, investigar
-        inconvenientes y resolver problemas reales en entornos de e-commerce
-        y tecnología.
-      </p>
-
-      <p>
-        Finalicé mi formación en
-        <strong>Desarrollo Web en Coderhouse</strong>, donde adquirí conocimientos
-        de HTML, CSS, SASS, Bootstrap, Git, GitHub y diseño responsive.
-      </p>
-
-      <p>
-        Mi objetivo es combinar mi experiencia en Customer Support con el
-        desarrollo de interfaces intuitivas, accesibles, funcionales y
-        visualmente claras. 💗
-      </p>
-
-   <!-- Píldoras de idiomas y formación complementaria técnica -->
+      <p>¡Hola! Soy <strong>Florencia Bagnis</strong>, Desarrolladora Frontend y especialista en soporte técnico.</p>
+      <p>Como <strong>Support Guru en Tiendanube</strong>, desarrollé una sólida capacidad para comprender las necesidades de los usuarios, investigar inconvenientes y resolver problemas reales en entornos de e-commerce y tecnología.</p>
+      <p>Finalicé mi formación en <strong>Desarrollo Web en Coderhouse</strong>, donde adquirí conocimientos de HTML, CSS, SASS, Bootstrap, Git, GitHub y diseño responsive.</p>
+      <p>Mi objetivo es combinar mi experiencia en Customer Support con el desarrollo de interfaces intuitivas, accesibles, funcionales y visualmente claras. 💗</p>
       <div class="skills-summary-pillbox">
-        <span class="summary-pill">
-          <i class="fas fa-language"></i>
-          Inglés: Intermedio - Avanzado (B2)
-        </span>
-        <span class="summary-pill">
-          <i class="fas fa-earth-americas"></i>
-          Portugués: Básico
-        </span>
-        <span class="summary-pill">
-          <i class="fas fa-comment-dots"></i>
-          Español: Nativo
-        </span>
-        <span class="summary-pill">
-          <i class="fas fa-graduation-cap"></i>
-          Desarrollo Frontend &amp; AI aplicada · Coderhouse
-        </span>
+        <span class="summary-pill"><i class="fas fa-language"></i> Inglés: Intermedio - Avanzado (B2)</span>
+        <span class="summary-pill"><i class="fas fa-earth-americas"></i> Portugués: Básico</span>
+        <span class="summary-pill"><i class="fas fa-comment-dots"></i> Español: Nativo</span>
+        <span class="summary-pill"><i class="fas fa-graduation-cap"></i> Desarrollo Frontend &amp; AI aplicada · Coderhouse</span>
       </div>
     </section>
-
-    <!-- TECNOLOGÍAS -->
     <section id="tecnologias">
-      <h2>
-        <i class="fas fa-code"></i>
-        Tecnologías y herramientas
-      </h2>
-
+      <h2><i class="fas fa-code"></i> Tecnologías y herramientas</h2>
       <h3 class="tech-title">Frontend &amp; Backend / Datos</h3>
       <div class="tech-stack-general highlight">
-        <span>
-          <i class="fab fa-html5"></i>
-          HTML5
-        </span>
-        <span>
-          <i class="fab fa-css3-alt"></i>
-          CSS3
-        </span>
-        <span>
-          <i class="fab fa-sass"></i>
-          SASS
-        </span>
-        <span>
-          <i class="fab fa-bootstrap"></i>
-          Bootstrap
-        </span>
-        <span>
-          <i class="fab fa-js"></i>
-          JavaScript
-        </span>
-        <span>
-          <i class="fab fa-php"></i>
-          PHP
-        </span>
-        <span>
-          <i class="fas fa-database"></i>
-          MySQL / SQL
-        </span>
+        <span><i class="fab fa-html5"></i> HTML5</span>
+        <span><i class="fab fa-css3-alt"></i> CSS3</span>
+        <span><i class="fab fa-sass"></i> SASS</span>
+        <span><i class="fab fa-bootstrap"></i> Bootstrap</span>
+        <span><i class="fab fa-js"></i> JavaScript</span>
+        <span><i class="fab fa-php"></i> PHP</span>
+        <span><i class="fas fa-database"></i> MySQL / SQL</span>
       </div>
-
       <h3 class="tech-title">Herramientas de trabajo</h3>
       <div class="tech-stack-general">
-        <span>
-          <i class="fab fa-github"></i>
-          GitHub
-        </span>
-        <span>
-          <i class="fab fa-git-alt"></i>
-          Git
-        </span>
-        <span>
-          <i class="fas fa-code"></i>
-          Visual Studio Code
-        </span>
-        <span>
-          <i class="fas fa-mobile-screen-button"></i>
-          Responsive Design
-        </span>
+        <span><i class="fab fa-github"></i> GitHub</span>
+        <span><i class="fab fa-git-alt"></i> Git</span>
+        <span><i class="fas fa-code"></i> Visual Studio Code</span>
+        <span><i class="fas fa-mobile-screen-button"></i> Responsive Design</span>
       </div>
     </section>
-
-         <!-- ACTIVIDAD EN GITHUB -->
     <section id="github-actividad">
-      <h2>
-        <i class="fab fa-github"></i>
-        Actividad en GitHub
-      </h2>
-
-      <div class="github-calendar-card" style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
-        
-        <!-- Tarjeta de métricas de GitHub (Muestra totales y se actualiza sola) -->
-        <div class="gh-stats-container" style="width: 100%; max-width: 500px; display: flex; justify-content: center;">
-          <a href="https://github.com/FlorBagnis" target="_blank" rel="noopener noreferrer">
-            <img 
-              src="https://github-readme-stats.vercel.app/api?username=FlorBagnis&show_icons=true&theme=transparent&hide_border=true&count_private=true&include_all_commits=true" 
-              alt="Estadísticas de GitHub de Florencia Bagnis"
-              style="max-width: 100%; height: auto;"
-            />
-          </a>
+      <h2><i class="fab fa-github"></i> Actividad en GitHub</h2>
+      <div class="github-calendar-card">
+        <div class="gh-years-container">
+          <div class="gh-year-badge">
+            <span class="gh-year-label">Año 2026</span>
+            <span class="gh-year-count">1049 contribuciones</span>
+          </div>
+          <div class="gh-year-badge">
+            <span class="gh-year-label">Año 2025</span>
+            <span class="gh-year-count">2 contribuciones</span>
+          </div>
+          <div class="gh-year-badge total-badge">
+            <span class="gh-year-label">Total histórico</span>
+            <span class="gh-year-count">1051 en total</span>
+          </div>
         </div>
-
-        <!-- Calendario visual anual de cuadritos -->
         <div class="gh-chart-container">
           <a href="https://github.com/FlorBagnis" target="_blank" rel="noopener noreferrer" title="Ver perfil en GitHub">
-            <img
-              class="gh-chart gh-light"
-              src="https://ghchart.rshah.org/ec4899/FlorBagnis"
-              alt="Contribuciones en GitHub de Florencia Bagnis"
-            />
-            <img
-              class="gh-chart gh-dark"
-              src="https://ghchart.rshah.org/f472b6/FlorBagnis"
-              alt="Contribuciones en GitHub de Florencia Bagnis en Modo Oscuro"
-            />
+            <img class="gh-chart gh-light" src="https://ghchart.rshah.org/ec4899/FlorBagnis" alt="Contribuciones en GitHub" />
+            <img class="gh-chart gh-dark" src="https://ghchart.rshah.org/f472b6/FlorBagnis" alt="Contribuciones en GitHub Modo Oscuro" />
           </a>
         </div>
       </div>
     </section>
-
-
-
-    <!-- PROYECTOS -->
     <section id="proyectos">
-      <h2>
-        <i class="fas fa-folder-open"></i>
-        Proyectos
-      </h2>
-
-      <!-- Filtros por categoría -->
+      <h2><i class="fas fa-folder-open"></i> Proyectos</h2>
       <div class="project-filters">
         <button class="filter-btn active" data-filter="all">Todos</button>
         <button class="filter-btn" data-filter="frontend">Frontend &amp; UI</button>
         <button class="filter-btn" data-filter="fullstack">Fullstack &amp; SQL</button>
         <button class="filter-btn" data-filter="tools">Herramientas</button>
       </div>
-
       <div class="projects-grid">
-
-        <!-- PROYECTO 1: CALCULADORA -->
         <article class="card" data-category="frontend tools">
-          <h3>
-            Calculadora de Tasas
-            <i class="fas fa-calculator"></i>
-          </h3>
-          <img
-            src="calculadorademo.gif"
-            alt="Demostración de la Calculadora de Tasas"
-            class="project-media"
-            loading="lazy"
-          />
-          <p class="project-type">
-            Proyecto práctico · Herramienta para e-commerce
-          </p>
-          <p>
-            Aplicación web desarrollada para simular tasas, cuotas y montos
-            netos según diferentes planes y medios de pago.
-          </p>
-          <div class="project-tags">
-            <span>HTML5</span>
-            <span>CSS3</span>
-            <span>JavaScript</span>
-          </div>
+          <h3>Calculadora de Tasas <i class="fas fa-calculator"></i></h3>
+          <img src="calculadorademo.gif" alt="Calculadora de Tasas" class="project-media" loading="lazy" />
+          <p class="project-type">Proyecto práctico · Herramienta para e-commerce</p>
+          <p>Aplicación web desarrollada para simular tasas, cuotas y montos netos según diferentes planes y medios de pago.</p>
+          <div class="project-tags"><span>HTML5</span><span>CSS3</span><span>JavaScript</span></div>
           <div class="buttons">
-            <a
-              class="button"
-              href="https://calculadora-tiendanube.vercel.app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i class="fas fa-arrow-up-right-from-square"></i>
-              Ver demo
-            </a>
-            <a
-              class="button secondary"
-              href="https://github.com/FlorBagnis/calculadora-tiendanube"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i class="fab fa-github"></i>
-              Ver código
-            </a>
+            <a class="button" href="https://calculadora-tiendanube.vercel.app" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i> Ver demo</a>
+            <a class="button secondary" href="https://github.com/FlorBagnis/calculadora-tiendanube" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Ver código</a>
           </div>
         </article>
-
-        <!-- PROYECTO 2: HONEYMOON -->
         <article class="card" data-category="frontend">
-          <h3>
-            Honeymoon
-            <i class="fas fa-shirt"></i>
-          </h3>
-          <img
-            src="honeymoon.gif"
-            alt="Demostración del sitio web responsive Honeymoon"
-            class="project-media"
-            loading="lazy"
-          />
-          <p class="project-type">
-            Proyecto final · Desarrollo Web · Coderhouse
-          </p>
-          <p>
-            Sitio web responsive desarrollado para una marca de indumentaria
-            inspirada en la estética kawaii. Incluye catálogo, diferentes
-            secciones, formulario de contacto y adaptación a dispositivos
-            móviles.
-          </p>
-          <div class="project-tags">
-            <span>HTML5</span>
-            <span>CSS3</span>
-            <span>SASS</span>
-            <span>Bootstrap</span>
-            <span>Responsive</span>
-          </div>
+          <h3>Honeymoon <i class="fas fa-shirt"></i></h3>
+          <img src="honeymoon.gif" alt="Honeymoon" class="project-media" loading="lazy" />
+          <p class="project-type">Proyecto final · Coderhouse</p>
+          <p>Sitio web responsive desarrollado para una marca de indumentaria inspirada en la estética kawaii.</p>
+          <div class="project-tags"><span>HTML5</span><span>CSS3</span><span>SASS</span><span>Bootstrap</span><span>Responsive</span></div>
           <div class="buttons">
-            <a
-              class="button"
-              href="https://honeymoon-eight-nu.vercel.app/index.html"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i class="fas fa-arrow-up-right-from-square"></i>
-              Ver demo
-            </a>
-            <a
-              class="button secondary"
-              href="https://github.com/FlorBagnis/coderhouse-honeymoon"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i class="fab fa-github"></i>
-              Ver código
-            </a>
+            <a class="button" href="https://honeymoon-eight-nu.vercel.app/index.html" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i> Ver demo</a>
+            <a class="button secondary" href="https://github.com/FlorBagnis/coderhouse-honeymoon" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Ver código</a>
           </div>
         </article>
-
-        <!-- PROYECTO 3: MENSUALES -->
         <article class="card" data-category="frontend tools">
-          <h3>
-            Mensuales
-            <i class="fas fa-wallet"></i>
-          </h3>
-          <img
-            src="mensualesdemo.gif"
-            alt="Demostración de la aplicación web Mensuales"
-            class="project-media"
-            loading="lazy"
-          />
-          <p class="project-type">
-            Proyecto personal · Gestión de gastos
-          </p>
-          <p>
-            Aplicación web desarrollada para organizar y controlar gastos
-            mensuales de forma simple y privada. Permite registrar, editar
-            y eliminar gastos, gestionar presupuestos y visualizar la
-            información de cada mes.
-          </p>
-          <div class="project-tags">
-            <span>HTML5</span>
-            <span>CSS3</span>
-            <span>JavaScript</span>
-            <span>Firebase</span>
-            <span>Responsive</span>
-          </div>
+          <h3>Mensuales <i class="fas fa-wallet"></i></h3>
+          <img src="mensualesdemo.gif" alt="Mensuales" class="project-media" loading="lazy" />
+          <p class="project-type">Proyecto personal · Gestión de gastos</p>
+          <p>Aplicación web desarrollada para organizar y controlar gastos mensuales de forma simple y privada.</p>
+          <div class="project-tags"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Firebase</span><span>Responsive</span></div>
           <div class="buttons">
-            <a
-              class="button"
-              href="https://gastosmensuales-two.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i class="fas fa-arrow-up-right-from-square"></i>
-              Ver demo
-            </a>
-            <a
-              class="button secondary"
-              href="https://github.com/FlorBagnis/Mensuales"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i class="fab fa-github"></i>
-              Ver código
-            </a>
+            <a class="button" href="https://gastosmensuales-two.vercel.app/" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i> Ver demo</a>
+            <a class="button secondary" href="https://github.com/FlorBagnis/Mensuales" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Ver código</a>
           </div>
         </article>
-
-        <!-- PROYECTO 4: CRUD PRODUCTOS / PHP & MYSQL -->
         <article class="card" data-category="fullstack">
-          <h3>
-            Gestor de Productos
-            <i class="fas fa-boxes-stacked"></i>
-          </h3>
-          <img
-            src="cruddemo.gif"
-            alt="Demostración del gestor de productos CRUD"
-            class="project-media"
-            loading="lazy"
-          />
-          <p class="project-type">
-            Proyecto práctico · CRUD con Base de Datos
-          </p>
-          <p>
-            Aplicación desarrollada para administrar un catálogo de productos. Permite dar de alta nuevos artículos, visualizar el listado completo, modificar información existente y eliminar registros mediante operaciones SQL (INSERT, SELECT, UPDATE y DELETE).
-          </p>
-          <div class="project-tags">
-            <span>PHP</span>
-            <span>MySQL</span>
-            <span>SQL</span>
-            <span>HTML5</span>
-            <span>CSS3</span>
-          </div>
+          <h3>Gestor de Productos <i class="fas fa-boxes-stacked"></i></h3>
+          <img src="cruddemo.gif" alt="Gestor de Productos" class="project-media" loading="lazy" />
+          <p class="project-type">Proyecto práctico · CRUD con Base de Datos</p>
+          <p>Aplicación desarrollada para administrar un catálogo de productos mediante operaciones SQL.</p>
+          <div class="project-tags"><span>PHP</span><span>MySQL</span><span>SQL</span><span>HTML5</span><span>CSS3</span></div>
           <div class="buttons">
-            <a
-              class="button"
-              href="https://florbagnis.github.io/Crud-Php-Mysql/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i class="fas fa-arrow-up-right-from-square"></i>
-              Ver demo
-            </a>
-            <a
-              class="button secondary"
-              href="https://github.com/FlorBagnis/crud-php-mysql"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i class="fab fa-github"></i>
-              Ver código
-            </a>
+            <a class="button" href="https://florbagnis.github.io/Crud-Php-Mysql/" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i> Ver demo</a>
+            <a class="button secondary" href="https://github.com/FlorBagnis/crud-php-mysql" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Ver código</a>
           </div>
         </article>
-
-        <!-- PROYECTO 5: SQL DEV -->
         <article class="card" data-category="fullstack tools">
-          <h3>
-            SQL Practical Studio &amp; Bootcamp
-            <i class="fas fa-database"></i>
-          </h3>
-          <img
-            src="sqldevdemo.gif"
-            alt="Demostración de SQL Practical Studio"
-            class="project-media"
-            loading="lazy"
-          />
-          <p class="project-type">
-            Simulador interactivo · Bases de Datos &amp; SaaS Support
-          </p>
-          <p>
-            Simulador web interactivo con editor de consultas en vivo y renderizado de tablas dinámicas. Diseñado para entrenar y validar sintaxis SQL relacional mediante retos prácticos por dificultad (Fácil, Medio, Experto), orientados al diagnóstico operativo, seguimiento de horas y métricas de rentabilidad.
-          </p>
-          <div class="project-tags">
-            <span>HTML5</span>
-            <span>CSS3 Moderno</span>
-            <span>JavaScript ES6</span>
-            <span>SQL</span>
-            <span>DOM Dinámico</span>
-          </div>
+          <h3>SQL Practical Studio &amp; Bootcamp <i class="fas fa-database"></i></h3>
+          <img src="sqldevdemo.gif" alt="SQL Practical Studio" class="project-media" loading="lazy" />
+          <p class="project-type">Simulador interactivo · Bases de Datos</p>
+          <p>Simulador web interactivo con editor de consultas en vivo y renderizado de tablas dinámicas.</p>
+          <div class="project-tags"><span>HTML5</span><span>CSS3 Moderno</span><span>JavaScript ES6</span><span>SQL</span><span>DOM Dinámico</span></div>
           <div class="buttons">
-            <a
-              class="button"
-              href="https://florbagnis.github.io/SQL_DEV/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i class="fas fa-arrow-up-right-from-square"></i>
-              Ver demo
-            </a>
-            <a
-              class="button secondary"
-              href="https://github.com/FlorBagnis/SQL_DEV"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i class="fab fa-github"></i>
-              Ver código
-            </a>
+            <a class="button" href="https://florbagnis.github.io/SQL_DEV/" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i> Ver demo</a>
+            <a class="button secondary" href="https://github.com/FlorBagnis/SQL_DEV" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Ver código</a>
           </div>
         </article>
-        
       </div>
     </section>
-
-    <!-- CONTACTO -->
     <section id="contacto">
-      <h2>
-        <i class="fas fa-envelope"></i>
-        Contacto
-      </h2>
-
+      <h2><i class="fas fa-envelope"></i> Contacto</h2>
       <div class="contact-grid">
-        <a
-          href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=florenciasoledadbagnis@gmail.com&amp;su=Contacto%20desde%20tu%20portfolio"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="contact-item"
-        >
-          <i class="fas fa-envelope"></i>
-          Email
-        </a>
-
-        <!-- Botón interactivo para Copiar Email -->
-        <button
-          id="copy-email-btn"
-          type="button"
-          class="contact-item"
-          style="cursor: pointer; font-family: inherit; font-size: inherit;"
-          aria-label="Copiar correo electrónico al portapapeles"
-        >
-          <i class="far fa-copy" id="copy-icon"></i>
-          <span id="copy-label">Copiar email</span>
-        </button>
-
-        <a
-          href="https://www.linkedin.com/in/florencia-bagnis"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="contact-item"
-        >
-          <i class="fab fa-linkedin"></i>
-          LinkedIn
-        </a>
-
-        <a
-          href="https://github.com/Florbagnis"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="contact-item"
-        >
-          <i class="fab fa-github"></i>
-          GitHub
-        </a>
+        <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=florenciasoledadbagnis@gmail.com&amp;su=Contacto%20desde%20tu%20portfolio" target="_blank" rel="noopener noreferrer" class="contact-item"><i class="fas fa-envelope"></i> Email</a>
+        <button id="copy-email-btn" type="button" class="contact-item" style="cursor: pointer; font-family: inherit; font-size: inherit;" aria-label="Copiar correo"><i class="far fa-copy" id="copy-icon"></i> <span id="copy-label">Copiar email</span></button>
+        <a href="https://www.linkedin.com/in/florencia-bagnis" target="_blank" rel="noopener noreferrer" class="contact-item"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://github.com/Florbagnis" target="_blank" rel="noopener noreferrer" class="contact-item"><i class="fab fa-github"></i> GitHub</a>
       </div>
     </section>
-
-    <!-- FOOTER -->
     <footer>
-      <p>
-        Desarrollado por Florencia Bagnis
-        <i class="fas fa-code"></i>
-      </p>
+      <p>Desarrollado por Florencia Bagnis <i class="fas fa-code"></i></p>
     </footer>
-
   </div>
-
-  <!-- SCRIPTS -->
   <script>
-    // Posición inicial arriba
-    if ('scrollRestoration' in history) {
-      history.scrollRestoration = 'manual';
-    }
+    if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
     window.scrollTo(0, 0);
-
-    // MODO OSCURO
     const toggleButton = document.getElementById('theme-toggle');
     const currentTheme = localStorage.getItem('theme');
-
     if (currentTheme) {
       document.documentElement.setAttribute('data-theme', currentTheme);
-      if (currentTheme === 'dark') {
-        toggleButton.textContent = '☀️';
-      }
+      if (currentTheme === 'dark') { toggleButton.textContent = '☀️'; }
     }
-
     toggleButton.addEventListener('click', () => {
       let theme = document.documentElement.getAttribute('data-theme');
       if (theme === 'dark') {
@@ -967,18 +263,13 @@
         toggleButton.textContent = '☀️';
       }
     });
-
-    // FILTRO INTERACTIVO DE PROYECTOS
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.projects-grid .card');
-
     filterButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         filterButtons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-
         const filterValue = btn.getAttribute('data-filter');
-
         projectCards.forEach(card => {
           const cardCategories = card.getAttribute('data-category') || '';
           if (filterValue === 'all' || cardCategories.includes(filterValue)) {
@@ -989,19 +280,15 @@
         });
       });
     });
-
-    // COPIAR EMAIL CON FEEDBACK VISUAL
     const copyBtn = document.getElementById('copy-email-btn');
     const copyLabel = document.getElementById('copy-label');
     const copyIcon = document.getElementById('copy-icon');
-
     if (copyBtn) {
       copyBtn.addEventListener('click', () => {
         const email = 'florenciasoledadbagnis@gmail.com';
         navigator.clipboard.writeText(email).then(() => {
           copyLabel.textContent = '¡Copiado! ✨';
           copyIcon.className = 'fas fa-check';
-
           setTimeout(() => {
             copyLabel.textContent = 'Copiar email';
             copyIcon.className = 'far fa-copy';
@@ -1009,47 +296,18 @@
         });
       });
     }
-
-
-// COMPORTAMIENTO INTELIGENTE DE NAVBAR: SE ESCONDE AL BAJAR, APARECE AL SUBIR
     const navWrapper = document.querySelector('.sticky-nav-wrapper');
     let lastScrollTop = 0;
-
     window.addEventListener('scroll', () => {
       let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-      // Si scrollea hacia abajo y pasó el inicio, la escondemos
       if (currentScroll > lastScrollTop && currentScroll > 150) {
         navWrapper.classList.add('nav-hidden');
       } else {
-        // Si sube o está arriba, vuelve a aparecer suavemente
         navWrapper.classList.remove('nav-hidden');
       }
       lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
     });
-
-        // ... acá terminan tus otras funciones de JS ...
-
-    backToTopBtn.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
-
-
-
-    document.addEventListener('DOMContentLoaded', fetchGitHubContributions);
-
-  </script> <!-- ACÁ CIERRA EL SCRIPT -->
-</body>   <!-- ACÁ CIERRA EL HTML -->
-</html>
-
-    
-    
-    // BOTÓN VOLVER ARRIBA
     const backToTopBtn = document.getElementById('back-to-top');
-
     window.addEventListener('scroll', () => {
       if (window.scrollY > 350) {
         backToTopBtn.classList.add('show-btn');
@@ -1057,12 +315,8 @@
         backToTopBtn.classList.remove('show-btn');
       }
     });
-
     backToTopBtn.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   </script>
 </body>
