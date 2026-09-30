@@ -186,6 +186,17 @@
       .github-calendar-card { padding: 15px 10px; margin: 0 5px; }
       .gh-year-badge { min-width: 100px; padding: 8px 10px; }
       .gh-year-count { font-size: 14px; }
+      
+      /* Ajuste unificado responsive para los botones laterales en celulares */
+      .float-btn {
+        width: 38px;
+        height: 38px;
+        right: 12px;
+        font-size: 13px;
+      }
+      #theme-toggle  { top: 12px; }
+      #lang-toggle   { top: 56px; }
+      #motion-toggle { top: 100px; }
     }
 
     #modal-tiendanube .kawaii-modal-content {
@@ -211,10 +222,46 @@
       filter: drop-shadow(0 15px 30px rgba(236, 72, 153, 0.3));
     }
 
-    .float-btn { position: fixed; right: 20px; z-index: 1001; min-width: 49px; height: 42px; padding: 0 13px; display: flex; align-items: center; justify-content: center; background: var(--rosa-suave); border: 1px solid var(--rosa-brillante); color: var(--rosa-brillante); border-radius: 50%; cursor: pointer; font-family: inherit; font-size: 14px; font-weight: 700; transition: 0.3s; box-shadow: 0 4px 15px rgba(236, 72, 153, 0.15); }
-    .float-btn:hover { background: var(--rosa-brillante); color: #ffffff; transform: translateY(-2px); }
-    #lang-toggle { top: 66px; }
-    #motion-toggle { top: 116px; }
+    /* Botones flotantes laterales unificados en tamaño, padding y bordes */
+    .float-btn { 
+      position: fixed; 
+      right: 20px; 
+      z-index: 1001; 
+      width: 44px; 
+      height: 44px; 
+      padding: 0; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      background: var(--rosa-suave); 
+      border: 1.5px solid var(--rosa-brillante); 
+      color: var(--rosa-brillante); 
+      border-radius: 50%; 
+      cursor: pointer; 
+      font-family: inherit; 
+      font-size: 15px; 
+      font-weight: 700; 
+      transition: 0.3s; 
+      box-shadow: 0 4px 15px rgba(236, 72, 153, 0.15); 
+    }
+    .float-btn:hover { 
+      background: var(--rosa-brillante); 
+      color: #ffffff; 
+      transform: translateY(-2px); 
+    }
+    [data-theme="dark"] .float-btn {
+      background: var(--card-bg);
+      border-color: var(--rosa-brillante);
+      color: var(--rosa-brillante);
+    }
+    [data-theme="dark"] .float-btn:hover {
+      background: var(--rosa-brillante);
+      color: #ffffff;
+    }
+
+    #theme-toggle  { top: 16px; }
+    #lang-toggle   { top: 68px; }
+    #motion-toggle { top: 120px; }
 
     .reduce-motion .decor-item,
     .reduce-motion .kawaii-modal-content { animation: none !important; }
@@ -241,9 +288,12 @@
     <span class="decor-item item-7">🌸</span>
     <span class="decor-item item-8">✿</span>
   </div>
-  <button id="theme-toggle" aria-label="Cambiar modo oscuro" style="position: fixed; top: 16px; right: 20px; z-index: 1001; background: var(--rosa-suave); border: 1px solid var(--rosa-brillante); color: var(--rosa-brillante); padding: 9px 13px; border-radius: 50%; cursor: pointer; font-size: 17px; transition: 0.3s; box-shadow: 0 4px 15px rgba(236, 72, 153, 0.15);">🌙</button>
+  
+  <!-- Botones laterales unificados -->
+  <button id="theme-toggle" class="float-btn" aria-label="Cambiar modo oscuro" title="Cambiar modo oscuro">🌙</button>
   <button id="lang-toggle" class="float-btn" type="button" aria-label="Switch to English" title="Switch to English">EN</button>
   <button id="motion-toggle" class="float-btn" type="button" aria-label="Pausar efectos en movimiento" title="Pausar efectos en movimiento"><i class="fas fa-pause"></i></button>
+  
   <button id="back-to-top" aria-label="Volver arriba"><i class="fas fa-chevron-up"></i></button>
 
   <!-- Modales Kawaii -->
@@ -469,7 +519,6 @@
       window.location.reload();
     });
 
-    // ===== Funciones Globales para Modales =====
     window.openModal = function(modalId) {
       const modal = document.getElementById('modal-' + modalId);
       if (modal) modal.classList.add('active');
@@ -479,7 +528,6 @@
       if (modal) modal.classList.remove('active');
     };
 
-    // ===== Control Play/Pause exacto en el fotograma actual para GIFs =====
     document.querySelectorAll('.media-container').forEach(container => {
       const img = container.querySelector('img.project-media');
       const canvas = container.querySelector('canvas.project-media');
@@ -489,13 +537,11 @@
       btn.addEventListener('click', () => {
         isPlaying = !isPlaying;
         if (isPlaying) {
-          // Reanudar GIF ocultando el canvas congelado
           canvas.style.display = 'none';
           btn.innerHTML = '<i class="fas fa-pause"></i>';
           btn.title = 'Pausar animación';
           btn.setAttribute('aria-label', 'Pausar animación');
         } else {
-          // Congelar EXACTAMENTE en el fotograma actual dibujándolo en el canvas
           canvas.width = img.naturalWidth || img.width || 600;
           canvas.height = img.naturalHeight || img.height || 400;
           const ctx = canvas.getContext('2d');
@@ -509,7 +555,6 @@
       });
     });
 
-    // ===== Idioma (ES / EN) =====
     let LANG = 'es';
     try { LANG = localStorage.getItem('lang') === 'en' ? 'en' : 'es'; } catch (e) {}
 
@@ -551,7 +596,6 @@
       });
     }
 
-    // Traducciones
     reg('.sticky-nav a:nth-child(1)', 'About me');
     reg('.sticky-nav a:nth-child(2)', 'Technologies');
     reg('.sticky-nav a:nth-child(4)', 'Projects');
@@ -773,7 +817,7 @@
     const currentTheme = localStorage.getItem('theme');
     if (currentTheme) {
       document.documentElement.setAttribute('data-theme', currentTheme);
-      if (currentTheme === 'dark') { toggleButton.textContent = '☀️'; }
+      if (currentTheme === 'dark') { toggleButton.textContent = '☀️️'; }
     }
     toggleButton.addEventListener('click', () => {
       let theme = document.documentElement.getAttribute('data-theme');
