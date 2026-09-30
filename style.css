@@ -1024,5 +1024,22 @@ h1 i.fa-laptop-code:hover {
   transform: translateY(-4px) rotate(-8deg) scale(1.15) !important;
 }
 
+/* ANIMACIÓN FLOTANTE SUAVE Y LENTA PARA LA NOTEBOOK */
+h1 i.fa-laptop-code {
+  display: inline-block;
+  margin-left: 8px;
+  color: var(--rosa-brillante, #ff8da1);
+  animation: floatLaptopSoft 4.5s ease-in-out infinite !important;
+  will-change: transform;
+}
+
+@keyframes floatLaptopSoft {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-4px) rotate(-3deg);
+  }
+}
 
 
