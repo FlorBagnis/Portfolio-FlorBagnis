@@ -180,47 +180,11 @@
     .kawaii-close-btn:hover { background: var(--rosa-brillante); color: white; }
     @keyframes modalPop { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
 
-    /* Botón de Modo Oscuro fijo arriba */
-    #theme-toggle {
-      position: fixed;
-      top: 16px;
-      right: 20px;
-      z-index: 1003;
-      width: 44px;
-      height: 44px;
-      padding: 0 !important;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--rosa-suave);
-      border: 1.5px solid var(--rosa-brillante);
-      color: var(--rosa-brillante);
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 17px;
-      transition: 0.3s;
-      box-shadow: 0 4px 15px rgba(236, 72, 153, 0.15);
-    }
-    #theme-toggle:hover {
-      background: var(--rosa-brillante);
-      color: #ffffff;
-      transform: translateY(-2px);
-    }
-    [data-theme="dark"] #theme-toggle {
-      background: var(--card-bg);
-      border-color: var(--rosa-brillante);
-      color: var(--rosa-brillante);
-    }
-    [data-theme="dark"] #theme-toggle:hover {
-      background: var(--rosa-brillante);
-      color: #ffffff;
-    }
-
-    /* Solapa con flechita para ocultar/mostrar los controles secundarios */
+    /* Solapa con flechita para ocultar/mostrar TODO el panel flotante */
     #panel-toggle {
       position: fixed;
       right: 20px;
-      top: 68px;
+      top: 16px;
       z-index: 1003;
       width: 44px;
       height: 44px;
@@ -252,11 +216,11 @@
       color: #ffffff;
     }
 
-    /* Panel deslizable que contiene solo los botones de Idioma y Pausa de Movimiento */
+    /* Panel contenedor con TODOS los botones (Modo oscuro, Idioma y Pausa) */
     .float-panel {
       position: fixed;
       right: 20px;
-      top: 120px;
+      top: 68px;
       z-index: 1001;
       display: flex;
       flex-direction: column;
@@ -269,7 +233,7 @@
       pointer-events: none;
     }
 
-    /* Botones dentro del panel deslizable */
+    /* Estilos unificados para todos los botones flotantes */
     .float-btn { 
       width: 44px; 
       height: 44px; 
@@ -310,23 +274,16 @@
       .gh-year-badge { min-width: 100px; padding: 8px 10px; }
       .gh-year-count { font-size: 14px; }
       
-      #theme-toggle {
-        width: 38px;
-        height: 38px;
-        right: 12px;
-        top: 12px;
-        font-size: 14px;
-      }
       #panel-toggle {
         width: 38px;
         height: 38px;
         right: 12px;
-        top: 56px;
+        top: 12px;
         font-size: 13px;
       }
       .float-panel {
         right: 12px;
-        top: 100px;
+        top: 56px;
         gap: 8px;
       }
       .float-btn {
@@ -385,14 +342,12 @@
     <span class="decor-item item-8">✿</span>
   </div>
   
-  <!-- Botón de Modo Oscuro fijo y suelto arriba -->
-  <button id="theme-toggle" aria-label="Cambiar modo oscuro" title="Cambiar modo oscuro">🌙</button>
-
-  <!-- Solapa independiente con icono de flechita para ocultar/mostrar -->
+  <!-- Solapa independiente con icono de flechita para ocultar/mostrar todo el panel -->
   <button id="panel-toggle" aria-label="Ocultar o mostrar controles" title="Ocultar o mostrar controles"><i class="fas fa-chevron-right" id="toggle-icon"></i></button>
 
-  <!-- Panel deslizable con los botones de Idioma y Pausa -->
+  <!-- Panel flotante unificado que contiene los tres botones -->
   <div id="float-panel" class="float-panel">
+    <button id="theme-toggle" class="float-btn" aria-label="Cambiar modo oscuro" title="Cambiar modo oscuro">🌙</button>
     <button id="lang-toggle" class="float-btn" type="button" aria-label="Switch to English" title="Switch to English">EN</button>
     <button id="motion-toggle" class="float-btn" type="button" aria-label="Pausar efectos en movimiento" title="Pausar efectos en movimiento"><i class="fas fa-pause"></i></button>
   </div>
@@ -631,7 +586,7 @@
       if (modal) modal.classList.remove('active');
     };
 
-    // Script para ocultar / mostrar el panel secundario con la flechita
+    // Script para ocultar / mostrar todo el panel flotante con la flechita
     const panelToggleBtn = document.getElementById('panel-toggle');
     const floatPanel = document.getElementById('float-panel');
     const toggleIcon = document.getElementById('toggle-icon');
