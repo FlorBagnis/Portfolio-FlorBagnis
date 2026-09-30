@@ -19,10 +19,13 @@
   <meta name="twitter:image" content="https://florbagnis.github.io/Portfolio-FlorBagnis/preview.png?v=2" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 5 120 90'><path d='M28 28 L8 50 L28 72' fill='none' stroke='%23ff8da1' stroke-width='10' stroke-linecap='round' stroke-linejoin='round'/><line x1='67' y1='18' x2='53' y2='82' stroke='%23ff8da1' stroke-width='10' stroke-linecap='round'/><path d='M92 28 L112 50 L92 72' fill='none' stroke='%23ff8da1' stroke-width='10' stroke-linecap='round' stroke-linejoin='round'/></svg>">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  
+  <!-- GitHub Calendar Responsive CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css" />
+
   <link rel="stylesheet" href="style.css" />
- 
+  
   <style>
-    
     .sticky-nav-wrapper { position: fixed; top: 18px; left: 0; width: 100%; display: flex; justify-content: center; z-index: 1000; pointer-events: none; padding: 0 16px; }
     .sticky-nav { pointer-events: auto; display: flex; align-items: center; gap: 18px; padding: 8px 22px; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--rosa-suave); border-radius: 999px; box-shadow: 0 8px 25px rgba(236, 72, 153, 0.12); }
     .sticky-nav a { font-size: 14px; font-weight: 600; color: var(--texto-secundario); transition: color 0.25s ease, transform 0.25s ease; }
@@ -54,8 +57,10 @@
     [data-theme="dark"] .filter-btn { background: var(--card-bg); border-color: var(--rosa-suave); color: var(--texto-secundario); }
     [data-theme="dark"] .filter-btn.active { background: var(--rosa-brillante); color: #fff; }
     .card.hide-card { display: none !important; }
+    
     .github-calendar-card { max-width: 950px; margin: 0 auto; padding: 30px 25px; background: white; border: 1px solid var(--rosa-suave); border-radius: 24px; box-shadow: 0 10px 40px rgba(236, 72, 153, 0.08); overflow: hidden; text-align: center; transition: 0.3s; }
-    [data-theme="dark"] .github-calendar-card { background: var(--card-bg); }
+    [data-theme="dark"] .github-calendar-card { background: var(--card-bg); border-color: rgba(244, 114, 182, 0.25); }
+    
     .gh-years-container { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-bottom: 22px; }
     .gh-year-badge { display: flex; flex-direction: column; align-items: center; padding: 10px 22px; background: var(--rosa-suave); border: 1px solid var(--rosa-brillante); border-radius: 16px; min-width: 140px; transition: transform 0.2s ease; }
     .gh-year-badge:hover { transform: translateY(-3px); }
@@ -67,13 +72,11 @@
     [data-theme="dark"] .gh-year-badge .gh-year-label { color: #f472b6; }
     [data-theme="dark"] .gh-year-badge .gh-year-count { color: #fdf2f8; }
     
-    .gh-chart-container { width: 100%; display: flex; justify-content: center; }
-    .gh-chart { width: 100%; max-width: 100%; height: auto; display: block; }
+    .gh-chart-container { width: 100%; display: flex; justify-content: center; overflow-x: auto; padding-bottom: 10px; }
     
-    .gh-dark { display: none !important; }
-    .gh-light { display: block !important; }
-    [data-theme="dark"] .gh-light { display: none !important; }
-    [data-theme="dark"] .gh-dark { display: block !important; }
+    /* Customización de colores para que combine con tu paleta rosada/kawaii */
+    .js-calendar-graph svg { width: 100%; height: auto; }
+    .contrib-footer { display: none !important; }
     
     .brand-link { color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: 12px; }
     .brand-link:hover { opacity: 0.9; }
@@ -174,11 +177,11 @@
             <span class="gh-year-count">1053 en total</span>
           </div>
         </div>
+        <!-- Contenedor dinámico de GitHub que se actualiza automáticamente -->
         <div class="gh-chart-container">
-          <a href="https://github.com/FlorBagnis" target="_blank" rel="noopener noreferrer" title="Ver perfil en GitHub">
-            <img class="gh-chart gh-light" src="https://github-readme-activity-graph.vercel.app/graph?username=FlorBagnis&theme=react&hide_border=true&color=ec4899&background=ffffff" alt="Contribuciones en GitHub" />
-            <img class="gh-chart gh-dark" src="https://github-readme-activity-graph.vercel.app/graph?username=FlorBagnis&theme=react&hide_border=true&color=f472b6&background=1a1017" alt="Contribuciones en GitHub Modo Oscuro" />
-          </a>
+          <div class="calendar">
+            Cargando actividad de GitHub...
+          </div>
         </div>
       </div>
     </section>
@@ -261,7 +264,16 @@
       <p>Desarrollado por Florencia Bagnis <i class="fas fa-code"></i></p>
     </footer>
   </div>
+
+  <!-- Script oficial para el calendario interactivo de GitHub -->
+  <script src="https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js"></script>
+
   <script>
+    // Inicializar el calendario de GitHub para tu usuario con soporte responsivo
+    GitHubCalendar(".calendar", "FlorBagnis", {
+      responsive: true
+    });
+
     if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
     window.scrollTo(0, 0);
 
