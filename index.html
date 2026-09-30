@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Portfolio de Florencia Bagnis, desarrolladora frontend en formación con experiencia en Customer Support, SaaS y e-commerce." />
@@ -20,10 +19,7 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 5 120 90'><path d='M28 28 L8 50 L28 72' fill='none' stroke='%23ff8da1' stroke-width='10' stroke-linecap='round' stroke-linejoin='round'/><line x1='67' y1='18' x2='53' y2='82' stroke='%23ff8da1' stroke-width='10' stroke-linecap='round'/><path d='M92 28 L112 50 L92 72' fill='none' stroke='%23ff8da1' stroke-width='10' stroke-linecap='round' stroke-linejoin='round'/></svg>">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
   <link rel="stylesheet" href="style.css" />
-  
-  
   <style>
-    
     .sticky-nav-wrapper { position: fixed; top: 18px; left: 0; width: 100%; display: flex; justify-content: center; z-index: 1000; pointer-events: none; padding: 0 16px; }
     .sticky-nav { pointer-events: auto; display: flex; align-items: center; gap: 18px; padding: 8px 22px; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--rosa-suave); border-radius: 999px; box-shadow: 0 8px 25px rgba(236, 72, 153, 0.12); }
     .sticky-nav a { font-size: 14px; font-weight: 600; color: var(--texto-secundario); transition: color 0.25s ease, transform 0.25s ease; }
@@ -70,9 +66,9 @@
     [data-theme="dark"] .gh-year-badge .gh-year-label { color: #f472b6; }
     [data-theme="dark"] .gh-year-badge .gh-year-count { color: #fdf2f8; }
     
-    /* Gráfico adaptado para escalar por completo en celulares sin scroll */
+    /* Contenedor responsivo total: se adapta al 100% de la pantalla sin cortes ni scroll horizontal */
     .gh-chart-container { width: 100%; display: flex; justify-content: center; overflow: hidden; }
-    .gh-chart { width: 100%; max-width: 100%; height: auto; display: block; }
+    .gh-chart { width: 100%; max-width: 100%; height: auto; display: block; border-radius: 12px; }
     
     .gh-dark { display: none !important; }
     .gh-light { display: block !important; }
@@ -87,14 +83,12 @@
       .sticky-nav { gap: 8px; padding: 6px 12px; } 
       .sticky-nav a { font-size: 11px; }
       .github-calendar-card { padding: 15px 10px; border-radius: 16px; margin: 0 5px; }
-      .gh-years-container { gap: 6px; margin-bottom: 12px; }
+      .gh-years-container { gap: 6px; margin-bottom: 15px; }
       .gh-year-badge { min-width: 90px; padding: 6px 8px; border-radius: 10px; }
       .gh-year-label { font-size: 9px; }
       .gh-year-count { font-size: 11px; }
     }
-  
   </style>
-  
 </head>
 <body>
   <div class="sticky-nav-wrapper">
@@ -185,8 +179,9 @@
         </div>
         <div class="gh-chart-container">
           <a href="https://github.com/FlorBagnis" target="_blank" rel="noopener noreferrer" title="Ver perfil en GitHub">
-            <img class="gh-chart gh-light" src="https://ghchart.rshah.org/ec4899/FlorBagnis" alt="Contribuciones en GitHub" id="gh-img-light" />
-            <img class="gh-chart gh-dark" src="https://ghchart.rshah.org/f472b6/FlorBagnis" alt="Contribuciones en GitHub Modo Oscuro" id="gh-img-dark" />
+            <!-- Usamos un gráfico adaptable que escala automáticamente en dispositivos móviles -->
+            <img class="gh-chart gh-light" src="https://github-readme-activity-graph.vercel.app/graph?username=FlorBagnis&theme=react&hide_border=true&color=ec4899&background=ffffff" alt="Contribuciones en GitHub" id="gh-img-light" />
+            <img class="gh-chart gh-dark" src="https://github-readme-activity-graph.vercel.app/graph?username=FlorBagnis&theme=react&hide_border=true&color=f472b6&background=1a1017" alt="Contribuciones en GitHub Modo Oscuro" id="gh-img-dark" />
           </a>
         </div>
       </div>
@@ -230,7 +225,7 @@
           <div class="project-tags"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Firebase</span><span>Responsive</span></div>
           <div class="buttons">
             <a class="button" href="https://gastosmensuales-two.vercel.app/" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i> Ver demo</a>
-            <a class="button secondary" href="https://github.com/Florbagnis/Mensuales" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Ver código</a>
+            <a class="button secondary" href="https://github.com/FlorBagnis/Mensuales" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Ver código</a>
           </div>
         </article>
         <article class="card" data-category="fullstack">
@@ -350,14 +345,14 @@
       if (window.scrollY > 350) {
         backToTopBtn.classList.add('show-btn');
       } else {
-        backToTestBtn = backToTopBtn.classList.remove('show-btn');
+        backToTopBtn.classList.remove('show-btn');
       }
     });
     backToTopBtn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // SCRIPT ROBUSTO CON VALORES REALES DE RESPALDO DIRECTO
+    // SCRIPT DE CONTRIBUCIONES DINÁMICAS
     async function fetchGitHubContributions() {
       try {
         const username = 'Florbagnis';
@@ -392,17 +387,18 @@
           totalCount = data.years.reduce((acc, y) => acc + (y.total || 0), 0);
         }
 
-        // Si por alguna razón la API devolviera 0, usamos los valores reales mínimos por defecto
         if(currentYearCount > 0) document.getElementById('count-current-year').textContent = `${currentYearCount} contribuciones`;
         if(prevYearCount > 0) document.getElementById('count-prev-year').textContent = `${prevYearCount} contribuciones`;
         if(totalCount > 0) document.getElementById('count-total').textContent = `${totalCount} en total`;
 
         const timestamp = new Date().getTime();
-        document.getElementById('gh-img-light').src = `https://ghchart.rshah.org/ec4899/FlorBagnis?t=${timestamp}`;
-        document.getElementById('gh-img-dark').src = `https://ghchart.rshah.org/f472b6/FlorBagnis?t=${timestamp}`;
+        const lightImg = document.getElementById('gh-img-light');
+        const darkImg = document.getElementById('gh-img-dark');
+        if(lightImg) lightImg.src = `https://github-readme-activity-graph.vercel.app/graph?username=FlorBagnis&theme=react&hide_border=true&color=ec4899&background=ffffff&t=${timestamp}`;
+        if(darkImg) darkImg.src = `https://github-readme-activity-graph.vercel.app/graph?username=FlorBagnis&theme=react&hide_border=true&color=f472b6&background=1a1017&t=${timestamp}`;
 
       } catch (error) {
-        console.log("Usando datos locales estables por restricción de red.");
+        console.log("Usando datos locales estables.");
       }
     }
 
