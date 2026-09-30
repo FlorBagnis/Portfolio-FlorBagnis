@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfolio de Florencia Bagnis, desarrolladora frontend con perfil híbrido (técnico y humano) y experiencia en Customer Support, SaaS y e-commerce." />
+  <meta name="description" content="Portfolio de Florencia Bagnis, desarrolladora frontend con perfil híbrido (técnico y humano) y experiencia formada como soporte en Tiendanube." />
   
-  <title>Florencia Bagnis | Frontend Developer</title>
+  <title>Florencia Bagnis | Frontend Developer | Tecnical Support </title>
   
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Florencia Bagnis | Frontend Developer" />
@@ -22,7 +22,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
   <link rel="stylesheet" href="style.css" />
   <style>
-    
     .sticky-nav-wrapper { position: fixed; top: 18px; left: 0; width: 100%; display: flex; justify-content: center; z-index: 1000; pointer-events: none; padding: 0 16px; }
     .sticky-nav { pointer-events: auto; display: flex; align-items: center; gap: 18px; padding: 8px 22px; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--rosa-suave); border-radius: 999px; box-shadow: 0 8px 25px rgba(236, 72, 153, 0.12); }
     .sticky-nav a { font-size: 14px; font-weight: 600; color: var(--texto-secundario); transition: color 0.25s ease, transform 0.25s ease; }
@@ -77,7 +76,6 @@
     [data-theme="dark"] .gh-light { display: none !important; }
     [data-theme="dark"] .gh-dark { display: block !important; filter: contrast(1.1) brightness(1.05); }
 
-    /* ===== Calendario GitHub en vivo ===== */
     .gh-cal-scroll { display: none; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 10px 0; }
     .gh-cal-scroll.ready { display: block; }
     .gh-cal {
@@ -103,13 +101,11 @@
     .brand-link { color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: 12px; }
     .brand-link:hover { opacity: 0.9; }
 
-    /* Estilos para el Modal Kawaii de Impacto (Modificados para verse más grandes y anchos) */
     .kawaii-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 182, 193, 0.4); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 2000; justify-content: center; align-items: center; padding: 20px; }
     .kawaii-modal.active { display: flex; }
     .kawaii-modal-content { background: white; border: 2px solid var(--rosa-brillante); border-radius: 24px; padding: 30px; max-width: 850px; width: 100%; box-shadow: 0 15px 50px rgba(236, 72, 153, 0.25); text-align: center; position: relative; animation: modalPop 0.3s ease; }
     [data-theme="dark"] .kawaii-modal-content { background: var(--card-bg); border-color: var(--rosa-brillante); }
     
-    /* Limpieza de fondos y sombras para imágenes en modales (Imagen más grande) */
     .kawaii-modal-content img { 
       width: 100%; 
       max-height: 82vh; 
@@ -134,7 +130,6 @@
       .gh-year-count { font-size: 14px; }
     }
 
-    /* Caja de reconocimiento Tiendanube más compacta (el celular no cambia) */
     #modal-tiendanube .kawaii-modal-content {
       max-width: 500px;
       padding: 22px 24px 38px;
@@ -150,7 +145,6 @@
       transform: scale(1.04);
     }
 
-    /* Efecto de elevación en Mensuales */
     #modal-mensuales .kawaii-modal-content img {
       transition: all 0.3s ease-in-out;
     }
@@ -159,13 +153,11 @@
       filter: drop-shadow(0 15px 30px rgba(236, 72, 153, 0.3));
     }
 
-    /* Botones flotantes: idioma y pausa de efectos (mismo estilo que el de modo oscuro) */
     .float-btn { position: fixed; right: 20px; z-index: 1001; min-width: 49px; height: 42px; padding: 0 13px; display: flex; align-items: center; justify-content: center; background: var(--rosa-suave); border: 1px solid var(--rosa-brillante); color: var(--rosa-brillante); border-radius: 50%; cursor: pointer; font-family: inherit; font-size: 14px; font-weight: 700; transition: 0.3s; box-shadow: 0 4px 15px rgba(236, 72, 153, 0.15); }
     .float-btn:hover { background: var(--rosa-brillante); color: #ffffff; transform: translateY(-2px); }
     #lang-toggle { top: 66px; }
     #motion-toggle { top: 116px; }
 
-    /* Modo sin movimiento: se frenan las animaciones decorativas */
     .reduce-motion .decor-item,
     .reduce-motion .kawaii-modal-content { animation: none !important; }
     .reduce-motion *, .reduce-motion *::before, .reduce-motion *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
@@ -196,7 +188,7 @@
   <button id="motion-toggle" class="float-btn" type="button" aria-label="Pausar efectos en movimiento" title="Pausar efectos en movimiento"><i class="fas fa-pause"></i></button>
   <button id="back-to-top" aria-label="Volver arriba"><i class="fas fa-chevron-up"></i></button>
 
-  <!-- Modales Kawaii para las capturas -->
+  <!-- Modales Kawaii -->
   <div id="modal-tiendanube" class="kawaii-modal">
     <div class="kawaii-modal-content">
       <button class="kawaii-close-btn" onclick="closeModal('tiendanube')"><i class="fas fa-times"></i></button>
@@ -222,7 +214,7 @@
           Florencia Bagnis <i class="fas fa-laptop-code"></i>
         </a>
       </h1>
-      <p class="subtitle">Desarrolladora Frontend con perfil híbrido: técnico y humano | Experiencia en soporte para Tiendanube y desarrollo de herramientas reales</p>
+      <p class="subtitle">Desarrolladora Frontend con perfil híbrido: técnico y humano | Experiencia formada como soporte en Tiendanube y desarrollo de herramientas reales</p>
       <p class="availability"><i class="fas fa-circle-check"></i> Disponible para trabajo remoto</p>
       <div class="header-socials">
         <a href="https://www.linkedin.com/in/florencia-bagnis" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
@@ -233,7 +225,7 @@
     <section id="sobre-mi">
       <h2>Sobre mí</h2>
       <p>¡Hola! Soy <strong>Florencia Bagnis</strong>, Desarrolladora Frontend con un <strong>perfil híbrido</strong>: combino lo técnico con lo humano.</p>
-      <p>Mi experiencia en <strong>soporte para Tiendanube</strong> me puso en contacto con comerciantes reales. Aprendí dónde se traban y cómo explicarles las cosas de forma simple, y esa mirada es la que llevo al desarrollo: primero pienso en quién va a usar la herramienta.</p>
+      <p>Mi <strong>experiencia formada como soporte en Tiendanube</strong> me puso en contacto con comerciantes reales. Aprendí dónde se traban y cómo explicarles las cosas de forma simple, y esa mirada es la que llevo al desarrollo: primero pienso en quién va a usar la herramienta.</p>
       <p>Un ejemplo: los clientes no sabían cuánto valían realmente sus tasas y no había una app oficial que lo resolviera, así que diseñé una calculadora interna que terminó reforzando la app oficial.</p>
       <p>Me formé en <strong>Desarrollo Web en Coderhouse</strong> (HTML, CSS, SASS, Bootstrap, Git, GitHub y diseño responsive) y sigo aprendiendo con proyectos propios en JavaScript, PHP, SQL y Firebase.</p>
       <p>Busco sumarme a un equipo donde pueda unir ambas cosas: construir interfaces claras y entender a las personas que las usan. 💗</p>
@@ -283,7 +275,6 @@
           </div>
         </div>
 
-        <!-- Calendario en vivo (reemplaza a las imágenes cuando la API responde) -->
         <div class="gh-cal-scroll" id="gh-cal-scroll">
           <a href="https://github.com/FlorBagnis" target="_blank" rel="noopener noreferrer" title="Ver perfil en GitHub" style="display:block;">
             <div class="gh-cal" id="gh-cal">
@@ -301,7 +292,6 @@
           </a>
         </div>
 
-        <!-- Respaldo: imágenes originales (se ocultan si la API responde) -->
         <div class="gh-chart-container" id="gh-fallback">
           <a href="https://github.com/FlorBagnis" target="_blank" rel="noopener noreferrer" title="Ver perfil en GitHub">
             <img class="gh-chart gh-light" src="https://ghchart.rshah.org/ec4899/FlorBagnis" alt="Contribuciones en GitHub" />
@@ -401,6 +391,16 @@
       window.location.reload();
     });
 
+    // ===== Funciones Globales para Modales =====
+    window.openModal = function(modalId) {
+      const modal = document.getElementById('modal-' + modalId);
+      if (modal) modal.classList.add('active');
+    };
+    window.closeModal = function(modalId) {
+      const modal = document.getElementById('modal-' + modalId);
+      if (modal) modal.classList.remove('active');
+    };
+
     // ===== Idioma (ES / EN) =====
     let LANG = 'es';
     try { LANG = localStorage.getItem('lang') === 'en' ? 'en' : 'es'; } catch (e) {}
@@ -429,9 +429,8 @@
 
     const metaTag = document.querySelector('meta[name="description"]');
     const META_ES = metaTag ? metaTag.getAttribute('content') : '';
-    const META_EN = "Florencia Bagnis' portfolio: frontend developer with a hybrid profile (technical and human) and experience in Customer Support, SaaS and e-commerce.";
+    const META_EN = "Florencia Bagnis' portfolio: frontend developer with a hybrid profile (technical and human) and background experience in Customer Support at Tiendanube.";
 
-    // Registro de textos traducibles: captura el español original y guarda la versión en inglés
     const I18N = [];
     function firstTextNode(el) {
       for (const n of el.childNodes) { if (n.nodeType === 3 && n.nodeValue.trim()) return n; }
@@ -444,18 +443,17 @@
       });
     }
 
-    // Menú y cabecera
+    // Traducciones
     reg('.sticky-nav a:nth-child(1)', 'About me');
     reg('.sticky-nav a:nth-child(2)', 'Technologies');
     reg('.sticky-nav a:nth-child(4)', 'Projects');
     reg('.sticky-nav a:nth-child(5)', 'Contact');
-    reg('.subtitle', 'Frontend Developer with a hybrid profile: technical and human | Experience in support for Tiendanube and building real tools');
+    reg('.subtitle', 'Frontend Developer with a hybrid profile: technical and human | Background experience in support at Tiendanube and building real tools');
     reg('.availability', 'Available for remote work');
 
-    // Sobre mí
     reg('#sobre-mi h2', 'About me');
     reg('#sobre-mi > p:nth-of-type(1)', "Hi! I'm <strong>Florencia Bagnis</strong>, a Frontend Developer with a <strong>hybrid profile</strong>: I combine the technical with the human.", true);
-    reg('#sobre-mi > p:nth-of-type(2)', 'My experience in <strong>support for Tiendanube</strong> put me in contact with real merchants. I learned where they get stuck and how to explain things simply, and that perspective shapes how I build: I start by thinking about who will use the tool.', true);
+    reg('#sobre-mi > p:nth-of-type(2)', 'My <strong>background experience in support at Tiendanube</strong> put me in contact with real merchants. I learned where they get stuck and how to explain things simply, and that perspective shapes how I build: I start by thinking about who will use the tool.', true);
     reg('#sobre-mi > p:nth-of-type(3)', "One example: customers didn't know what their payment fees really were and there was no official app to solve it, so I designed an internal calculator that ended up reinforcing the official app.", true);
     reg('#sobre-mi > p:nth-of-type(4)', 'I trained in <strong>Web Development at Coderhouse</strong> (HTML, CSS, SASS, Bootstrap, Git, GitHub and responsive design) and keep learning through personal projects in JavaScript, PHP, SQL and Firebase.', true);
     reg('#sobre-mi > p:nth-of-type(5)', "I'm looking to join a team where I can bring both together: building clear interfaces and understanding the people who use them. 💗", true);
@@ -464,12 +462,10 @@
     reg('.summary-pill:nth-child(3)', 'Spanish: Native');
     reg('.summary-pill:nth-child(4)', 'Frontend Development & Applied AI · Coderhouse');
 
-    // Tecnologías
     reg('#tecnologias h2', 'Technologies and tools');
     reg('#tecnologias h3:nth-of-type(1)', 'Frontend & Backend / Data');
     reg('#tecnologias h3:nth-of-type(2)', 'Work tools');
 
-    // GitHub y proyectos
     reg('#github-actividad h2', 'GitHub activity');
     reg('#proyectos h2', 'Projects');
     reg('.filter-btn[data-filter="all"]', 'All');
@@ -482,15 +478,16 @@
     reg('.projects-grid .card:nth-child(2) .project-type', 'Final project · Coderhouse');
     reg('.projects-grid .card:nth-child(2) > p:not(.project-type)', 'It started as the idea of a kawaii clothing store and was my final project to graduate as a Web Developer at Coderhouse. A responsive site for an apparel brand with a kawaii aesthetic.');
 
+    // Traducción actualizada de Mensuales en inglés
     reg('.projects-grid .card:nth-child(3) .project-type', 'Personal project · Expense tracking');
-    reg('.projects-grid .card:nth-child(3) > p:not(.project-type)', 'I built it to control my own spending and see where my money goes. Today more than 20 people use it, including businesses: it's free, simple, private and helps people learn about personal finance.');
+    reg('.projects-grid .card:nth-child(3) > p:not(.project-type)', 'I built it to control my own spending and see where my money goes. Today more than 20 people use it, including businesses: it is free, simple, private and helps people learn about financial education.');
 
     reg('.projects-grid .card:nth-child(4) h3', 'Product Catalog Manager');
     reg('.projects-grid .card:nth-child(4) .project-type', 'Practical project · CRUD with database');
     reg('.projects-grid .card:nth-child(4) > p:not(.project-type)', 'I built it to learn SQL hands-on: it manages a product catalog with create, read, update and delete operations on a database.');
 
     reg('.projects-grid .card:nth-child(5) .project-type', 'Interactive simulator · Databases');
-    reg('.projects-grid .card:nth-child(5) > p:not(.project-type)', "It was born from wanting to learn SQL in a practical way. It's a simulator with a live query console, true/false questions and fill-in exercises, with dynamically rendered tables.");
+    reg('.projects-grid .card:nth-child(5) > p:not(.project-type)', "It was born from wanting to learn SQL in a practical way. It is a simulator with a live query console, true/false questions and fill-in exercises, with dynamically rendered tables.");
     reg('.projects-grid .card:nth-child(5) .project-tags span:nth-child(2)', 'Modern CSS3');
     reg('.projects-grid .card:nth-child(5) .project-tags span:nth-child(5)', 'Dynamic DOM');
 
@@ -499,7 +496,6 @@
     reg('button[onclick="openModal(\'tiendanube\')"]', 'View thanks');
     reg('button[onclick="openModal(\'mensuales\')"]', 'View impact');
 
-    // Contacto, pie y modales
     reg('#contacto h2', 'Contact');
     reg('footer p', 'Built by Florencia Bagnis');
     reg('#modal-tiendanube h3', 'Tiendanube recognition');
@@ -507,8 +503,7 @@
     reg('#modal-mensuales h3', 'Mensuales impact');
     reg('#modal-mensuales p', 'Community using the expense management app.');
 
-    // ===== Actividad de GitHub =====
-    const ghState = { year: 2026, cur: 1056, prev: 14, total: 1070 }; // valores de respaldo si falla la API
+    const ghState = { year: 2026, cur: 1056, prev: 14, total: 1070 };
     let ghData = null;
     const fmt = n => Number(n || 0).toLocaleString('en-US');
 
@@ -533,7 +528,6 @@
       }
       if (!ghData) return;
 
-      // Últimas 53 semanas, empezando en domingo
       const porFecha = new Map(ghData.contributions.map(d => [d.date, d]));
       const hoy = new Date(); hoy.setHours(0, 0, 0, 0);
       const inicio = new Date(hoy);
@@ -562,7 +556,6 @@
       document.getElementById('gh-months').innerHTML = etiquetas;
     }
 
-    // --- Actualizador automático de contribuciones de GitHub ---
     async function fetchGitHubContributions() {
       try {
         const res = await fetch('https://github-contributions-api.jogruber.de/v4/FlorBagnis?y=all&t=' + Date.now(), { cache: 'no-store' });
@@ -580,22 +573,18 @@
         renderGhTexts();
         renderGhCal();
 
-        // Mostrar el calendario nuevo y ocultar las imágenes de respaldo
         document.getElementById('gh-cal-scroll').classList.add('ready');
         document.getElementById('gh-fallback').style.display = 'none';
       } catch (error) {
-        // Si falla la API, se quedan visibles las imágenes y números de respaldo
         console.warn('No se pudo actualizar GitHub:', error);
       }
     }
 
     fetchGitHubContributions();
-    // Vuelve a pedir los datos cuando regresas a la pestaña
     document.addEventListener('visibilitychange', () => {
       if (!document.hidden) fetchGitHubContributions();
     });
 
-    // ===== Pausar efectos en movimiento =====
     const motionBtn = document.getElementById('motion-toggle');
     let reduced = false;
     try {
@@ -620,7 +609,6 @@
       });
     }
 
-    // ===== Aplicar idioma =====
     const langBtn = document.getElementById('lang-toggle');
     function applyLang() {
       document.documentElement.lang = LANG;
@@ -656,9 +644,7 @@
       });
     }
 
-    // Solución táctil para que las imágenes vuelvan a la normalidad en celulares al sacar el dedo
     const modalImages = document.querySelectorAll('#modal-tiendanube .kawaii-modal-content img, #modal-mensuales .kawaii-modal-content img');
-    
     modalImages.forEach(img => {
       img.addEventListener('touchstart', () => {
         const modalId = img.closest('.kawaii-modal').id;
@@ -670,14 +656,6 @@
       }, { passive: true });
     });
 
-    // Funciones para abrir y cerrar los modales kawaii
-    function openModal(modalId) {
-      document.getElementById('modal-' + modalId).classList.add('active');
-    }
-    function closeModal(modalId) {
-      document.getElementById('modal-' + modalId).classList.remove('active');
-    }
-    // Cerrar haciendo clic fuera del contenido
     window.addEventListener('click', (e) => {
       if (e.target.classList.contains('kawaii-modal')) {
         e.target.classList.remove('active');
@@ -699,7 +677,7 @@
       } else {
         document.documentElement.setAttribute('data-theme', 'dark');
         localStorage.setItem('theme', 'dark');
-        toggleButton.textContent = '☀';
+        toggleButton.textContent = '☀️';
       }
     });
 
@@ -762,7 +740,6 @@
       window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' });
     });
 
-    // Aplicar idioma guardado al cargar
     applyLang();
   </script>
 </body>
