@@ -339,13 +339,12 @@
 
    async function fetchGitHubContributions() {
       try {
-        console.log("Consultando API de GitHub...");
         const response = await fetch('https://github-contributions-api.jogruber.de/v4/FlorBagnis?y=all');
         const data = await response.json();
-        console.log("Datos recibidos:", data);
 
         if (data && data.years) {
-          const obj2026 = data.years.find(y => y.year === 2026);
+          // Buscamos el año 2026 asegurándonos de que coincida sin importar si viene como número o texto
+          const obj2026 = data.years.find(y => Number(y.year) === 2026);
           const total2026 = obj2026 ? obj2026.total : 1061;
           
           const total2025 = 14; 
@@ -356,7 +355,9 @@
           document.getElementById('count-total').textContent = `${totalHistorico} en total`;
         }
       } catch (error) {
-        console.error("Error detallado al conectar con la API:", error);
+        document.getElementById('count-2026').textContent = `1,061 contribuciones`;
+        document.getElementById('count-2025').textContent = `14 contribuciones`;
+        document.getElementById('count-total').textContent = `1,075 en total`;
       }
     }
 
