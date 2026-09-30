@@ -69,6 +69,11 @@
     .gh-light { display: block !important; }
     [data-theme="dark"] .gh-light { display: none !important; }
     [data-theme="dark"] .gh-dark { display: block !important; filter: contrast(1.1) brightness(1.05); }
+    
+    /* Estilo para que el título principal funcione como enlace interactivo sin romper colores */
+    .brand-link { color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: 12px; transition: opacity 0.2s ease; }
+    .brand-link:hover { opacity: 0.85; }
+
     @media (max-width: 600px) { .sticky-nav { gap: 12px; padding: 6px 16px; } .sticky-nav a { font-size: 12px; } }
   </style>
 </head>
@@ -96,7 +101,11 @@
   <button id="back-to-top" aria-label="Volver arriba"><i class="fas fa-chevron-up"></i></button>
   <div class="container">
     <header>
-      <h1>Florencia Bagnis <i class="fas fa-laptop-code"></i></h1>
+      <h1>
+        <a href="#" id="reload-link" class="brand-link" title="Recargar página">
+          Florencia Bagnis <i class="fas fa-laptop-code"></i>
+        </a>
+      </h1>
       <p class="subtitle">Frontend Developer en formación | Experiencia en soporte tecnológico y desarrollo de interfaces funcionales</p>
       <p class="availability"><i class="fas fa-circle-check"></i> Disponible para trabajo remoto</p>
       <div class="header-socials">
@@ -246,6 +255,12 @@
     if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
     window.scrollTo(0, 0);
 
+    // Recargar página al hacer clic en el nombre
+    document.getElementById('reload-link').addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.reload();
+    });
+
     const toggleButton = document.getElementById('theme-toggle');
     const currentTheme = localStorage.getItem('theme');
     if (currentTheme) {
@@ -324,7 +339,7 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // SCRIPT DINÁMICO CORREGIDO PARA CONTRIBUCIONES DE GITHUB
+    // SCRIPT DINÁMICO DE CONTRIBUCIONES DE GITHUB
     async function fetchGitHubContributions() {
       try {
         const username = 'Florbagnis';
