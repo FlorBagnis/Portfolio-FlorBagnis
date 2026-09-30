@@ -23,16 +23,18 @@ a {
 }
 
 /* ==================================
-   VARIABLES
+   VARIABLES (Modo Claro - Rosa Kawaii Tech)
 ================================== */
 
 :root {
-  --rosa-fondo: #fff5f7;
+  /* Rosa kawaii definido, dulce y con presencia (adiós al blanco lavado) */
+  --rosa-fondo: #fed7e2;
   --rosa-brillante: #ec4899;
   --rosa-oscuro: #be185d;
   --rosa-suave: #fce7f3;
-  --texto-oscuro: #331d2c;
-  --texto-secundario: #704d60;
+  --texto-oscuro: #2d1222;
+  --texto-secundario: #6b3956;
+  --card-bg: #ffffff;
 }
 
 /* ==================================
@@ -40,17 +42,17 @@ a {
 ================================== */
 
 [data-theme="dark"] {
-  --rosa-fondo: #0f0a0d;          /* Fondo general muy oscuro con un tinte sutil acorde */
-  --rosa-brillante: #f472b6;      /* Fucsia un poco más vibrante para contraste */
+  --rosa-fondo: #0f0a0d;          /* Fondo general muy oscuro con tinte ciruela */
+  --rosa-brillante: #f472b6;      /* Fucsia vibrante para contraste */
   --rosa-oscuro: #f472b6;
   --rosa-suave: #2a1622;          /* Bordes y fondos secundarios oscuros */
   --texto-oscuro: #fdf2f8;        /* Texto principal claro */
   --texto-secundario: #d1a3be;    /* Texto secundario legible en oscuro */
-  --card-bg: #1a1017;           /* Fondo de las tarjetas en oscuro */
+  --card-bg: #1a1017;            /* Fondo de las tarjetas en oscuro */
   --contacto-bg: #1a1017;
 }
 
-/* Aplicamos las variables a las tarjetas y elementos que usaban blanco fijo */
+/* Aplicamos las variables a las tarjetas y elementos */
 .card, .contact-item {
   background: var(--card-bg) !important;
 }
@@ -59,18 +61,18 @@ a {
   background: var(--card-bg);
 }
 
-
 /* ==================================
    BODY
 ================================== */
 
 body {
   font-family: "Inter", "Segoe UI", sans-serif;
-  background: var(--rosa-fondo);
+  background-color: var(--rosa-fondo);
   color: var(--texto-oscuro);
   line-height: 1.6;
   padding: 80px 20px;
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
@@ -251,7 +253,7 @@ section p {
   background: white;
   border: 1px solid var(--rosa-suave);
   border-radius: 24px;
-  box-shadow: 0 10px 40px rgba(236,72,153,.08);
+  box-shadow: 0 10px 40px rgba(236,72,153,.10);
   transition: .3s;
 }
 
@@ -416,7 +418,6 @@ footer p {
     opacity: 0;
     transform: translateY(30px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -424,118 +425,82 @@ footer p {
 }
 
 /* ==================================
-   TABLETS
+   RESPONSIVE
 ================================== */
 
 @media (max-width: 900px) {
-
   body {
     padding: 60px 20px;
   }
-
   .container {
     max-width: 760px;
   }
-
   .card {
     padding: 30px;
   }
-
 }
 
-/* ==================================
-   CELULARES
-================================== */
-
 @media (max-width: 600px) {
-
   body {
     padding: 40px 16px;
   }
-
-  header {
+  header, section {
     margin-bottom: 60px;
   }
-
-  section {
-    margin-bottom: 60px;
-  }
-
   h1 {
     font-size: 32px;
     line-height: 1.2;
     align-items: flex-start;
   }
-
   h1 i {
     font-size: 26px;
   }
-
   .subtitle {
     font-size: 17px;
   }
-
   h2 {
     font-size: 22px;
   }
-
   .tech-stack-general {
     flex-direction: column;
   }
-
   .tech-stack-general span {
     width: 100%;
   }
-
   .card {
     padding: 22px;
   }
-
   .card h3 {
     font-size: 20px;
   }
-
   .project-media {
     width: 100%;
     height: auto;
   }
-
   .buttons {
     flex-direction: column;
   }
-
   .button {
     width: 100%;
   }
-
   .contact-grid {
     flex-direction: column;
   }
-
   .contact-item {
     width: 100%;
   }
-
 }
 
-/* ==================================
-   CELULARES PEQUEÑOS
-================================== */
-
 @media (max-width: 380px) {
-
   body {
     padding: 30px 12px;
   }
-
   h1 {
     font-size: 28px;
   }
-
   .card {
     padding: 18px;
   }
-
 }
 
 .cv-label {
@@ -544,5 +509,3 @@ footer p {
   margin-left: 3px;
   vertical-align: middle;
 }
-
-
