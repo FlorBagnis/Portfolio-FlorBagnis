@@ -143,22 +143,23 @@
       <div class="github-calendar-card">
         <div class="gh-years-container">
           <div class="gh-year-badge">
-            <span class="gh-year-label">Año 2026</span>
-            <span class="gh-year-count">1049 contribuciones</span>
+            <span class="gh-year-label" id="label-current-year">Año 2026</span>
+            <span class="gh-year-count" id="count-current-year">Cargando...</span>
           </div>
           <div class="gh-year-badge">
-            <span class="gh-year-label">Año 2025</span>
-            <span class="gh-year-count">2 contribuciones</span>
+            <span class="gh-year-label" id="label-prev-year">Año 2025</span>
+            <span class="gh-year-count" id="count-prev-year">Cargando...</span>
           </div>
           <div class="gh-year-badge total-badge">
             <span class="gh-year-label">Total histórico</span>
-            <span class="gh-year-count">1051 en total</span>
+            <span class="gh-year-count" id="count-total">Cargando...</span>
           </div>
         </div>
         <div class="gh-chart-container">
           <a href="https://github.com/FlorBagnis" target="_blank" rel="noopener noreferrer" title="Ver perfil en GitHub">
-            <img class="gh-chart gh-light" src="https://ghchart.rshah.org/ec4899/FlorBagnis" alt="Contribuciones en GitHub" />
-            <img class="gh-chart gh-dark" src="https://ghchart.rshah.org/f472b6/FlorBagnis" alt="Contribuciones en GitHub Modo Oscuro" />
+            <!-- Usamos un parámetro de timestamp aleatorio o cache-buster opcional para evitar que se quede cacheado en el navegador -->
+            <img class="gh-chart gh-light" src="https://ghchart.rshah.org/ec4899/FlorBagnis" alt="Contribuciones en GitHub" id="gh-img-light" />
+            <img class="gh-chart gh-dark" src="https://ghchart.rshah.org/f472b6/FlorBagnis" alt="Contribuciones en GitHub Modo Oscuro" id="gh-img-dark" />
           </a>
         </div>
       </div>
@@ -245,6 +246,7 @@
   <script>
     if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
     window.scrollTo(0, 0);
+
     const toggleButton = document.getElementById('theme-toggle');
     const currentTheme = localStorage.getItem('theme');
     if (currentTheme) {
@@ -263,6 +265,7 @@
         toggleButton.textContent = '☀️';
       }
     });
+
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.projects-grid .card');
     filterButtons.forEach(btn => {
@@ -280,6 +283,7 @@
         });
       });
     });
+
     const copyBtn = document.getElementById('copy-email-btn');
     const copyLabel = document.getElementById('copy-label');
     const copyIcon = document.getElementById('copy-icon');
@@ -296,6 +300,7 @@
         });
       });
     }
+
     const navWrapper = document.querySelector('.sticky-nav-wrapper');
     let lastScrollTop = 0;
     window.addEventListener('scroll', () => {
@@ -307,6 +312,7 @@
       }
       lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
     });
+
     const backToTopBtn = document.getElementById('back-to-top');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 350) {
@@ -318,6 +324,69 @@
     backToTopBtn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+
+    // ==========================================
+    // SCRIPT DINÁMICO PARA CONTRIBUCIONES DE GITHUB
+    // ==========================================
+    async function fetchGitHubContributions() {
+      try {
+        const username = 'Florbagnis';
+        const response = await fetch(`https://github-contributions-api.jogruber.de/v4/${username}?y=all`);
+        if (!response.ok) throw new Error('No se pudo conectar con la API de contribuciones');
+        
+        const data = await response.json();
+        
+        const currentYear = new Date().getFullYear();
+        const prevYear = currentYear - 1;
+
+        document.getElementById('label-current-year').textContent = `Año ${currentYear}`;
+        document.getElementById('label-prev-year').textContent = `Año ${prevYear}`;
+
+        let currentYearCount = 0;
+        let prevYearCount = 0;
+        let totalCount = 0;
+
+        if (data.years && Array.isArray(data.years)) {
+          data.years.forEach(y => {
+            if (y.year === currentYear) currentYearCount = y.total;
+            if (y.year === prevYear) prevYearCount = y.total;
+          });
+        }
+
+        if (data.total && data.total[currentYear] !== undefined) {
+          // Tomar el total general acumulado si está disponible en la API
+          totalCount = Object.values(data.total).reduce((a, b) => a + b, 0);
+        } else if (data.contributions) {
+          totalCount = data.contributions.length;
+        }
+
+        // Si la API devuelve un objeto total directo
+        if (typeof data.total === 'number') {
+          totalCount = data.total;
+        } else if (data.total && typeof data.total === 'object') {
+          totalCount = Object.values(data.total).reduce((acc, val) => acc + val, 0);
+        }
+
+        // Actualizamos el DOM con los valores reales obtenidos
+        document.getElementById('count-current-year').textContent = `${currentYearCount} contribuciones`;
+        document.getElementById('count-prev-year').textContent = `${prevYearCount} contribuciones`;
+        document.getElementById('count-total').textContent = `${totalCount} en total`;
+
+        // Forzar la actualización de las imágenes agregando un parámetro de tiempo para evitar caché agresivo
+        const timestamp = new Date().getTime();
+        document.getElementById('gh-img-light').src = `https://ghchart.rshah.org/ec4899/FlorBagnis?t=${timestamp}`;
+        document.getElementById('gh-img-dark').src = `https://ghchart.rshah.org/f472b6/FlorBagnis?t=${timestamp}`;
+
+      } catch (error) {
+        console.error("Error al obtener contribuciones:", error);
+        // Fallback por si falla la API externa
+        document.getElementById('count-current-year').textContent = `Actualización automática`;
+        document.getElementById('count-prev-year').textContent = `Consultando...`;
+        document.getElementById('count-total').textContent = `GitHub Activo`;
+      }
+    }
+
+    fetchGitHubContributions();
   </script>
 </body>
 </html>
