@@ -1007,28 +1007,18 @@ footer p {
   }
 }
 
-/* ANIMACIÓN SUAVE PARA EL ÍCONO DE LA PC EN EL TÍTULO */
+/* ÍCONO DE LA PC: ELEGANTE Y PROLIJO (SOLO INTERACTIVO) */
 h1 i.fa-laptop-code {
   display: inline-block;
   margin-left: 8px;
-  animation: techBounce 3s ease-in-out infinite;
-  transform-origin: bottom center;
+  color: var(--rosa-brillante);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: default;
 }
 
-@keyframes techBounce {
-  0%, 100% {
-    transform: translateY(0) rotate(0deg) scale(1);
-  }
-  25% {
-    transform: translateY(-4px) rotate(-4deg) scale(1.05);
-  }
-  50% {
-    transform: translateY(0) rotate(0deg) scale(1);
-  }
-  75% {
-    transform: translateY(-3px) rotate(4deg) scale(1.03);
-  }
+/* Solo se anima suavemente cuando pasás el mouse */
+h1:hover i.fa-laptop-code,
+h1 i.fa-laptop-code:hover {
+  transform: translateY(-4px) rotate(-8deg) scale(1.15);
 }
-
-
 
