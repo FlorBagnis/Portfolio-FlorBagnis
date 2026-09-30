@@ -83,7 +83,7 @@
     .kawaii-modal-content { background: white; border: 2px solid var(--rosa-brillante); border-radius: 24px; padding: 25px; max-width: 600px; width: 100%; box-shadow: 0 15px 50px rgba(236, 72, 153, 0.25); text-align: center; position: relative; animation: modalPop 0.3s ease; }
     [data-theme="dark"] .kawaii-modal-content { background: var(--card-bg); border-color: var(--rosa-brillante); }
     
-    /* MODIFICACIÓN CLAVE: Saca bordes/fondos molestos y añade sombra suave a la imagen limpia */
+    /* Limpieza de fondos y sombras para imágenes en modales */
     .kawaii-modal-content img { 
       width: 100%; 
       max-height: 70vh; 
@@ -108,8 +108,7 @@
       .gh-year-count { font-size: 14px; }
     }
 
-
-/* Efecto zoom solo para el celular de Tiendanube */
+    /* Efectos de zoom y elevación */
     #modal-tiendanube .kawaii-modal-content img {
       transition: transform 0.3s ease-in-out;
     }
@@ -117,7 +116,6 @@
       transform: scale(1.05);
     }
 
-    /* Efecto elegante para la tablet de Mensuales (sin zoom feo, solo elevación y sombra) */
     #modal-mensuales .kawaii-modal-content img {
       transition: all 0.3s ease-in-out;
     }
@@ -125,7 +123,6 @@
       transform: translateY(-4px);
       filter: drop-shadow(0 15px 30px rgba(236, 72, 153, 0.3));
     }
-    
   </style>
 </head>
 <body>
@@ -157,10 +154,7 @@
       <button class="kawaii-close-btn" onclick="closeModal('tiendanube')"><i class="fas fa-times"></i></button>
       <h3 style="color: var(--rosa-brillante); margin-bottom: 5px;"><i class="fas fa-award"></i> Reconocimiento Tiendanube</h3>
       <p style="font-size: 13px; color: var(--texto-secundario);">Mensaje del team valorando la calculadora de tasas.</p>
-      
-      <!-- AQUÍ CAMBIAMOS EL ARCHIVO CON TU NOMBRE EXACTO -->
-<img src="agradecimiento-tiendanube.PNG" alt="Agradecimiento de Tiendanube" />
-    
+      <img src="agradecimiento-tiendanube.PNG" alt="Agradecimiento de Tiendanube" />
     </div>
   </div>
 
@@ -264,14 +258,12 @@
           <div class="buttons">
             <a class="button" href="https://calculadora-tiendanube.vercel.app" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i> Ver demo</a>
             <a class="button secondary" href="https://github.com/FlorBagnis/calculadora-tiendanube" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Ver código</a>
-            <!-- Botón de agradecimiento con estética rosa -->
             <button class="button secondary" onclick="openModal('tiendanube')" style="border-color: var(--rosa-brillante); color: var(--rosa-brillante); cursor: pointer;"><i class="fas fa-award"></i> Ver agradecimiento</button>
           </div>
         </article>
         <article class="card" data-category="frontend">
           <h3>Honeymoon <i class="fas fa-shirt"></i></h3>
           <img src="honeymoon.gif" alt="Honeymoon" class="project-media" loading="lazy" />
-         
           <p class="project-type">Proyecto final · Coderhouse</p>
           <p>Sitio web responsive desarrollado para una marca de indumentaria inspirada en la estética kawaii.</p>
           <div class="project-tags"><span>HTML5</span><span>CSS3</span><span>SASS</span><span>Bootstrap</span><span>Responsive</span></div>
@@ -289,17 +281,13 @@
           <div class="buttons">
             <a class="button" href="https://gastosmensuales-two.vercel.app/" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i> Ver demo</a>
             <a class="button secondary" href="https://github.com/FlorBagnis/Mensuales" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Ver código</a>
-           
-            <!-- Botón de impacto con estética rosa -->
             <button class="button secondary" onclick="openModal('mensuales')" style="border-color: var(--rosa-brillante); color: var(--rosa-brillante); cursor: pointer;"><i class="fas fa-heart"></i> Ver impacto</button>
           </div>
         </article>
         <article class="card" data-category="fullstack">
-          
           <h3>Gestor de Productos <i class="fas fa-boxes-stacked"></i></h3>
           <img src="cruddemo.gif" alt="Gestor de Productos" class="project-media" loading="lazy" />
           <p class="project-type">Proyecto práctico · CRUD con Base de Datos</p>
-         
           <p>Aplicación desarrollada para administrar un catálogo de productos mediante operaciones SQL.</p>
           <div class="project-tags"><span>PHP</span><span>MySQL</span><span>SQL</span><span>HTML5</span><span>CSS3</span></div>
           <div class="buttons">
@@ -308,7 +296,6 @@
           </div>
         </article>
         <article class="card" data-category="fullstack tools">
-         
           <h3>SQL Practical Studio &amp; Bootcamp <i class="fas fa-database"></i></h3>
           <img src="sqldevdemo.gif" alt="SQL Practical Studio" class="project-media" loading="lazy" />
           <p class="project-type">Simulador interactivo · Bases de Datos</p>
@@ -341,6 +328,20 @@
     document.getElementById('reload-link').addEventListener('click', (e) => {
       e.preventDefault();
       window.location.reload();
+    });
+
+    // Solución táctil para que las imágenes vuelvan a la normalidad en celulares al sacar el dedo
+    const modalImages = document.querySelectorAll('#modal-tiendanube .kawaii-modal-content img, #modal-mensuales .kawaii-modal-content img');
+    
+    modalImages.forEach(img => {
+      img.addEventListener('touchstart', () => {
+        const modalId = img.closest('.kawaii-modal').id;
+        img.style.transform = modalId === 'modal-tiendanube' ? 'scale(1.05)' : 'translateY(-4px)';
+      }, { passive: true });
+
+      img.addEventListener('touchend', () => {
+        img.style.transform = 'none';
+      }, { passive: true });
     });
 
     // Funciones para abrir y cerrar los modales kawaii
