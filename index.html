@@ -180,51 +180,96 @@
     .kawaii-close-btn:hover { background: var(--rosa-brillante); color: white; }
     @keyframes modalPop { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
 
-    /* Contenedor de botones flotantes con soporte para ocultar/mostrar mediante una solapa */
-    .float-panel {
+    /* Botón de Modo Oscuro fijo arriba */
+    #theme-toggle {
       position: fixed;
-      right: 20px;
       top: 16px;
-      z-index: 1001;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .float-panel.collapsed {
-      transform: translateX(calc(100% + 20px));
-    }
-
-    /* Solapa para ocultar/mostrar el panel */
-    #panel-toggle {
-      position: fixed;
       right: 20px;
-      top: 16px;
-      z-index: 1002;
+      z-index: 1003;
       width: 44px;
       height: 44px;
       padding: 0 !important;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: var(--rosa-brillante);
+      background: var(--rosa-suave);
       border: 1.5px solid var(--rosa-brillante);
-      color: #ffffff;
+      color: var(--rosa-brillante);
       border-radius: 50%;
       cursor: pointer;
-      font-size: 15px;
-      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s;
-      box-shadow: 0 4px 15px rgba(236, 72, 153, 0.25);
+      font-size: 17px;
+      transition: 0.3s;
+      box-shadow: 0 4px 15px rgba(236, 72, 153, 0.15);
     }
-    #panel-toggle:hover {
-      background: var(--rosa-oscuro, #d93888);
-      transform: scale(1.05);
+    #theme-toggle:hover {
+      background: var(--rosa-brillante);
+      color: #ffffff;
+      transform: translateY(-2px);
     }
-    .float-panel.collapsed ~ #panel-toggle {
-      right: 20px;
+    [data-theme="dark"] #theme-toggle {
+      background: var(--card-bg);
+      border-color: var(--rosa-brillante);
+      color: var(--rosa-brillante);
+    }
+    [data-theme="dark"] #theme-toggle:hover {
+      background: var(--rosa-brillante);
+      color: #ffffff;
     }
 
-    /* Estilos unificados para los botones dentro del panel */
+    /* Solapa con flechita para ocultar/mostrar los controles secundarios */
+    #panel-toggle {
+      position: fixed;
+      right: 20px;
+      top: 68px;
+      z-index: 1003;
+      width: 44px;
+      height: 44px;
+      padding: 0 !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--rosa-suave);
+      border: 1.5px solid var(--rosa-brillante);
+      color: var(--rosa-brillante);
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(236, 72, 153, 0.15);
+    }
+    #panel-toggle:hover {
+      background: var(--rosa-brillante);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+    [data-theme="dark"] #panel-toggle {
+      background: var(--card-bg);
+      border-color: var(--rosa-brillante);
+      color: var(--rosa-brillante);
+    }
+    [data-theme="dark"] #panel-toggle:hover {
+      background: var(--rosa-brillante);
+      color: #ffffff;
+    }
+
+    /* Panel deslizable que contiene solo los botones de Idioma y Pausa de Movimiento */
+    .float-panel {
+      position: fixed;
+      right: 20px;
+      top: 120px;
+      z-index: 1001;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+    }
+    .float-panel.collapsed {
+      transform: translateX(calc(100% + 30px));
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* Botones dentro del panel deslizable */
     .float-btn { 
       width: 44px; 
       height: 44px; 
@@ -265,17 +310,24 @@
       .gh-year-badge { min-width: 100px; padding: 8px 10px; }
       .gh-year-count { font-size: 14px; }
       
-      .float-panel {
+      #theme-toggle {
+        width: 38px;
+        height: 38px;
         right: 12px;
         top: 12px;
-        gap: 8px;
+        font-size: 14px;
       }
       #panel-toggle {
         width: 38px;
         height: 38px;
         right: 12px;
-        top: 12px;
+        top: 56px;
         font-size: 13px;
+      }
+      .float-panel {
+        right: 12px;
+        top: 100px;
+        gap: 8px;
       }
       .float-btn {
         width: 38px !important;
@@ -333,15 +385,17 @@
     <span class="decor-item item-8">✿</span>
   </div>
   
-  <!-- Panel agrupado de botones flotantes -->
+  <!-- Botón de Modo Oscuro fijo y suelto arriba -->
+  <button id="theme-toggle" aria-label="Cambiar modo oscuro" title="Cambiar modo oscuro">🌙</button>
+
+  <!-- Solapa independiente con icono de flechita para ocultar/mostrar -->
+  <button id="panel-toggle" aria-label="Ocultar o mostrar controles" title="Ocultar o mostrar controles"><i class="fas fa-chevron-right" id="toggle-icon"></i></button>
+
+  <!-- Panel deslizable con los botones de Idioma y Pausa -->
   <div id="float-panel" class="float-panel">
-    <button id="theme-toggle" class="float-btn" aria-label="Cambiar modo oscuro" title="Cambiar modo oscuro">🌙</button>
     <button id="lang-toggle" class="float-btn" type="button" aria-label="Switch to English" title="Switch to English">EN</button>
     <button id="motion-toggle" class="float-btn" type="button" aria-label="Pausar efectos en movimiento" title="Pausar efectos en movimiento"><i class="fas fa-pause"></i></button>
   </div>
-
-  <!-- Solapa para Ocultar / Mostrar los botones -->
-  <button id="panel-toggle" aria-label="Ocultar o mostrar controles" title="Ocultar o mostrar controles"><i class="fas fa-sliders"></i></button>
   
   <button id="back-to-top" aria-label="Volver arriba"><i class="fas fa-chevron-up"></i></button>
 
@@ -577,14 +631,15 @@
       if (modal) modal.classList.remove('active');
     };
 
-    // Script para ocultar / mostrar el panel de botones con la solapa
+    // Script para ocultar / mostrar el panel secundario con la flechita
     const panelToggleBtn = document.getElementById('panel-toggle');
     const floatPanel = document.getElementById('float-panel');
-    if (panelToggleBtn && floatPanel) {
+    const toggleIcon = document.getElementById('toggle-icon');
+    if (panelToggleBtn && floatPanel && toggleIcon) {
       panelToggleBtn.addEventListener('click', () => {
         floatPanel.classList.toggle('collapsed');
         const isCollapsed = floatPanel.classList.contains('collapsed');
-        panelToggleBtn.innerHTML = isCollapsed ? '<i class="fas fa-chevron-left"></i>' : '<i class="fas fa-sliders"></i>';
+        toggleIcon.className = isCollapsed ? 'fas fa-chevron-left' : 'fas fa-chevron-right';
         panelToggleBtn.title = isCollapsed ? 'Mostrar controles' : 'Ocultar controles';
       });
     }
@@ -953,7 +1008,6 @@
     });
 
     applyLang();
-  
   </script>
 </body>
 </html>
