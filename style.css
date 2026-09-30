@@ -945,3 +945,68 @@ footer p {
     padding: 18px;
   }
 }
+
+/* AJUSTE RESPONSIVE CELULARES (NAVBAR Y BOTÓN LUNA) */
+@media (max-width: 600px) {
+  body {
+    padding-top: 110px !important;
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  #theme-toggle {
+    top: 10px !important;
+    right: 12px !important;
+    width: 38px !important;
+    height: 38px !important;
+    font-size: 14px !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .sticky-nav-wrapper {
+    top: 10px !important;
+    padding-left: 10px !important;
+    padding-right: 56px !important;
+    justify-content: flex-start !important;
+  }
+
+  .sticky-nav {
+    gap: 12px !important;
+    padding: 6px 14px !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .sticky-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sticky-nav a {
+    font-size: 11.5px !important;
+    flex-shrink: 0 !important;
+  }
+
+  header {
+    margin-bottom: 45px !important;
+  }
+
+  h1 {
+    font-size: 30px !important;
+    line-height: 1.2 !important;
+    flex-wrap: wrap !important;
+  }
+
+  .subtitle {
+    font-size: 15px !important;
+  }
+}
+
+
+
+
