@@ -1007,18 +1007,22 @@ footer p {
   }
 }
 
-/* ÍCONO DE LA PC: ELEGANTE Y PROLIJO (SOLO INTERACTIVO) */
+
+/* ÍCONO DE PC: ESTÁTICO POR DEFECTO, SE ANIMA SOLO AL PASAR EL CURSOR */
 h1 i.fa-laptop-code {
+  animation: none !important;
   display: inline-block;
   margin-left: 8px;
-  color: var(--rosa-brillante);
+  color: var(--rosa-brillante, #ff8da1);
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  cursor: default;
+  cursor: pointer;
 }
 
-/* Solo se anima suavemente cuando pasás el mouse */
+/* EFECTO HOVER: SE INCLINA Y CRECE SUAVEMENTE */
 h1:hover i.fa-laptop-code,
 h1 i.fa-laptop-code:hover {
-  transform: translateY(-4px) rotate(-8deg) scale(1.15);
+  transform: translateY(-4px) rotate(-8deg) scale(1.15) !important;
 }
+
+
 
