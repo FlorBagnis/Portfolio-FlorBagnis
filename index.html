@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfolio de Florencia Bagnis, desarrolladora frontend en formación con experiencia en Customer Support, SaaS y e-commerce." />
+  <meta name="description" content="Portfolio de Florencia Bagnis, desarrolladora frontend con perfil híbrido (técnico y humano) y experiencia en Customer Support, SaaS y e-commerce." />
   
   <title>Florencia Bagnis | Frontend Developer</title>
   
@@ -134,7 +134,7 @@
       .gh-year-count { font-size: 14px; }
     }
 
- /* Caja de reconocimiento Tiendanube más compacta (el celular no cambia) */
+    /* Caja de reconocimiento Tiendanube más compacta (el celular no cambia) */
     #modal-tiendanube .kawaii-modal-content {
       max-width: 500px;
       padding: 22px 24px 38px;
@@ -158,8 +158,18 @@
       transform: translateY(-4px);
       filter: drop-shadow(0 15px 30px rgba(236, 72, 153, 0.3));
     }
+
+    /* Botones flotantes: idioma y pausa de efectos (mismo estilo que el de modo oscuro) */
+    .float-btn { position: fixed; right: 20px; z-index: 1001; min-width: 49px; height: 42px; padding: 0 13px; display: flex; align-items: center; justify-content: center; background: var(--rosa-suave); border: 1px solid var(--rosa-brillante); color: var(--rosa-brillante); border-radius: 50%; cursor: pointer; font-family: inherit; font-size: 14px; font-weight: 700; transition: 0.3s; box-shadow: 0 4px 15px rgba(236, 72, 153, 0.15); }
+    .float-btn:hover { background: var(--rosa-brillante); color: #ffffff; transform: translateY(-2px); }
+    #lang-toggle { top: 66px; }
+    #motion-toggle { top: 116px; }
+
+    /* Modo sin movimiento: se frenan las animaciones decorativas */
+    .reduce-motion .decor-item,
+    .reduce-motion .kawaii-modal-content { animation: none !important; }
+    .reduce-motion *, .reduce-motion *::before, .reduce-motion *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
   </style>
-  
 </head>
 <body>
   <div class="sticky-nav-wrapper">
@@ -182,6 +192,8 @@
     <span class="decor-item item-8">✿</span>
   </div>
   <button id="theme-toggle" aria-label="Cambiar modo oscuro" style="position: fixed; top: 16px; right: 20px; z-index: 1001; background: var(--rosa-suave); border: 1px solid var(--rosa-brillante); color: var(--rosa-brillante); padding: 9px 13px; border-radius: 50%; cursor: pointer; font-size: 17px; transition: 0.3s; box-shadow: 0 4px 15px rgba(236, 72, 153, 0.15);">🌙</button>
+  <button id="lang-toggle" class="float-btn" type="button" aria-label="Switch to English" title="Switch to English">EN</button>
+  <button id="motion-toggle" class="float-btn" type="button" aria-label="Pausar efectos en movimiento" title="Pausar efectos en movimiento"><i class="fas fa-pause"></i></button>
   <button id="back-to-top" aria-label="Volver arriba"><i class="fas fa-chevron-up"></i></button>
 
   <!-- Modales Kawaii para las capturas -->
@@ -210,7 +222,7 @@
           Florencia Bagnis <i class="fas fa-laptop-code"></i>
         </a>
       </h1>
-      <p class="subtitle">Frontend Developer en formación | Experiencia en soporte tecnológico y desarrollo de interfaces funcionales</p>
+      <p class="subtitle">Desarrolladora Frontend con perfil híbrido: técnico y humano | Soporte en Tiendanube y desarrollo de herramientas reales</p>
       <p class="availability"><i class="fas fa-circle-check"></i> Disponible para trabajo remoto</p>
       <div class="header-socials">
         <a href="https://www.linkedin.com/in/florencia-bagnis" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
@@ -220,10 +232,11 @@
     </header>
     <section id="sobre-mi">
       <h2>Sobre mí</h2>
-      <p>¡Hola! Soy <strong>Florencia Bagnis</strong>, Desarrolladora Frontend y especialista en soporte técnico.</p>
-      <p>Como <strong>Support Guru en Tiendanube</strong>, desarrollé una sólida capacidad para comprender las necesidades de los usuarios, investigar inconvenientes y resolver problemas reales en entornos de e-commerce y tecnología.</p>
-      <p>Finalicé mi formación en <strong>Desarrollo Web en Coderhouse</strong>, donde adquirí conocimientos de HTML, CSS, SASS, Bootstrap, Git, GitHub y diseño responsive.</p>
-      <p>Mi objetivo es combinar mi experiencia en Customer Support con el desarrollo de interfaces intuitivas, accesibles, funcionales y visualmente claras. 💗</p>
+      <p>¡Hola! Soy <strong>Florencia Bagnis</strong>, Desarrolladora Frontend con un <strong>perfil híbrido</strong>: combino lo técnico con lo humano.</p>
+      <p>Como <strong>Support Guru en Tiendanube</strong> trabajo todos los días con comerciantes reales. Sé dónde se traban y cómo explicarles las cosas de forma simple, y esa mirada es la que llevo al desarrollo: primero pienso en quién va a usar la herramienta.</p>
+      <p>Un ejemplo: los clientes no sabían cuánto valían realmente sus tasas y no había una app oficial que lo resolviera, así que diseñé una calculadora interna que terminó reforzando la app oficial.</p>
+      <p>Me formé en <strong>Desarrollo Web en Coderhouse</strong> (HTML, CSS, SASS, Bootstrap, Git, GitHub y diseño responsive) y sigo aprendiendo con proyectos propios en JavaScript, PHP, SQL y Firebase.</p>
+      <p>Busco sumarme a un equipo donde pueda unir ambas cosas: construir interfaces claras y entender a las personas que las usan. 💗</p>
       <div class="skills-summary-pillbox">
         <span class="summary-pill"><i class="fas fa-language"></i> Inglés: Intermedio - Avanzado (B2)</span>
         <span class="summary-pill"><i class="fas fa-earth-americas"></i> Portugués: Básico</span>
@@ -311,7 +324,7 @@
           <h3>Calculadora de Tasas <i class="fas fa-calculator"></i></h3>
           <img src="calculadorademo.gif" alt="Calculadora de Tasas" class="project-media" loading="lazy" />
           <p class="project-type">Proyecto práctico · Herramienta para e-commerce</p>
-          <p>Aplicación web desarrollada para simular tasas, cuotas y montos netos según diferentes planes y medios de pago.</p>
+          <p>Los comerciantes de Tiendanube no sabían cuánto valían realmente sus tasas y no existía una app oficial que lo resolviera. Diseñé esta herramienta interna para simular tasas, cuotas y montos netos según el plan y el medio de pago, y terminó reforzando la app oficial.</p>
           <div class="project-tags"><span>HTML5</span><span>CSS3</span><span>JavaScript</span></div>
           <div class="buttons">
             <a class="button" href="https://calculadora-tiendanube.vercel.app" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i> Ver demo</a>
@@ -323,7 +336,7 @@
           <h3>Honeymoon <i class="fas fa-shirt"></i></h3>
           <img src="honeymoon.gif" alt="Honeymoon" class="project-media" loading="lazy" />
           <p class="project-type">Proyecto final · Coderhouse</p>
-          <p>Sitio web responsive desarrollado para una marca de indumentaria inspirada en la estética kawaii.</p>
+          <p>Nació de la idea de una tienda de ropa kawaii y fue mi proyecto final para recibirme de Desarrolladora Web en Coderhouse. Sitio responsive para una marca de indumentaria con estética kawaii.</p>
           <div class="project-tags"><span>HTML5</span><span>CSS3</span><span>SASS</span><span>Bootstrap</span><span>Responsive</span></div>
           <div class="buttons">
             <a class="button" href="https://honeymoon-eight-nu.vercel.app/index.html" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i> Ver demo</a>
@@ -334,7 +347,7 @@
           <h3>Mensuales <i class="fas fa-wallet"></i></h3>
           <img src="mensualesdemo.gif" alt="Mensuales" class="project-media" loading="lazy" />
           <p class="project-type">Proyecto personal · Gestión de gastos</p>
-          <p>Aplicación web desarrollada para organizar y controlar gastos mensuales de forma simple y privada.</p>
+          <p>La creé para controlar mis propios gastos y saber en qué se me va la plata. Permite organizar los gastos del mes de forma simple y privada.</p>
           <div class="project-tags"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Firebase</span><span>Responsive</span></div>
           <div class="buttons">
             <a class="button" href="https://gastosmensuales-two.vercel.app/" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i> Ver demo</a>
@@ -346,7 +359,7 @@
           <h3>Gestor de Productos <i class="fas fa-boxes-stacked"></i></h3>
           <img src="cruddemo.gif" alt="Gestor de Productos" class="project-media" loading="lazy" />
           <p class="project-type">Proyecto práctico · CRUD con Base de Datos</p>
-          <p>Aplicación desarrollada para administrar un catálogo de productos mediante operaciones SQL.</p>
+          <p>Lo desarrollé para aprender SQL en la práctica: administra un catálogo de productos con operaciones de alta, baja, modificación y consulta sobre una base de datos.</p>
           <div class="project-tags"><span>PHP</span><span>MySQL</span><span>SQL</span><span>HTML5</span><span>CSS3</span></div>
           <div class="buttons">
             <a class="button" href="https://florbagnis.github.io/Crud-Php-Mysql/" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i> Ver demo</a>
@@ -357,7 +370,7 @@
           <h3>SQL Practical Studio &amp; Bootcamp <i class="fas fa-database"></i></h3>
           <img src="sqldevdemo.gif" alt="SQL Practical Studio" class="project-media" loading="lazy" />
           <p class="project-type">Simulador interactivo · Bases de Datos</p>
-          <p>Simulador web interactivo con editor de consultas en vivo y renderizado de tablas dinámicas.</p>
+          <p>Nació de querer aprender SQL de forma práctica. Es un simulador con consola de consultas en vivo, preguntas de verdadero o falso y ejercicios para completar, con tablas que se renderizan dinámicamente.</p>
           <div class="project-tags"><span>HTML5</span><span>CSS3 Moderno</span><span>JavaScript ES6</span><span>SQL</span><span>DOM Dinámico</span></div>
           <div class="buttons">
             <a class="button" href="https://florbagnis.github.io/SQL_DEV/" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i> Ver demo</a>
@@ -388,54 +401,184 @@
       window.location.reload();
     });
 
+    // ===== Idioma (ES / EN) =====
+    let LANG = 'es';
+    try { LANG = localStorage.getItem('lang') === 'en' ? 'en' : 'es'; } catch (e) {}
+
+    const STR = {
+      es: {
+        year: 'Año', contrib: 'contribuciones', total: 'en total', totalLabel: 'Total histórico',
+        copy: 'Copiar email', copied: '¡Copiado! ✨', less: 'Menos', more: 'Más',
+        days: ['Lun', 'Mié', 'Vie'],
+        months: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+        tip: (c, d) => `${c} contribuciones el ${d}`,
+        motionOff: 'Pausar efectos en movimiento', motionOn: 'Reanudar efectos en movimiento',
+        langTitle: 'Switch to English', mailSubject: 'Contacto desde tu portfolio'
+      },
+      en: {
+        year: 'Year', contrib: 'contributions', total: 'in total', totalLabel: 'All-time total',
+        copy: 'Copy email', copied: 'Copied! ✨', less: 'Less', more: 'More',
+        days: ['Mon', 'Wed', 'Fri'],
+        months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        tip: (c, d) => `${c} contributions on ${d}`,
+        motionOff: 'Pause moving effects', motionOn: 'Resume moving effects',
+        langTitle: 'Cambiar a español', mailSubject: 'Contact from your portfolio'
+      }
+    };
+    const S = () => STR[LANG];
+
+    const metaTag = document.querySelector('meta[name="description"]');
+    const META_ES = metaTag ? metaTag.getAttribute('content') : '';
+    const META_EN = "Florencia Bagnis' portfolio: frontend developer with a hybrid profile (technical and human) and experience in Customer Support, SaaS and e-commerce.";
+
+    // Registro de textos traducibles: captura el español original y guarda la versión en inglés
+    const I18N = [];
+    function firstTextNode(el) {
+      for (const n of el.childNodes) { if (n.nodeType === 3 && n.nodeValue.trim()) return n; }
+      return null;
+    }
+    function reg(sel, en, html) {
+      document.querySelectorAll(sel).forEach(el => {
+        const node = html ? null : firstTextNode(el);
+        I18N.push({ el, en, html: !!html, node, es: html ? el.innerHTML : (node ? node.nodeValue : '') });
+      });
+    }
+
+    // Menú y cabecera
+    reg('.sticky-nav a:nth-child(1)', 'About me');
+    reg('.sticky-nav a:nth-child(2)', 'Technologies');
+    reg('.sticky-nav a:nth-child(4)', 'Projects');
+    reg('.sticky-nav a:nth-child(5)', 'Contact');
+    reg('.subtitle', 'Frontend Developer with a hybrid profile: technical and human | Support at Tiendanube and building real tools');
+    reg('.availability', 'Available for remote work');
+
+    // Sobre mí
+    reg('#sobre-mi h2', 'About me');
+    reg('#sobre-mi > p:nth-of-type(1)', "Hi! I'm <strong>Florencia Bagnis</strong>, a Frontend Developer with a <strong>hybrid profile</strong>: I combine the technical with the human.", true);
+    reg('#sobre-mi > p:nth-of-type(2)', 'As a <strong>Support Guru at Tiendanube</strong> I work every day with real merchants. I know where they get stuck and how to explain things simply, and that perspective shapes how I build: I start by thinking about who will use the tool.', true);
+    reg('#sobre-mi > p:nth-of-type(3)', "One example: customers didn't know what their payment fees really were and there was no official app to solve it, so I designed an internal calculator that ended up reinforcing the official app.", true);
+    reg('#sobre-mi > p:nth-of-type(4)', 'I trained in <strong>Web Development at Coderhouse</strong> (HTML, CSS, SASS, Bootstrap, Git, GitHub and responsive design) and keep learning through personal projects in JavaScript, PHP, SQL and Firebase.', true);
+    reg('#sobre-mi > p:nth-of-type(5)', "I'm looking to join a team where I can bring both together: building clear interfaces and understanding the people who use them. 💗", true);
+    reg('.summary-pill:nth-child(1)', 'English: Upper-intermediate to advanced (B2)');
+    reg('.summary-pill:nth-child(2)', 'Portuguese: Basic');
+    reg('.summary-pill:nth-child(3)', 'Spanish: Native');
+    reg('.summary-pill:nth-child(4)', 'Frontend Development & Applied AI · Coderhouse');
+
+    // Tecnologías
+    reg('#tecnologias h2', 'Technologies and tools');
+    reg('#tecnologias h3:nth-of-type(1)', 'Frontend & Backend / Data');
+    reg('#tecnologias h3:nth-of-type(2)', 'Work tools');
+
+    // GitHub y proyectos
+    reg('#github-actividad h2', 'GitHub activity');
+    reg('#proyectos h2', 'Projects');
+    reg('.filter-btn[data-filter="all"]', 'All');
+    reg('.filter-btn[data-filter="tools"]', 'Tools');
+
+    reg('.projects-grid .card:nth-child(1) h3', 'Fee Calculator');
+    reg('.projects-grid .card:nth-child(1) .project-type', 'Practical project · E-commerce tool');
+    reg('.projects-grid .card:nth-child(1) > p:not(.project-type)', "Tiendanube merchants didn't know what their fees really cost them and there was no official app to solve it. I designed this internal tool to simulate fees, installments and net amounts by plan and payment method, and it ended up reinforcing the official app.");
+
+    reg('.projects-grid .card:nth-child(2) .project-type', 'Final project · Coderhouse');
+    reg('.projects-grid .card:nth-child(2) > p:not(.project-type)', 'It started as the idea of a kawaii clothing store and was my final project to graduate as a Web Developer at Coderhouse. A responsive site for an apparel brand with a kawaii aesthetic.');
+
+    reg('.projects-grid .card:nth-child(3) .project-type', 'Personal project · Expense tracking');
+    reg('.projects-grid .card:nth-child(3) > p:not(.project-type)', 'I built it to control my own spending and see where my money goes. It lets you organize monthly expenses in a simple, private way.');
+
+    reg('.projects-grid .card:nth-child(4) h3', 'Product Catalog Manager');
+    reg('.projects-grid .card:nth-child(4) .project-type', 'Practical project · CRUD with database');
+    reg('.projects-grid .card:nth-child(4) > p:not(.project-type)', 'I built it to learn SQL hands-on: it manages a product catalog with create, read, update and delete operations on a database.');
+
+    reg('.projects-grid .card:nth-child(5) .project-type', 'Interactive simulator · Databases');
+    reg('.projects-grid .card:nth-child(5) > p:not(.project-type)', "It was born from wanting to learn SQL in a practical way. It's a simulator with a live query console, true/false questions and fill-in exercises, with dynamically rendered tables.");
+    reg('.projects-grid .card:nth-child(5) .project-tags span:nth-child(2)', 'Modern CSS3');
+    reg('.projects-grid .card:nth-child(5) .project-tags span:nth-child(5)', 'Dynamic DOM');
+
+    reg('.buttons a.button:not(.secondary)', 'View demo');
+    reg('.buttons a.button.secondary', 'View code');
+    reg('button[onclick="openModal(\'tiendanube\')"]', 'View thanks');
+    reg('button[onclick="openModal(\'mensuales\')"]', 'View impact');
+
+    // Contacto, pie y modales
+    reg('#contacto h2', 'Contact');
+    reg('footer p', 'Built by Florencia Bagnis');
+    reg('#modal-tiendanube h3', 'Tiendanube recognition');
+    reg('#modal-tiendanube p', 'Message from the team praising the fee calculator.');
+    reg('#modal-mensuales h3', 'Mensuales impact');
+    reg('#modal-mensuales p', 'Community using the expense management app.');
+
+    // ===== Actividad de GitHub =====
+    const ghState = { year: 2026, cur: 1056, prev: 14, total: 1070 }; // valores de respaldo si falla la API
+    let ghData = null;
+    const fmt = n => Number(n || 0).toLocaleString('en-US');
+
+    function renderGhTexts() {
+      const l = document.querySelectorAll('.gh-year-label');
+      if (l[0]) l[0].textContent = `${S().year} ${ghState.year}`;
+      if (l[1]) l[1].textContent = `${S().year} ${ghState.year - 1}`;
+      if (l[2]) l[2].textContent = S().totalLabel;
+      document.getElementById('count-2026').textContent = `${fmt(ghState.cur)} ${S().contrib}`;
+      document.getElementById('count-2025').textContent = `${fmt(ghState.prev)} ${S().contrib}`;
+      document.getElementById('count-total').textContent = `${fmt(ghState.total)} ${S().total}`;
+    }
+
+    function renderGhCal() {
+      const dias = document.querySelectorAll('.gh-days span');
+      if (dias[1]) dias[1].textContent = S().days[0];
+      if (dias[3]) dias[3].textContent = S().days[1];
+      if (dias[5]) dias[5].textContent = S().days[2];
+      const leyenda = document.querySelector('.gh-legend');
+      if (leyenda) {
+        leyenda.innerHTML = `${S().less} <span class="gh-cell"></span><span class="gh-cell l1"></span><span class="gh-cell l2"></span><span class="gh-cell l3"></span><span class="gh-cell l4"></span> ${S().more}`;
+      }
+      if (!ghData) return;
+
+      // Últimas 53 semanas, empezando en domingo
+      const porFecha = new Map(ghData.contributions.map(d => [d.date, d]));
+      const hoy = new Date(); hoy.setHours(0, 0, 0, 0);
+      const inicio = new Date(hoy);
+      inicio.setDate(inicio.getDate() - inicio.getDay() - 52 * 7);
+
+      const pad = n => String(n).padStart(2, '0');
+      const clave = d => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+      const meses = S().months;
+
+      let celdas = '', etiquetas = '', ultimoMes = -1, ultimaSemana = -10, i = 0;
+      for (let d = new Date(inicio); d <= hoy; d.setDate(d.getDate() + 1), i++) {
+        const semana = Math.floor(i / 7);
+        if (i % 7 === 0 && d.getMonth() !== ultimoMes) {
+          if (semana - ultimaSemana >= 3) {
+            etiquetas += `<span style="left:${semana * 15}px">${meses[d.getMonth()]}</span>`;
+            ultimaSemana = semana;
+          }
+          ultimoMes = d.getMonth();
+        }
+        const info = porFecha.get(clave(d));
+        const nivel = info ? info.level : 0;
+        const cant = info ? info.count : 0;
+        celdas += `<span class="gh-cell l${nivel}" title="${S().tip(cant, clave(d))}"></span>`;
+      }
+      document.getElementById('gh-grid').innerHTML = celdas;
+      document.getElementById('gh-months').innerHTML = etiquetas;
+    }
+
     // --- Actualizador automático de contribuciones de GitHub ---
     async function fetchGitHubContributions() {
       try {
-const res = await fetch('https://github-contributions-api.jogruber.de/v4/FlorBagnis?y=all&t=' + Date.now(), { cache: 'no-store' });
+        const res = await fetch('https://github-contributions-api.jogruber.de/v4/FlorBagnis?y=all&t=' + Date.now(), { cache: 'no-store' });
         if (!res.ok) throw new Error('HTTP ' + res.status);
         const data = await res.json();
         if (!data || !data.total || !data.contributions) throw new Error('Respuesta inválida');
 
-        // ---- Totales (todo sale de la API, nada hardcodeado) ----
-        const fmt = n => Number(n || 0).toLocaleString('en-US');
         const thisYear = new Date().getFullYear();
-        const totalHistorico = Object.values(data.total).reduce((a, b) => a + b, 0);
+        ghState.year = thisYear;
+        ghState.cur = data.total[thisYear] || 0;
+        ghState.prev = data.total[thisYear - 1] || 0;
+        ghState.total = Object.values(data.total).reduce((a, b) => a + b, 0);
+        ghData = data;
 
-        const labels = document.querySelectorAll('.gh-year-label');
-        if (labels[0]) labels[0].textContent = 'Año ' + thisYear;
-        if (labels[1]) labels[1].textContent = 'Año ' + (thisYear - 1);
-        document.getElementById('count-2026').textContent = `${fmt(data.total[thisYear])} contribuciones`;
-        document.getElementById('count-2025').textContent = `${fmt(data.total[thisYear - 1])} contribuciones`;
-        document.getElementById('count-total').textContent = `${fmt(totalHistorico)} en total`;
-
-        // ---- Calendario (últimas 53 semanas, empezando en domingo) ----
-        const porFecha = new Map(data.contributions.map(d => [d.date, d]));
-        const hoy = new Date(); hoy.setHours(0, 0, 0, 0);
-        const inicio = new Date(hoy);
-        inicio.setDate(inicio.getDate() - inicio.getDay() - 52 * 7);
-
-        const pad = n => String(n).padStart(2, '0');
-        const clave = d => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
-        const meses = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
-
-        let celdas = '', etiquetas = '', ultimoMes = -1, ultimaSemana = -10, i = 0;
-        for (let d = new Date(inicio); d <= hoy; d.setDate(d.getDate() + 1), i++) {
-          const semana = Math.floor(i / 7);
-          if (i % 7 === 0 && d.getMonth() !== ultimoMes) {
-            if (semana - ultimaSemana >= 3) {
-              etiquetas += `<span style="left:${semana * 15}px">${meses[d.getMonth()]}</span>`;
-              ultimaSemana = semana;
-            }
-            ultimoMes = d.getMonth();
-          }
-          const info = porFecha.get(clave(d));
-          const nivel = info ? info.level : 0;
-          const cant = info ? info.count : 0;
-          celdas += `<span class="gh-cell l${nivel}" title="${cant} contribuciones el ${clave(d)}"></span>`;
-        }
-
-        document.getElementById('gh-grid').innerHTML = celdas;
-        document.getElementById('gh-months').innerHTML = etiquetas;
+        renderGhTexts();
+        renderGhCal();
 
         // Mostrar el calendario nuevo y ocultar las imágenes de respaldo
         document.getElementById('gh-cal-scroll').classList.add('ready');
@@ -447,11 +590,71 @@ const res = await fetch('https://github-contributions-api.jogruber.de/v4/FlorBag
     }
 
     fetchGitHubContributions();
-    
     // Vuelve a pedir los datos cuando regresas a la pestaña
     document.addEventListener('visibilitychange', () => {
       if (!document.hidden) fetchGitHubContributions();
     });
+
+    // ===== Pausar efectos en movimiento =====
+    const motionBtn = document.getElementById('motion-toggle');
+    let reduced = false;
+    try {
+      const v = localStorage.getItem('reduceMotion');
+      reduced = v === null ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : v === '1';
+    } catch (e) {}
+
+    function applyMotion() {
+      document.documentElement.classList.toggle('reduce-motion', reduced);
+      if (!motionBtn) return;
+      motionBtn.innerHTML = reduced ? '<i class="fas fa-play"></i>' : '<i class="fas fa-pause"></i>';
+      const label = reduced ? S().motionOn : S().motionOff;
+      motionBtn.title = label;
+      motionBtn.setAttribute('aria-label', label);
+      motionBtn.setAttribute('aria-pressed', String(reduced));
+    }
+    if (motionBtn) {
+      motionBtn.addEventListener('click', () => {
+        reduced = !reduced;
+        try { localStorage.setItem('reduceMotion', reduced ? '1' : '0'); } catch (e) {}
+        applyMotion();
+      });
+    }
+
+    // ===== Aplicar idioma =====
+    const langBtn = document.getElementById('lang-toggle');
+    function applyLang() {
+      document.documentElement.lang = LANG;
+      I18N.forEach(r => {
+        if (r.html) {
+          r.el.innerHTML = LANG === 'en' ? r.en : r.es;
+        } else if (r.node) {
+          const lead = r.es.match(/^\s*/)[0];
+          const trail = r.es.match(/\s*$/)[0];
+          r.node.nodeValue = LANG === 'en' ? lead + r.en + trail : r.es;
+        }
+      });
+      if (metaTag) metaTag.setAttribute('content', LANG === 'en' ? META_EN : META_ES);
+      document.querySelectorAll('a[href^="https://mail.google.com"]').forEach(a => {
+        a.href = 'https://mail.google.com/mail/?view=cm&fs=1&to=florenciasoledadbagnis@gmail.com&su=' + encodeURIComponent(S().mailSubject);
+      });
+      const cl = document.getElementById('copy-label');
+      if (cl) cl.textContent = S().copy;
+      if (langBtn) {
+        langBtn.textContent = LANG === 'es' ? 'EN' : 'ES';
+        langBtn.title = S().langTitle;
+        langBtn.setAttribute('aria-label', S().langTitle);
+      }
+      renderGhTexts();
+      renderGhCal();
+      applyMotion();
+    }
+    if (langBtn) {
+      langBtn.addEventListener('click', () => {
+        LANG = LANG === 'es' ? 'en' : 'es';
+        try { localStorage.setItem('lang', LANG); } catch (e) {}
+        applyLang();
+      });
+    }
 
     // Solución táctil para que las imágenes vuelvan a la normalidad en celulares al sacar el dedo
     const modalImages = document.querySelectorAll('#modal-tiendanube .kawaii-modal-content img, #modal-mensuales .kawaii-modal-content img');
@@ -525,10 +728,10 @@ const res = await fetch('https://github-contributions-api.jogruber.de/v4/FlorBag
       copyBtn.addEventListener('click', () => {
         const email = 'florenciasoledadbagnis@gmail.com';
         navigator.clipboard.writeText(email).then(() => {
-          copyLabel.textContent = '¡Copiado! ✨';
+          copyLabel.textContent = S().copied;
           copyIcon.className = 'fas fa-check';
           setTimeout(() => {
-            copyLabel.textContent = 'Copiar email';
+            copyLabel.textContent = S().copy;
             copyIcon.className = 'far fa-copy';
           }, 2000);
         });
@@ -556,8 +759,11 @@ const res = await fetch('https://github-contributions-api.jogruber.de/v4/FlorBag
       }
     });
     backToTopBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' });
     });
+
+    // Aplicar idioma guardado al cargar
+    applyLang();
   </script>
 </body>
 </html>
