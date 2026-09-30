@@ -25,6 +25,60 @@
 <body>
 
 
+  <!-- Estilos aislados: NO tocan el body ni rompen el modo oscuro -->
+<style>
+  .kawaii-bg-decor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* No bloquea clics ni enlaces */
+    z-index: 999;          /* Flotan sutilmente en los costados */
+    overflow: hidden;
+  }
+
+  .decor-item {
+    position: absolute;
+    font-family: 'Courier New', monospace, sans-serif;
+    color: var(--rosa-brillante, #ff8da1); /* Usa exactamente la variable de tu portfolio */
+    opacity: 0.45;
+    font-weight: bold;
+    user-select: none;
+  }
+
+  .item-1 { top: 14%; left: 4%; font-size: 1.8rem; animation: floatSparkle 7s ease-in-out infinite alternate; }
+  .item-2 { top: 34%; right: 4%; font-size: 1.2rem; animation: floatTech 9s ease-in-out infinite alternate; }
+  .item-3 { bottom: 22%; left: 4%; font-size: 1.5rem; animation: floatSparkle 8s ease-in-out infinite alternate-reverse; }
+  .item-4 { bottom: 12%; right: 5%; font-size: 1.3rem; animation: floatTech 10s ease-in-out infinite alternate-reverse; }
+
+  @keyframes floatSparkle {
+    0% { transform: translateY(0) scale(0.9); opacity: 0.3; }
+    50% { opacity: 0.65; }
+    100% { transform: translateY(-20px) scale(1.1); opacity: 0.3; }
+  }
+
+  @keyframes floatTech {
+    0% { transform: translateY(0) rotate(-5deg); }
+    100% { transform: translateY(-22px) rotate(5deg); }
+  }
+
+  /* Cuando se activa el modo oscuro, toman automáticamente el tono de tu tema oscuro */
+  body.dark-mode .decor-item,
+  body.dark .decor-item {
+    color: var(--rosa-brillante, #ffb3c1);
+    opacity: 0.4;
+  }
+</style>
+
+<!-- ÍCONOS Y BRILLOS FLOTANTES -->
+<div class="kawaii-bg-decor" aria-hidden="true">
+  <span class="decor-item item-1">✦</span>
+  <span class="decor-item item-2">&lt;/&gt;</span>
+  <span class="decor-item item-3">✧</span>
+  <span class="decor-item item-4">{ }</span>
+</div>
+
   
   <!-- Botón de Modo Oscuro -->
   <button id="theme-toggle" aria-label="Cambiar modo oscuro" style="position: fixed; top: 20px; right: 20px; z-index: 1000; background: var(--rosa-suave); border: 1px solid var(--rosa-brillante); color: var(--rosa-brillante); padding: 10px 14px; border-radius: 50%; cursor: pointer; font-size: 18px; transition: 0.3s;">
