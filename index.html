@@ -20,71 +20,154 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* Estilos de elementos flotantes kawaii & tech */
+    .kawaii-bg-decor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 999;
+      overflow: hidden;
+    }
+
+    .decor-item {
+      position: absolute;
+      font-family: 'Courier New', monospace, sans-serif;
+      color: var(--rosa-brillante, #ff8da1);
+      opacity: 0.45;
+      font-weight: bold;
+      user-select: none;
+    }
+
+    .item-1 { top: 14%; left: 4%; font-size: 1.8rem; animation: floatSparkle 7s ease-in-out infinite alternate; }
+    .item-2 { top: 34%; right: 4%; font-size: 1.2rem; animation: floatTech 9s ease-in-out infinite alternate; }
+    .item-3 { bottom: 22%; left: 4%; font-size: 1.5rem; animation: floatSparkle 8s ease-in-out infinite alternate-reverse; }
+    .item-4 { bottom: 12%; right: 5%; font-size: 1.3rem; animation: floatTech 10s ease-in-out infinite alternate-reverse; }
+
+    @keyframes floatSparkle {
+      0% { transform: translateY(0) scale(0.9); opacity: 0.3; }
+      50% { opacity: 0.65; }
+      100% { transform: translateY(-20px) scale(1.1); opacity: 0.3; }
+    }
+
+    @keyframes floatTech {
+      0% { transform: translateY(0) rotate(-5deg); }
+      100% { transform: translateY(-22px) rotate(5deg); }
+    }
+
+    [data-theme="dark"] .decor-item {
+      color: var(--rosa-brillante, #ffb3c1);
+      opacity: 0.4;
+    }
+
+    /* Filtros interactivos de Proyectos */
+    .project-filters {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 35px;
+    }
+
+    .filter-btn {
+      background: white;
+      border: 1.5px solid var(--rosa-suave);
+      color: var(--texto-secundario);
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      font-family: inherit;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--rosa-brillante);
+      border-color: var(--rosa-brillante);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(236, 72, 153, 0.25);
+    }
+
+    [data-theme="dark"] .filter-btn {
+      background: var(--card-bg);
+      border-color: var(--rosa-suave);
+      color: var(--texto-secundario);
+    }
+
+    [data-theme="dark"] .filter-btn.active {
+      background: var(--rosa-brillante);
+      color: #fff;
+    }
+
+    .card.hide-card {
+      display: none !important;
+    }
+
+    /* Tarjeta de GitHub Calendar */
+    .github-calendar-card {
+      max-width: 950px;
+      margin: 0 auto;
+      padding: 25px;
+      background: white;
+      border: 1px solid var(--rosa-suave);
+      border-radius: 24px;
+      box-shadow: 0 10px 40px rgba(236, 72, 153, 0.08);
+      overflow-x: auto;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    [data-theme="dark"] .github-calendar-card {
+      background: var(--card-bg);
+    }
+
+    .github-calendar-card img {
+      display: inline-block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .gh-dark {
+      display: none !important;
+    }
+
+    .gh-light {
+      display: inline-block !important;
+    }
+
+    [data-theme="dark"] .gh-light {
+      display: none !important;
+    }
+
+    [data-theme="dark"] .gh-dark {
+      display: inline-block !important;
+      filter: contrast(1.1) brightness(1.05);
+    }
+  </style>
 </head>
 
 <body>
 
+  <!-- ÍCONOS Y BRILLOS FLOTANTES -->
+  <div class="kawaii-bg-decor" aria-hidden="true">
+    <span class="decor-item item-1">✦</span>
+    <span class="decor-item item-2">&lt;/&gt;</span>
+    <span class="decor-item item-3">✧</span>
+    <span class="decor-item item-4">{ }</span>
+  </div>
 
-  <!-- Estilos aislados: NO tocan el body ni rompen el modo oscuro -->
-<style>
-  .kawaii-bg-decor {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none; /* No bloquea clics ni enlaces */
-    z-index: 999;          /* Flotan sutilmente en los costados */
-    overflow: hidden;
-  }
-
-  .decor-item {
-    position: absolute;
-    font-family: 'Courier New', monospace, sans-serif;
-    color: var(--rosa-brillante, #ff8da1); /* Usa exactamente la variable de tu portfolio */
-    opacity: 0.45;
-    font-weight: bold;
-    user-select: none;
-  }
-
-  .item-1 { top: 14%; left: 4%; font-size: 1.8rem; animation: floatSparkle 7s ease-in-out infinite alternate; }
-  .item-2 { top: 34%; right: 4%; font-size: 1.2rem; animation: floatTech 9s ease-in-out infinite alternate; }
-  .item-3 { bottom: 22%; left: 4%; font-size: 1.5rem; animation: floatSparkle 8s ease-in-out infinite alternate-reverse; }
-  .item-4 { bottom: 12%; right: 5%; font-size: 1.3rem; animation: floatTech 10s ease-in-out infinite alternate-reverse; }
-
-  @keyframes floatSparkle {
-    0% { transform: translateY(0) scale(0.9); opacity: 0.3; }
-    50% { opacity: 0.65; }
-    100% { transform: translateY(-20px) scale(1.1); opacity: 0.3; }
-  }
-
-  @keyframes floatTech {
-    0% { transform: translateY(0) rotate(-5deg); }
-    100% { transform: translateY(-22px) rotate(5deg); }
-  }
-
-  /* Cuando se activa el modo oscuro, toman automáticamente el tono de tu tema oscuro */
-  body.dark-mode .decor-item,
-  body.dark .decor-item {
-    color: var(--rosa-brillante, #ffb3c1);
-    opacity: 0.4;
-  }
-</style>
-
-<!-- ÍCONOS Y BRILLOS FLOTANTES -->
-<div class="kawaii-bg-decor" aria-hidden="true">
-  <span class="decor-item item-1">✦</span>
-  <span class="decor-item item-2">&lt;/&gt;</span>
-  <span class="decor-item item-3">✧</span>
-  <span class="decor-item item-4">{ }</span>
-</div>
-
-  
   <!-- Botón de Modo Oscuro -->
   <button id="theme-toggle" aria-label="Cambiar modo oscuro" style="position: fixed; top: 20px; right: 20px; z-index: 1000; background: var(--rosa-suave); border: 1px solid var(--rosa-brillante); color: var(--rosa-brillante); padding: 10px 14px; border-radius: 50%; cursor: pointer; font-size: 18px; transition: 0.3s;">
     🌙
   </button>
-  
+
   <div class="container">
 
     <!-- HEADER -->
@@ -172,7 +255,7 @@
         Tecnologías y herramientas
       </h2>
 
-      <h3 class="tech-title">Frontend & Backend / Datos</h3>
+      <h3 class="tech-title">Frontend &amp; Backend / Datos</h3>
       <div class="tech-stack-general highlight">
         <span>
           <i class="fab fa-html5"></i>
@@ -225,6 +308,30 @@
       </div>
     </section>
 
+    <!-- ACTIVIDAD EN GITHUB -->
+    <section id="github-actividad">
+      <h2>
+        <i class="fab fa-github"></i>
+        Actividad en GitHub
+      </h2>
+      <div class="github-calendar-card">
+        <a href="https://github.com/FlorBagnis" target="_blank" rel="noopener noreferrer" title="Ver perfil de GitHub">
+          <!-- Gráfico para Modo Claro (rosa vibrante) -->
+          <img
+            class="gh-chart gh-light"
+            src="https://ghchart.rshah.org/ec4899/FlorBagnis"
+            alt="Contribuciones en GitHub de Florencia Bagnis"
+          />
+          <!-- Gráfico para Modo Oscuro (rosa luminoso) -->
+          <img
+            class="gh-chart gh-dark"
+            src="https://ghchart.rshah.org/f472b6/FlorBagnis"
+            alt="Contribuciones en GitHub de Florencia Bagnis en Modo Oscuro"
+          />
+        </a>
+      </div>
+    </section>
+
     <!-- PROYECTOS -->
     <section id="proyectos">
       <h2>
@@ -232,10 +339,18 @@
         Proyectos
       </h2>
 
+      <!-- Filtros por categoría -->
+      <div class="project-filters">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="frontend">Frontend &amp; UI</button>
+        <button class="filter-btn" data-filter="fullstack">Fullstack &amp; SQL</button>
+        <button class="filter-btn" data-filter="tools">Herramientas</button>
+      </div>
+
       <div class="projects-grid">
 
         <!-- PROYECTO 1: CALCULADORA -->
-        <article class="card">
+        <article class="card" data-category="frontend tools">
           <h3>
             Calculadora de Tasas
             <i class="fas fa-calculator"></i>
@@ -281,7 +396,7 @@
         </article>
 
         <!-- PROYECTO 2: HONEYMOON -->
-        <article class="card">
+        <article class="card" data-category="frontend">
           <h3>
             Honeymoon
             <i class="fas fa-shirt"></i>
@@ -331,7 +446,7 @@
         </article>
 
         <!-- PROYECTO 3: MENSUALES -->
-        <article class="card">
+        <article class="card" data-category="frontend tools">
           <h3>
             Mensuales
             <i class="fas fa-wallet"></i>
@@ -380,8 +495,8 @@
           </div>
         </article>
 
-      <!-- PROYECTO 4: CRUD PRODUCTOS / PHP & MYSQL -->
-        <article class="card">
+        <!-- PROYECTO 4: CRUD PRODUCTOS / PHP & MYSQL -->
+        <article class="card" data-category="fullstack">
           <h3>
             Gestor de Productos
             <i class="fas fa-boxes-stacked"></i>
@@ -427,53 +542,52 @@
           </div>
         </article>
 
- <!-- PROYECTO 5: SQL DEV -->
-        
-<article class="card">
-  <h3>
-    SQL Practical Studio &amp; Bootcamp
-    <i class="fas fa-database"></i>
-  </h3>
-  <img
-    src="sqldevdemo.gif"
-    alt="Demostración de SQL Practical Studio"
-    class="project-media"
-    loading="lazy"
-  />
-  <p class="project-type">
-    Simulador interactivo · Bases de Datos &amp; SaaS Support
-  </p>
-  <p>
-    Simulador web interactivo con editor de consultas en vivo y renderizado de tablas dinámicas. Diseñado para entrenar y validar sintaxis SQL relacional mediante retos prácticos por dificultad (Fácil, Medio, Experto), orientados al diagnóstico operativo, seguimiento de horas y métricas de rentabilidad.
-  </p>
-  <div class="project-tags">
-    <span>HTML5</span>
-    <span>CSS3 Moderno</span>
-    <span>JavaScript ES6</span>
-    <span>SQL</span>
-    <span>DOM Dinámico</span>
-  </div>
-  <div class="buttons">
-    <a
-      class="button"
-      href="https://florbagnis.github.io/SQL_DEV/"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <i class="fas fa-arrow-up-right-from-square"></i>
-      Ver demo
-    </a>
-    <a
-      class="button secondary"
-      href="https://github.com/FlorBagnis/SQL_DEV"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <i class="fab fa-github"></i>
-      Ver código
-    </a>
-  </div>
-</article>
+        <!-- PROYECTO 5: SQL DEV -->
+        <article class="card" data-category="fullstack tools">
+          <h3>
+            SQL Practical Studio &amp; Bootcamp
+            <i class="fas fa-database"></i>
+          </h3>
+          <img
+            src="sqldevdemo.gif"
+            alt="Demostración de SQL Practical Studio"
+            class="project-media"
+            loading="lazy"
+          />
+          <p class="project-type">
+            Simulador interactivo · Bases de Datos &amp; SaaS Support
+          </p>
+          <p>
+            Simulador web interactivo con editor de consultas en vivo y renderizado de tablas dinámicas. Diseñado para entrenar y validar sintaxis SQL relacional mediante retos prácticos por dificultad (Fácil, Medio, Experto), orientados al diagnóstico operativo, seguimiento de horas y métricas de rentabilidad.
+          </p>
+          <div class="project-tags">
+            <span>HTML5</span>
+            <span>CSS3 Moderno</span>
+            <span>JavaScript ES6</span>
+            <span>SQL</span>
+            <span>DOM Dinámico</span>
+          </div>
+          <div class="buttons">
+            <a
+              class="button"
+              href="https://florbagnis.github.io/SQL_DEV/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i class="fas fa-arrow-up-right-from-square"></i>
+              Ver demo
+            </a>
+            <a
+              class="button secondary"
+              href="https://github.com/FlorBagnis/SQL_DEV"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i class="fab fa-github"></i>
+              Ver código
+            </a>
+          </div>
+        </article>
         
       </div>
     </section>
@@ -486,6 +600,7 @@
       </h2>
 
       <div class="contact-grid">
+        <!-- Enlace directo a redactar en Gmail -->
         <a
           href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=florenciasoledadbagnis@gmail.com&amp;su=Contacto%20desde%20tu%20portfolio"
           target="_blank"
@@ -495,6 +610,18 @@
           <i class="fas fa-envelope"></i>
           Email
         </a>
+
+        <!-- Botón interactivo para Copiar Email -->
+        <button
+          id="copy-email-btn"
+          type="button"
+          class="contact-item"
+          style="cursor: pointer; font-family: inherit; font-size: inherit;"
+          aria-label="Copiar correo electrónico al portapapeles"
+        >
+          <i class="far fa-copy" id="copy-icon"></i>
+          <span id="copy-label">Copiar email</span>
+        </button>
 
         <a
           href="https://www.linkedin.com/in/florencia-bagnis"
@@ -528,27 +655,25 @@
 
   </div>
 
-  <!-- Script de Modo Oscuro -->
+  <!-- SCRIPTS -->
   <script>
-// Evita que el navegador recuerde la posición previa y fuerza el inicio arriba
+    // Evita que el navegador recuerde la posición previa y fuerza el inicio arriba
     if ('scrollRestoration' in history) {
       history.scrollRestoration = 'manual';
     }
     window.scrollTo(0, 0);
 
+    // MODO OSCURO
     const toggleButton = document.getElementById('theme-toggle');
     const currentTheme = localStorage.getItem('theme');
 
-
-    // Si el usuario ya había elegido un tema antes, lo aplicamos
     if (currentTheme) {
       document.documentElement.setAttribute('data-theme', currentTheme);
       if (currentTheme === 'dark') {
-        toggleButton.textContent = '☀️';
+        toggleButton.textContent = '☀️️';
       }
     }
 
-    // Función para cambiar de modo al hacer clic
     toggleButton.addEventListener('click', () => {
       let theme = document.documentElement.getAttribute('data-theme');
       if (theme === 'dark') {
@@ -561,6 +686,48 @@
         toggleButton.textContent = '☀️';
       }
     });
+
+    // FILTRO INTERACTIVO DE PROYECTOS
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.projects-grid .card');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filterValue = btn.getAttribute('data-filter');
+
+        projectCards.forEach(card => {
+          const cardCategories = card.getAttribute('data-category') || '';
+          if (filterValue === 'all' || cardCategories.includes(filterValue)) {
+            card.classList.remove('hide-card');
+          } else {
+            card.classList.add('hide-card');
+          }
+        });
+      });
+    });
+
+    // COPIAR EMAIL CON FEEDBACK VISUAL
+    const copyBtn = document.getElementById('copy-email-btn');
+    const copyLabel = document.getElementById('copy-label');
+    const copyIcon = document.getElementById('copy-icon');
+
+    if (copyBtn) {
+      copyBtn.addEventListener('click', () => {
+        const email = 'florenciasoledadbagnis@gmail.com';
+        navigator.clipboard.writeText(email).then(() => {
+          copyLabel.textContent = '¡Copiado! ✨';
+          copyIcon.className = 'fas fa-check';
+
+          setTimeout(() => {
+            copyLabel.textContent = 'Copiar email';
+            copyIcon.className = 'far fa-copy';
+          }, 2000);
+        });
+      });
+    }
   </script>
 </body>
 </html>
