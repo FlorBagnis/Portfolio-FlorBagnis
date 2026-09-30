@@ -1007,6 +1007,28 @@ footer p {
   }
 }
 
+/* ANIMACIÓN SUAVE PARA EL ÍCONO DE LA PC EN EL TÍTULO */
+h1 i.fa-laptop-code {
+  display: inline-block;
+  margin-left: 8px;
+  animation: techBounce 3s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+@keyframes techBounce {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translateY(-4px) rotate(-4deg) scale(1.05);
+  }
+  50% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  75% {
+    transform: translateY(-3px) rotate(4deg) scale(1.03);
+  }
+}
 
 
 
