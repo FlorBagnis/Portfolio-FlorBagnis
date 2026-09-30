@@ -21,8 +21,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
   <link rel="stylesheet" href="style.css" />
   
-  <style>
   
+  <style>
+    
     .sticky-nav-wrapper { position: fixed; top: 18px; left: 0; width: 100%; display: flex; justify-content: center; z-index: 1000; pointer-events: none; padding: 0 16px; }
     .sticky-nav { pointer-events: auto; display: flex; align-items: center; gap: 18px; padding: 8px 22px; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--rosa-suave); border-radius: 999px; box-shadow: 0 8px 25px rgba(236, 72, 153, 0.12); }
     .sticky-nav a { font-size: 14px; font-weight: 600; color: var(--texto-secundario); transition: color 0.25s ease, transform 0.25s ease; }
@@ -55,21 +56,24 @@
     [data-theme="dark"] .filter-btn.active { background: var(--rosa-brillante); color: #fff; }
     .card.hide-card { display: none !important; }
     
-    .github-calendar-card { max-width: 950px; margin: 0 auto; padding: 30px 25px; background: white; border: 1px solid var(--rosa-suave); border-radius: 24px; box-shadow: 0 10px 40px rgba(236, 72, 153, 0.08); overflow: hidden; text-align: center; transition: 0.3s; }
+    .github-calendar-card { max-width: 950px; margin: 0 auto; padding: 25px 20px; background: white; border: 1px solid var(--rosa-suave); border-radius: 24px; box-shadow: 0 10px 40px rgba(236, 72, 153, 0.08); text-align: center; transition: 0.3s; }
     [data-theme="dark"] .github-calendar-card { background: var(--card-bg); }
+    
     .gh-years-container { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-bottom: 22px; }
-    .gh-year-badge { display: flex; flex-direction: column; align-items: center; padding: 10px 22px; background: var(--rosa-suave); border: 1px solid var(--rosa-brillante); border-radius: 16px; min-width: 140px; transition: transform 0.2s ease; }
+    .gh-year-badge { display: flex; flex-direction: column; align-items: center; padding: 10px 18px; background: var(--rosa-suave); border: 1px solid var(--rosa-brillante); border-radius: 16px; min-width: 130px; transition: transform 0.2s ease; }
     .gh-year-badge:hover { transform: translateY(-3px); }
-    .gh-year-label { font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--rosa-oscuro); letter-spacing: 0.5px; }
-    .gh-year-count { font-size: 19px; font-weight: 800; color: var(--texto-oscuro); margin-top: 2px; }
+    .gh-year-label { font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--rosa-oscuro); letter-spacing: 0.5px; }
+    .gh-year-count { font-size: 17px; font-weight: 800; color: var(--texto-oscuro); margin-top: 2px; }
     .gh-year-badge.total-badge { background: linear-gradient(135deg, var(--rosa-brillante), var(--rosa-oscuro)); border: none; }
     .gh-year-badge.total-badge .gh-year-label, .gh-year-badge.total-badge .gh-year-count { color: #ffffff !important; }
     [data-theme="dark"] .gh-year-badge { background: rgba(244, 114, 182, 0.12); border-color: rgba(244, 114, 182, 0.4); }
     [data-theme="dark"] .gh-year-badge .gh-year-label { color: #f472b6; }
     [data-theme="dark"] .gh-year-badge .gh-year-count { color: #fdf2f8; }
     
-    .gh-chart-container { width: 100%; overflow-x: auto; overflow-y: hidden; display: flex; justify-content: flex-start; -webkit-overflow-scrolling: touch; padding-bottom: 5px; }
-    .gh-chart { max-width: none; height: auto; display: block; }
+    /* Gráfico adaptado para escalar por completo en celulares sin scroll */
+    .gh-chart-container { width: 100%; display: flex; justify-content: center; overflow: hidden; }
+    .gh-chart { width: 100%; max-width: 100%; height: auto; display: block; }
+    
     .gh-dark { display: none !important; }
     .gh-light { display: block !important; }
     [data-theme="dark"] .gh-light { display: none !important; }
@@ -78,18 +82,19 @@
     .brand-link { color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: 12px; transition: opacity 0.2s ease; }
     .brand-link:hover { opacity: 0.85; }
 
-    /* MEJORAS RESPONSIVE PARA CELULARES */
+    /* AJUSTES RESPONSIVE OPTIMIZADOS PARA CELULARES */
     @media (max-width: 768px) {
-      .sticky-nav { gap: 12px; padding: 6px 16px; } 
-      .sticky-nav a { font-size: 12px; }
-      .github-calendar-card { padding: 15px 10px; border-radius: 16px; }
-      .gh-years-container { gap: 8px; margin-bottom: 15px; }
-      .gh-year-badge { min-width: 105px; padding: 8px 12px; border-radius: 12px; }
-      .gh-year-label { font-size: 10px; }
-      .gh-year-count { font-size: 14px; }
-      .gh-chart-container { justify-content: flex-start; }
+      .sticky-nav { gap: 8px; padding: 6px 12px; } 
+      .sticky-nav a { font-size: 11px; }
+      .github-calendar-card { padding: 15px 10px; border-radius: 16px; margin: 0 5px; }
+      .gh-years-container { gap: 6px; margin-bottom: 12px; }
+      .gh-year-badge { min-width: 90px; padding: 6px 8px; border-radius: 10px; }
+      .gh-year-label { font-size: 9px; }
+      .gh-year-count { font-size: 11px; }
     }
+  
   </style>
+  
 </head>
 <body>
   <div class="sticky-nav-wrapper">
