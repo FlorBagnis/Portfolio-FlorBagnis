@@ -574,3 +574,140 @@ footer p {
     [data-theme="dark"] .gh-year-badge .gh-year-count {
       color: #fdf2f8;
     }
+
+
+
+/* 1. NAVBAR ULTRA LIVIANA (NO TAPA TEXTO) */
+    .sticky-nav-wrapper {
+      position: fixed;
+      top: 12px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      z-index: 1000;
+      pointer-events: none;
+      padding: 0 16px;
+      transition: transform 0.35s ease, opacity 0.35s ease;
+    }
+
+    /* Clase que se activa con JS para esconderla cuando bajas */
+    .sticky-nav-wrapper.nav-hidden {
+      transform: translateY(-80px);
+      opacity: 0;
+    }
+
+    .sticky-nav {
+      pointer-events: auto;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 6px 20px;
+      /* Fondo traslúcido liviano */
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 999px;
+      box-shadow: 0 4px 20px rgba(236, 72, 153, 0.08);
+    }
+
+    .sticky-nav a {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--texto-secundario, #6b5b65);
+      text-decoration: none;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .sticky-nav a:hover {
+      color: #ec4899;
+      transform: translateY(-1px);
+    }
+
+    [data-theme="dark"] .sticky-nav {
+      background: rgba(35, 21, 31, 0.7);
+      border-color: rgba(244, 114, 182, 0.2);
+    }
+
+    [data-theme="dark"] .sticky-nav a {
+      color: #e2b8ce;
+    }
+
+    [data-theme="dark"] .sticky-nav a:hover {
+      color: #f472b6;
+    }
+
+    /* 2. ARMONÍA DE BOTONES (ADIÓS BORDÓ OSCURO) */
+    .button,
+    .buttons .button:not(.secondary) {
+      background: #ec4899 !important; /* Rosa brillante armonioso */
+      border: 1px solid #ec4899 !important;
+      color: #ffffff !important;
+      box-shadow: 0 4px 15px rgba(236, 72, 153, 0.25);
+      transition: all 0.25s ease;
+    }
+
+    .button:hover,
+    .buttons .button:not(.secondary):hover {
+      background: #db2777 !important;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(236, 72, 153, 0.35);
+    }
+
+    /* 3. PÍLDORAS DE IDIOMA Y FORMACIÓN CON MOVIMIENTO */
+    .skills-summary-pillbox {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .summary-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(236, 72, 153, 0.25);
+      border-radius: 14px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #4a3b44;
+      box-shadow: 0 4px 14px rgba(236, 72, 153, 0.06);
+      transition: all 0.3s ease;
+      animation: floatPill 6s ease-in-out infinite alternate;
+    }
+
+    /* Diferentes ritmos de animación para que se muevan dinámicas */
+    .summary-pill:nth-child(1) { animation-delay: 0s; }
+    .summary-pill:nth-child(2) { animation-delay: 1.5s; }
+    .summary-pill:nth-child(3) { animation-delay: 3s; }
+
+    @keyframes floatPill {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+      100% { transform: translateY(0); }
+    }
+
+    .summary-pill:hover {
+      transform: translateY(-5px) scale(1.03);
+      border-color: #ec4899;
+      background: #ffffff;
+      box-shadow: 0 8px 22px rgba(236, 72, 153, 0.18);
+    }
+
+    .summary-pill i {
+      color: #ec4899;
+      transition: transform 0.25s ease;
+    }
+
+    .summary-pill:hover i {
+      transform: rotate(8deg) scale(1.15);
+    }
+
+    [data-theme="dark"] .summary-pill {
+      background: rgba(45, 25, 38, 0.7);
+      border-color: rgba(244, 114, 182, 0.3);
+      color: #fce7f3;
+    }
