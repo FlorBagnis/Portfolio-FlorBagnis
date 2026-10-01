@@ -5,8 +5,8 @@
   if (!socials) return;
 
   const T = {
-    es: { label: 'Exportar PDF', title: 'Descargar portfolio en PDF', busy: 'Generando…', file: 'Florencia-Bagnis-Portfolio.pdf', err: 'No se pudo generar el PDF. Revisá tu conexión e intentá de nuevo.' },
-    en: { label: 'Export PDF', title: 'Download portfolio as PDF', busy: 'Generating…', file: 'Florencia-Bagnis-Portfolio-EN.pdf', err: 'The PDF could not be generated. Check your connection and try again.' }
+    es: { label: 'PDF', title: 'Descargar portfolio en PDF', busy: 'Generando…', file: 'Florencia-Bagnis-Portfolio.pdf', err: 'No se pudo generar el PDF. Revisá tu conexión e intentá de nuevo.' },
+    en: { label: 'PDF', title: 'Download portfolio as PDF' , busy: 'Generating…', file: 'Florencia-Bagnis-Portfolio-EN.pdf', err: 'The PDF could not be generated. Check your connection and try again.' }
   };
   const lang = () => (document.documentElement.lang === 'en' ? 'en' : 'es');
 
