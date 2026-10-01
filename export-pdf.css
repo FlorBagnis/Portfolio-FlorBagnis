@@ -4,9 +4,7 @@
 .header-socials { align-items: center; flex-wrap: wrap; }
 
 .export-pdf-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0;
+  display: inline-block;
   padding: 0;
   background: none;
   border: none;
@@ -17,6 +15,7 @@
   cursor: pointer;
   transition: 0.3s;
 }
+
 .export-pdf-btn:hover:not(:disabled) {
   color: var(--rosa-brillante);
   transform: translateY(-3px);
