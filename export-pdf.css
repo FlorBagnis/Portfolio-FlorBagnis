@@ -38,3 +38,30 @@
   header, section { opacity: 1 !important; animation: none !important; transform: none !important; }
   .card, .github-calendar-card { break-inside: avoid; }
 }
+
+
+/* CV y PDF: misma regla = mismo tamaño */
+.header-socials a[aria-label="Descargar CV"],
+.header-socials #export-pdf,
+.header-socials .export-pdf-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 0;
+  margin: 0;
+  font-size: 28px;
+  line-height: inherit;
+}
+.header-socials a[aria-label="Descargar CV"] i,
+.header-socials #export-pdf i,
+.header-socials .export-pdf-btn i {
+  font-size: 28px;
+  line-height: inherit;
+}
+.header-socials .cv-label,
+.header-socials .export-pdf-label {
+  font-size: 14px !important;
+  font-weight: 700;
+  margin-left: 0;
+  vertical-align: baseline;
+}
