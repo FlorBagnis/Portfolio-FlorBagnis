@@ -1,32 +1,6 @@
-/* ==================================
-   BOTÓN EXPORTAR PDF (mismo estilo que los íconos del header)
-================================== */
-.header-socials { align-items: center; flex-wrap: wrap; }
-
-.export-pdf-btn {
-  display: inline-block;
-  padding: 0;
-  background: none;
-  border: none;
-  color: var(--texto-secundario);
-  font-family: inherit;
-  font-size: 28px;
-  line-height: inherit;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.export-pdf-btn:hover:not(:disabled) {
-  color: var(--rosa-brillante);
-  transform: translateY(-3px);
-}
-.export-pdf-btn:disabled { opacity: 0.6; cursor: progress; }
-.export-pdf-label {
-  font-size: 14px;
-  font-weight: 700;
-  margin-left: 3px;
-  vertical-align: middle;
-}
+/* El botón PDF es un <a> dentro de .header-socials: usa los mismos estilos que LinkedIn, GitHub y CV.
+   Acá no se define nada de tamaño/color/hover a propósito. */
+#export-pdf { cursor: pointer; }
 
 /* Si igual se imprime con Ctrl+P */
 @media print {
