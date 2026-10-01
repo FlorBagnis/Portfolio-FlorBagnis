@@ -393,7 +393,7 @@
       <p>¡Hola! Soy <strong>Florencia Bagnis</strong>, Desarrolladora Frontend con un <strong>perfil híbrido</strong>: combino lo técnico con lo humano.</p>
       <p>Mi <strong>experiencia formada como soporte en Tiendanube</strong> me puso en contacto con comerciantes reales. Aprendí dónde se traban y cómo explicarles las cosas de forma simple, y esa mirada es la que llevo al desarrollo: primero pienso en quién va a usar la herramienta.</p>
       <p>Un ejemplo: los comerciantes no sabían cuánto valían realmente sus tasas y la app oficial solo mostraba el cálculo en una cuota, así que diseñé una calculadora interna. Mi calculadora se implementó en la app oficial a partir de los modales de cuotas sin interés, y además hubo mejoras en el texto de la app oficial.</p>
-      <p>Me formé en <strong>Desarrollo Web en Coderhouse</strong> (HTML, CSS, SASS, Bootstrap, Git, GitHub y diseño responsive) y, a partir de mi experiencia en Tiendanube, me dediqué a programar más y a crear herramientas funcionales con proyectos propios en JavaScript, PHP, SQL y Firebase.</p>
+      <p>Me formé en <strong>Desarrollo Web en Coderhouse</strong> (HTML, CSS, SASS, Bootstrap, Git, GitHub y diseño responsive) y, a partir de mi experiencia en Tiendanube, me dediqué a programar más y a crear herramientas funcionales con proyectos propios en JavaScript, React, PHP, SQL y Firebase.</p>
       <p>Busco sumarme a un equipo donde pueda unir ambas cosas: construir interfaces claras y entender a las personas que las usan. 💗</p>
       <div class="skills-summary-pillbox">
         <span class="summary-pill"><i class="fas fa-language"></i> Inglés: Intermedio - Avanzado (B2)</span>
@@ -411,6 +411,7 @@
         <span><i class="fab fa-sass"></i> SASS</span>
         <span><i class="fab fa-bootstrap"></i> Bootstrap</span>
         <span><i class="fab fa-js"></i> JavaScript</span>
+        <span><i class="fab fa-react"></i> React</span>
         <span><i class="fab fa-php"></i> PHP</span>
         <span><i class="fas fa-database"></i> MySQL / SQL</span>
       </div>
@@ -553,6 +554,21 @@
             <a class="button secondary" href="https://github.com/FlorBagnis/SQL_DEV" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Ver código</a>
           </div>
         </article>
+        <article class="card" data-category="frontend tools">
+          <h3>CX Macros <i class="fas fa-comments"></i></h3>
+          <div class="media-container">
+            <img src="cxmacrosdemo.gif" alt="CX Macros" class="project-media" loading="lazy" />
+            <canvas class="project-media"></canvas>
+            <button class="gif-toggle-btn" type="button" aria-label="Pausar animación" title="Pausar animación"><i class="fas fa-pause"></i></button>
+          </div>
+          <p class="project-type">Proyecto personal · Herramienta para Customer Experience</p>
+          <p>Me dedico a Customer Experience y quise sumar una herramienta para usar en el día a día que, a la vez, me ayudara a implementar y entender React. Eliges una plantilla de respuesta, completas los datos del cliente y copias el mensaje listo. También puedes crear, editar y marcar plantillas como favoritas, con modo oscuro.</p>
+          <div class="project-tags"><span>React</span><span>Vite</span><span>JavaScript</span><span>CSS3</span><span>localStorage</span><span>Responsive</span></div>
+          <div class="buttons">
+            <a class="button" href="https://cx-macros.vercel.app/" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i> Ver demo</a>
+            <a class="button secondary" href="https://github.com/FlorBagnis/CX-macros" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Ver código</a>
+          </div>
+        </article>
       </div>
     </section>
     <section id="contacto">
@@ -678,7 +694,7 @@
     reg('#sobre-mi > p:nth-of-type(1)', "Hi! I'm <strong>Florencia Bagnis</strong>, a Frontend Developer with a <strong>hybrid profile</strong>: I combine the technical with the human.", true);
     reg('#sobre-mi > p:nth-of-type(2)', 'My <strong>background experience in support at Tiendanube</strong> put me in contact with real merchants. I learned where they get stuck and how to explain things simply, and that perspective shapes how I build: I start by thinking about who will use the tool.', true);
     reg('#sobre-mi > p:nth-of-type(3)', "One example: merchants didn't know what their payment fees really were and the official app only showed the calculation for a single installment, so I designed an internal calculator. My calculator was implemented in the official app based on the interest-free installment modals, and the text of the official app was also improved.", true);
-    reg('#sobre-mi > p:nth-of-type(4)', 'I trained in <strong>Web Development at Coderhouse</strong> (HTML, CSS, SASS, Bootstrap, Git, GitHub and responsive design) and, building on my experience at Tiendanube, I started programming more and creating functional tools through personal projects in JavaScript, PHP, SQL and Firebase.', true);
+    reg('#sobre-mi > p:nth-of-type(4)', 'I trained in <strong>Web Development at Coderhouse</strong> (HTML, CSS, SASS, Bootstrap, Git, GitHub and responsive design) and, building on my experience at Tiendanube, I started programming more and creating functional tools through personal projects in JavaScript, React, PHP, SQL and Firebase.', true);
     reg('#sobre-mi > p:nth-of-type(5)', "I'm looking to join a team where I can bring both together: building clear interfaces and understanding the people who use them. 💗", true);
     reg('.summary-pill:nth-child(1)', 'English: Upper-intermediate to advanced (B2)');
     reg('.summary-pill:nth-child(2)', 'Portuguese: Basic');
@@ -712,6 +728,9 @@
     reg('.projects-grid .card:nth-child(5) > p:not(.project-type)', "It was born from wanting to learn SQL in a practical way. It is a simulator with a live query console, true/false questions and fill-in exercises, with dynamically rendered tables.");
     reg('.projects-grid .card:nth-child(5) .project-tags span:nth-child(2)', 'Modern CSS3');
     reg('.projects-grid .card:nth-child(5) .project-tags span:nth-child(5)', 'Dynamic DOM');
+
+    reg('.projects-grid .card:nth-child(6) .project-type', 'Personal project · Customer Experience tool');
+    reg('.projects-grid .card:nth-child(6) > p:not(.project-type)', 'I work in Customer Experience and wanted to build a tool I could use day to day that would also help me implement and understand React. You pick a reply template, fill in the customer details and copy the message, ready to send. You can also create, edit and favorite templates, with dark mode.');
 
     reg('.buttons a.button:not(.secondary)', 'View demo');
     reg('.buttons a.button.secondary', 'View code');
