@@ -96,7 +96,7 @@
       pdf.addImage(canvas.toDataURL('image/jpeg', 0.92), 'JPEG', 0, 0, w, h);
       links.forEach(l => pdf.link(l.x, l.y, l.w, l.h, { url: l.url }));
         pdf.save(T[lang()].file);
-      status = lang() === 'en' ? 'Done! ✨' : '¡Listo! ✨';
+      status = lang() === 'en' ? 'Done! 🌸' : '¡Listo! 🌸';
       setTimeout(() => { status = ''; updateTexts(); }, 2500);
     } catch (e) {
       console.error(e);
