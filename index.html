@@ -392,7 +392,7 @@
       <h2>Sobre mí</h2>
       <p>¡Hola! Soy <strong>Florencia Bagnis</strong>, Desarrolladora Frontend con un <strong>perfil híbrido</strong>: combino lo técnico con lo humano.</p>
       <p>Mi <strong>experiencia formada como soporte en Tiendanube</strong> me puso en contacto con comerciantes reales. Aprendí dónde se traban y cómo explicarles las cosas de forma simple, y esa mirada es la que llevo al desarrollo: primero pienso en quién va a usar la herramienta.</p>
-      <p>Un ejemplo: los clientes no sabían cuánto valían realmente sus tasas y no había una app oficial que lo resolviera, así que diseñé una calculadora interna que terminó reforzando la app oficial.</p>
+      <p>Un ejemplo: los comerciantes no sabían cuánto valían realmente sus tasas y la app oficial solo mostraba el cálculo en una cuota, así que diseñé una calculadora interna. Mi calculadora se implementó en la app oficial a partir de los modales de cuotas sin interés, y además hubo mejoras en el texto de la app oficial.</p>
       <p>Me formé en <strong>Desarrollo Web en Coderhouse</strong> (HTML, CSS, SASS, Bootstrap, Git, GitHub y diseño responsive) y sigo aprendiendo con proyectos propios en JavaScript, PHP, SQL y Firebase.</p>
       <p>Busco sumarme a un equipo donde pueda unir ambas cosas: construir interfaces claras y entender a las personas que las usan. 💗</p>
       <div class="skills-summary-pillbox">
@@ -484,7 +484,7 @@
             <button class="gif-toggle-btn" type="button" aria-label="Pausar animación" title="Pausar animación"><i class="fas fa-pause"></i></button>
           </div>
           <p class="project-type">Proyecto práctico · Herramienta para e-commerce</p>
-          <p>Los comerciantes de Tiendanube no sabían cuánto valían realmente sus tasas y no existía una app oficial que lo resolviera. Diseñé esta herramienta interna para simular tasas, cuotas y montos netos según el plan y el medio de pago, y terminó reforzando la app oficial.</p>
+          <p>Los comerciantes de Tiendanube no sabían cuánto valían realmente sus tasas y la app oficial solo mostraba el cálculo en una cuota. Diseñé esta herramienta interna para simular tasas, cuotas y montos netos según el plan y el medio de pago. Mi calculadora se implementó en la app oficial a partir de los modales de cuotas sin interés, y además hubo mejoras en el texto de la app oficial.</p>
           <div class="project-tags"><span>HTML5</span><span>CSS3</span><span>JavaScript</span></div>
           <div class="buttons">
             <a class="button" href="https://calculadora-tiendanube.vercel.app" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i> Ver demo</a>
@@ -677,7 +677,7 @@
     reg('#sobre-mi h2', 'About me');
     reg('#sobre-mi > p:nth-of-type(1)', "Hi! I'm <strong>Florencia Bagnis</strong>, a Frontend Developer with a <strong>hybrid profile</strong>: I combine the technical with the human.", true);
     reg('#sobre-mi > p:nth-of-type(2)', 'My <strong>background experience in support at Tiendanube</strong> put me in contact with real merchants. I learned where they get stuck and how to explain things simply, and that perspective shapes how I build: I start by thinking about who will use the tool.', true);
-    reg('#sobre-mi > p:nth-of-type(3)', "One example: customers didn't know what their payment fees really were and there was no official app to solve it, so I designed an internal calculator that ended up reinforcing the official app.", true);
+    reg('#sobre-mi > p:nth-of-type(3)', "One example: merchants didn't know what their payment fees really were and the official app only showed the calculation for a single installment, so I designed an internal calculator. My calculator was implemented in the official app based on the interest-free installment modals, and the text of the official app was also improved.", true);
     reg('#sobre-mi > p:nth-of-type(4)', 'I trained in <strong>Web Development at Coderhouse</strong> (HTML, CSS, SASS, Bootstrap, Git, GitHub and responsive design) and keep learning through personal projects in JavaScript, PHP, SQL and Firebase.', true);
     reg('#sobre-mi > p:nth-of-type(5)', "I'm looking to join a team where I can bring both together: building clear interfaces and understanding the people who use them. 💗", true);
     reg('.summary-pill:nth-child(1)', 'English: Upper-intermediate to advanced (B2)');
@@ -696,7 +696,7 @@
 
     reg('.projects-grid .card:nth-child(1) h3', 'Fee Calculator');
     reg('.projects-grid .card:nth-child(1) .project-type', 'Practical project · E-commerce tool');
-    reg('.projects-grid .card:nth-child(1) > p:not(.project-type)', "Tiendanube merchants didn't know what their fees really cost them and there was no official app to solve it. I designed this internal tool to simulate fees, installments and net amounts by plan and payment method, and it ended up reinforcing the official app.");
+    reg('.projects-grid .card:nth-child(1) > p:not(.project-type)', "Tiendanube merchants didn't know what their fees really cost them and the official app only showed the calculation for a single installment. I designed this internal tool to simulate fees, installments and net amounts by plan and payment method. My calculator was implemented in the official app based on the interest-free installment modals, and the text of the official app was also improved.");
 
     reg('.projects-grid .card:nth-child(2) .project-type', 'Final project · Coderhouse');
     reg('.projects-grid .card:nth-child(2) > p:not(.project-type)', 'It started as the idea of a kawaii clothing store and was my final project to graduate as a Web Developer at Coderhouse. A responsive site for an apparel brand with a kawaii aesthetic.');
@@ -884,8 +884,10 @@
       }
     });
 
+    // Modo oscuro: localStorage protegido con try/catch para que nunca corte el script
     const toggleButton = document.getElementById('theme-toggle');
-    const currentTheme = localStorage.getItem('theme');
+    let currentTheme = null;
+    try { currentTheme = localStorage.getItem('theme'); } catch (e) {}
     if (currentTheme) {
       document.documentElement.setAttribute('data-theme', currentTheme);
       if (currentTheme === 'dark') { toggleButton.textContent = '☀️'; }
@@ -894,11 +896,11 @@
       let theme = document.documentElement.getAttribute('data-theme');
       if (theme === 'dark') {
         document.documentElement.setAttribute('data-theme', 'light');
-        localStorage.setItem('theme', 'light');
+        try { localStorage.setItem('theme', 'light'); } catch (e) {}
         toggleButton.textContent = '🌙';
       } else {
         document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
+        try { localStorage.setItem('theme', 'dark'); } catch (e) {}
         toggleButton.textContent = '☀️';
       }
     });
@@ -963,7 +965,6 @@
     });
 
     applyLang();
-
   </script>
 </body>
 </html>
