@@ -14,8 +14,8 @@
   btn.id = 'export-pdf';
   btn.type = 'button';
   btn.className = 'export-pdf-btn';
-  btn.innerHTML = '<i class="fas fa-file-pdf"></i><span class="export-pdf-label" id="export-pdf-label"></span>';
-  socials.appendChild(btn);
+  btn.innerHTML = '<i class="fas fa-file-lines"></i><span class="export-pdf-label" id="export-pdf-label"></span>';
+   socials.appendChild(btn);
 
   let busy = false;
   function updateTexts() {
