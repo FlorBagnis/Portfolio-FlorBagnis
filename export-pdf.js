@@ -5,17 +5,18 @@
   if (!socials) return;
 
   const T = {
-    es: { label: 'PDF', title: 'Descargar portfolio en PDF', busy: 'Generando…', file: 'Florencia-Bagnis-Portfolio.pdf', err: 'No se pudo generar el PDF. Revisá tu conexión e intentá de nuevo.' },
-    en: { label: 'PDF', title: 'Download portfolio as PDF' , busy: 'Generating…', file: 'Florencia-Bagnis-Portfolio-EN.pdf', err: 'The PDF could not be generated. Check your connection and try again.' }
+    es: { label: 'Exportar PDF', title: 'Descargar portfolio en PDF', busy: 'Generando…', file: 'Florencia-Bagnis-Portfolio.pdf', err: 'No se pudo generar el PDF. Revisá tu conexión e intentá de nuevo.' },
+    en: { label: 'Export PDF', title: 'Download portfolio as PDF', busy: 'Generating…', file: 'Florencia-Bagnis-Portfolio-EN.pdf', err: 'The PDF could not be generated. Check your connection and try again.' }
   };
   const lang = () => (document.documentElement.lang === 'en' ? 'en' : 'es');
 
-  const btn = document.createElement('button');
+  // Es un <a> igual que LinkedIn / GitHub / CV, así hereda exactamente sus estilos
+  const btn = document.createElement('a');
   btn.id = 'export-pdf';
-  btn.type = 'button';
-  btn.className = 'export-pdf-btn';
-  btn.innerHTML = '<i class="fas fa-file-lines"></i><span class="export-pdf-label" id="export-pdf-label"></span>';
-   socials.appendChild(btn);
+  btn.href = '#';
+  btn.setAttribute('role', 'button');
+  btn.innerHTML = '<i class="fas fa-file-lines"></i><span class="cv-label" id="export-pdf-label"></span>';
+  socials.appendChild(btn);
 
   let busy = false;
   function updateTexts() {
@@ -54,7 +55,7 @@
 
   async function exportPdf() {
     if (busy) return;
-    busy = true; btn.disabled = true; updateTexts();
+    busy = true; btn.style.opacity = '0.6'; btn.style.pointerEvents = 'none'; updateTexts();
     try {
       await ensureLibs();
 
@@ -99,8 +100,8 @@
       console.error(e);
       alert(T[lang()].err);
     } finally {
-      busy = false; btn.disabled = false; updateTexts();
+      busy = false; btn.style.opacity = ''; btn.style.pointerEvents = ''; updateTexts();
     }
   }
-  btn.addEventListener('click', exportPdf);
+  btn.addEventListener('click', e => { e.preventDefault(); exportPdf(); });
 })();
