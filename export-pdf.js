@@ -18,10 +18,11 @@
    socials.appendChild(btn);
 
   let busy = false;
+   let status = '';
   function updateTexts() {
     const t = T[lang()];
-    document.getElementById('export-pdf-label').textContent = busy ? t.busy : t.label;
-    btn.title = t.title;
+    document.getElementById('export-pdf-label').textContent = busy ? t.busy : (status || t.label);
+     btn.title = t.title;
     btn.setAttribute('aria-label', t.title);
   }
   updateTexts();
@@ -94,7 +95,9 @@
       const pdf = new jsPDF({ orientation: h > w ? 'p' : 'l', unit: 'px', format: [w, h], hotfixes: ['px_scaling'] });
       pdf.addImage(canvas.toDataURL('image/jpeg', 0.92), 'JPEG', 0, 0, w, h);
       links.forEach(l => pdf.link(l.x, l.y, l.w, l.h, { url: l.url }));
-      pdf.save(T[lang()].file);
+        pdf.save(T[lang()].file);
+      status = lang() === 'en' ? 'Done! ✨' : '¡Listo! ✨';
+      setTimeout(() => { status = ''; updateTexts(); }, 2500);
     } catch (e) {
       console.error(e);
       alert(T[lang()].err);
