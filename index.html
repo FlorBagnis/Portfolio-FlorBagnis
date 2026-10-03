@@ -388,7 +388,7 @@
       <div class="header-socials">
         <a href="https://www.linkedin.com/in/florencia-bagnis" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
         <a href="https://github.com/Florbagnis" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="./CV-Florencia-Bagnis.pdf" download="CV-Florencia-Bagnis.pdf" aria-label="Descargar CV"><i class="fas fa-file-arrow-down"></i><span class="cv-label">CV</span></a>
+        <a id="cv-link" href="./CV-Florencia-Bagnis-ES.pdf" download="CV-Florencia-Bagnis-ES.pdf" aria-label="Descargar CV"><i class="fas fa-file-arrow-down"></i><span class="cv-label">CV</span></a>
       </div>
     </header>
     <section id="sobre-mi">
@@ -875,7 +875,18 @@
         langBtn.textContent = LANG === 'es' ? 'EN' : 'ES';
         langBtn.title = S().langTitle;
         langBtn.setAttribute('aria-label', S().langTitle);
-      }
+     
+          const cvLink = document.getElementById('cv-link');
+      if (cvLink) {
+        const file = LANG === 'en' ? 'CV-Florencia-Bagnis-EN.pdf' : 'CV-Florencia-Bagnis-ES.pdf';
+        const label = LANG === 'en' ? 'Download CV' : 'Descargar CV';
+        cvLink.href = './' + file;
+        cvLink.setAttribute('download', file);
+        cvLink.title = label;
+        cvLink.setAttribute('aria-label', label);
+      
+    
+    }
       renderGhTexts();
       renderGhCal();
       applyMotion();
