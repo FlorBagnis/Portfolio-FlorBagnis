@@ -876,20 +876,7 @@
         langBtn.title = S().langTitle;
         langBtn.setAttribute('aria-label', S().langTitle);
      
-          const cvLink = document.getElementById('cv-link');
-      if (cvLink) {
-        const file = LANG === 'en' ? 'CV-Florencia-Bagnis-EN.pdf' : 'CV-Florencia-Bagnis-ES.pdf';
-        const label = LANG === 'en' ? 'Download CV' : 'Descargar CV';
-        cvLink.href = './' + file;
-        cvLink.setAttribute('download', file);
-        cvLink.title = label;
-        cvLink.setAttribute('aria-label', label);
-      
-    
-    }
-      renderGhTexts();
-      renderGhCal();
-      applyMotion();
+          
     }
     if (langBtn) {
       langBtn.addEventListener('click', () => {
