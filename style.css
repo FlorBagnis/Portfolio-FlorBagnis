@@ -1075,6 +1075,7 @@ header .availability {
   justify-self: start;
 }
 
+
 /* ==================================
    RESPONSIVE PARA LA FOTO Y HEADER
 ================================== */
@@ -1107,9 +1108,6 @@ header .availability {
 }
 
 
-/* ==================================
-   SOLUCIÓN DEFINITIVA FOTO EN CELULAR
-================================== */
 @media (max-width: 700px) {
   header {
     display: flex !important;
@@ -1124,10 +1122,11 @@ header .availability {
     opacity: 1 !important;
     width: 140px !important;
     height: 140px !important;
+    min-width: 140px !important;
+    min-height: 140px !important;
     margin: 0 auto 20px auto !important;
     object-fit: cover !important;
     grid-column: unset !important;
     grid-row: unset !important;
   }
 }
-
