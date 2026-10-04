@@ -56,6 +56,10 @@
   async function exportPdf() {
     if (busy) return;
     busy = true; btn.disabled = true; updateTexts();
+     
+     // 👇 Esto fuerza que la página suba arriba de todo antes de capturar
+    window.scrollTo({ top: 0, behavior: 'instant' });
+     
     try {
       await ensureLibs();
 
