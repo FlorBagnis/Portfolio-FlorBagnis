@@ -15,14 +15,14 @@
   btn.type = 'button';
   btn.className = 'export-pdf-btn';
   btn.innerHTML = '<i class="fas fa-file-lines"></i><span class="export-pdf-label" id="export-pdf-label"></span>';
-  socials.appendChild(btn);
+   socials.appendChild(btn);
 
   let busy = false;
-  let status = '';
+   let status = '';
   function updateTexts() {
     const t = T[lang()];
     document.getElementById('export-pdf-label').textContent = busy ? t.busy : (status || t.label);
-    btn.title = t.title;
+     btn.title = t.title;
     btn.setAttribute('aria-label', t.title);
   }
   updateTexts();
@@ -59,17 +59,6 @@
     try {
       await ensureLibs();
 
-      // Foto de perfil: se carga aparte y se pega a mano sobre el PDF (html2canvas la recortaba mal)
-      let fotoImg = null;
-      let fotoRect = null;
-      try {
-        if (document.querySelector('.foto-perfil')) {
-          const im = new Image();
-          await new Promise((res, rej) => { im.onload = res; im.onerror = rej; im.src = 'foto-florencia-600.webp'; });
-          fotoImg = im;
-        }
-      } catch (e) { console.warn('No se pudo cargar la foto para el PDF', e); }
-
       // cargar imágenes lazy antes de capturar
       const imgs = Array.from(document.querySelectorAll('img'));
       imgs.forEach(i => { i.loading = 'eager'; });
@@ -89,18 +78,9 @@
         onclone: (doc, el) => {
           const st = doc.createElement('style'); st.textContent = HIDE_CSS; doc.head.appendChild(st);
           doc.querySelectorAll('.card.hide-card').forEach(c => c.classList.remove('hide-card'));
-
-          // Foto de perfil: se deja el círculo vacío (borde y sombra) y se pega la foto después
-          const fotoEl = fotoImg ? doc.querySelector('.foto-perfil') : null;
-          if (fotoEl) fotoEl.style.background = 'none';
-
           el.style.cssText += ';width:1000px;max-width:none;margin:0;padding:48px 40px;background:' + bg + ';';
           const base = el.getBoundingClientRect();
           cssW = base.width; cssH = base.height;
-          if (fotoEl) {
-            const fr = fotoEl.getBoundingClientRect();
-            fotoRect = { x: fr.left - base.left, y: fr.top - base.top, w: fr.width, h: fr.height };
-          }
           el.querySelectorAll('a[href]').forEach(a => {
             const href = a.href;
             if (!/^https?:/.test(href) || href === doc.location.href + '#') return;
@@ -110,28 +90,12 @@
         }
       });
 
-      // Pegar la foto recortada en círculo dentro del borde de 4px
-      if (fotoImg && fotoRect) {
-        const ctx = canvas.getContext('2d');
-        const borde = 4;
-        const cx = (fotoRect.x + fotoRect.w / 2) * scale;
-        const cy = (fotoRect.y + fotoRect.h / 2) * scale;
-        const r = (fotoRect.w / 2 - borde) * scale;
-        ctx.save();
-        ctx.beginPath();
-        ctx.arc(cx, cy, r, 0, Math.PI * 2);
-        ctx.closePath();
-        ctx.clip();
-        ctx.drawImage(fotoImg, cx - r, cy - r, r * 2, r * 2);
-        ctx.restore();
-      }
-
       const w = canvas.width / scale, h = canvas.height / scale;
       const { jsPDF } = window.jspdf;
       const pdf = new jsPDF({ orientation: h > w ? 'p' : 'l', unit: 'px', format: [w, h], hotfixes: ['px_scaling'] });
       pdf.addImage(canvas.toDataURL('image/jpeg', 0.92), 'JPEG', 0, 0, w, h);
       links.forEach(l => pdf.link(l.x, l.y, l.w, l.h, { url: l.url }));
-      pdf.save(T[lang()].file);
+        pdf.save(T[lang()].file);
       status = lang() === 'en' ? 'Done! ✿' : '¡Listo! ✿';
       setTimeout(() => { status = ''; updateTexts(); }, 2500);
     } catch (e) {
