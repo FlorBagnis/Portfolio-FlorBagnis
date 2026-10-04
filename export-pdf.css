@@ -123,3 +123,15 @@ header .availability {
   margin-left: 0;
   vertical-align: baseline;
 }
+
+
+
+@media print {
+  .foto-perfil {
+    width: 150px !important;
+    height: 150px !important;
+    object-fit: cover !important;
+    border-radius: 50% !important;
+    border: 4px solid #ec4899 !important;
+  }
+}
