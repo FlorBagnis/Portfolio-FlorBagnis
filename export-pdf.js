@@ -15,14 +15,14 @@
   btn.type = 'button';
   btn.className = 'export-pdf-btn';
   btn.innerHTML = '<i class="fas fa-file-lines"></i><span class="export-pdf-label" id="export-pdf-label"></span>';
-   socials.appendChild(btn);
+  socials.appendChild(btn);
 
   let busy = false;
-   let status = '';
+  let status = '';
   function updateTexts() {
     const t = T[lang()];
     document.getElementById('export-pdf-label').textContent = busy ? t.busy : (status || t.label);
-     btn.title = t.title;
+    btn.title = t.title;
     btn.setAttribute('aria-label', t.title);
   }
   updateTexts();
@@ -59,6 +59,19 @@
     try {
       await ensureLibs();
 
+      // Foto de perfil: se prepara como imagen cuadrada exacta para que no se recorte en el PDF
+      let fotoURL = null;
+      try {
+        if (document.querySelector('.foto-perfil')) {
+          const im = new Image();
+          await new Promise((res, rej) => { im.onload = res; im.onerror = rej; im.src = 'foto-florencia-600.webp'; });
+          const c = document.createElement('canvas');
+          c.width = c.height = 360;
+          c.getContext('2d').drawImage(im, 0, 0, 360, 360);
+          fotoURL = c.toDataURL('image/png');
+        }
+      } catch (e) { console.warn('No se pudo preparar la foto para el PDF', e); }
+
       // cargar imágenes lazy antes de capturar
       const imgs = Array.from(document.querySelectorAll('img'));
       imgs.forEach(i => { i.loading = 'eager'; });
@@ -78,6 +91,19 @@
         onclone: (doc, el) => {
           const st = doc.createElement('style'); st.textContent = HIDE_CSS; doc.head.appendChild(st);
           doc.querySelectorAll('.card.hide-card').forEach(c => c.classList.remove('hide-card'));
+
+          // Foto de perfil: reemplazamos el fondo por la imagen ya preparada
+          if (fotoURL) {
+            const f = doc.querySelector('.foto-perfil');
+            if (f) {
+              f.style.background = 'none';
+              const fi = doc.createElement('img');
+              fi.src = fotoURL;
+              fi.style.cssText = 'display:block;width:100%;height:100%;border-radius:50%;';
+              f.appendChild(fi);
+            }
+          }
+
           el.style.cssText += ';width:1000px;max-width:none;margin:0;padding:48px 40px;background:' + bg + ';';
           const base = el.getBoundingClientRect();
           cssW = base.width; cssH = base.height;
@@ -95,7 +121,7 @@
       const pdf = new jsPDF({ orientation: h > w ? 'p' : 'l', unit: 'px', format: [w, h], hotfixes: ['px_scaling'] });
       pdf.addImage(canvas.toDataURL('image/jpeg', 0.92), 'JPEG', 0, 0, w, h);
       links.forEach(l => pdf.link(l.x, l.y, l.w, l.h, { url: l.url }));
-        pdf.save(T[lang()].file);
+      pdf.save(T[lang()].file);
       status = lang() === 'en' ? 'Done! ✿' : '¡Listo! ✿';
       setTimeout(() => { status = ''; updateTexts(); }, 2500);
     } catch (e) {
