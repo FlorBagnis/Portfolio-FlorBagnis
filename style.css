@@ -1130,3 +1130,22 @@ header .availability {
     grid-row: unset !important;
   }
 }
+
+
+@media print {
+  header {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 20px !important;
+  }
+  
+  .foto-perfil {
+    display: block !important;
+    width: 120px !important;
+    height: 120px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    border: 3px solid #ec4899 !important;
+  }
+}
