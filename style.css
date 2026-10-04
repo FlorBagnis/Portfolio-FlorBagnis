@@ -1105,14 +1105,17 @@ header .availability {
 
 
 .foto-perfil {
-  width: 130px; /* Tamaño chico y delicado */
+  width: 130px;
   height: 130px;
   border-radius: 50%;
   overflow: hidden;
-  border: 3.5px solid var(--rosa-brillante);
+  border: 3.5px solid var(--rosa-brillante); /* ¡Acá está el círculo rosa! */
   box-shadow: 0 6px 20px rgba(236, 72, 153, 0.2);
-  margin: 0 auto 18px auto; /* Centrado automático */
-  display: block;
+  margin: 0 auto 18px auto; /* Centrado arriba */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffe6f0; /* Fondo de respaldo por si tarda en cargar */
 }
 
 .foto-perfil img {
