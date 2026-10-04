@@ -1124,3 +1124,43 @@ header .availability {
   object-fit: cover;
   display: block;
 }
+
+
+
+
+/* Nuevo */
+
+
+
+header {
+  display: grid;
+  grid-template-columns: 160px 1fr; /* Columna fija para la foto a la izquierda y el texto al lado */
+  column-gap: 35px;
+  align-items: center;
+}
+
+.foto-perfil {
+  grid-column: 1;
+  grid-row: 1 / span 4;
+  align-self: center;
+  width: 140px;  /* Tamaño mediano/chico que querés */
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3.5px solid var(--rosa-brillante); /* El círculo rosa */
+  box-shadow: 0 6px 20px rgba(236, 72, 153, 0.2);
+}
+
+.foto-perfil img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+header > :not(.foto-perfil) {
+  grid-column: 2;
+}
+
+
+
