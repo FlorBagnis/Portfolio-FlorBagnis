@@ -97,6 +97,12 @@ Mi trayectoria combinando roles de **Customer Support** (con experiencia en plat
 
 ---
 
+
+## 📄 Licencia
+
+Distribuido bajo licencia MIT. Ver el archivo `LICENSE`.
+
+
 ## 🌸 Sobre mí
 
 Soy **Customer Support & Technical Support Specialist** con formación continua en desarrollo frontend y tecnologías web. Mi enfoque une la resolución analítica de problemas complejos con la creación de soluciones digitales intuitivas.
