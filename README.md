@@ -84,6 +84,13 @@ https://github.com/FlorBagnis/crud-php-mysql
 
 ---
 
+### 🐾 Neko-Jobs (Monitoreo de Ofertas Laborales)
+
+Herramienta de automatización desarrollada en Python para el rastreo y monitoreo de ofertas laborales, conectada a un bot de Telegram para recibir alertas en tiempo real y optimizar la búsqueda activa de empleo.
+
+**Repositorio:**  
+https://github.com/FlorBagnis/neko-jobs
+
 ## 🎯 Enfoque Profesional
 
 Mi trayectoria combinando roles de **Customer Support** (con experiencia en plataformas como Tiendanube) y mi formación en **Frontend Development** me permite entender las necesidades reales de los usuarios y traducirlas en interfaces funcionales, limpias y eficientes. Creo firmemente que un buen desarrollo técnico nace de la empatía con quien utiliza la herramienta todos los días.
