@@ -24,7 +24,6 @@
   <link rel="stylesheet" href="export-pdf.css" />
  
   <style>
-   
     .sticky-nav-wrapper { position: fixed; top: 18px; left: 0; width: 100%; display: flex; justify-content: center; z-index: 1000; pointer-events: none; padding: 0 16px; }
     .sticky-nav { pointer-events: auto; display: flex; align-items: center; gap: 18px; padding: 8px 22px; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--rosa-suave); border-radius: 999px; box-shadow: 0 8px 25px rgba(236, 72, 153, 0.12); }
     .sticky-nav a { font-size: 14px; font-weight: 600; color: var(--texto-secundario); transition: color 0.25s ease, transform 0.25s ease; }
@@ -374,24 +373,25 @@
       <p style="font-size: 13px; color: var(--texto-secundario);">Comunidad utilizando la app de gestión de gastos.</p>
       <img src="mensuales-usuarios.jpg" alt="Usuarios utilizando Mensuales" />
     </div>
-  
-<!-- 1. PRIMERO LA FOTO -->
-  <img class="foto-perfil" src="foto-florencia.webp" srcset="foto-florencia.webp 360w, foto-florencia-600.webp 600w" sizes="180px" alt="Foto de Florencia Bagnis" width="180" height="180" fetchpriority="high" decoding="async" crossorigin="anonymous" />
-  
-  <h1>
-    <a href="#" id="reload-link" class="brand-link" title="Recargar página">
-      Florencia Bagnis <i class="fas fa-laptop-code"></i>
-    </a>
-    
+  </div>
+
+  <div class="container">
+    <header>
+      <img class="foto-perfil" src="foto-florencia.webp" srcset="foto-florencia.webp 360w, foto-florencia-600.webp 600w" sizes="180px" alt="Foto de Florencia Bagnis" width="180" height="180" fetchpriority="high" decoding="async" crossorigin="anonymous" />
+      <h1>
+        <a href="#" id="reload-link" class="brand-link" title="Recargar página">
+          Florencia Bagnis <i class="fas fa-laptop-code"></i>
+        </a>
       </h1>
       <p class="subtitle">Desarrolladora Frontend con perfil híbrido: técnico y humano | Experiencia formada como soporte en Tiendanube y desarrollo de herramientas reales</p>
       <p class="availability"><i class="fas fa-circle-check"></i> Disponible para trabajo remoto</p>
       <div class="header-socials">
         <a href="https://www.linkedin.com/in/florencia-bagnis" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
         <a href="https://github.com/Florbagnis" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-      <a id="cv-link" href="./CV-Florencia-Bagnis-ES.pdf" target="_blank" rel="noopener" aria-label="Descargar CV"><i class="fas fa-file-arrow-down"></i><span class="cv-label">CV</span></a>
+        <a id="cv-link" href="./CV-Florencia-Bagnis-ES.pdf" target="_blank" rel="noopener" aria-label="Descargar CV"><i class="fas fa-file-arrow-down"></i><span class="cv-label">CV</span></a>
       </div>
     </header>
+
     <section id="sobre-mi">
       <h2>Sobre mí</h2>
       <p>¡Hola! Soy <strong>Florencia Bagnis</strong>, Desarrolladora Frontend con un <strong>perfil híbrido</strong>: combino lo técnico con lo humano.</p>
@@ -406,6 +406,7 @@
         <span class="summary-pill"><i class="fas fa-graduation-cap"></i> Desarrollo Frontend &amp; AI Aplicada · Coderhouse</span>
       </div>
     </section>
+
     <section id="tecnologias">
       <h2><i class="fas fa-code"></i> Tecnologías y herramientas</h2>
       <h3 class="tech-title">Frontend &amp; Backend / Datos</h3>
@@ -428,7 +429,7 @@
       </div>
     </section>
     
-   <section id="github-actividad">
+    <section id="github-actividad">
       <h2><i class="fab fa-github"></i> Actividad en GitHub</h2>
       <div class="github-calendar-card">
         <div class="gh-years-container">
@@ -575,6 +576,7 @@
         </article>
       </div>
     </section>
+
     <section id="contacto">
       <h2><i class="fas fa-envelope"></i> Contacto</h2>
       <div class="contact-grid">
@@ -588,6 +590,7 @@
       <p>Desarrollado por Florencia Bagnis <i class="fas fa-code"></i></p>
     </footer>
   </div>
+
   <script>
     if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
     window.scrollTo(0, 0);
@@ -606,7 +609,6 @@
       if (modal) modal.classList.remove('active');
     };
 
-    // Script para ocultar / mostrar todo el panel flotante con la flechita
     const panelToggleBtn = document.getElementById('panel-toggle');
     const floatPanel = document.getElementById('float-panel');
     const toggleIcon = document.getElementById('toggle-icon');
@@ -917,7 +919,6 @@
       }
     });
 
-    // Modo oscuro: localStorage protegido con try/catch para que nunca corte el script
     const toggleButton = document.getElementById('theme-toggle');
     let currentTheme = null;
     try { currentTheme = localStorage.getItem('theme'); } catch (e) {}
