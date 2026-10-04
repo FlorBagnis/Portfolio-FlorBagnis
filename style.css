@@ -1061,16 +1061,17 @@ header {
   width: 180px;
   height: 180px;
   border-radius: 50%;
-  object-fit: cover;
   border: 4px solid var(--rosa-brillante);
   box-shadow: 0 8px 24px rgba(236, 72, 153, 0.25);
+  background: url("foto-florencia-600.webp") center / cover no-repeat;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
 }
 
 header > :not(.foto-perfil) {
   grid-column: 2;
 }
 
-/* para que la pastilla "Disponible..." no se estire a todo el ancho */
 header .availability {
   justify-self: start;
 }
