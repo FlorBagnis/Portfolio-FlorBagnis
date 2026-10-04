@@ -1075,6 +1075,10 @@ header .availability {
   justify-self: start;
 }
 
+/* ==================================
+   RESPONSIVE PARA LA FOTO Y HEADER
+================================== */
+
 @media (max-width: 700px) {
   header {
     grid-template-columns: 1fr;
@@ -1100,42 +1104,4 @@ header .availability {
   header .header-socials {
     justify-content: center;
   }
-}
-
-
-@media (max-width: 700px) {
-  header {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-  .foto-perfil {
-    grid-column: 1;
-    grid-row: auto;
-    justify-self: center;
-    width: 140px; /* Tamaño adaptado para celu */
-    height: 140px;
-    margin-bottom: 20px;
-  }
-  header > :not(.foto-perfil) {
-    grid-column: 1;
-  }
-  header h1 {
-    justify-content: center !important;
-  }
-  header .availability {
-    justify-self: center;
-  }
-  header .header-socials {
-    justify-content: center;
-  }
-}
-
-
-.foto-perfil {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid var(--rosa-brillante);
-  box-shadow: 0 8px 24px rgba(236, 72, 153, 0.25);
 }
