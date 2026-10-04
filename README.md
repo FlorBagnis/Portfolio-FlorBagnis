@@ -1,9 +1,8 @@
 # 💼 Portfolio | Florencia Bagnis
 
-<img width="1550" height="854" alt="image" src="https://github.com/user-attachments/assets/35f5235e-cf60-47f0-9701-0340bc36a073" />
+<img width="973" height="886" alt="florbagnis github io_Portfolio-FlorBagnis_" src="https://github.com/user-attachments/assets/e63e183e-abf5-4235-9d5a-d3bdbea4607a" />
 
-
->Este repositorio contiene el código fuente de mi portfolio personal, donde presento algunos de los proyectos que desarrollé durante mi formación en Desarrollo Web y mi experiencia en Customer Support.
+> Este repositorio contiene el código fuente de mi portfolio personal, diseñado para reflejar mi perfil profesional híbrido: un puente entre la experiencia técnica en **Customer Support** (SaaS y E-commerce) y el desarrollo de soluciones digitales orientadas a la experiencia de usuario y la resolución de problemas reales.
 
 
 ## 🌐 Portfolio Online
@@ -16,22 +15,30 @@
 
 ---
 
-## 🛠️ Tecnologías
+## 🛠️ Tecnologías y Herramientas
 
-- HTML5
-- CSS3
-- JavaScript
-- SASS
-- Bootstrap 5
-- Git
-- GitHub
-- Responsive Design
+- **Frontend:** HTML5, CSS3, JavaScript, React, Vite, SASS, Bootstrap 5, Responsive Design
+- **Soporte y Operaciones:** Zendesk, Salesforce, Slack, Notion, Google Workspace
+- **Datos y Control:** Git, GitHub, SQL (DBeaver), Tableau, Insomnia
+- **Metodologías:** Enfoque centrado en el usuario, resolución analítica de incidencias y documentación técnica
 
-## 🚀 Proyectos destacados
+## 🚀 Proyectos destacados (Soluciones para Soporte y Negocio)
+
+### 💬 CX Macros
+
+Herramienta orientada a **Customer Experience (CX)** desarrollada con React y Vite para agilizar la gestión diaria de respuestas a clientes. Permite seleccionar plantillas, rellenar datos dinámicos y copiar mensajes listos para enviar con soporte de modo oscuro.
+
+**Demo:**  
+https://cx-macros.vercel.app/
+
+**Repositorio:**  
+https://github.com/FlorBagnis/CX-macros
+
+---
 
 ### 💳 Calculadora de Tasas
 
-Aplicación web desarrollada como proyecto personal para simular el cálculo de tasas, cuotas y montos netos.
+Aplicación web desarrollada para optimizar flujos operativos, simulando el cálculo preciso de tasas, cuotas y montos netos para comercios y equipos de soporte.
 
 **Demo:**  
 https://calculadora-tiendanube.vercel.app/
@@ -41,11 +48,21 @@ https://github.com/FlorBagnis/calculadora-tiendanube
 
 ---
 
+### 🌸 SQL Dev Studio & Bootcamp
+
+Simulador web interactivo enfocado en bases de datos relacionales y lógica frontend con JavaScript y SQL. Diseñado para entrenar consultas, corregir errores de sintaxis y resolver casos orientados a soporte técnico y auditoría.
+
+**Demo:**  
+https://florbagnis.github.io/SQL_DEV/
+
+**Repositorio:**  
+https://github.com/FlorBagnis/SQL_DEV
+
+---
+
 ### 🌸 Honeymoon
 
-Proyecto Final del curso **Desarrollo Web** de **Coderhouse**.
-
-Sitio web responsive desarrollado para una marca ficticia de indumentaria inspirada en la estética kawaii.
+Proyecto Final del curso **Desarrollo Web** de **Coderhouse**. Sitio web responsive desarrollado para una marca de indumentaria bajo una estética moderna y funcional.
 
 **Demo:**  
 https://honeymoon-eight-nu.vercel.app/
@@ -57,47 +74,25 @@ https://github.com/FlorBagnis/coderhouse-honeymoon
 
 ### 🛍️ Gestor de Productos (CRUD)
 
-Proyecto práctico enfocado en Backend y Gestión de Datos con PHP & MySQL.
+Aplicación web enfocada en backend y gestión de datos con PHP & MySQL para la administración interactiva de catálogos de artículos.
 
-Aplicación web desarrollada para administrar un catálogo interactivo. Permite registrar nuevos artículos, consultar el listado completo, actualizar información existente y eliminar registros en base de datos.
-
-Demo:
-
+**Demo:**  
 https://florbagnis.github.io/Crud-Php-Mysql/
 
-Repositorio:
-
-https://github.com/FlorBagnis/Crud-Php-Mysql
-
-
-### 🌸 SQL Dev Studio & Bootcamp
-Proyecto interactivo enfocado en Bases de Datos Relacionales y Lógica Frontend con JavaScript & SQL.
-
-Simulador web desarrollado para entrenar y validar consultas SQL en tiempo real mediante tablas dinámicas. Permite corregir errores de sintaxis, practicar por niveles de dificultad (Fácil, Medio y Experto) y resolver casos operativos orientados al soporte técnico, auditoría de horas y rentabilidad en plataformas SaaS.
-
-Demo:
-
-https://florbagnis.github.io/SQL_DEV/
-
-Repositorio:
-
-https://github.com/FlorBagnis/SQL_DEV
-
-
-
-## 🎯 Objetivo
-
-Mi objetivo es seguir creciendo profesionalmente en el mundo de la tecnología, combinando mi experiencia en Customer Support con el desarrollo de interfaces web modernas, accesibles y funcionales.
+**Repositorio:**  
+https://github.com/FlorBagnis/crud-php-mysql
 
 ---
 
-## 🌸Sobre mí
+## 🎯 Enfoque Profesional
 
-Soy **Customer Support Specialist** con experiencia en empresas SaaS y e-commerce.
+Mi trayectoria combinando roles de **Customer Support** (con experiencia en plataformas como Tiendanube) y mi formación en **Frontend Development** me permite entender las necesidades reales de los usuarios y traducirlas en interfaces funcionales, limpias y eficientes. Creo firmemente que un buen desarrollo técnico nace de la empatía con quien utiliza la herramienta todos los días.
 
-Durante mi paso por Tiendanube trabajé brindando soporte técnico y funcional a comercios, resolviendo incidencias, investigando problemas y acompañando a los clientes en el uso de la plataforma.
+---
 
-Actualmente continúo ampliando mis conocimientos en desarrollo frontend para seguir creciendo dentro de la industria tecnológica.
+## 🌸 Sobre mí
+
+Soy **Customer Support & Technical Support Specialist** con formación continua en desarrollo frontend y tecnologías web. Mi enfoque une la resolución analítica de problemas complejos con la creación de soluciones digitales intuitivas.
 
 ---
 
@@ -109,4 +104,4 @@ Actualmente continúo ampliando mis conocimientos en desarrollo frontend para se
 * 💻 [Portfolio](https://florbagnis.github.io/Portfolio-FlorBagnis/)
 * 💌 [florenciasoledadbagnis@gmail.com](mailto:florenciasoledadbagnis@gmail.com)
 
-> 💻 Portfolio personal desarrollado para centralizar proyectos, soluciones y documentación técnica, combinando **HTML5 semántico**, **CSS moderno** (variables y soporte nativo de modo claro/oscuro) y principios de **diseño responsive y accesible** para comunicar mi perfil en la intersección de **Frontend Development**, **Customer Support** y **Operaciones**.
+> 💻 Portfolio personal desarrollado para centralizar herramientas y proyectos orientados a operaciones, soporte y desarrollo web, combinando **HTML5 semántico**, **CSS moderno** y un fuerte sentido de accesibilidad y experiencia de usuario.
