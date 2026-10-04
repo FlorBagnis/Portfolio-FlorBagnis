@@ -1105,3 +1105,29 @@ header .availability {
     justify-content: center;
   }
 }
+
+
+/* ==================================
+   SOLUCIÓN DEFINITIVA FOTO EN CELULAR
+================================== */
+@media (max-width: 700px) {
+  header {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+  
+  .foto-perfil {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: 140px !important;
+    height: 140px !important;
+    margin: 0 auto 20px auto !important;
+    object-fit: cover !important;
+    grid-column: unset !important;
+    grid-row: unset !important;
+  }
+}
+
