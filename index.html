@@ -57,10 +57,11 @@
     @media screen {
       .projects-grid .card:nth-child(1) { order: 1; }
       .projects-grid .card:nth-child(6) { order: 2; }
-      .projects-grid .card:nth-child(3) { order: 3; }
-      .projects-grid .card:nth-child(4) { order: 4; }
-      .projects-grid .card:nth-child(5) { order: 5; }
-      .projects-grid .card:nth-child(2) { order: 6; }
+      .projects-grid .card:nth-child(7) { order: 3; }
+      .projects-grid .card:nth-child(3) { order: 4; }
+      .projects-grid .card:nth-child(4) { order: 5; }
+      .projects-grid .card:nth-child(5) { order: 6; }
+      .projects-grid .card:nth-child(2) { order: 7; }
     }
     @media screen {
       #sobre-mi .skills-summary-pillbox { display: flex !important; flex-wrap: wrap !important; justify-content: flex-start !important; align-items: center; gap: 10px; width: 100%; max-width: 100%; margin: 18px 0 0 !important; padding: 0 !important; transform: none !important; float: none !important; position: static !important; overflow: visible !important; }
@@ -403,6 +404,7 @@
         <a href="https://www.linkedin.com/in/florencia-bagnis" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
         <a href="https://github.com/Florbagnis" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
         <a id="cv-link" href="./CV-Florencia-Bagnis-ES.pdf" target="_blank" rel="noopener" aria-label="Descargar CV"><i class="fas fa-file-arrow-down"></i><span class="cv-label">CV</span></a>
+        <a id="dossier-link" href="./Dossier-Florencia-Bagnis-ES.pdf" target="_blank" rel="noopener" aria-label="Descargar dossier"><i class="fas fa-folder-open"></i><span class="cv-label">Dossier</span></a>
       </div>
     </header>
 
@@ -598,6 +600,21 @@
             <a class="button secondary" href="https://github.com/FlorBagnis/CX-macros" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Ver código</a>
           </div>
         </article>
+        <article class="card" data-category="tools">
+          <h3>Calculadora CSAT <i class="fas fa-chart-line"></i></h3>
+          <div class="media-container">
+            <img src="calculadoracsatdemo.gif" alt="Calculadora CSAT" class="project-media" loading="lazy" />
+            <canvas class="project-media"></canvas>
+            <button class="gif-toggle-btn" type="button" aria-label="Pausar animación" title="Pausar animación"><i class="fas fa-pause"></i></button>
+          </div>
+          <p class="project-type">Proyecto personal · Herramienta para Customer Support</p>
+          <p>Nació como una calculadora en Excel para controlar mi propio CSAT y saber cuántas valoraciones positivas necesitaba para llegar al objetivo. La compartí con mis compañeros de Tiendanube para entender mejor las métricas y mejorarla, y después la pasé a app web para compartirla con más colegas. Objetivo editable, cálculo en tiempo real y exportación a PDF.</p>
+          <div class="project-tags"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Excel</span><span>Responsive</span></div>
+          <div class="buttons">
+            <a class="button" href="https://florbagnis.github.io/calculadora-csat/" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i> Ver demo</a>
+            <a class="button secondary" href="https://github.com/FlorBagnis/calculadora-csat" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Ver código</a>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -763,6 +780,10 @@
     reg('.projects-grid .card:nth-child(6) .project-type', 'Personal project · Customer Experience tool');
     reg('.projects-grid .card:nth-child(6) > p:not(.project-type)', 'Tool for support teams: 12 ready-made reply templates, editable custom templates, favorites, PDF/CSV export and a "Polish text" feature that fixes punctuation, accents and capitalization. I built it for daily use and to learn React at the same time.');
 
+    reg('.projects-grid .card:nth-child(7) h3', 'CSAT Calculator');
+    reg('.projects-grid .card:nth-child(7) .project-type', 'Personal project · Customer Support tool');
+    reg('.projects-grid .card:nth-child(7) > p:not(.project-type)', 'It started as an Excel calculator to track my own CSAT and know how many positive ratings I needed to reach the target. I shared it with my Tiendanube teammates to help us understand the metrics better and improve it, and later turned it into a web app to share with more colleagues. Editable target, real-time calculation and PDF export.');
+
     reg('.buttons a.button:not(.secondary)', 'View demo');
     reg('.buttons a.button.secondary', 'View code');
     reg('button[onclick="openModal(\'tiendanube\')"]', 'View thanks');
@@ -912,6 +933,15 @@
         cvLink.href = './' + file;
         cvLink.title = label;
         cvLink.setAttribute('aria-label', label);
+      }
+
+      const dossierLink = document.getElementById('dossier-link');
+      if (dossierLink) {
+        const file = LANG === 'en' ? 'Dossier-Florencia-Bagnis-EN.pdf' : 'Dossier-Florencia-Bagnis-ES.pdf';
+        const label = LANG === 'en' ? 'Download performance dossier' : 'Descargar dossier';
+        dossierLink.href = './' + file;
+        dossierLink.title = label;
+        dossierLink.setAttribute('aria-label', label);
       }
 
       renderGhTexts();
