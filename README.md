@@ -1,120 +1,1061 @@
-# 💼 Portfolio | Florencia Bagnis
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio de Florencia Bagnis, Customer Support Specialist con perfil técnico: +5 años en SaaS, e-commerce y pagos, y herramientas propias para soporte." />
+  
+  <title>Florencia Bagnis | Customer Support Specialist | Technical Support</title>
+  
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Florencia Bagnis | Customer Support Specialist | Technical Support" />
+  <meta property="og:description" content="Customer Support Specialist con perfil técnico: SaaS, pagos, Zendesk, APIs y herramientas propias." />
+  <meta property="og:url" content="https://florbagnis.github.io/Portfolio-FlorBagnis/" />
+  <meta property="og:image" content="https://florbagnis.github.io/Portfolio-FlorBagnis/preview.png?v=2" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Florencia Bagnis | Customer Support Specialist | Technical Support" />
+  <meta name="twitter:description" content="Customer Support Specialist con perfil técnico: SaaS, pagos, Zendesk, APIs y herramientas propias." />
+  <meta name="twitter:image" content="https://florbagnis.github.io/Portfolio-FlorBagnis/preview.png?v=2" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 5 120 90'><path d='M28 28 L8 50 L28 72' fill='none' stroke='%23ff8da1' stroke-width='10' stroke-linecap='round' stroke-linejoin='round'/><line x1='67' y1='18' x2='53' y2='82' stroke='%23ff8da1' stroke-width='10' stroke-linecap='round'/><path d='M92 28 L112 50 L92 72' fill='none' stroke='%23ff8da1' stroke-width='10' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="export-pdf.css" />
+ 
+  <style>
+    .sticky-nav-wrapper { position: fixed; top: 18px; left: 0; width: 100%; display: flex; justify-content: center; z-index: 1000; pointer-events: none; padding: 0 16px; }
+    .sticky-nav { pointer-events: auto; display: flex; align-items: center; gap: 18px; padding: 8px 22px; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--rosa-suave); border-radius: 999px; box-shadow: 0 8px 25px rgba(236, 72, 153, 0.12); }
+    .sticky-nav a { font-size: 14px; font-weight: 600; color: var(--texto-secundario); transition: color 0.25s ease, transform 0.25s ease; }
+    .sticky-nav a:hover { color: var(--rosa-brillante); transform: translateY(-1px); }
+    [data-theme="dark"] .sticky-nav { background: rgba(26, 16, 23, 0.85); border-color: rgba(244, 114, 182, 0.25); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); }
+    [data-theme="dark"] .sticky-nav a { color: #d1a3be; }
+    [data-theme="dark"] .sticky-nav a:hover { color: var(--rosa-brillante); }
+    #back-to-top { position: fixed; bottom: 24px; right: 24px; width: 44px; height: 44px; border-radius: 50%; background: white; border: 1.5px solid var(--rosa-brillante); color: var(--rosa-brillante); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 998; box-shadow: 0 6px 20px rgba(236, 72, 153, 0.2); opacity: 0; visibility: hidden; transform: translateY(15px); transition: all 0.3s ease; }
+    #back-to-top.show-btn { opacity: 1; visibility: visible; transform: translateY(0); }
+    #back-to-top:hover { background: var(--rosa-brillante); color: white; transform: translateY(-3px); }
+    [data-theme="dark"] #back-to-top { background: var(--card-bg); border-color: var(--rosa-brillante); color: var(--rosa-brillante); }
+    [data-theme="dark"] #back-to-top:hover { background: var(--rosa-brillante); color: #ffffff; }
+    .skills-summary-pillbox { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    .summary-pill { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; background: white; border: 1px solid var(--rosa-suave); border-radius: 12px; font-size: 13px; font-weight: 600; color: var(--texto-secundario); box-shadow: 0 4px 12px rgba(236, 72, 153, 0.05); }
+    .summary-pill i { color: var(--rosa-brillante); }
+    [data-theme="dark"] .summary-pill { background: var(--card-bg); border-color: rgba(244, 114, 182, 0.25); color: #d1a3be; }
+    .kawaii-bg-decor { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 997; overflow: hidden; }
+    .decor-item { position: absolute; font-family: 'Courier New', monospace, sans-serif; color: var(--rosa-brillante, #ff8da1); opacity: 0.45; font-weight: bold; user-select: none; }
+    .item-1 { top: 14%; left: 4%; font-size: 1.8rem; animation: floatSparkle 7s ease-in-out infinite alternate; }
+    .item-2 { top: 34%; right: 4%; font-size: 1.2rem; animation: floatTech 9s ease-in-out infinite alternate; }
+    .item-3 { bottom: 22%; left: 4%; font-size: 1.5rem; animation: floatSparkle 8s ease-in-out infinite alternate-reverse; }
+    .item-4 { bottom: 12%; right: 5%; font-size: 1.3rem; animation: floatTech 10s ease-in-out infinite alternate-reverse; }
+    @keyframes floatSparkle { 0% { transform: translateY(0) scale(0.9); opacity: 0.3; } 50% { opacity: 0.65; } 100% { transform: translateY(-20px) scale(1.1); opacity: 0.3; } }
+    @keyframes floatTech { 0% { transform: translateY(0) rotate(-5deg); } 100% { transform: translateY(-22px) rotate(5deg); } }
+    [data-theme="dark"] .decor-item { color: var(--rosa-brillante, #ffb3c1); opacity: 0.4; }
+    .project-filters { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 35px; }
+    .filter-btn { background: white; border: 1.5px solid var(--rosa-suave); color: var(--texto-secundario); padding: 8px 18px; border-radius: 999px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.25s ease; font-family: inherit; }
+    .filter-btn:hover, .filter-btn.active { background: var(--rosa-brillante); border-color: var(--rosa-brillante); color: white; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(236, 72, 153, 0.25); }
+    [data-theme="dark"] .filter-btn { background: var(--card-bg); border-color: var(--rosa-suave); color: var(--texto-secundario); }
+    [data-theme="dark"] .filter-btn.active { background: var(--rosa-brillante); color: #fff; }
+    @media screen {
+      .projects-grid .card:nth-child(1) { order: 1; }
+      .projects-grid .card:nth-child(6) { order: 2; }
+      .projects-grid .card:nth-child(7) { order: 3; }
+      .projects-grid .card:nth-child(3) { order: 4; }
+      .projects-grid .card:nth-child(4) { order: 5; }
+      .projects-grid .card:nth-child(5) { order: 6; }
+      .projects-grid .card:nth-child(2) { order: 7; }
+    }
+    @media screen {
+      #sobre-mi .skills-summary-pillbox { display: flex !important; flex-wrap: wrap !important; justify-content: flex-start !important; align-items: center; gap: 10px; width: 100%; max-width: 100%; margin: 18px 0 0 !important; padding: 0 !important; transform: none !important; float: none !important; position: static !important; overflow: visible !important; }
+      #sobre-mi .summary-pill { flex: 0 0 auto; margin: 0 !important; max-width: 100%; }
+    }
+    .card.hide-card { display: none !important; }
+    
+    .github-calendar-card { max-width: 950px; margin: 0 auto; padding: 30px 25px; background: white; border: 1px solid var(--rosa-suave); border-radius: 24px; box-shadow: 0 10px 40px rgba(236, 72, 153, 0.08); overflow: hidden; text-align: center; transition: 0.3s; }
+    [data-theme="dark"] .github-calendar-card { background: var(--card-bg); border-color: rgba(244, 114, 182, 0.25); }
+    
+    .gh-years-container { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-bottom: 22px; }
+    .gh-year-badge { display: flex; flex-direction: column; align-items: center; padding: 10px 22px; background: var(--rosa-suave); border: 1px solid var(--rosa-brillante); border-radius: 16px; min-width: 140px; transition: transform 0.2s ease; }
+    .gh-year-badge:hover { transform: translateY(-3px); }
+    .gh-year-label { font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--rosa-oscuro); letter-spacing: 0.5px; }
+    .gh-year-count { font-size: 19px; font-weight: 800; color: var(--texto-oscuro); margin-top: 2px; }
+    .gh-year-badge.total-badge { background: linear-gradient(135deg, var(--rosa-brillante), var(--rosa-oscuro)); border: none; }
+    .gh-year-badge.total-badge .gh-year-label, .gh-year-badge.total-badge .gh-year-count { color: #ffffff !important; }
+    [data-theme="dark"] .gh-year-badge { background: rgba(244, 114, 182, 0.12); border-color: rgba(244, 114, 182, 0.4); }
+    [data-theme="dark"] .gh-year-badge .gh-year-label { color: #f472b6; }
+    [data-theme="dark"] .gh-year-badge .gh-year-count { color: #fdf2f8; }
+    
+    .gh-chart-container { width: 100%; display: flex; justify-content: center; overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 10px 0; }
+    .gh-chart { max-width: 100%; height: auto; display: block; }
+    
+    .gh-dark { display: none !important; }
+    .gh-light { display: block !important; }
+    [data-theme="dark"] .gh-light { display: none !important; }
+    [data-theme="dark"] .gh-dark { display: block !important; filter: contrast(1.1) brightness(1.05); }
 
-<img width="973" height="886" alt="florbagnis github io_Portfolio-FlorBagnis_" src="https://github.com/user-attachments/assets/e63e183e-abf5-4235-9d5a-d3bdbea4607a" />
+    .gh-cal-scroll { display: none; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 10px 0; }
+    .gh-cal-scroll.ready { display: block; }
+    .gh-cal {
+      --gh-0: #f3e8ef; --gh-1: #ffc2e6; --gh-2: #ff8fd0; --gh-3: #e0389a; --gh-4: #a3125c;
+      width: max-content; margin: 0 auto; text-align: left;
+    }
+    [data-theme="dark"] .gh-cal {
+      --gh-0: rgba(255, 255, 255, 0.07); --gh-1: #6b2452; --gh-2: #b03a84; --gh-3: #ec4899; --gh-4: #f9a8d4;
+    }
+    .gh-months { position: relative; height: 16px; margin-left: 32px; font-size: 11px; color: var(--texto-secundario); }
+    .gh-months span { position: absolute; top: 0; }
+    .gh-body { display: flex; gap: 6px; }
+    .gh-days { display: grid; grid-template-rows: repeat(7, 12px); gap: 3px; width: 26px; font-size: 10px; color: var(--texto-secundario); }
+    .gh-days span { line-height: 12px; }
+    .gh-grid { display: grid; grid-auto-flow: column; grid-template-rows: repeat(7, 12px); grid-auto-columns: 12px; gap: 3px; }
+    .gh-cell { width: 12px; height: 12px; border-radius: 3px; background: var(--gh-0); }
+    .gh-cell.l1 { background: var(--gh-1); }
+    .gh-cell.l2 { background: var(--gh-2); }
+    .gh-cell.l3 { background: var(--gh-3); }
+    .gh-cell.l4 { background: var(--gh-4); }
+    .gh-legend { display: flex; align-items: center; justify-content: flex-end; gap: 4px; margin-top: 8px; font-size: 11px; color: var(--texto-secundario); }
+    
+    .brand-link { color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: 12px; }
+    .brand-link:hover { opacity: 0.9; }
 
-> Este repositorio contiene el código fuente de mi portfolio personal, diseñado para reflejar mi perfil profesional híbrido: un puente entre la experiencia técnica en **Customer Support** (SaaS y E-commerce) y el desarrollo de soluciones digitales orientadas a la experiencia de usuario y la resolución de problemas reales.
+    /* Estilos para contenedores de GIF con Botón de Reproducción y Canvas congelado */
+    .media-container {
+      position: relative;
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .media-container img.project-media {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+    .media-container canvas.project-media {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+      object-fit: cover;
+      border-radius: 12px;
+      z-index: 2;
+    }
+    .gif-toggle-btn {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1.5px solid var(--rosa-brillante);
+      color: var(--rosa-brillante);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 14px;
+      box-shadow: 0 4px 12px rgba(236, 72, 153, 0.2);
+      transition: all 0.25s ease;
+      z-index: 10;
+    }
+    .gif-toggle-btn:hover {
+      background: var(--rosa-brillante);
+      color: white;
+      transform: scale(1.08);
+    }
+    [data-theme="dark"] .gif-toggle-btn {
+      background: rgba(26, 16, 23, 0.9);
+      border-color: var(--rosa-brillante);
+      color: var(--rosa-brillante);
+    }
+    [data-theme="dark"] .gif-toggle-btn:hover {
+      background: var(--rosa-brillante);
+      color: #ffffff;
+    }
 
+    .kawaii-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 182, 193, 0.4); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 2000; justify-content: center; align-items: center; padding: 20px; }
+    .kawaii-modal.active { display: flex; }
+    .kawaii-modal-content { background: white; border: 2px solid var(--rosa-brillante); border-radius: 24px; padding: 30px; max-width: 850px; width: 100%; box-shadow: 0 15px 50px rgba(236, 72, 153, 0.25); text-align: center; position: relative; animation: modalPop 0.3s ease; }
+    [data-theme="dark"] .kawaii-modal-content { background: var(--card-bg); border-color: var(--rosa-brillante); }
+    
+    .kawaii-modal-content img { 
+      width: 100%; 
+      max-height: 82vh; 
+      object-fit: contain; 
+      border-radius: 12px; 
+      margin-top: 15px; 
+      border: none !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+    }
 
-## 🌐 Portfolio Online
+    .kawaii-close-btn { position: absolute; top: 15px; right: 20px; background: var(--rosa-suave); border: none; color: var(--rosa-brillante); width: 36px; height: 36px; border-radius: 50%; font-size: 16px; cursor: pointer; transition: 0.2s; display: flex; align-items: center; justify-content: center; }
+    .kawaii-close-btn:hover { background: var(--rosa-brillante); color: white; }
+    @keyframes modalPop { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
 
-<p align="center">
-  <a href="https://florbagnis.github.io/Portfolio-FlorBagnis/">
-    <img src="https://img.shields.io/badge/Ver_Portfolio-Abrir_Proyecto-ff69b4?style=for-the-badge&logo=github&logoColor=white" alt="Ver Portfolio" />
-  </a>
-</p>
+    /* Solapa con flechita para ocultar/mostrar TODO el panel flotante */
+    #panel-toggle {
+      position: fixed;
+      right: 20px;
+      top: 16px;
+      z-index: 1003;
+      width: 44px;
+      height: 44px;
+      padding: 0 !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--rosa-suave);
+      border: 1.5px solid var(--rosa-brillante);
+      color: var(--rosa-brillante);
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(236, 72, 153, 0.15);
+    }
+    #panel-toggle:hover {
+      background: var(--rosa-brillante);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+    [data-theme="dark"] #panel-toggle {
+      background: var(--card-bg);
+      border-color: var(--rosa-brillante);
+      color: var(--rosa-brillante);
+    }
+    [data-theme="dark"] #panel-toggle:hover {
+      background: var(--rosa-brillante);
+      color: #ffffff;
+    }
 
----
+    /* Panel contenedor con TODOS los botones (Modo oscuro, Idioma y Pausa) */
+    .float-panel {
+      position: fixed;
+      right: 20px;
+      top: 68px;
+      z-index: 1001;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+    }
+    .float-panel.collapsed {
+      transform: translateX(calc(100% + 30px));
+      opacity: 0;
+      pointer-events: none;
+    }
 
-## 🛠️ Tecnologías y Herramientas
+    /* Estilos unificados para todos los botones flotantes */
+    .float-btn { 
+      width: 44px; 
+      height: 44px; 
+      padding: 0 !important; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      background: var(--rosa-suave); 
+      border: 1.5px solid var(--rosa-brillante); 
+      color: var(--rosa-brillante); 
+      border-radius: 50%; 
+      cursor: pointer; 
+      font-family: inherit; 
+      font-size: 15px; 
+      font-weight: 700; 
+      transition: 0.3s; 
+      box-shadow: 0 4px 15px rgba(236, 72, 153, 0.15); 
+    }
+    .float-btn:hover { 
+      background: var(--rosa-brillante); 
+      color: #ffffff; 
+      transform: translateY(-2px); 
+    }
+    [data-theme="dark"] .float-btn {
+      background: var(--card-bg);
+      border-color: var(--rosa-brillante);
+      color: var(--rosa-brillante);
+    }
+    [data-theme="dark"] .float-btn:hover {
+      background: var(--rosa-brillante);
+      color: #ffffff;
+    }
 
-- **Frontend:** HTML5, CSS3, JavaScript, React, Vite, SASS, Bootstrap 5, Responsive Design
-- **Soporte y Operaciones:** Zendesk, Salesforce, Slack, Notion, Google Workspace
-- **Datos y Control:** Git, GitHub, SQL (DBeaver), Tableau, Insomnia
-- **Metodologías:** Enfoque centrado en el usuario, resolución analítica de incidencias y documentación técnica
+    @media (max-width: 768px) { 
+      .sticky-nav { gap: 12px; padding: 6px 16px; } 
+      .sticky-nav a { font-size: 12px; } 
+      .github-calendar-card { padding: 15px 10px; margin: 0 5px; }
+      .gh-year-badge { min-width: 100px; padding: 8px 10px; }
+      .gh-year-count { font-size: 14px; }
+      
+      #panel-toggle {
+        width: 38px;
+        height: 38px;
+        right: 12px;
+        top: 12px;
+        font-size: 13px;
+      }
+      .float-panel {
+        right: 12px;
+        top: 56px;
+        gap: 8px;
+      }
+      .float-btn {
+        width: 38px !important;
+        height: 38px !important;
+        font-size: 13px !important;
+      }
+    }
 
-## 🚀 Proyectos destacados (Soluciones para Soporte y Negocio)
+    #modal-tiendanube .kawaii-modal-content {
+      max-width: 500px;
+      padding: 22px 24px 38px;
+      overflow: visible;
+    }
+    #modal-tiendanube .kawaii-modal-content img {
+      margin-top: 14px;
+      max-height: calc(100vh - 220px);
+      transform-origin: center top;
+      transition: transform 0.3s ease-in-out;
+    }
+    #modal-tiendanube .kawaii-modal-content img:hover {
+      transform: scale(1.04);
+    }
 
-### 💬 CX Macros
+    #modal-mensuales .kawaii-modal-content img {
+      transition: all 0.3s ease-in-out;
+    }
+    #modal-mensuales .kawaii-modal-content img:hover {
+      transform: translateY(-4px);
+      filter: drop-shadow(0 15px 30px rgba(236, 72, 153, 0.3));
+    }
 
-Herramienta orientada a **Customer Experience (CX)** desarrollada con React y Vite para agilizar la gestión diaria de respuestas a clientes. Permite seleccionar plantillas, rellenar datos dinámicos y copiar mensajes listos para enviar con soporte de modo oscuro.
+    .reduce-motion .decor-item,
+    .reduce-motion .kawaii-modal-content { animation: none !important; }
+    .reduce-motion *, .reduce-motion *::before, .reduce-motion *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+  </style>
+</head>
+<body>
+  <div class="sticky-nav-wrapper">
+    <nav class="sticky-nav" aria-label="Navegación principal">
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#tecnologias">Tecnologías</a>
+      <a href="#github-actividad">GitHub</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </div>
+  <div class="kawaii-bg-decor" aria-hidden="true">
+    <span class="decor-item item-1">✦</span>
+    <span class="decor-item item-2">&lt;/&gt;</span>
+    <span class="decor-item item-3">✧</span>
+    <span class="decor-item item-4">{ }</span>
+    <span class="decor-item item-5">//</span>
+    <span class="decor-item item-6">console.log;</span>
+    <span class="decor-item item-7">🌸</span>
+    <span class="decor-item item-8">✿</span>
+  </div>
+  
+  <!-- Solapa independiente con icono de flechita para ocultar/mostrar todo el panel -->
+  <button id="panel-toggle" aria-label="Ocultar o mostrar controles" title="Ocultar o mostrar controles"><i class="fas fa-chevron-right" id="toggle-icon"></i></button>
 
-**Demo:**  
-https://cx-macros.vercel.app/
+  <!-- Panel flotante unificado que contiene los tres botones -->
+  <div id="float-panel" class="float-panel">
+    <button id="theme-toggle" class="float-btn" aria-label="Cambiar modo oscuro" title="Cambiar modo oscuro">🌙</button>
+    <button id="lang-toggle" class="float-btn" type="button" aria-label="Switch to English" title="Switch to English">EN</button>
+    <button id="motion-toggle" class="float-btn" type="button" aria-label="Pausar efectos en movimiento" title="Pausar efectos en movimiento"><i class="fas fa-pause"></i></button>
+  </div>
+  
+  <button id="back-to-top" aria-label="Volver arriba"><i class="fas fa-chevron-up"></i></button>
 
-**Repositorio:**  
-https://github.com/FlorBagnis/CX-macros
+  <!-- Modales Kawaii -->
+  <div id="modal-tiendanube" class="kawaii-modal">
+    <div class="kawaii-modal-content">
+      <button class="kawaii-close-btn" onclick="closeModal('tiendanube')"><i class="fas fa-times"></i></button>
+      <h3 style="color: var(--rosa-brillante); margin-bottom: 5px;"><i class="fas fa-award"></i> Reconocimiento Tiendanube</h3>
+      <p style="font-size: 13px; color: var(--texto-secundario);">Recreación visual basada en los mensajes reales del equipo de soporte sobre la calculadora de tasas.</p>
+      <img src="agradecimiento-tiendanube.PNG" alt="Agradecimiento de Tiendanube" />
+    </div>
+  </div>
 
----
+  <div id="modal-mensuales" class="kawaii-modal">
+    <div class="kawaii-modal-content">
+      <button class="kawaii-close-btn" onclick="closeModal('mensuales')"><i class="fas fa-times"></i></button>
+      <h3 style="color: var(--rosa-brillante); margin-bottom: 5px;"><i class="fas fa-heart"></i> Impacto Mensuales</h3>
+      <p style="font-size: 13px; color: var(--texto-secundario);">Comunidad utilizando la app de gestión de gastos.</p>
+      <img src="mensuales-usuarios.jpg" alt="Usuarios utilizando Mensuales" />
+    </div>
+  </div>
 
-### 💳 Calculadora de Tasas
+  <div class="container">
+    <header>
 
-Aplicación web desarrollada para optimizar flujos operativos, simulando el cálculo preciso de tasas, cuotas y montos netos para comercios y equipos de soporte.
+      <img class="foto-perfil" src="./foto-florencia.png" alt="Foto de Florencia Bagnis" crossorigin="anonymous" />
+      
+      <h1>
+        <a href="#" id="reload-link" class="brand-link" title="Recargar página">
+          Florencia Bagnis <i class="fas fa-laptop-code"></i>
+        </a>
+      </h1>
+      <p class="subtitle">Customer Support Specialist con perfil técnico | +5 años en SaaS, e-commerce y pagos | Zendesk, APIs y herramientas propias</p>
+      <p class="availability"><i class="fas fa-circle-check"></i> Disponible para trabajo remoto</p>
+      <div class="header-socials">
+        <a href="https://www.linkedin.com/in/florencia-bagnis" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/Florbagnis" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a id="cv-link" href="./CV-Florencia-Bagnis-ES.pdf" target="_blank" rel="noopener" aria-label="Descargar CV"><i class="fas fa-file-arrow-down"></i><span class="cv-label">CV</span></a>
+        <a id="dossier-link" href="./Dossier-Florencia-Bagnis-ES.pdf" target="_blank" rel="noopener" aria-label="Descargar dossier"><i class="fas fa-folder-open"></i><span class="cv-label">Dossier</span></a>
+      </div>
+    </header>
 
-**Demo:**  
-https://calculadora-tiendanube.vercel.app/
+    <section id="sobre-mi">
+      <h2>Sobre mí</h2>
+      <p>¡Hola! Soy <strong>Florencia Bagnis</strong>, Customer Support Specialist con <strong>perfil técnico</strong>: más de 5 años resolviendo casos en SaaS, e-commerce y pagos, y creando herramientas propias para resolverlos mejor.</p>
+      <p>En <strong>Tiendanube</strong> gestioné ~60 tickets diarios en Zendesk con <strong>2 min de primera respuesta, 100% de SLA y 96% de CSAT</strong>. Resolví casos de nivel 1 y 2, hice troubleshooting de APIs y pasarelas de pago, escalé bugs a Desarrollo en GitHub y retuve a más de 150 tiendas en riesgo de churn.</p>
+      <p>Esa experiencia me puso en contacto con comerciantes reales: aprendí dónde se traban y cómo explicarles las cosas de forma simple. Un ejemplo: no sabían cuánto valían realmente sus tasas, así que diseñé <strong>Cuota Nube</strong>, una calculadora que redujo más de un 25% las consultas sobre costos y sirvió de base para la calculadora oficial.</p>
+      <p>Me formé en <strong>Desarrollo Web Frontend en Coderhouse</strong> (JavaScript, React, SQL) y en IA aplicada, y construyo proyectos propios para resolver problemas reales de soporte.</p>
+      <p>Busco sumarme a un equipo de Customer Support o Customer Experience donde pueda unir ambas cosas: entender a las personas y resolver con herramientas. 💗</p>
+      <div class="skills-summary-pillbox">
+        <span class="summary-pill"><i class="fas fa-language"></i> Inglés: Técnico (B2)</span>
+        <span class="summary-pill"><i class="fas fa-earth-americas"></i> Portugués: Básico</span>
+        <span class="summary-pill"><i class="fas fa-comment-dots"></i> Español: Nativo</span>
+        <span class="summary-pill"><i class="fas fa-graduation-cap"></i> Desarrollo Frontend &amp; AI Aplicada · Coderhouse</span>
+      </div>
+    </section>
 
-**Repositorio:**  
-https://github.com/FlorBagnis/calculadora-tiendanube
+    <section id="tecnologias">
+      <h2><i class="fas fa-code"></i> Tecnologías y herramientas</h2>
+      <h3 class="tech-title">Soporte &amp; CX</h3>
+      <div class="tech-stack-general highlight">
+        <span><i class="fas fa-headset"></i> Zendesk</span>
+        <span><i class="fab fa-salesforce"></i> Salesforce</span>
+        <span><i class="fas fa-plug"></i> Insomnia (APIs)</span>
+        <span><i class="fas fa-chart-column"></i> Tableau</span>
+        <span><i class="fas fa-video"></i> Loom</span>
+        <span><i class="fas fa-file-excel"></i> Excel avanzado</span>
+        <span><i class="fab fa-github"></i> GitHub Issues</span>
+      </div>
+      <h3 class="tech-title">Desarrollo</h3>
+      <div class="tech-stack-general">
+        <span><i class="fab fa-html5"></i> HTML5</span>
+        <span><i class="fab fa-css3-alt"></i> CSS3</span>
+        <span><i class="fab fa-sass"></i> SASS</span>
+        <span><i class="fab fa-bootstrap"></i> Bootstrap</span>
+        <span><i class="fab fa-js"></i> JavaScript</span>
+        <span><i class="fab fa-react"></i> React</span>
+        <span><i class="fab fa-php"></i> PHP</span>
+        <span><i class="fas fa-database"></i> MySQL / SQL</span>
+      </div>
+      <h3 class="tech-title">Herramientas de trabajo</h3>
+      <div class="tech-stack-general">
+        <span><i class="fab fa-github"></i> GitHub</span>
+        <span><i class="fab fa-git-alt"></i> Git</span>
+        <span><i class="fas fa-code"></i> Visual Studio Code</span>
+        <span><i class="fas fa-mobile-screen-button"></i> Responsive Design</span>
+      </div>
+    </section>
+    
+    <section id="github-actividad">
+      <h2><i class="fab fa-github"></i> Actividad en GitHub</h2>
+      <div class="github-calendar-card">
+        <div class="gh-years-container">
+          <div class="gh-year-badge">
+            <span class="gh-year-label">Año 2026</span>
+            <span class="gh-year-count" id="count-2026">1,056 contribuciones</span>
+          </div>
+          <div class="gh-year-badge">
+            <span class="gh-year-label">Año 2025</span>
+            <span class="gh-year-count" id="count-2025">14 contribuciones</span>
+          </div>
+          <div class="gh-year-badge total-badge">
+            <span class="gh-year-label">Total histórico</span>
+            <span class="gh-year-count" id="count-total">1,070 en total</span>
+          </div>
+        </div>
 
----
+        <div class="gh-cal-scroll" id="gh-cal-scroll">
+          <a href="https://github.com/FlorBagnis" target="_blank" rel="noopener noreferrer" title="Ver perfil en GitHub" style="display:block;">
+            <div class="gh-cal" id="gh-cal">
+              <div class="gh-months" id="gh-months"></div>
+              <div class="gh-body">
+                <div class="gh-days"><span></span><span>Lun</span><span></span><span>Mié</span><span></span><span>Vie</span><span></span></div>
+                <div class="gh-grid" id="gh-grid"></div>
+              </div>
+              <div class="gh-legend">
+                Menos
+                <span class="gh-cell"></span><span class="gh-cell l1"></span><span class="gh-cell l2"></span><span class="gh-cell l3"></span><span class="gh-cell l4"></span>
+                Más
+              </div>
+            </div>
+          </a>
+        </div>
 
-### 🌸 SQL Dev Studio & Bootcamp
+        <div class="gh-chart-container" id="gh-fallback">
+          <a href="https://github.com/FlorBagnis" target="_blank" rel="noopener noreferrer" title="Ver perfil en GitHub">
+            <img class="gh-chart gh-light" src="https://ghchart.rshah.org/ec4899/FlorBagnis" alt="Contribuciones en GitHub" />
+            <img class="gh-chart gh-dark" src="https://ghchart.rshah.org/f472b6/FlorBagnis" alt="Contribuciones en GitHub Modo Oscuro" />
+          </a>
+        </div>
+      </div>
+    </section>
+    
+    <section id="proyectos">
+      <h2><i class="fas fa-folder-open"></i> Proyectos</h2>
+      <div class="project-filters">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="frontend">Frontend &amp; UI</button>
+        <button class="filter-btn" data-filter="fullstack">Fullstack &amp; SQL</button>
+        <button class="filter-btn" data-filter="tools">Herramientas</button>
+      </div>
+      <div class="projects-grid">
+        <article class="card" data-category="frontend tools">
+          <h3>Cuota Nube <i class="fas fa-calculator"></i></h3>
+          <div class="media-container">
+            <img src="calculadorademo.gif" alt="Calculadora de Tasas" class="project-media" loading="lazy" />
+            <canvas class="project-media"></canvas>
+            <button class="gif-toggle-btn" type="button" aria-label="Pausar animación" title="Pausar animación"><i class="fas fa-pause"></i></button>
+          </div>
+          <p class="project-type">Proyecto práctico · Herramienta para e-commerce</p>
+          <p>Los comerciantes no sabían cuánto valían realmente sus tasas y la app oficial solo mostraba el cálculo en una cuota. Diseñé esta calculadora para simular tasas, cuotas y montos netos según el plan y el medio de pago. Redujo más de un 25% las consultas sobre costos y sirvió de base para la calculadora oficial, con reconocimiento de Producto.</p>
+          <div class="project-tags"><span>HTML5</span><span>CSS3</span><span>JavaScript</span></div>
+          <div class="buttons">
+            <a class="button" href="https://calculadora-tiendanube.vercel.app" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i> Ver demo</a>
+            <a class="button secondary" href="https://github.com/FlorBagnis/calculadora-tiendanube" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Ver código</a>
+            <button class="button secondary" onclick="openModal('tiendanube')" style="border-color: var(--rosa-brillante); color: var(--rosa-brillante); cursor: pointer;"><i class="fas fa-award"></i> Ver agradecimiento</button>
+          </div>
+        </article>
+        <article class="card" data-category="frontend">
+          <h3>Honeymoon <i class="fas fa-shirt"></i></h3>
+          <div class="media-container">
+            <img src="honeymoon.gif" alt="Honeymoon" class="project-media" loading="lazy" />
+            <canvas class="project-media"></canvas>
+            <button class="gif-toggle-btn" type="button" aria-label="Pausar animación" title="Pausar animación"><i class="fas fa-pause"></i></button>
+          </div>
+          <p class="project-type">Proyecto final · Coderhouse</p>
+          <p>Nació de la idea de una tienda de ropa kawaii y fue mi proyecto final para recibirme de Desarrolladora Web en Coderhouse. Sitio responsive para una marca de indumentaria con estética kawaii.</p>
+          <div class="project-tags"><span>HTML5</span><span>CSS3</span><span>SASS</span><span>Bootstrap</span><span>Responsive</span></div>
+          <div class="buttons">
+            <a class="button" href="https://honeymoon-eight-nu.vercel.app/index.html" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i> Ver demo</a>
+            <a class="button secondary" href="https://github.com/FlorBagnis/coderhouse-honeymoon" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Ver código</a>
+          </div>
+        </article>
+        <article class="card" data-category="frontend tools">
+          <h3>Mensuales <i class="fas fa-wallet"></i></h3>
+          <div class="media-container">
+            <img src="mensualesdemo.gif" alt="Mensuales" class="project-media" loading="lazy" />
+            <canvas class="project-media"></canvas>
+            <button class="gif-toggle-btn" type="button" aria-label="Pausar animación" title="Pausar animación"><i class="fas fa-pause"></i></button>
+          </div>
+          <p class="project-type">Proyecto personal · Gestión de gastos</p>
+          <p>La creé para controlar mis propios gastos y saber en qué se me va la plata. Hoy la usan más de 20 personas, entre ellas negocios: es gratuita, simple, privada y ayuda a educarse financieramente.</p>
+          <div class="project-tags"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Firebase</span><span>Responsive</span></div>
+          <div class="buttons">
+            <a class="button" href="https://gastosmensuales-two.vercel.app/" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i> Ver demo</a>
+            <a class="button secondary" href="https://github.com/FlorBagnis/Mensuales" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Ver código</a>
+            <button class="button secondary" onclick="openModal('mensuales')" style="border-color: var(--rosa-brillante); color: var(--rosa-brillante); cursor: pointer;"><i class="fas fa-heart"></i> Ver impacto</button>
+          </div>
+        </article>
+        <article class="card" data-category="fullstack">
+          <h3>Gestor de Productos <i class="fas fa-boxes-stacked"></i></h3>
+          <div class="media-container">
+            <img src="cruddemo.gif" alt="Gestor de Productos" class="project-media" loading="lazy" />
+            <canvas class="project-media"></canvas>
+            <button class="gif-toggle-btn" type="button" aria-label="Pausar animación" title="Pausar animación"><i class="fas fa-pause"></i></button>
+          </div>
+          <p class="project-type">Proyecto práctico · CRUD con Base de Datos</p>
+          <p>Lo desarrollé para aprender SQL en la práctica: administra un catálogo de productos con operaciones de alta, baja, modificación y consulta sobre una base de datos.</p>
+          <div class="project-tags"><span>PHP</span><span>MySQL</span><span>SQL</span><span>HTML5</span><span>CSS3</span></div>
+          <div class="buttons">
+            <a class="button" href="https://florbagnis.github.io/Crud-Php-Mysql/" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i> Ver demo</a>
+            <a class="button secondary" href="https://github.com/FlorBagnis/crud-php-mysql" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Ver código</a>
+          </div>
+        </article>
+        <article class="card" data-category="fullstack tools">
+          <h3>SQL Practical Studio &amp; Bootcamp <i class="fas fa-database"></i></h3>
+          <div class="media-container">
+            <img src="sqldevdemo.gif" alt="SQL Practical Studio" class="project-media" loading="lazy" />
+            <canvas class="project-media"></canvas>
+            <button class="gif-toggle-btn" type="button" aria-label="Pausar animación" title="Pausar animación"><i class="fas fa-pause"></i></button>
+          </div>
+          <p class="project-type">Simulador interactivo · Bases de Datos</p>
+          <p>Nació de querer aprender SQL de forma práctica. Es un simulador con consola de consultas en vivo, preguntas de verdadero o falso y ejercicios para completar, con tablas que se renderizan dinámicamente.</p>
+          <div class="project-tags"><span>HTML5</span><span>CSS3 Moderno</span><span>JavaScript ES6</span><span>SQL</span><span>DOM Dinámico</span></div>
+          <div class="buttons">
+            <a class="button" href="https://florbagnis.github.io/SQL_DEV/" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i> Ver demo</a>
+            <a class="button secondary" href="https://github.com/FlorBagnis/SQL_DEV" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Ver código</a>
+          </div>
+        </article>
+        <article class="card" data-category="frontend tools">
+          <h3>CX Macros <i class="fas fa-comments"></i></h3>
+          <div class="media-container">
+            <img src="cxmacrosdemo.gif" alt="CX Macros" class="project-media" loading="lazy" />
+            <canvas class="project-media"></canvas>
+            <button class="gif-toggle-btn" type="button" aria-label="Pausar animación" title="Pausar animación"><i class="fas fa-pause"></i></button>
+          </div>
+          <p class="project-type">Proyecto personal · Herramienta para Customer Experience</p>
+          <p>Herramienta para equipos de soporte: 12 plantillas de respuesta listas, plantillas propias editables, favoritas, exportación a PDF/CSV y una función "Pulir texto" que corrige puntuación, tildes y mayúsculas. La armé para usarla en el día a día y, a la vez, aprender React.</p>
+          <div class="project-tags"><span>React</span><span>Vite</span><span>JavaScript</span><span>CSS3</span><span>localStorage</span><span>Responsive</span></div>
+          <div class="buttons">
+            <a class="button" href="https://cx-macros.vercel.app/" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i> Ver demo</a>
+            <a class="button secondary" href="https://github.com/FlorBagnis/CX-macros" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Ver código</a>
+          </div>
+        </article>
+        <article class="card" data-category="tools">
+          <h3>Calculadora CSAT <i class="fas fa-chart-line"></i></h3>
+          <div class="media-container">
+            <img src="calculadoracsatdemo.gif" alt="Calculadora CSAT" class="project-media" loading="lazy" />
+            <canvas class="project-media"></canvas>
+            <button class="gif-toggle-btn" type="button" aria-label="Pausar animación" title="Pausar animación"><i class="fas fa-pause"></i></button>
+          </div>
+          <p class="project-type">Proyecto personal · Herramienta para Customer Support</p>
+          <p>Nació como una calculadora en Excel para controlar mi propio CSAT y saber cuántas valoraciones positivas necesitaba para llegar al objetivo. La compartí con mis compañeros de Tiendanube para entender mejor las métricas y mejorarla, y después la pasé a app web para compartirla con más colegas. Objetivo editable, cálculo en tiempo real y exportación a PDF.</p>
+          <div class="project-tags"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Excel</span><span>Responsive</span></div>
+          <div class="buttons">
+            <a class="button" href="https://florbagnis.github.io/calculadora-csat/" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i> Ver demo</a>
+            <a class="button secondary" href="https://github.com/FlorBagnis/calculadora-csat" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Ver código</a>
+          </div>
+        </article>
+      </div>
+    </section>
 
-Simulador web interactivo enfocado en bases de datos relacionales y lógica frontend con JavaScript y SQL. Diseñado para entrenar consultas, corregir errores de sintaxis y resolver casos orientados a soporte técnico y auditoría.
+    <section id="contacto">
+      <h2><i class="fas fa-envelope"></i> Contacto</h2>
+      <div class="contact-grid">
+        <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=florenciasoledadbagnis@gmail.com&amp;su=Contacto%20desde%20tu%20portfolio" target="_blank" rel="noopener noreferrer" class="contact-item"><i class="fas fa-envelope"></i> Email</a>
+        <button id="copy-email-btn" type="button" class="contact-item" style="cursor: pointer; font-family: inherit; font-size: inherit;" aria-label="Copiar correo"><i class="far fa-copy" id="copy-icon"></i> <span id="copy-label">Copiar email</span></button>
+        <a href="https://www.linkedin.com/in/florencia-bagnis" target="_blank" rel="noopener noreferrer" class="contact-item"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://github.com/Florbagnis" target="_blank" rel="noopener noreferrer" class="contact-item"><i class="fab fa-github"></i> GitHub</a>
+      </div>
+    </section>
+    <footer>
+      <p>Desarrollado por Florencia Bagnis <i class="fas fa-code"></i></p>
+    </footer>
+  </div>
 
-**Demo:**  
-https://florbagnis.github.io/SQL_DEV/
+  <script>
+    if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+    window.scrollTo(0, 0);
 
-**Repositorio:**  
-https://github.com/FlorBagnis/SQL_DEV
+    document.getElementById('reload-link').addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.reload();
+    });
 
----
+    window.openModal = function(modalId) {
+      const modal = document.getElementById('modal-' + modalId);
+      if (modal) modal.classList.add('active');
+    };
+    window.closeModal = function(modalId) {
+      const modal = document.getElementById('modal-' + modalId);
+      if (modal) modal.classList.remove('active');
+    };
 
-### 🌸 Honeymoon
+    const panelToggleBtn = document.getElementById('panel-toggle');
+    const floatPanel = document.getElementById('float-panel');
+    const toggleIcon = document.getElementById('toggle-icon');
+    if (panelToggleBtn && floatPanel && toggleIcon) {
+      panelToggleBtn.addEventListener('click', () => {
+        floatPanel.classList.toggle('collapsed');
+        const isCollapsed = floatPanel.classList.contains('collapsed');
+        toggleIcon.className = isCollapsed ? 'fas fa-chevron-left' : 'fas fa-chevron-right';
+        panelToggleBtn.title = isCollapsed ? 'Mostrar controles' : 'Ocultar controles';
+      });
+    }
 
-Proyecto Final del curso **Desarrollo Web** de **Coderhouse**. Sitio web responsive desarrollado para una marca de indumentaria bajo una estética moderna y funcional.
+    document.querySelectorAll('.media-container').forEach(container => {
+      const img = container.querySelector('img.project-media');
+      const canvas = container.querySelector('canvas.project-media');
+      const btn = container.querySelector('.gif-toggle-btn');
+      let isPlaying = true;
 
-**Demo:**  
-https://honeymoon-eight-nu.vercel.app/
+      btn.addEventListener('click', () => {
+        isPlaying = !isPlaying;
+        if (isPlaying) {
+          canvas.style.display = 'none';
+          btn.innerHTML = '<i class="fas fa-pause"></i>';
+          btn.title = 'Pausar animación';
+          btn.setAttribute('aria-label', 'Pausar animación');
+        } else {
+          canvas.width = img.naturalWidth || img.width || 600;
+          canvas.height = img.naturalHeight || img.height || 400;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+          canvas.style.display = 'block';
 
-**Repositorio:**  
-https://github.com/FlorBagnis/coderhouse-honeymoon
+          btn.innerHTML = '<i class="fas fa-play"></i>';
+          btn.title = 'Reproducir animación';
+          btn.setAttribute('aria-label', 'Reproducir animación');
+        }
+      });
+    });
 
----
+    let LANG = 'es';
+    try { LANG = localStorage.getItem('lang') === 'en' ? 'en' : 'es'; } catch (e) {}
 
-### 🛍️ Gestor de Productos (CRUD)
+    const STR = {
+      es: {
+        year: 'Año', contrib: 'contribuciones', total: 'en total', totalLabel: 'Total histórico',
+        copy: 'Copiar email', copied: '¡Copiado! ✨', less: 'Menos', more: 'Más',
+        days: ['Lun', 'Mié', 'Vie'],
+        months: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+        tip: (c, d) => `${c} contribuciones el ${d}`,
+        motionOff: 'Pausar efectos en movimiento', motionOn: 'Reanudar efectos en movimiento',
+        langTitle: 'Switch to English', mailSubject: 'Contacto desde tu portfolio'
+      },
+      en: {
+        year: 'Year', contrib: 'contributions', total: 'in total', totalLabel: 'All-time total',
+        copy: 'Copy email', copied: 'Copied! ✨', less: 'Less', more: 'More',
+        days: ['Mon', 'Wed', 'Fri'],
+        months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        tip: (c, d) => `${c} contributions on ${d}`,
+        motionOff: 'Pause moving effects', motionOn: 'Resume moving effects',
+        langTitle: 'Cambiar a español', mailSubject: 'Contact from your portfolio'
+      }
+    };
+    const S = () => STR[LANG];
 
-Aplicación web enfocada en backend y gestión de datos con PHP & MySQL para la administración interactiva de catálogos de artículos.
+    const metaTag = document.querySelector('meta[name="description"]');
+    const META_ES = metaTag ? metaTag.getAttribute('content') : '';
+    const META_EN = "Florencia Bagnis' portfolio: Customer Support Specialist with a technical profile: 5+ years in SaaS, e-commerce and payments, plus self-built support tools.";
 
-**Demo:**  
-https://florbagnis.github.io/Crud-Php-Mysql/
+    const I18N = [];
+    function firstTextNode(el) {
+      for (const n of el.childNodes) { if (n.nodeType === 3 && n.nodeValue.trim()) return n; }
+      return null;
+    }
+    function reg(sel, en, html) {
+      document.querySelectorAll(sel).forEach(el => {
+        const node = html ? null : firstTextNode(el);
+        I18N.push({ el, en, html: !!html, node, es: html ? el.innerHTML : (node ? node.nodeValue : '') });
+      });
+    }
 
-**Repositorio:**  
-https://github.com/FlorBagnis/crud-php-mysql
+    reg('.sticky-nav a:nth-child(1)', 'About me');
+    reg('.sticky-nav a:nth-child(2)', 'Technologies');
+    reg('.sticky-nav a:nth-child(4)', 'Projects');
+    reg('.sticky-nav a:nth-child(5)', 'Contact');
+    reg('.subtitle', 'Customer Support Specialist with a technical profile | 5+ years in SaaS, e-commerce and payments | Zendesk, APIs and self-built tools');
+    reg('.availability', 'Available for remote work');
 
----
+    reg('#sobre-mi h2', 'About me');
+    reg('#sobre-mi > p:nth-of-type(1)', "Hi! I'm <strong>Florencia Bagnis</strong>, a Customer Support Specialist with a <strong>technical profile</strong>: 5+ years solving cases in SaaS, e-commerce and payments, and building my own tools to solve them better.", true);
+    reg('#sobre-mi > p:nth-of-type(2)', 'At <strong>Tiendanube</strong> I handled ~60 daily tickets in Zendesk with a <strong>2-minute first response time, 100% SLA compliance and 96% CSAT</strong>. I solved Tier 1 and Tier 2 cases, troubleshot APIs and payment gateways, escalated bugs to Engineering in GitHub and retained more than 150 stores at risk of churn.', true);
+    reg('#sobre-mi > p:nth-of-type(3)', "That experience put me in touch with real merchants: I learned where they get stuck and how to explain things simply. For example, they didn't know what their fees really cost, so I designed <strong>Cuota Nube</strong>, a calculator that reduced cost-related inquiries by more than 25% and became the basis for the official calculator.", true);
+    reg('#sobre-mi > p:nth-of-type(4)', 'I trained in <strong>Frontend Web Development at Coderhouse</strong> (JavaScript, React, SQL) and in applied AI, and I build my own projects to solve real support problems.', true);
+    reg('#sobre-mi > p:nth-of-type(5)', "I'm looking to join a Customer Support or Customer Experience team where I can combine both: understanding people and solving with tools. 💗", true);
+    reg('.summary-pill:nth-child(1)', 'English: Technical (B2)');
+    reg('.summary-pill:nth-child(2)', 'Portuguese: Basic');
+    reg('.summary-pill:nth-child(3)', 'Spanish: Native');
+    reg('.summary-pill:nth-child(4)', 'Frontend Development & Applied AI · Coderhouse');
 
-### 🐾 Neko-Jobs (Monitoreo de Ofertas Laborales)
+    reg('#tecnologias h2', 'Technologies and tools');
+    reg('#tecnologias h3:nth-of-type(1)', 'Support & CX');
+    reg('#tecnologias h3:nth-of-type(2)', 'Development');
+    reg('#tecnologias h3:nth-of-type(3)', 'Work tools');
 
-Herramienta de automatización desarrollada en Python para el rastreo y monitoreo de ofertas laborales, conectada a un bot de Telegram para recibir alertas en tiempo real y optimizar la búsqueda activa de empleo.
+    reg('#github-actividad h2', 'GitHub activity');
+    reg('#proyectos h2', 'Projects');
+    reg('.filter-btn[data-filter="all"]', 'All');
+    reg('.filter-btn[data-filter="tools"]', 'Tools');
 
-**Repositorio:**  
-https://github.com/FlorBagnis/neko-jobs
+    reg('.projects-grid .card:nth-child(1) h3', 'Cuota Nube');
+    reg('.projects-grid .card:nth-child(1) .project-type', 'Practical project · E-commerce tool');
+    reg('.projects-grid .card:nth-child(1) > p:not(.project-type)', "Merchants didn't know what their fees really cost, and the official app only showed the calculation for a single installment. I designed this calculator to simulate fees, installments and net amounts by plan and payment method. It reduced cost-related inquiries by more than 25% and became the basis for the official calculator, recognized by the Product team.");
 
-## 🎯 Enfoque Profesional
+    reg('.projects-grid .card:nth-child(2) .project-type', 'Final project · Coderhouse');
+    reg('.projects-grid .card:nth-child(2) > p:not(.project-type)', 'It started as the idea of a kawaii clothing store and was my final project to graduate as a Web Developer at Coderhouse. A responsive site for an apparel brand with a kawaii aesthetic.');
 
-Mi trayectoria combinando roles de **Customer Support** (con experiencia en plataformas como Tiendanube) y mi formación en **Frontend Development** me permite entender las necesidades reales de los usuarios y traducirlas en interfaces funcionales, limpias y eficientes. Creo firmemente que un buen desarrollo técnico nace de la empatía con quien utiliza la herramienta todos los días.
+    reg('.projects-grid .card:nth-child(3) .project-type', 'Personal project · Expense tracking');
+    reg('.projects-grid .card:nth-child(3) > p:not(.project-type)', 'I built it to control my own spending and see where my money goes. Today more than 20 people use it, including businesses: it is free, simple, private and helps people learn about financial education.');
 
----
+    reg('.projects-grid .card:nth-child(4) h3', 'Product Catalog Manager');
+    reg('.projects-grid .card:nth-child(4) .project-type', 'Practical project · CRUD with database');
+    reg('.projects-grid .card:nth-child(4) > p:not(.project-type)', 'I built it to learn SQL hands-on: it manages a product catalog with create, read, update and delete operations on a database.');
 
+    reg('.projects-grid .card:nth-child(5) .project-type', 'Interactive simulator · Databases');
+    reg('.projects-grid .card:nth-child(5) > p:not(.project-type)', "It was born from wanting to learn SQL in a practical way. It is a simulator with a live query console, true/false questions and fill-in exercises, with dynamically rendered tables.");
+    reg('.projects-grid .card:nth-child(5) .project-tags span:nth-child(2)', 'Modern CSS3');
+    reg('.projects-grid .card:nth-child(5) .project-tags span:nth-child(5)', 'Dynamic DOM');
 
-## 📄 Licencia
+    reg('.projects-grid .card:nth-child(6) .project-type', 'Personal project · Customer Experience tool');
+    reg('.projects-grid .card:nth-child(6) > p:not(.project-type)', 'Tool for support teams: 12 ready-made reply templates, editable custom templates, favorites, PDF/CSV export and a "Polish text" feature that fixes punctuation, accents and capitalization. I built it for daily use and to learn React at the same time.');
 
-Distribuido bajo licencia MIT. Ver el archivo `LICENSE`.
+    reg('.projects-grid .card:nth-child(7) h3', 'CSAT Calculator');
+    reg('.projects-grid .card:nth-child(7) .project-type', 'Personal project · Customer Support tool');
+    reg('.projects-grid .card:nth-child(7) > p:not(.project-type)', 'It started as an Excel calculator to track my own CSAT and know how many positive ratings I needed to reach the target. I shared it with my Tiendanube teammates to help us understand the metrics better and improve it, and later turned it into a web app to share with more colleagues. Editable target, real-time calculation and PDF export.');
 
+    reg('.buttons a.button:not(.secondary)', 'View demo');
+    reg('.buttons a.button.secondary', 'View code');
+    reg('button[onclick="openModal(\'tiendanube\')"]', 'View thanks');
+    reg('button[onclick="openModal(\'mensuales\')"]', 'View impact');
 
-## 🌸 Sobre mí
+    reg('#contacto h2', 'Contact');
+    reg('footer p', 'Built by Florencia Bagnis');
+    reg('#modal-tiendanube h3', 'Tiendanube recognition');
+    reg('#modal-tiendanube p', 'Message from the team praising the fee calculator.');
+    reg('#modal-mensuales h3', 'Mensuales impact');
+    reg('#modal-mensuales p', 'Community using the expense management app.');
 
-Soy **Customer Support & Technical Support Specialist** con formación continua en desarrollo frontend y tecnologías web. Mi enfoque une la resolución analítica de problemas complejos con la creación de soluciones digitales intuitivas.
+    const ghState = { year: 2026, cur: 1056, prev: 14, total: 1070 };
+    let ghData = null;
+    const fmt = n => Number(n || 0).toLocaleString('en-US');
 
----
+    function renderGhTexts() {
+      const l = document.querySelectorAll('.gh-year-label');
+      if (l[0]) l[0].textContent = `${S().year} ${ghState.year}`;
+      if (l[1]) l[1].textContent = `${S().year} ${ghState.year - 1}`;
+      if (l[2]) l[2].textContent = S().totalLabel;
+      document.getElementById('count-2026').textContent = `${fmt(ghState.cur)} ${S().contrib}`;
+      document.getElementById('count-2025').textContent = `${fmt(ghState.prev)} ${S().contrib}`;
+      document.getElementById('count-total').textContent = `${fmt(ghState.total)} ${S().total}`;
+    }
 
-### 👩‍💻 Autora
+    function renderGhCal() {
+      const dias = document.querySelectorAll('.gh-days span');
+      if (dias[1]) dias[1].textContent = S().days[0];
+      if (dias[3]) dias[3].textContent = S().days[1];
+      if (dias[5]) dias[5].textContent = S().days[2];
+      const leyenda = document.querySelector('.gh-legend');
+      if (leyenda) {
+        leyenda.innerHTML = `${S().less} <span class="gh-cell"></span><span class="gh-cell l1"></span><span class="gh-cell l2"></span><span class="gh-cell l3"></span><span class="gh-cell l4"></span> ${S().more}`;
+      }
+      if (!ghData) return;
 
-**Florencia Bagnis**
+      const porFecha = new Map(ghData.contributions.map(d => [d.date, d]));
+      const hoy = new Date(); hoy.setHours(0, 0, 0, 0);
+      const inicio = new Date(hoy);
+      inicio.setDate(inicio.getDate() - inicio.getDay() - 52 * 7);
 
-* 💼 [LinkedIn](https://www.linkedin.com/in/florencia-bagnis)
-* 💻 [Portfolio](https://florbagnis.github.io/Portfolio-FlorBagnis/)
-* 💌 [florenciasoledadbagnis@gmail.com](mailto:florenciasoledadbagnis@gmail.com)
+      const pad = n => String(n).padStart(2, '0');
+      const clave = d => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+      const meses = S().months;
 
-> 💻 Portfolio personal desarrollado para centralizar herramientas y proyectos orientados a operaciones, soporte y desarrollo web, combinando **HTML5 semántico**, **CSS moderno** y un fuerte sentido de accesibilidad y experiencia de usuario.
+      let celdas = '', etiquetas = '', ultimoMes = -1, ultimaSemana = -10, i = 0;
+      for (let d = new Date(inicio); d <= hoy; d.setDate(d.getDate() + 1), i++) {
+        const semana = Math.floor(i / 7);
+        if (i % 7 === 0 && d.getMonth() !== ultimoMes) {
+          if (semana - ultimaSemana >= 3) {
+            etiquetas += `<span style="left:${semana * 15}px">${meses[d.getMonth()]}</span>`;
+            ultimaSemana = semana;
+          }
+          ultimoMes = d.getMonth();
+        }
+        const info = porFecha.get(clave(d));
+        const nivel = info ? info.level : 0;
+        const cant = info ? info.count : 0;
+        celdas += `<span class="gh-cell l${nivel}" title="${S().tip(cant, clave(d))}"></span>`;
+      }
+      document.getElementById('gh-grid').innerHTML = celdas;
+      document.getElementById('gh-months').innerHTML = etiquetas;
+    }
+
+    async function fetchGitHubContributions() {
+      try {
+        const res = await fetch('https://github-contributions-api.jogruber.de/v4/FlorBagnis?y=all&t=' + Date.now(), { cache: 'no-store' });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const data = await res.json();
+        if (!data || !data.total || !data.contributions) throw new Error('Respuesta inválida');
+
+        const thisYear = new Date().getFullYear();
+        ghState.year = thisYear;
+        ghState.cur = data.total[thisYear] || 0;
+        ghState.prev = data.total[thisYear - 1] || 0;
+        ghState.total = Object.values(data.total).reduce((a, b) => a + b, 0);
+        ghData = data;
+
+        renderGhTexts();
+        renderGhCal();
+
+        document.getElementById('gh-cal-scroll').classList.add('ready');
+        document.getElementById('gh-fallback').style.display = 'none';
+      } catch (error) {
+        console.warn('No se pudo actualizar GitHub:', error);
+      }
+    }
+
+    fetchGitHubContributions();
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) fetchGitHubContributions();
+    });
+
+    const motionBtn = document.getElementById('motion-toggle');
+    let reduced = false;
+    try {
+      const v = localStorage.getItem('reduceMotion');
+      reduced = v === null ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : v === '1';
+    } catch (e) {}
+
+    function applyMotion() {
+      document.documentElement.classList.toggle('reduce-motion', reduced);
+      if (!motionBtn) return;
+      motionBtn.innerHTML = reduced ? '<i class="fas fa-play"></i>' : '<i class="fas fa-pause"></i>';
+      const label = reduced ? S().motionOn : S().motionOff;
+      motionBtn.title = label;
+      motionBtn.setAttribute('aria-label', label);
+      motionBtn.setAttribute('aria-pressed', String(reduced));
+    }
+    if (motionBtn) {
+      motionBtn.addEventListener('click', () => {
+        reduced = !reduced;
+        try { localStorage.setItem('reduceMotion', reduced ? '1' : '0'); } catch (e) {}
+        applyMotion();
+      });
+    }
+
+    const langBtn = document.getElementById('lang-toggle');
+    function applyLang() {
+      document.documentElement.lang = LANG;
+      I18N.forEach(r => {
+        if (r.html) {
+          r.el.innerHTML = LANG === 'en' ? r.en : r.es;
+        } else if (r.node) {
+          const lead = r.es.match(/^\s*/)[0];
+          const trail = r.es.match(/\s*$/)[0];
+          r.node.nodeValue = LANG === 'en' ? lead + r.en + trail : r.es;
+        }
+      });
+      if (metaTag) metaTag.setAttribute('content', LANG === 'en' ? META_EN : META_ES);
+      document.querySelectorAll('a[href^="https://mail.google.com"]').forEach(a => {
+        a.href = 'https://mail.google.com/mail/?view=cm&fs=1&to=florenciasoledadbagnis@gmail.com&su=' + encodeURIComponent(S().mailSubject);
+      });
+      const cl = document.getElementById('copy-label');
+      if (cl) cl.textContent = S().copy;
+      if (langBtn) {
+        langBtn.textContent = LANG === 'es' ? 'EN' : 'ES';
+        langBtn.title = S().langTitle;
+        langBtn.setAttribute('aria-label', S().langTitle);
+      }
+
+      const cvLink = document.getElementById('cv-link');
+      if (cvLink) {
+        const file = LANG === 'en' ? 'CV-Florencia-Bagnis-EN.pdf' : 'CV-Florencia-Bagnis-ES.pdf';
+        const label = LANG === 'en' ? 'Download CV' : 'Descargar CV';
+        cvLink.href = './' + file;
+        cvLink.title = label;
+        cvLink.setAttribute('aria-label', label);
+      }
+
+      const dossierLink = document.getElementById('dossier-link');
+      if (dossierLink) {
+        const file = LANG === 'en' ? 'Dossier-Florencia-Bagnis-EN.pdf' : 'Dossier-Florencia-Bagnis-ES.pdf';
+        const label = LANG === 'en' ? 'Download performance dossier' : 'Descargar dossier';
+        dossierLink.href = './' + file;
+        dossierLink.title = label;
+        dossierLink.setAttribute('aria-label', label);
+      }
+
+      renderGhTexts();
+      renderGhCal();
+      applyMotion();
+    }
+    if (langBtn) {
+      langBtn.addEventListener('click', () => {
+        LANG = LANG === 'es' ? 'en' : 'es';
+        try { localStorage.setItem('lang', LANG); } catch (e) {}
+        applyLang();
+      });
+    }
+
+    const modalImages = document.querySelectorAll('#modal-tiendanube .kawaii-modal-content img, #modal-mensuales .kawaii-modal-content img');
+    modalImages.forEach(img => {
+      img.addEventListener('touchstart', () => {
+        const modalId = img.closest('.kawaii-modal').id;
+        img.style.transform = modalId === 'modal-tiendanube' ? 'scale(1.05)' : 'translateY(-4px)';
+      }, { passive: true });
+
+      img.addEventListener('touchend', () => {
+        img.style.transform = 'none';
+      }, { passive: true });
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target.classList.contains('kawaii-modal')) {
+        e.target.classList.remove('active');
+      }
+    });
+
+    const toggleButton = document.getElementById('theme-toggle');
+    let currentTheme = null;
+    try { currentTheme = localStorage.getItem('theme'); } catch (e) {}
+    if (currentTheme) {
+      document.documentElement.setAttribute('data-theme', currentTheme);
+      if (currentTheme === 'dark') { toggleButton.textContent = '☀️'; }
+    }
+    toggleButton.addEventListener('click', () => {
+      let theme = document.documentElement.getAttribute('data-theme');
+      if (theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        try { localStorage.setItem('theme', 'light'); } catch (e) {}
+        toggleButton.textContent = '🌙';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        try { localStorage.setItem('theme', 'dark'); } catch (e) {}
+        toggleButton.textContent = '☀️';
+      }
+    });
+
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.projects-grid .card');
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filterValue = btn.getAttribute('data-filter');
+        projectCards.forEach(card => {
+          const cardCategories = card.getAttribute('data-category') || '';
+          if (filterValue === 'all' || cardCategories.includes(filterValue)) {
+            card.classList.remove('hide-card');
+          } else {
+            card.classList.add('hide-card');
+          }
+        });
+      });
+    });
+
+    const copyEmailBtn = document.getElementById('copy-email-btn');
+    const copyLabel = document.getElementById('copy-label');
+    const copyIcon = document.getElementById('copy-icon');
+    if (copyEmailBtn) {
+      copyEmailBtn.addEventListener('click', () => {
+        const email = 'florenciasoledadbagnis@gmail.com';
+        navigator.clipboard.writeText(email).then(() => {
+          copyLabel.textContent = S().copied;
+          copyIcon.className = 'fas fa-check';
+          setTimeout(() => {
+            copyLabel.textContent = S().copy;
+            copyIcon.className = 'far fa-copy';
+          }, 2000);
+        });
+      });
+    }
+
+    const navWrapper = document.querySelector('.sticky-nav-wrapper');
+    let lastScrollTop = 0;
+    window.addEventListener('scroll', () => {
+      let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+      if (currentScroll > lastScrollTop && currentScroll > 150) {
+        navWrapper.classList.add('nav-hidden');
+      } else {
+        navWrapper.classList.remove('nav-hidden');
+      }
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    });
+
+    const backToTopBtn = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 350) {
+        backToTopBtn.classList.add('show-btn');
+      } else {
+        backToTopBtn.classList.remove('show-btn');
+      }
+    });
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' });
+    });
+
+    applyLang();
+  </script>
+  
+<script src="export-pdf.js"></script>
+</body>
+</html>
