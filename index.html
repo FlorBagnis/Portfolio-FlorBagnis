@@ -54,14 +54,15 @@
     .filter-btn:hover, .filter-btn.active { background: var(--rosa-brillante); border-color: var(--rosa-brillante); color: white; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(236, 72, 153, 0.25); }
     [data-theme="dark"] .filter-btn { background: var(--card-bg); border-color: var(--rosa-suave); color: var(--texto-secundario); }
     [data-theme="dark"] .filter-btn.active { background: var(--rosa-brillante); color: #fff; }
-    @media screen {
+      @media screen {
       .projects-grid .card:nth-child(1) { order: 1; }
       .projects-grid .card:nth-child(6) { order: 2; }
       .projects-grid .card:nth-child(7) { order: 3; }
-      .projects-grid .card:nth-child(3) { order: 4; }
-      .projects-grid .card:nth-child(4) { order: 5; }
-      .projects-grid .card:nth-child(5) { order: 6; }
-      .projects-grid .card:nth-child(2) { order: 7; }
+      .projects-grid .card:nth-child(8) { order: 4; }
+      .projects-grid .card:nth-child(3) { order: 5; }
+      .projects-grid .card:nth-child(4) { order: 6; }
+      .projects-grid .card:nth-child(5) { order: 7; }
+      .projects-grid .card:nth-child(2) { order: 8; }
     }
     @media screen {
       #sobre-mi .skills-summary-pillbox { display: flex !important; flex-wrap: wrap !important; justify-content: flex-start !important; align-items: center; gap: 10px; width: 100%; max-width: 100%; margin: 18px 0 0 !important; padding: 0 !important; transform: none !important; float: none !important; position: static !important; overflow: visible !important; }
@@ -615,9 +616,27 @@
             <a class="button secondary" href="https://github.com/FlorBagnis/calculadora-csat" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Ver código</a>
           </div>
         </article>
+
+                <article class="card" data-category="tools">
+          <h3>Neko Jobs <i class="fas fa-paw"></i></h3>
+          <div class="media-container">
+            <img src="NekoJobs-demo.gif" alt="Neko Jobs" class="project-media" loading="lazy" />
+            <canvas class="project-media"></canvas>
+            <button class="gif-toggle-btn" type="button" aria-label="Pausar animación" title="Pausar animación"><i class="fas fa-pause"></i></button>
+          </div>
+          <p class="project-type">Proyecto personal · Bot de Telegram para búsqueda laboral</p>
+          <p>Empezó como código para copiar y pegar que había que forkear y configurar, y lo transformé en un bot de Telegram compartido para que cualquiera pueda usarlo sin saber programar. Revisa cada hora las páginas de empleo de empresas tech de Argentina y LATAM, y avisa de los puestos nuevos que coinciden con tus palabras clave, sin repetir avisos. Se configura con comandos simples como /agregar y /excluir.</p>
+          <div class="project-tags"><span>JavaScript</span><span>Cloudflare Workers</span><span>Firebase</span><span>Python</span><span>GitHub Actions</span><span>Telegram API</span></div>
+          <div class="buttons">
+            <a class="button" href="https://t.me/NekoJobsLATAM_bot" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i> Ver demo</a>
+            <a class="button secondary" href="https://github.com/FlorBagnis/Neko-Jobs" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Ver código</a>
+          </div>
+        </article>
       </div>
     </section>
 
+
+    
     <section id="contacto">
       <h2><i class="fas fa-envelope"></i> Contacto</h2>
       <div class="contact-grid">
@@ -784,6 +803,8 @@
     reg('.projects-grid .card:nth-child(7) .project-type', 'Personal project · Customer Support tool');
     reg('.projects-grid .card:nth-child(7) > p:not(.project-type)', 'It started as an Excel calculator to track my own CSAT and know how many positive ratings I needed to reach the target. I shared it with my Tiendanube teammates to help us understand the metrics better and improve it, and later turned it into a web app to share with more colleagues. Editable target, real-time calculation and PDF export.');
 
+    reg('.projects-grid .card:nth-child(8) .project-type', 'Personal project · Telegram bot for job searching');
+    reg('.projects-grid .card:nth-child(8) > p:not(.project-type)', 'It started as copy-and-paste code that had to be forked and configured, and I turned it into a shared Telegram bot so anyone can use it without knowing how to code. Every hour it checks the job pages of tech companies in Argentina and LATAM and notifies you of new openings that match your keywords, without repeating alerts. It is configured with simple commands like /agregar and /excluir.');
     reg('.buttons a.button:not(.secondary)', 'View demo');
     reg('.buttons a.button.secondary', 'View code');
     reg('button[onclick="openModal(\'tiendanube\')"]', 'View thanks');
