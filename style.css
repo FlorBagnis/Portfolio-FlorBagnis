@@ -1149,3 +1149,16 @@ header .availability {
     border: 3px solid #ec4899 !important;
   }
 }
+
+
+
+#modal-nekojobs .kawaii-modal-content p {
+  max-width: 600px;
+  margin: 0 auto 10px;
+}
+#modal-nekojobs .kawaii-modal-content img {
+  margin: 15px auto 0;
+  max-width: 100%;
+  height: auto;
+}
+
