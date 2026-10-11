@@ -389,6 +389,15 @@
     </div>
   </div>
 
+  <div id="modal-nekojobs" class="kawaii-modal">
+  <div class="kawaii-modal-content">
+    <button class="kawaii-close-btn" onclick="closeModal('nekojobs')"><i class="fas fa-times"></i></button>
+    <h3 style="color: var(--rosa-brillante); margin-bottom: 5px;"><i class="fas fa-paw"></i> Impacto Neko Jobs</h3>
+    <p style="font-size: 13px; color: var(--texto-secundario);">Comunidad usando el bot de avisos de empleo: personas con alertas activas y avisos enviados.</p>
+    <img src="Neko-Jobs.png" alt="Usuarios utilizando Neko Jobs" />
+  </div>
+</div>
+
   <div class="container">
     <header>
 
@@ -633,12 +642,13 @@
           <p>Empezó como código para copiar y pegar que había que forkear y configurar, y lo transformé en un bot de Telegram compartido para que cualquiera pueda usarlo sin saber programar. Revisa cada hora las páginas de empleo de empresas tech de Argentina y LATAM, y avisa de los puestos nuevos que coinciden con tus palabras clave, sin repetir avisos. Se configura con comandos simples como /agregar y /excluir.</p>
           <div class="project-tags"><span>JavaScript</span><span>Cloudflare Workers</span><span>Firebase</span><span>Python</span><span>GitHub Actions</span><span>Telegram API</span></div>
           <div class="buttons">
-            <a class="button" href="https://t.me/NekoJobsLATAM_bot" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i> Ver demo</a>
-            <a class="button secondary" href="https://github.com/FlorBagnis/Neko-Jobs" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Ver código</a>
+          <a class="button" href="https://t.me/NekoJobsLATAM_bot" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i> Ver demo</a>
+          <a class="button secondary" href="https://github.com/FlorBagnis/Neko-Jobs" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Ver código</a>
+          <button class="button secondary" onclick="openModal('nekojobs')" style="border-color: var(--rosa-brillante); color: var(--rosa-brillante); cursor: pointer;"><i class="fas fa-heart"></i> Ver impacto</button>
           </div>
         </article>
-      </div>
-    </section>
+        </div>
+       </section>
 
 
     
