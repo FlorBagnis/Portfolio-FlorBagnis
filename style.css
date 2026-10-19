@@ -1273,17 +1273,37 @@ header .availability {
 
 
 
-/* Evitar el fondo celeste del autocompletado del navegador */
+/* Autocompletado del navegador: mantener los colores de la plataforma */
+.contact-accordion input,
+.contact-accordion textarea {
+  color-scheme: light;
+}
+[data-theme="dark"] .contact-accordion input,
+[data-theme="dark"] .contact-accordion textarea {
+  color-scheme: dark;
+}
+
+/* Modo claro */
 .contact-accordion input:-webkit-autofill,
 .contact-accordion input:-webkit-autofill:hover,
 .contact-accordion input:-webkit-autofill:focus,
-.contact-accordion textarea:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 1000px var(--rosa-suave) inset !important;
-  box-shadow: 0 0 0 1000px var(--rosa-suave) inset !important;
-  -webkit-text-fill-color: var(--texto-oscuro) !important;
-  caret-color: var(--texto-oscuro);
-  border-color: rgba(236, 72, 153, 0.4);
+.contact-accordion input:-webkit-autofill:active,
+.contact-accordion input:autofill {
+  -webkit-box-shadow: 0 0 0 1000px #fce7f3 inset !important;
+  box-shadow: 0 0 0 1000px #fce7f3 inset !important;
+  -webkit-text-fill-color: #2d1222 !important;
+  caret-color: #2d1222;
   transition: background-color 9999s ease-in-out 0s;
 }
 
-
+/* Modo oscuro */
+[data-theme="dark"] .contact-accordion input:-webkit-autofill,
+[data-theme="dark"] .contact-accordion input:-webkit-autofill:hover,
+[data-theme="dark"] .contact-accordion input:-webkit-autofill:focus,
+[data-theme="dark"] .contact-accordion input:-webkit-autofill:active,
+[data-theme="dark"] .contact-accordion input:autofill {
+  -webkit-box-shadow: 0 0 0 1000px #2a1622 inset !important;
+  box-shadow: 0 0 0 1000px #2a1622 inset !important;
+  -webkit-text-fill-color: #fdf2f8 !important;
+  caret-color: #fdf2f8;
+}
