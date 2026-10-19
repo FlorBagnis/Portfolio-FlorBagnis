@@ -1270,3 +1270,20 @@ header .availability {
 
 /* Que no aparezca en el PDF exportado */
 @media print { .contact-accordion { display: none !important; } }
+
+
+
+/* Evitar el fondo celeste del autocompletado del navegador */
+.contact-accordion input:-webkit-autofill,
+.contact-accordion input:-webkit-autofill:hover,
+.contact-accordion input:-webkit-autofill:focus,
+.contact-accordion textarea:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px var(--rosa-suave) inset !important;
+  box-shadow: 0 0 0 1000px var(--rosa-suave) inset !important;
+  -webkit-text-fill-color: var(--texto-oscuro) !important;
+  caret-color: var(--texto-oscuro);
+  border-color: rgba(236, 72, 153, 0.4);
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+
