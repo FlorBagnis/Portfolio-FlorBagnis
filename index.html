@@ -657,7 +657,7 @@
           </div>
         </article>
 
-                <article class="card" data-category="tools">
+        <article class="card" data-category="tools">
           <h3>Neko Jobs <i class="fas fa-paw"></i></h3>
           <div class="media-container">
             <img src="NekoJobs-demo.gif" alt="Neko Jobs" class="project-media" loading="lazy" />
@@ -686,6 +686,43 @@
         <a href="https://www.linkedin.com/in/florencia-bagnis" target="_blank" rel="noopener noreferrer" class="contact-item"><i class="fab fa-linkedin"></i> LinkedIn</a>
         <a href="https://github.com/Florbagnis" target="_blank" rel="noopener noreferrer" class="contact-item"><i class="fab fa-github"></i> GitHub</a>
       </div>
+
+      <!-- FORMULARIO DE CONTACTO (acordeón) -->
+      <details class="contact-accordion">
+        <summary>
+          <span data-k="title">💌 ¿Tenés alguna consulta?</span> <span class="arrow">▼</span>
+        </summary>
+
+        <div class="contact-body">
+          <p class="contact-intro" data-k="intro">Completá tus datos y mandame un mensaje directo.</p>
+
+          <div id="formSuccess" hidden style="text-align:center;">
+            <div class="form-msg ok" data-k="ok">¡Mensaje enviado con éxito! 💖 Te respondo a la brevedad.</div>
+            <button type="button" id="resetFormBtn" class="contact-btn" data-k="again">🔄 Mandar otro mensaje</button>
+          </div>
+
+          <div id="formError" class="form-msg err" hidden></div>
+
+          <form id="contactForm" novalidate>
+            <input type="text" name="nombre" data-kp="name" placeholder="Tu nombre y apellido" maxlength="80" required>
+            <input type="email" name="email" data-kp="email" placeholder="Tu correo electrónico" maxlength="120" required>
+            <input type="tel" name="telefono" data-kp="phone" placeholder="Tu teléfono (opcional)" maxlength="30">
+            <textarea name="mensaje" rows="4" data-kp="msg" placeholder="Escribí tu consulta aquí..." maxlength="1000" required></textarea>
+
+            <!-- Anti-spam (invisible) -->
+            <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp">
+            <input type="hidden" name="_subject" value="Nuevo mensaje desde tu portfolio 💌">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+
+            <button type="submit" id="sendBtn" class="contact-btn" data-k="send">Enviar consulta</button>
+          </form>
+
+          <p class="contact-mail">
+            ✉️ <a href="mailto:florenciasoledadbagnis@gmail.com">florenciasoledadbagnis@gmail.com</a>
+          </p>
+        </div>
+      </details>
     </section>
     <footer>
       <p>Desarrollado por Florencia Bagnis <i class="fas fa-code"></i></p>
@@ -857,6 +894,11 @@
     reg('#modal-tiendanube p', 'Message from the team praising the fee calculator.');
     reg('#modal-mensuales h3', 'Mensuales impact');
     reg('#modal-mensuales p', 'Community using the expense management app.');
+
+    /* Neko Jobs (traducciones agregadas) */
+    reg('button[onclick="openModal(\'nekojobs\')"]', 'View impact');
+    reg('#modal-nekojobs h3', 'Neko Jobs impact');
+    reg('#modal-nekojobs p', 'Visual recreation based on real bot usage data: people with active alerts and alerts sent.');
 
     const ghState = { year: 2026, cur: 1056, prev: 14, total: 1070 };
     let ghData = null;
@@ -1116,6 +1158,124 @@
     });
 
     applyLang();
+  </script>
+
+  <!-- Script del formulario de contacto (ES/EN) -->
+  <script>
+  (function () {
+    const ENDPOINT = "https://formsubmit.co/ajax/florenciasoledadbagnis@gmail.com";
+
+    const T = {
+      es: {
+        title: "💌 ¿Tenés alguna consulta?",
+        intro: "Completá tus datos y mandame un mensaje directo.",
+        ok: "¡Mensaje enviado con éxito! 💖 Te respondo a la brevedad.",
+        again: "🔄 Mandar otro mensaje",
+        send: "Enviar consulta", sending: "Enviando...",
+        name: "Tu nombre y apellido", email: "Tu correo electrónico",
+        phone: "Tu teléfono (opcional)", msg: "Escribí tu consulta aquí...",
+        invalid: "Revisá los campos marcados 💗",
+        fail: "No se pudo enviar. Probá de nuevo o escribime a florenciasoledadbagnis@gmail.com 🙏",
+        subject: "Nuevo mensaje desde tu portfolio 💌"
+      },
+      en: {
+        title: "💌 Have a question?",
+        intro: "Fill in your details and send me a direct message.",
+        ok: "Message sent successfully! 💖 I'll get back to you soon.",
+        again: "🔄 Send another message",
+        send: "Send message", sending: "Sending...",
+        name: "Your full name", email: "Your email",
+        phone: "Your phone (optional)", msg: "Write your message here...",
+        invalid: "Please check the highlighted fields 💗",
+        fail: "Could not send. Please try again or email me at florenciasoledadbagnis@gmail.com 🙏",
+        subject: "New message from your portfolio 💌"
+      }
+    };
+    const t = () => T[LANG] || T.es;
+
+    const form = document.getElementById("contactForm");
+    const okBox = document.getElementById("formSuccess");
+    const errBox = document.getElementById("formError");
+    const sendBtn = document.getElementById("sendBtn");
+    const resetBtn = document.getElementById("resetFormBtn");
+    const validEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+
+    let lastErr = null;
+    function showErr(key) {
+      lastErr = key;
+      errBox.textContent = t()[key];
+      errBox.hidden = false;
+    }
+    function hideErr() {
+      lastErr = null;
+      errBox.hidden = true;
+    }
+
+    function applyContactLang() {
+      document.querySelectorAll("[data-k]").forEach((el) => {
+        if (el === sendBtn && sendBtn.disabled) return;
+        el.textContent = t()[el.dataset.k];
+      });
+      document.querySelectorAll("[data-kp]").forEach((el) => {
+        el.placeholder = t()[el.dataset.kp];
+      });
+      form.elements["_subject"].value = t().subject;
+      if (lastErr && !errBox.hidden) errBox.textContent = t()[lastErr];
+    }
+
+    // Se engancha a applyLang() sin modificarlo
+    const originalApplyLang = window.applyLang;
+    window.applyLang = function () {
+      originalApplyLang();
+      applyContactLang();
+    };
+    applyContactLang();
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      hideErr();
+
+      const data = new FormData(form);
+      if (data.get("_honey")) return; // bot
+
+      let ok = true;
+      ["nombre", "email", "mensaje"].forEach((n) => {
+        const el = form.elements[n];
+        const v = el.value.trim();
+        const bad = !v || (n === "email" && !validEmail(v));
+        el.classList.toggle("invalid", bad);
+        if (bad) ok = false;
+      });
+      if (!ok) { showErr("invalid"); return; }
+
+      sendBtn.disabled = true;
+      sendBtn.textContent = t().sending;
+
+      try {
+        const res = await fetch(ENDPOINT, {
+          method: "POST",
+          headers: { Accept: "application/json" },
+          body: data
+        });
+        const json = await res.json().catch(() => ({}));
+        if (!res.ok || json.success === "false") throw new Error(json.message || res.status);
+        form.hidden = true;
+        okBox.hidden = false;
+      } catch (err) {
+        showErr("fail");
+      } finally {
+        sendBtn.disabled = false;
+        sendBtn.textContent = t().send;
+      }
+    });
+
+    resetBtn.addEventListener("click", () => {
+      form.reset();
+      form.hidden = false;
+      okBox.hidden = true;
+      hideErr();
+    });
+  })();
   </script>
   
 <script src="export-pdf.js"></script>
