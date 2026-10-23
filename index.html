@@ -650,6 +650,39 @@
         <h3 class="tech-title"><i class="fas fa-code"></i> Frontend: HTML, CSS &amp; JavaScript</h3>
         <p class="group-sub">Sitios y herramientas web hechas con tecnologías base.</p>
         <div class="projects-grid">
+
+          <article class="card" data-project="bitacorajobs">
+  <h3>Bitácora Jobs <i class="fas fa-briefcase"></i></h3>
+  <div class="media-container">
+    <img src="bitacorajobs-demo.gif" alt="Bitácora Jobs" class="project-media" loading="lazy" />
+    <canvas class="project-media"></canvas>
+    <button class="gif-toggle-btn" type="button" aria-label="Pausar animación" title="Pausar animación"><i class="fas fa-pause"></i></button>
+  </div>
+  <p class="project-type">Proyecto personal · Gestor de postulaciones y empleo</p>
+  <p>Herramienta completa para organizar la búsqueda laboral, realizar seguimiento de procesos, registrar entrevistas con notas de audio y transcripción por voz, y exportar informes estadísticos en PDF e imagen. Funciona offline (PWA) con sincronización segura cifrada.</p>
+  <div class="project-tags"><span>JavaScript</span><span>IndexedDB</span><span>PWA</span><span>Canvas API</span></div>
+  <div class="buttons">
+    <a class="button" href="https://bitacora-jobs.vercel.app/" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i> Ver demo</a>
+    <a class="button secondary" href="https://github.com/FlorBagnis/bitacora-jobs" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Ver código</a>
+  </div>
+</article>
+
+<article class="card" data-project="plantita">
+  <h3>Plantita <i class="fas fa-seedling"></i></h3>
+  <div class="media-container">
+    <img src="plantita-demo.gif" alt="Plantita Habit Tracker" class="project-media" loading="lazy" />
+    <canvas class="project-media"></canvas>
+    <button class="gif-toggle-btn" type="button" aria-label="Pausar animación" title="Pausar animación"><i class="fas fa-pause"></i></button>
+  </div>
+  <p class="project-type">Proyecto personal · Habit Tracker gamificado</p>
+  <p>Aplicación web interactiva para cumplir metas, cuidar un árbol virtual y registrar hábitos diarios. Incluye sistema de racha, tienda de personalización, modo foco (Pomodoro), clima en tiempo real, efectos de sonido y exportación de reportes a PDF o imágenes.</p>
+  <div class="project-tags"><span>JavaScript</span><span>HTML5</span><span>CSS3</span><span>Canvas API</span><span>PWA</span></div>
+  <div class="buttons">
+    <a class="button" href="https://plantita.vercel.app/" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i> Ver demo</a>
+    <a class="button secondary" href="https://github.com/FlorBagnis/plantita" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Ver código</a>
+  </div>
+</article>
+          
 <article class="card" data-project="csat">
           <h3>Calculadora CSAT <i class="fas fa-chart-line"></i></h3>
           <div class="media-container">
@@ -957,6 +990,16 @@
     reg('#modal-nekojobs h3', 'Neko Jobs impact');
     reg('#modal-nekojobs p', 'Visual recreation based on real bot usage data: people with active alerts and alerts sent.');
 
+reg('.card[data-project="bitacorajobs"] h3', 'Bitácora Jobs');
+    reg('.card[data-project="bitacorajobs"] .project-type', 'Personal project · Job application & tracking manager');
+    reg('.card[data-project="bitacorajobs"] > p:not(.project-type)', 'Complete tool to organize your job search, track application processes, record interviews with voice notes and transcription, and export statistical reports in PDF and image. Works offline (PWA) with secure encrypted synchronization.');
+
+    reg('.card[data-project="plantita"] h3', 'Plantita');
+    reg('.card[data-project="plantita"] .project-type', 'Personal project · Gamified habit tracker');
+    reg('.card[data-project="plantita"] > p:not(.project-type)', 'Interactive web app to achieve goals, grow a virtual tree and track daily habits. Includes streak system, customization shop, focus mode (Pomodoro), real-time weather, sound effects and report export to PDF or images.');
+
+
+    
     const ghState = { year: 2026, cur: 1056, prev: 14, total: 1070 };
     let ghData = null;
     const fmt = n => Number(n || 0).toLocaleString('en-US');
