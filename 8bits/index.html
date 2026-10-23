@@ -266,6 +266,21 @@ body.touch #c{width:min(calc(100vw - 8px - var(--sal) - var(--sar)),calc((var(--
 #perfil,#projw{--cw:clamp(84px,27vw,150px);padding-bottom:calc(var(--cw)*1.0833 + 16px)!important}
 #scn canvas,#scn2 canvas{top:auto;bottom:max(4px,env(safe-area-inset-bottom));transform:none}
 #sc1,#sc3{left:4px}#sc2,#sc4{right:4px}}
+/* PC (Ver proyectos): sin piso viejo en los muñequitos; piso rosa en movimiento de fondo, como en créditos */
+@media(min-width:700px){
+#projw{background:linear-gradient(#ffe9f6,#ffc2e2 55%,#ff9fd0)}
+#projw::before{content:"";position:fixed;left:-50%;right:-50%;bottom:0;height:48%;background:repeating-linear-gradient(90deg,#fffb 0 3px,transparent 3px 48px),repeating-linear-gradient(0deg,#fffb 0 3px,transparent 3px 36px);transform:perspective(260px) rotateX(62deg);transform-origin:bottom;animation:grid 1.2s linear infinite;z-index:0;pointer-events:none}
+.low #projw::before{animation:none}
+#projw>.win{position:relative;z-index:1}
+#scn2 canvas{z-index:1}
+}
+/* Móvil: los muñequitos viven en una franja reservada abajo; solo la ventana scrollea */
+@media(max-width:699px){
+#perfil.on,#projw.on{overflow:hidden}
+#perfil .win,#projw .win{display:flex;flex-direction:column;flex:0 1 auto;min-height:0;max-height:100%;margin-bottom:auto}
+#perfil .win>.wt,#projw .win>.wt{flex:none}
+#perfil .win>.wb,#projw .win>.wb{flex:1 1 auto;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+}
 #title{padding-left:max(78px,var(--sal))!important;padding-right:max(78px,var(--sar))!important}
 #title{--half:min(460px,calc(50vw - 78px))}
 #title .fl i{position:static;font-size:clamp(14px,2vw,26px)}
@@ -578,9 +593,9 @@ function pshow(i){pi=i;const p=PROJECTS[i];[...pt.children].forEach((b,k)=>b.cla
 }
 PROJECTS.forEach((p,i)=>{const b=document.createElement("button");b.textContent=p.n;b.onclick=()=>pshow(i);pt.appendChild(b)});
 const closeAll=()=>{pw.classList.remove("on");hw.classList.remove("on");sw.classList.remove("on")};
-const openP=()=>{closeAll();pshow(pi);pw.classList.add("on");pw.scrollTop=0};
+const openP=()=>{closeAll();pshow(pi);pw.classList.add("on");pw.scrollTop=0;{const b=pw.querySelector(".win>.wb");if(b)b.scrollTop=0}};
 const openH=()=>{closeAll();hw.classList.add("on");hw.scrollTop=0};
-const openS=()=>{closeAll();sw.classList.add("on");sw.scrollTop=0};
+const openS=()=>{closeAll();sw.classList.add("on");sw.scrollTop=0;{const b=sw.querySelector(".win>.wb");if(b)b.scrollTop=0}};
 ["proj","pb","pl","pfp"].forEach(id=>$(id).onclick=openP);
 ["hb","hp"].forEach(id=>$(id).onclick=openH);
 ["sm","ls"].forEach(id=>$(id).onclick=openS);
@@ -835,7 +850,7 @@ const P=(g,x,y,rows,c)=>rows.forEach((r,j)=>[...r].forEach((ch,i)=>{if(ch=='#')R
 const E=['##','##','##','##','  ','##'];
 const bub=(g,x,y,ic)=>{S(g,[[x,y,13,10,'#fff']]);R(g,x+3,y+10,3,2,K);R(g,x+4,y+10,1,1,'#fff');ic=='h'?g.drawImage(spr('heart'),x+3,y+2):P(g,x+5,y+2,E,'#ff2f8f')};
 const smile=T=>(T+3)%7<1.4||(T%14>=8&&T%14<9.5);
-const flr=g=>{R(g,0,116,120,14,'#ffc2e3');R(g,0,121,120,1,PL);R(g,0,126,120,1,PL);for(let i=-3;i<=10;i++)L(g,i*12,117,60+(i*12-60)*1.6,130,1,PL);R(g,0,116,120,1,K)};
+const flr=g=>{if(innerWidth>=700&&g.canvas&&(g.canvas.id==='sc3'||g.canvas.id==='sc4'))return;R(g,0,116,120,14,'#ffc2e3');R(g,0,121,120,1,PL);R(g,0,126,120,1,PL);for(let i=-3;i<=10;i++)L(g,i*12,117,60+(i*12-60)*1.6,130,1,PL);R(g,0,116,120,1,K)};
 const spk=(g,T,pts)=>pts.forEach((p,i)=>{if(Math.floor(T*1.5+i)%3)P(g,p[0],p[1],[' # ','###',' # '],'#ffd84d')});
 
 
