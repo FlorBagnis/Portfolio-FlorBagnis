@@ -267,13 +267,28 @@ body.touch #c{width:min(calc(100vw - 8px - var(--sal) - var(--sar)),calc((var(--
 #scn canvas,#scn2 canvas{top:auto;bottom:max(4px,env(safe-area-inset-bottom));transform:none}
 #sc1,#sc3{left:4px}#sc2,#sc4{right:4px}}
 #title{padding-left:max(78px,var(--sal))!important;padding-right:max(78px,var(--sar))!important}
-#title .fl i:nth-child(1){left:14px!important;right:auto!important;top:14%!important}
-#title .fl i:nth-child(2){right:14px!important;left:auto!important;top:20%!important}
-#title .fl i:nth-child(3){left:14px!important;right:auto!important;top:42%!important}
-#title .fl i:nth-child(4){right:14px!important;left:auto!important;top:48%!important}
-#title .fl i:nth-child(5){right:14px!important;left:auto!important;top:72%!important}
-#title .fl i:nth-child(6){left:14px!important;right:auto!important;top:70%!important}
+#title{--half:min(460px,calc(50vw - 78px))}
+#title .fl i{position:static;font-size:clamp(14px,2vw,26px)}
+#title .fl .sd{position:absolute;top:13%;bottom:11%;width:min(calc(50% - var(--half) - 16px),240px);display:flex;flex-wrap:wrap;align-content:space-around;gap:10px 8px}
+#title .fl .sd.l{right:calc(50% + var(--half) + 16px);justify-content:flex-end}
+#title .fl .sd.r{left:calc(50% + var(--half) + 16px);justify-content:flex-start}
+#title .fl .sd i:nth-child(even){animation-delay:-2s}
+#title .fl .sd i:nth-child(3n){animation-delay:-1s}
+@media(min-width:1280px){#title .fl .sd.l i:nth-child(even){margin-right:30px}#title .fl .sd.r i:nth-child(even){margin-left:30px}}
+@media(max-width:1279px){#title .fl .sd i:nth-child(n+7){display:none}}
 @media(max-width:699px){#title .fl{display:none}#title{padding-left:max(10px,var(--sal))!important;padding-right:max(10px,var(--sar))!important}}
+
+/* ===== Créditos: piso rosa, escritorio animado y créditos en loop ===== */
+#cred{background:linear-gradient(#ffe9f6,#ffc2e2 55%,#ff9fd0);--csw:min(200px,calc(50vw - 360px - 30px))}
+#cred::before{content:"";position:fixed;left:-50%;right:-50%;bottom:0;height:48%;background:repeating-linear-gradient(90deg,#fffb 0 3px,transparent 3px 48px),repeating-linear-gradient(0deg,#fffb 0 3px,transparent 3px 36px);transform:perspective(260px) rotateX(62deg);transform-origin:bottom;animation:grid 1.2s linear infinite;z-index:0}
+.low #cred::before{animation:none}
+#cred>.win{position:relative;z-index:1;margin-bottom:auto}
+#cs{flex:none;width:clamp(100px,15vw,140px);height:auto;aspect-ratio:120/130;image-rendering:pixelated;background:none;border:3px solid #7a4fb0;box-shadow:none;pointer-events:none}
+#cred #cc{width:clamp(125px,17vw,170px)}
+@media(min-width:1100px){#cs{position:absolute;right:calc(100% + 18px);bottom:2px;width:var(--csw);background:none;border:0}#cred #cc{width:200px}}
+@keyframes upl{from{transform:translateY(var(--ch))}to{transform:translateY(-100%)}}
+#cred #roll{padding-top:0;--ch:70vh;animation:upl 80s linear infinite}
+.low #cred #roll{animation:none;transform:none;padding-top:16px}
 </style>
 </head>
 <body>
@@ -282,7 +297,7 @@ body.touch #c{width:min(calc(100vw - 8px - var(--sal) - var(--sar)),calc((var(--
 <div id="rot" aria-hidden="true">↻ Girá el celu para jugar más grande</div><div id="top"><button id="mn" aria-label="Salir del juego y volver al menú">☰ Menú</button> <button id="snd" aria-label="Silenciar sonido" aria-pressed="false" title="Sonido"></button> <a class="btn px" id="dl" href="https://florbagnis.github.io/Portfolio-FlorBagnis/CV-Florencia-Bagnis-ES.pdf" download target="_blank" rel="noopener">↓ Descargar CV</a> <button id="hp">? Cómo jugar</button> <button id="pb">📁 Proyectos</button> <button id="lm" aria-pressed="false">Reducir animaciones</button> <button id="lg" aria-label="Switch to English">EN</button></div>
 
 <section class="ov on" id="title">
-<div class="fl" aria-hidden="true"><i>🎮</i><i>♥</i><i>✦</i><i>🪙</i><i>🌸</i><i>✦</i></div><div class="hud px"><span>🪙🪙🪙</span><span><b>NIVEL 1</b><br>7 MUNDOS</span><span>♥♥♥ 1P</span></div><div class="neon">DEBUG MODE</div><canvas id="tc" width="160" height="56" aria-hidden="true"></canvas>
+<div class="fl" aria-hidden="true"><div class="sd l"><i>🎮</i><i>♥</i><i>✦</i><i>🌸</i><i>🪙</i><i>🐾</i><i>✦</i><i>♥</i></div><div class="sd r"><i>✦</i><i>🪙</i><i>♥</i><i>🎨</i><i>🌸</i><i>✦</i><i>🎮</i><i>♥</i></div></div><div class="hud px"><span>🪙🪙🪙</span><span><b>NIVEL 1</b><br>7 MUNDOS</span><span>♥♥♥ 1P</span></div><div class="neon">DEBUG MODE</div><canvas id="tc" width="160" height="56" aria-hidden="true"></canvas>
 <h1>BITÁCORA<br>DE MI MENTE</h1>
 <p class="lema">«Cada bug cuenta una historia. Cada proyecto revela una parte de mí». 🌸💖</p>
 <div class="row"><button id="go">Iniciar aventura</button><button id="hb">Cómo jugar</button></div>
@@ -311,7 +326,7 @@ body.touch #c{width:min(calc(100vw - 8px - var(--sal) - var(--sar)),calc((var(--
 <p>💖 Aviso de Venom<small>Color favorito de Flor: rosa. Sí, otra vez rosa. Ladro oficialmente que no hay nada más lindo. ¡Guau!</small></p>
 <h1>BITÁCORA DE MI MENTE</h1><p style="margin-top:14px">«Cada bug cuenta una historia. Cada proyecto revela una parte de mí». 🌸💖</p>
 </div></div>
-<div class="wb" style="text-align:center"><canvas id="cc" width="140" height="54" aria-hidden="true"></canvas><div class="row"><button class="again">Volver al inicio</button><a class="btn px" href="https://florbagnis.github.io/Portfolio-FlorBagnis/" data-back>Volver al portfolio</a></div></div></div></section>
+<div class="wb" style="text-align:center"><canvas id="cs" width="120" height="130" aria-hidden="true"></canvas><canvas id="cc" width="140" height="54" aria-hidden="true"></canvas><div class="row"><button class="again">Volver al inicio</button><a class="btn px" href="https://florbagnis.github.io/Portfolio-FlorBagnis/" data-back>Volver al portfolio</a></div></div></div></section>
 <section class="ov" id="projw"><div id="scn2" aria-hidden="true"><canvas id="sc3" width="120" height="130"></canvas><canvas id="sc4" width="120" height="130"></canvas></div><div class="win"><div class="wt"><b id="pn">PROYECTOS.EXE</b><span>✕</span></div><div class="wb"><div class="tabs" id="ptabs"></div>
 <div id="pgif"></div><p class="ptype" id="ptype"></p>
 <h3 class="ph">QUÉ ES</h3><p id="pwhat"></p>
@@ -500,7 +515,7 @@ function drawWin(){
  chest(cx,cy,o);
  if(o){rays(cx+24,cy,o);tp("LEGENDARY LOOT UNLOCKED!",W/2,70,"#c2358a",12,"center");const j=Math.abs(Math.sin(T*6))*10;cat(cx-60,cy+14,-j);dog(cx+90,cy+14,-j)}
 }
-function loop(t){const d=Math.min((t-last)/1000,.05);last=t;if(!pw.classList.contains("on")&&!hw.classList.contains("on")&&!sw.classList.contains("on"))update(d);if($("title").classList.contains("on")){g=tg;tg.clearRect(0,0,160,56);const j=Math.round(Math.sin(T*5)*2);spr("pc",2,30,2);hero(48,42+j,0);cat(74,24,-j);dog(106,14,j);spr("heart",146,6+j,2);spr("heart",136,24-j,2);g=g0}else if($("cred").classList.contains("on")){const cg=$("cc").getContext("2d");g=cg;cg.clearRect(0,0,140,54);const j=Math.round(Math.sin(T*5)*2);hero(24,42+j,0);cat(50,24,j);dog(92,10,-j);g=g0}else{draw();crt()}requestAnimationFrame(loop)}
+function loop(t){const d=Math.min((t-last)/1000,.05);last=t;if(!pw.classList.contains("on")&&!hw.classList.contains("on")&&!sw.classList.contains("on"))update(d);if($("title").classList.contains("on")){g=tg;tg.clearRect(0,0,160,56);const j=Math.round(Math.sin(T*5)*2);spr("pc",2,30,2);hero(48,42+j,0);cat(74,24,-j);dog(106,14,j);spr("heart",146,6+j,2);spr("heart",136,24-j,2);g=g0}else if($("cred").classList.contains("on")){if(!window.__cs){const cg=$("cc").getContext("2d");g=cg;cg.clearRect(0,0,140,54);const j=Math.round(Math.sin(T*5)*2);hero(24,42+j,0);cat(50,24,j);dog(92,10,-j);g=g0}}else{draw();crt()}requestAnimationFrame(loop)}
 /* Controles */
 const MAP={ArrowUp:"u",w:"u",W:"u",ArrowDown:"d",s:"d",S:"d",ArrowLeft:"l",a:"l",A:"l",ArrowRight:"r",d:"r",D:"r"," ":"a"};
 addEventListener("keydown",e=>{const k=MAP[e.key];if(k){K[k]=1;if(S==="play"||S==="win")e.preventDefault()}if(e.key==="e"||e.key==="E")pe=1});
@@ -927,15 +942,112 @@ function d4(g,T){
  bub(g,20,74-ch,'h');bub(g,78,64-dh,Math.floor(T*1.5)%2?'e':'h');
  hrts(g,T,[30,52,102],58);
 }
+/* ---- Créditos: Flor en su PC, mimos a Effy y Venom, paseo hasta el recuadro y vuelta ---- */
+const cr=document.getElementById('cred'),cs=document.getElementById('cs'),cc=document.getElementById('cc'),rl=document.getElementById('roll');
+const gs=cs&&cs.getContext('2d'),gc=cc&&cc.getContext('2d');
+[gs,gc].forEach(g=>{if(g)g.imageSmoothingEnabled=false});
+const CC=56,sg=(t,a,b)=>sm(cl((t-a)/(b-a))),ln=(t,a,b)=>cl((t-a)/(b-a));
+function cst(t){
+ const wk=Math.abs(Math.sin(t*10))*2,hp=Math.abs(Math.sin(12*t))*2;
+ let h,d,c;
+ if(t<5)h={s:'b',x:10,y:2,pose:1};
+ else if(t<7.5)h={s:'b',x:lp(10,-45,sg(t,5,7.5)),y:2-wk,mv:1};
+ else if(t<9.5)h=null;
+ else if(t<13)h={s:'d',x:lp(125,40,ln(t,9.5,13)),y:68-wk,mv:1};
+ else if(t<14){const e=sg(t,13,14);h={s:'d',x:40,y:lp(68,34,e)-8*Math.sin(Math.PI*e),mv:1}}
+ else if(t<37.4)h={s:'d',sit:1};
+ else if(t<38.4){const e=sg(t,37.4,38.4);h={s:'d',x:40,y:lp(34,68,e)-8*Math.sin(Math.PI*e),mv:1}}
+ else if(t<41.8)h={s:'d',x:lp(40,125,ln(t,38.4,41.8)),y:68-wk,mv:1};
+ else if(t<43.8)h=null;
+ else if(t<47.6)h={s:'b',x:lp(-45,10,sg(t,43.8,47.6)),y:2-wk,mv:1};
+ else h={s:'b',x:10,y:2,pose:1};
+ if(t<16)d={s:'b',x:92,pose:1};
+ else if(t<19.6)d={s:'b',x:lp(92,-45,sg(t,16,19.6)),hop:hp,mv:1};
+ else if(t<21.6)d=null;
+ else if(t<25.6)d={s:'d',x:lp(125,56,sg(t,21.6,25.6)),y:82,hop:hp,mv:1};
+ else if(t<32)d={s:'d',x:56,y:82,hop:0};
+ else if(t<33)d={s:'d',x:lp(56,76,sg(t,32,33)),y:82,hop:0};
+ else if(t<38.8)d={s:'d',x:76,y:82,hop:0};
+ else if(t<42.8)d={s:'d',x:lp(76,135,ln(t,38.8,42.8)),y:82,hop:hp,mv:1};
+ else if(t<46)d=null;
+ else if(t<49.6)d={s:'b',x:lp(-45,92,sg(t,46,49.6)),hop:hp,mv:1};
+ else d={s:'b',x:92,pose:1};
+ if(t<16.6)c={s:'b',x:50,pose:1};
+ else if(t<20.2)c={s:'b',x:lp(50,-48,sg(t,16.6,20.2)),hop:hp,mv:1};
+ else if(t<22.3)c=null;
+ else if(t<26.3)c={s:'d',x:lp(130,6,sg(t,22.3,26.3)),y:92,hop:hp,mv:1};
+ else if(t<32)c={s:'d',x:6,y:92,hop:Math.floor(t*1.4)%2};
+ else if(t<33)c={s:'d',x:lp(6,34,sg(t,32,33)),y:92,hop:Math.abs(Math.sin(8*t))*3};
+ else if(t<39.4)c={s:'d',x:34,y:92,hop:t<37.2?Math.abs(Math.sin(8*t))*3:0};
+ else if(t<43.4)c={s:'d',x:lp(34,135,ln(t,39.4,43.4)),y:92,hop:hp,mv:1};
+ else if(t<45)c=null;
+ else if(t<48.6)c={s:'b',x:lp(-48,50,sg(t,45,48.6)),hop:hp,mv:1};
+ else c={s:'b',x:50,pose:1};
+ return{h,d,c,pr:t>=26.8&&t<32,pl:t>=33.2&&t<37.2};
+}
+const mvh=(g,T,o,w,top,k)=>{if(o&&o.mv){const ph=(T*8+k*5)%14;D(g,'heart',o.x+w-4+Math.round(Math.sin(T*3+k)*2),top+6-ph)}};
+function dk(g,T,s){
+ const hh=s.h&&s.h.s=='d'?s.h:null,dg=s.d&&s.d.s=='d'?s.d:null,ct=s.c&&s.c.s=='d'?s.c:null,sit=!!(hh&&hh.sit);
+ g.clearRect(0,0,120,130);flr(g);spk(g,T,[[4,8],[50,6],[108,10]]);
+ S(g,[[36,56,48,36,PK]]);
+ if(sit)D(g,'hero',40,34);
+ S(g,[[8,82,106,4,'#ead9ff'],[8,86,106,30,'#cfa8ff']]);R(g,8,86,106,1,K);
+ for(let i=0;i<2;i++){R(g,70+i*22,94,18,1,K);R(g,70+i*22,106,18,1,K);R(g,77+i*22,99,4,1,K);R(g,77+i*22,111,4,1,K)}
+ D(g,'pc',10,62);D(g,'pc',86,62);
+ const n=Math.floor(T*2.4),cols=['#fff','#ffe27a','#8fdcff','#ff6fb5'];
+ [[14,66],[90,66]].forEach((o,j)=>{for(let i=0;i<4;i++){const l=i+n+j*3;R(g,o[0]+(l*5%3),o[1]+i*2,3+(l*37%10),1,cols[l%4])}});
+ if(ct){D(g,'cat',ct.x,ct.y-(ct.hop||0));mvh(g,T,ct,48,ct.y-(ct.hop||0),1)}
+ if(dg){D(g,'dog',dg.x,dg.y-(dg.hop||0));mvh(g,T,dg,40,dg.y-(dg.hop||0),2)}
+ if(s.pr)D(g,'heart',100,100-((T*8)%20));
+ if(s.pl&&ct)D(g,'heart',ct.x-12,104-((T*8)%20));
+ S(g,[[46,78,28,4,PK],[36,79,6,3,PK]]);R(g,38,80,2,1,'#fff');
+ for(let k=0;k<6;k++)R(g,48+k*4,79,2,1,k==Math.floor(T*14)%6?K:'#fff');
+ const bob=Math.sin(T*20)>0?-1:0,bob2=Math.sin(T*20+2)>0?-1:0,q=T%10-6,wig=Math.round(Math.sin(T*10)*2);
+ let p=0,mx=76,my=72,hx=65,hy=76+bob;
+ if(sit){
+  if(q>=0&&q<3.7){
+   if(q<.4){const r=q/.4;hx=65+(79-65)*r;hy=hy+(75-hy)*r}
+   else if(q<3.3){p=q<1.1?(q-.4)/.7:q<2.6?1:(3.3-q)/.7;p=p*p*(3-2*p);mx=76-10*p;my=72-14*p;if(p==1&&Math.sin(q*8)>.5)my-=1;hx=mx+8;hy=my+3}
+   else{const r=(q-3.3)/.4;hx=79+(65-79)*r;hy=75+(76+bob-75)*r}
+  }
+  if(s.pr){p=0;mx=76;my=72;hx=75+wig;hy=90}
+  const arm=(sx,sy,x,y)=>{L(g,sx,sy,x,y,5,'#3b2212');L(g,sx,sy,x,y,3,'#ffb3d9');S(g,[[x-1,y-1,3,3,'#fdd9bd']])};
+  if(s.pl&&ct)arm(54,68,ct.x+14+wig,97);else arm(54,68,51,76+bob2);
+  S(g,[[mx,my,6,7,PK],[mx+6,my+2,2,3,PK]]);R(g,mx+1,my,4,1,'#6b3a2a');R(g,mx+2,my+3,2,2,'#fff');
+  if(p<.2)for(let i=0;i<2;i++)R(g,mx+1+i*3,my-3-((T*5+i*2)%4|0),1,2,'#c9a8ff');
+  arm(66,68,hx,hy);
+  D(g,'heart',44,16);hrts(g,T,[22,92],36);
+ }else{
+  S(g,[[mx,my,6,7,PK],[mx+6,my+2,2,3,PK]]);R(g,mx+1,my,4,1,'#6b3a2a');R(g,mx+2,my+3,2,2,'#fff');
+  for(let i=0;i<2;i++)R(g,mx+1+i*3,my-3-((T*5+i*2)%4|0),1,2,'#c9a8ff');
+  if(hh){D(g,'hero',hh.x,hh.y);mvh(g,T,hh,40,hh.y,0)} }
+}
+function bk(g,T,s){
+ g.clearRect(0,0,140,54);
+ const j=Math.round(Math.sin(T*5)*2),h=s.h&&s.h.s=='b'?s.h:null,c=s.c&&s.c.s=='b'?s.c:null,d=s.d&&s.d.s=='b'?s.d:null;
+ if(h)D(g,'hero',h.x,h.pose?2+j:h.y);
+ if(c)D(g,'cat',c.x,c.pose?24+j:24-(c.hop||0));
+ if(d)D(g,'dog',d.x,d.pose?10-j:10-(d.hop||0));
+ if(h&&h.pose){D(g,'heart',52,6+j);D(g,'heart',112,2-j)}
+ mvh(g,T,h,40,h?h.y:0,0);mvh(g,T,c,48,24-(c&&c.hop||0),1);mvh(g,T,d,40,10-(d&&d.hop||0),2);
+}
+let cst0=0,cOn=0,lch=-1;
 let T=1,last=0;
 function frame(ts){
  requestAnimationFrame(frame);
- const a1=pf.classList.contains('on'),a2=pj&&pj.classList.contains('on');
- if(!a1&&!a2){last=0;return}
+ const a1=pf.classList.contains('on'),a2=pj&&pj.classList.contains('on'),a3=cr&&cr.classList.contains('on');
+ if(!a3)cOn=0;
+ if(!a1&&!a2&&!a3){last=0;return}
  if(!last)last=ts;
  const dt=Math.min((ts-last)/1000,.05),lo=document.body.classList.contains('low');last=ts;
  if(!lo)T+=dt;
  const tt=lo?2.2:T;if(a1){d1(g1,tt);d2(g2,tt)}if(a2&&g3&&g4){d3(g3,tt);d4(g4,tt)}
+ if(a3){
+  if(!cOn){cOn=1;cst0=T}
+  const vis=!!(cs&&cs.offsetParent);window.__cs=vis;
+  const hc=rl&&rl.parentNode?rl.parentNode.clientHeight:0;if(hc&&hc!==lch){rl.style.setProperty('--ch',hc+'px');lch=hc}
+  if(vis){const st=cst(lo?2.2:((T-cst0)%CC));dk(gs,tt,st);bk(gc,tt,st)}
+ }
 }
 requestAnimationFrame(frame);
 })();
