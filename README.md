@@ -1,6 +1,7 @@
 # 💼 Portfolio | Florencia Bagnis
 
-<img width="973" height="886" alt="florbagnis github io_Portfolio-FlorBagnis_" src="https://github.com/user-attachments/assets/e63e183e-abf5-4235-9d5a-d3bdbea4607a" />
+<img width="1442" height="852" alt="image" src="https://github.com/user-attachments/assets/e2c0b76a-cc2f-4cdf-a45e-7dc5c33de03d" />
+
 
 > Este repositorio contiene el código fuente de mi portfolio personal, diseñado para reflejar mi perfil profesional híbrido: un puente entre la experiencia técnica en **Customer Support** (SaaS y E-commerce) y el desarrollo de soluciones digitales orientadas a la experiencia de usuario y la resolución de problemas reales.
 
@@ -14,6 +15,13 @@
 </p>
 
 ---
+
+## 🎮 Jugá mi portfolio en 8 bits
+
+[![Bitácora de mi mente](8bits/og-bitacora.png)](https://florbagnis.github.io/Portfolio-FlorBagnis/8bits/)
+
+Un juego kawaii de 8 bits donde recorrés mi CV y mis proyectos. Se termina en 2 minutos. ▶ [Jugar ahora](https://florbagnis.github.io/Portfolio-FlorBagnis/8bits/)
+
 
 ## 🛠️ Tecnologías y Herramientas
 
