@@ -224,12 +224,11 @@ body.touch #c{width:min(calc(100vw - 8px),calc((var(--vh) - var(--topH) - 140px)
  #top{top:4px;left:4px;right:4px;gap:4px}
  #title,#loot,#projw,#how,#perfil{padding:var(--topH) 10px 12px}
 }
-#pgif{display:flex;width:100%;aspect-ratio:auto;max-height:none;min-height:120px;padding:8px;overflow:hidden;background:linear-gradient(#ffe9f6,#ffd1e8);color:#7a4fb0;text-align:center;line-height:1.8}
-#pgif{position:relative}
+#pgif{display:flex;position:relative;align-items:center;justify-content:center;width:100%;aspect-ratio:16/9;max-height:60vh;min-height:0;padding:0;overflow:hidden;background:linear-gradient(#ffe9f6,#ffd1e8);color:#7a4fb0;text-align:center;line-height:1.8}
 #pgif::before{content:"";position:absolute;inset:-24px;background:var(--bg) center/cover;filter:blur(20px) saturate(1.1);opacity:.55;pointer-events:none}
-#pgif img{display:block;position:relative;flex:none;width:auto;height:auto;max-width:100%;max-height:min(70vh,640px);object-fit:contain;image-rendering:auto;background:#fff;border:3px solid #4a1d6b;box-shadow:3px 3px 0 #ff8cc6;-webkit-user-drag:none;cursor:zoom-in}
-#pgif img.wide{width:100%;max-height:none}
-#pgif img.zoomed{position:fixed;inset:0;margin:auto;width:auto;max-width:96vw;max-height:94vh;z-index:30;cursor:zoom-out;box-shadow:0 0 0 100vmax rgba(74,29,107,.9)}
+#pgif img{display:block;position:relative;flex:none;width:100%;height:100%;max-width:100%;max-height:100%;object-fit:cover;object-position:center top;image-rendering:auto;background:transparent;border:0;box-shadow:none;-webkit-user-drag:none;cursor:zoom-in}
+#pgif .gload{position:relative;align-self:center;padding:20px 0;animation:tw 1s steps(2) infinite}
+#pgif img.zoomed{position:fixed;inset:0;margin:auto;width:auto;height:auto;object-fit:contain;max-width:96vw;max-height:94vh;z-index:30;cursor:zoom-out;background:#fff;box-shadow:0 0 0 100vmax rgba(74,29,107,.9)}
 #top .btn{font-size:8px;padding:8px 10px;box-shadow:inset 0 0 0 2px #4a1d6b;clip-path:none;white-space:nowrap;line-height:1.2;background:#ffe27a}
 #top .btn:hover{background:#fff}
 @media(max-width:600px){#top .btn{font-size:7px;padding:6px}}
@@ -264,8 +263,8 @@ body.touch #c{width:min(calc(100vw - 8px - var(--sal) - var(--sar)),calc((var(--
 #sc3{left:calc(50vw - var(--w)/2 - var(--cw) - 14px)}#sc4{right:calc(50vw - var(--w)/2 - var(--cw) - 14px)}}
 @media(max-width:699px){
 #perfil,#projw{--cw:clamp(84px,27vw,150px);padding-bottom:calc(var(--cw)*1.0833 + 16px)!important}
-#scn canvas,#scn2 canvas{top:auto;bottom:max(4px,env(safe-area-inset-bottom));transform:none}
-#sc1,#sc3{left:4px}#sc2,#sc4{right:4px}}
+#scn canvas,#scn2 canvas{top:auto;bottom:0;transform:none}
+#sc1,#sc3{left:0;right:auto}#sc2,#sc4{right:0;left:auto}}
 /* PC (Ver proyectos): sin piso viejo en los muñequitos; piso rosa en movimiento de fondo, como en créditos */
 @media(min-width:700px){
 #projw{background:linear-gradient(#ffe9f6,#ffc2e2 55%,#ff9fd0)}
@@ -277,6 +276,8 @@ body.touch #c{width:min(calc(100vw - 8px - var(--sal) - var(--sar)),calc((var(--
 /* Móvil: los muñequitos viven en una franja reservada abajo; solo la ventana scrollea */
 @media(max-width:699px){
 #perfil.on,#projw.on{overflow:hidden}
+#perfil .win,#projw .win{position:relative;z-index:1}
+#scn canvas,#scn2 canvas{z-index:1}
 #perfil .win,#projw .win{display:flex;flex-direction:column;flex:0 1 auto;min-height:0;max-height:100%;margin-bottom:auto}
 #perfil .win>.wt,#projw .win>.wt{flex:none}
 #perfil .win>.wb,#projw .win>.wb{flex:1 1 auto;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
@@ -584,12 +585,26 @@ const PROJECTS=[
 {n:"SQL Practical Studio",tipo:"Simulador interactivo · Bases de datos",que:"Simulador con consola de consultas en vivo, preguntas de verdadero o falso y ejercicios para completar, con tablas que se renderizan dinámicamente.",why:"Nació de querer aprender SQL de forma práctica.",tags:["HTML5","CSS3 moderno","JavaScript ES6","SQL","DOM dinámico"],demo:"https://florbagnis.github.io/SQL_DEV/",code:"https://github.com/FlorBagnis/SQL_DEV",gif:BASE+"sqldevdemo.gif"}];
 const pw=$("projw"),hw=$("how"),sw=$("perfil"),pt=$("ptabs");let pi=0;
 function setLink(a,u,label){a.textContent=label;a.style.display=u?"":"none";if(u)a.href=u}
+/* ---- Precarga de GIFs: uno por vez, sin tocar los archivos (misma calidad) ---- */
+const GL={};let Q=[],busy=0,gifTk=0;
+function pump(){if(busy)return;const u=Q.shift();if(!u)return;if(GL[u]){pump();return}busy=1;const m=new Image();GL[u]=m;m.decoding="async";m.onload=m.onerror=()=>{busy=0;setTimeout(pump,60)};m.src=u}
+function warm(from,n){const c=navigator.connection||{};if(c.saveData||/2g/.test(c.effectiveType||""))return;const L=PROJECTS.length;Q=[];for(let k=0;k<Math.min(n||L,L);k++){const u=PROJECTS[(from+k)%L].gif;if(u&&!GL[u])Q.push(u)}pump()}
+addEventListener("load",()=>{const go=()=>warm(0,3);window.requestIdleCallback?requestIdleCallback(go,{timeout:4000}):setTimeout(go,2500)});
+["pb","proj","pfp","pl"].forEach(id=>{const e=$(id);if(e)["pointerenter","pointerdown"].forEach(ev=>e.addEventListener(ev,()=>warm(pi),{passive:true}))});
 function pshow(i){pi=i;const p=PROJECTS[i];[...pt.children].forEach((b,k)=>b.classList.toggle("on",k==i));
  $("pn").textContent=p.n.toUpperCase()+".EXE";$("ptype").textContent=p.tipo;$("pwhat").textContent=p.que;$("pwhy").textContent=p.why||"";$("pwhy").style.display=$("pwhyh").style.display=p.why?"":"none";
  $("ptags").innerHTML=p.tags.map(t=>"<i>"+t+"</i>").join("");
  setLink($("pgo"),p.demo,p.demoLabel||tr("VER DEMO","VIEW DEMO"));setLink($("pcode"),p.code,tr("VER CÓDIGO","VIEW CODE"));
- const box=$("pgif");box.textContent="";box.style.display="";box.style.removeProperty("--bg");
- if(p.gif){const im=new Image();im.alt=tr("GIF de ","GIF of ")+p.n;im.onerror=()=>{box.textContent=tr("GIF NO DISPONIBLE","GIF NOT AVAILABLE")};im.title=tr("Tocá para agrandar","Tap to enlarge");im.onload=()=>{im.className=im.naturalWidth/im.naturalHeight>=1.15?"wide":"tall"};im.onclick=()=>im.classList.toggle("zoomed");box.style.setProperty("--bg","url("+p.gif+")");im.src=p.gif;box.appendChild(im)}else box.textContent=tr("GIF PRÓXIMAMENTE...","GIF COMING SOON...");
+ const box=$("pgif"),tk=++gifTk;box.textContent="";box.style.display="";box.style.removeProperty("--bg");Q=[];
+ if(p.gif){
+  const ph=document.createElement("span");ph.className="gload";ph.textContent=tr("CARGANDO GIF...","LOADING GIF...");box.appendChild(ph);
+  const im=new Image();let ok=0;im.decoding="async";im.fetchPriority="high";
+  im.alt=tr("GIF de ","GIF of ")+p.n;im.title=tr("Tocá para agrandar","Tap to enlarge");
+  const done=()=>{if(ok||tk!==gifTk)return;ok=1;im.className=im.naturalWidth/im.naturalHeight>=1.15?"wide":"tall";box.textContent="";box.style.setProperty("--bg","url("+p.gif+")");box.appendChild(im);warm(i+1,3)};
+  im.onload=done;im.onerror=()=>{if(tk===gifTk)box.textContent=tr("GIF NO DISPONIBLE","GIF NOT AVAILABLE")};
+  im.onclick=()=>im.classList.toggle("zoomed");
+  GL[p.gif]=im;im.src=p.gif;if(im.complete&&im.naturalWidth)done();
+ }else box.textContent=tr("GIF PRÓXIMAMENTE...","GIF COMING SOON...");
 }
 PROJECTS.forEach((p,i)=>{const b=document.createElement("button");b.textContent=p.n;b.onclick=()=>pshow(i);pt.appendChild(b)});
 const closeAll=()=>{pw.classList.remove("on");hw.classList.remove("on");sw.classList.remove("on")};
@@ -850,7 +865,14 @@ const P=(g,x,y,rows,c)=>rows.forEach((r,j)=>[...r].forEach((ch,i)=>{if(ch=='#')R
 const E=['##','##','##','##','  ','##'];
 const bub=(g,x,y,ic)=>{S(g,[[x,y,13,10,'#fff']]);R(g,x+3,y+10,3,2,K);R(g,x+4,y+10,1,1,'#fff');ic=='h'?g.drawImage(spr('heart'),x+3,y+2):P(g,x+5,y+2,E,'#ff2f8f')};
 const smile=T=>(T+3)%7<1.4||(T%14>=8&&T%14<9.5);
-const flr=g=>{if(innerWidth>=700&&g.canvas&&(g.canvas.id==='sc3'||g.canvas.id==='sc4'))return;R(g,0,116,120,14,'#ffc2e3');R(g,0,121,120,1,PL);R(g,0,126,120,1,PL);for(let i=-3;i<=10;i++)L(g,i*12,117,60+(i*12-60)*1.6,130,1,PL);R(g,0,116,120,1,K)};
+const flr=g=>{const id=g.canvas&&g.canvas.id;
+ if(innerWidth>=700){if(id==='sc3'||id==='sc4')return}
+ else if(id==='sc1'||id==='sc2'||id==='sc3'||id==='sc4'){
+  if(id==='sc2'||id==='sc4')return;
+  const W=g.canvas.width,cx=W/2;R(g,0,116,W,14,'#ffc2e3');R(g,0,121,W,1,PL);R(g,0,126,W,1,PL);
+  for(let x=cx-12*Math.ceil((cx+40)/12);x<=W+40;x+=12)L(g,x,117,cx+(x-cx)*1.6,130,1,PL);
+  R(g,0,116,W,1,K);return}
+ R(g,0,116,120,14,'#ffc2e3');R(g,0,121,120,1,PL);R(g,0,126,120,1,PL);for(let i=-3;i<=10;i++)L(g,i*12,117,60+(i*12-60)*1.6,130,1,PL);R(g,0,116,120,1,K)};
 const spk=(g,T,pts)=>pts.forEach((p,i)=>{if(Math.floor(T*1.5+i)%3)P(g,p[0],p[1],[' # ','###',' # '],'#ffd84d')});
 
 
@@ -1046,6 +1068,25 @@ function bk(g,T,s){
  if(h&&h.pose){D(g,'heart',52,6+j);D(g,'heart',112,2-j)}
  mvh(g,T,h,40,h?h.y:0,0);mvh(g,T,c,48,24-(c&&c.hop||0),1);mvh(g,T,d,40,10-(d&&d.hop||0),2);
 }
+/* ---- Móvil: los lienzos ocupan todo el ancho y las mascotas caminan por todo el piso ---- */
+let lay={m:false,W:120,ox:0};
+const fit=()=>{
+ const m=innerWidth<700,vw=document.documentElement.clientWidth||innerWidth,cw=Math.min(150,Math.max(84,innerWidth*.27)),sc=cw/120,W=m?Math.ceil(vw/sc):120;
+ [c1,c2,c3,c4].forEach(c=>{if(!c)return;if(c.width!==W)c.width=W;c.style.width=m?(W*sc)+'px':'';const g=c.getContext('2d');g.imageSmoothingEnabled=false});
+ lay={m,W,ox:m?W-120:0};
+};
+fit();addEventListener('resize',fit);addEventListener('orientationchange',fit);
+const drw=(g,fn,t,right)=>{const c=g.canvas;g.setTransform(1,0,0,1,0,0);g.clearRect(0,0,c.width,c.height);if(lay.m&&right)g.setTransform(1,0,0,1,lay.ox,0);fn(g,t);g.setTransform(1,0,0,1,0,0)};
+const sgm=(u,a,b)=>sm(cl((u-a)/(b-a)));
+function trav(g,T){
+ const u=T%CY,ox=lay.ox,hp=k=>Math.abs(Math.sin(k*u))*2;
+ if(u>=11&&u<13){const t=sgm(u,11,13);D(g,'dog',lp(ox-45,125,t),lp(72,82,t)-hp(12))}
+ else if(u>=35.5&&u<38.5){const t=sgm(u,35.5,38.5);D(g,'dog',lp(125,ox-45,t),lp(82,72,t)-hp(12))}
+ if(u>=11.5&&u<13.2){const t=sgm(u,11.5,13.2);D(g,'cat',lp(ox-50,130,t),lp(84,92,t)-hp(10))}
+ else if(u>=36.3&&u<38.3){const t=sgm(u,36.3,38.3);D(g,'cat',lp(130,ox-50,t),lp(92,84,t)-hp(10))}
+ if(u>=11&&u<13){const t=sgm(u,11,13);ball(g,lp(ox-53,117,t),lp(108,118,t))}
+ else if(u>=35.5&&u<38.5){const t=sgm(u,35.5,38.5);ball(g,lp(173,ox-10,t),lp(118,108,t))}
+}
 let cst0=0,cOn=0,lch=-1;
 let T=1,last=0;
 function frame(ts){
@@ -1056,7 +1097,7 @@ function frame(ts){
  if(!last)last=ts;
  const dt=Math.min((ts-last)/1000,.05),lo=document.body.classList.contains('low');last=ts;
  if(!lo)T+=dt;
- const tt=lo?2.2:T;if(a1){d1(g1,tt);d2(g2,tt)}if(a2&&g3&&g4){d3(g3,tt);d4(g4,tt)}
+ const tt=lo?2.2:T;if(a1){drw(g1,d1,tt,false);drw(g2,d2,tt,true);if(lay.m)trav(g1,tt)}if(a2&&g3&&g4){drw(g3,d3,tt,false);drw(g4,d4,tt,true)}
  if(a3){
   if(!cOn){cOn=1;cst0=T}
   const vis=!!(cs&&cs.offsetParent);window.__cs=vis;
