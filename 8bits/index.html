@@ -306,6 +306,13 @@ body.touch #c{width:min(calc(100vw - 8px - var(--sal) - var(--sar)),calc((var(--
 @keyframes upl{from{transform:translateY(var(--ch))}to{transform:translateY(-100%)}}
 #cred #roll{padding-top:0;--ch:70vh;animation:upl 80s linear infinite}
 .low #cred #roll{animation:none;transform:none;padding-top:16px}
+/* ===== Celular horizontal: la pantalla del juego usa todo el alto disponible (los controles quedan a los costados) ===== */
+@media(orientation:landscape) and (max-height:560px){
+ body.touch #c{width:min(calc(100vw - 8px - var(--sal) - var(--sar) - 2*136px),calc((var(--vh) - var(--topH) - 12px - var(--sab))*1.6))}
+ #dp{grid-template-columns:repeat(3,36px);grid-template-rows:repeat(3,36px);gap:2px}
+ #ab button{width:48px;height:48px}
+ #pad{bottom:calc(6px + var(--sab))}
+}
 </style>
 </head>
 <body>
