@@ -358,6 +358,22 @@
 /* ==================================
    Modal
 ================================== */
+
+    /* Botón al juego 8 bits */
+    .game-banner { display: flex; align-items: center; gap: 18px; max-width: 760px; margin: 26px auto 8px; padding: 14px 20px; background: linear-gradient(135deg, #fff0f8, #ffd9ec); border: 3px solid #4a1d6b; border-radius: 6px; box-shadow: 6px 6px 0 var(--rosa-brillante, #ff4fa3); color: #4a1d6b; text-decoration: none; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+    .game-banner:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--rosa-brillante, #ff4fa3); }
+    .game-banner:active { transform: translate(4px, 4px); box-shadow: 2px 2px 0 var(--rosa-brillante, #ff4fa3); }
+    .game-banner:focus-visible { outline: 3px solid #4a1d6b; outline-offset: 3px; }
+    .gb-joy { width: 68px; height: 68px; flex: none; image-rendering: pixelated; animation: gbBob 1.6s steps(2) infinite; }
+    @keyframes gbBob { 50% { transform: translateY(-4px) rotate(-5deg); } }
+    .gb-text { display: flex; flex-direction: column; gap: 4px; text-align: left; flex: 1; min-width: 0; }
+    .gb-text strong { font-size: 1.15rem; font-weight: 800; line-height: 1.25; }
+    .gb-text small { font-size: 0.88rem; color: #7a4fb0; }
+    .gb-go { flex: none; font-family: 'Courier New', monospace; font-weight: 800; font-size: 0.9rem; letter-spacing: 1px; padding: 9px 14px; background: var(--rosa-brillante, #ff4fa3); color: #fff; border: 2px solid #4a1d6b; box-shadow: 3px 3px 0 #4a1d6b; }
+    [data-theme="dark"] .game-banner { background: linear-gradient(135deg, #2a1522, #3a1a30); border-color: #f472b6; color: #ffd6ec; box-shadow: 6px 6px 0 #b03a84; }
+    [data-theme="dark"] .gb-text small { color: #f9a8d4; }
+    @media (max-width: 560px) { .game-banner { flex-direction: column; text-align: center; gap: 10px; margin: 22px 12px 6px; } .gb-text { align-items: center; text-align: center; } }
+    @media print { .game-banner { display: none !important; } }
     .reduce-motion .decor-item,
     .reduce-motion .kawaii-modal-content { animation: none !important; }
     .reduce-motion *, .reduce-motion *::before, .reduce-motion *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
@@ -443,6 +459,12 @@
         <a id="dossier-link" href="./Dossier-es.pdf" target="_blank" rel="noopener" aria-label="Descargar dossier"><i class="fas fa-folder-open"></i><span class="cv-label">Dossier</span></a>
       </div>
     </header>
+
+    <a class="game-banner" id="game-banner" href="8bits/">
+      <svg class="gb-joy" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="5" y="0" width="6" height="1" fill="#4a1d6b"/><rect x="4" y="1" width="1" height="1" fill="#4a1d6b"/><rect x="5" y="1" width="6" height="1" fill="#ff4fa3"/><rect x="11" y="1" width="1" height="1" fill="#4a1d6b"/><rect x="4" y="2" width="1" height="1" fill="#4a1d6b"/><rect x="5" y="2" width="1" height="1" fill="#ff4fa3"/><rect x="6" y="2" width="2" height="1" fill="#ffffff"/><rect x="8" y="2" width="3" height="1" fill="#ff4fa3"/><rect x="11" y="2" width="1" height="1" fill="#4a1d6b"/><rect x="4" y="3" width="1" height="1" fill="#4a1d6b"/><rect x="5" y="3" width="1" height="1" fill="#ff4fa3"/><rect x="6" y="3" width="1" height="1" fill="#ffffff"/><rect x="7" y="3" width="4" height="1" fill="#ff4fa3"/><rect x="11" y="3" width="1" height="1" fill="#4a1d6b"/><rect x="4" y="4" width="1" height="1" fill="#4a1d6b"/><rect x="5" y="4" width="6" height="1" fill="#ff4fa3"/><rect x="11" y="4" width="1" height="1" fill="#4a1d6b"/><rect x="4" y="5" width="6" height="1" fill="#4a1d6b"/><rect x="6" y="6" width="1" height="1" fill="#4a1d6b"/><rect x="7" y="6" width="2" height="1" fill="#ff4fa3"/><rect x="9" y="6" width="1" height="1" fill="#4a1d6b"/><rect x="6" y="7" width="1" height="1" fill="#4a1d6b"/><rect x="7" y="7" width="2" height="1" fill="#ff4fa3"/><rect x="9" y="7" width="1" height="1" fill="#4a1d6b"/><rect x="2" y="8" width="12" height="1" fill="#4a1d6b"/><rect x="1" y="9" width="1" height="1" fill="#4a1d6b"/><rect x="2" y="9" width="12" height="1" fill="#ffb3d9"/><rect x="14" y="9" width="1" height="1" fill="#4a1d6b"/><rect x="1" y="10" width="1" height="1" fill="#4a1d6b"/><rect x="2" y="10" width="2" height="1" fill="#ffb3d9"/><rect x="4" y="10" width="1" height="1" fill="#4a1d6b"/><rect x="5" y="10" width="6" height="1" fill="#ffb3d9"/><rect x="11" y="10" width="1" height="1" fill="#4a1d6b"/><rect x="12" y="10" width="2" height="1" fill="#ffb3d9"/><rect x="14" y="10" width="1" height="1" fill="#4a1d6b"/><rect x="1" y="11" width="1" height="1" fill="#4a1d6b"/><rect x="2" y="11" width="2" height="1" fill="#ffb3d9"/><rect x="4" y="11" width="1" height="1" fill="#4a1d6b"/><rect x="5" y="11" width="6" height="1" fill="#ffb3d9"/><rect x="11" y="11" width="1" height="1" fill="#4a1d6b"/><rect x="12" y="11" width="2" height="1" fill="#ffb3d9"/><rect x="14" y="11" width="1" height="1" fill="#4a1d6b"/><rect x="1" y="12" width="1" height="1" fill="#4a1d6b"/><rect x="2" y="12" width="1" height="1" fill="#ffb3d9"/><rect x="3" y="12" width="1" height="1" fill="#ff6fa5"/><rect x="4" y="12" width="3" height="1" fill="#ffb3d9"/><rect x="7" y="12" width="2" height="1" fill="#4a1d6b"/><rect x="9" y="12" width="3" height="1" fill="#ffb3d9"/><rect x="12" y="12" width="1" height="1" fill="#ff6fa5"/><rect x="13" y="12" width="1" height="1" fill="#ffb3d9"/><rect x="14" y="12" width="1" height="1" fill="#4a1d6b"/><rect x="1" y="13" width="1" height="1" fill="#4a1d6b"/><rect x="2" y="13" width="2" height="1" fill="#ffe27a"/><rect x="4" y="13" width="8" height="1" fill="#ffb3d9"/><rect x="12" y="13" width="2" height="1" fill="#8fdcff"/><rect x="14" y="13" width="1" height="1" fill="#4a1d6b"/><rect x="1" y="14" width="1" height="1" fill="#4a1d6b"/><rect x="2" y="14" width="12" height="1" fill="#ff8cc6"/><rect x="14" y="14" width="1" height="1" fill="#4a1d6b"/><rect x="2" y="15" width="12" height="1" fill="#4a1d6b"/></svg>
+      <span class="gb-text"><strong>Jugá la Bitácora de mi mente</strong><small>Mi portfolio en 8 bits · versión videojuego</small></span>
+      <span class="gb-go">▶ JUGAR</span>
+    </a>
 
     <section id="sobre-mi">
       <h2>Sobre mí</h2>
@@ -833,6 +855,9 @@
     reg('.sticky-nav a:nth-child(5)', 'Contact');
     reg('.subtitle', 'Customer Support Specialist with a technical profile | 5+ years in SaaS, e-commerce and payments | Zendesk, APIs and self-built tools');
     reg('.availability', 'Available for remote work');
+    reg('.gb-text strong', 'Play "Bitácora de mi mente"');
+    reg('.gb-text small', 'My 8-bit portfolio · video game version');
+    reg('.gb-go', '▶ PLAY');
 
     reg('#sobre-mi h2', 'About me');
     reg('#sobre-mi > p:nth-of-type(1)', "Hi! I'm <strong>Florencia Bagnis</strong>, a Customer Support Specialist with a <strong>technical profile</strong>: 5+ years solving cases in SaaS, e-commerce and payments, and building my own tools to solve them better.", true);
