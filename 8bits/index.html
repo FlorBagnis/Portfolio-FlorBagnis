@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover">
 <meta name="description" content="Un juego 8-bit kawaii donde recorrés el CV y los proyectos de Flor Bagnis: Customer Support con perfil técnico.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://florbagnis.github.io/Portfolio-FlorBagnis/8bits/">
@@ -24,6 +24,7 @@
 <style>
 :root{--pink:#ff007f;--pastel:#ffb7c5;--violet:#7a2cff;--night:#0b0a1f;--ink:#fff}
 *{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 html,body{margin:0;height:100%;background:var(--night);color:var(--ink);font-family:Nunito,system-ui,sans-serif;overflow:hidden;touch-action:manipulation}
 h1,h2,.px,button{font-family:"Press Start 2P",monospace}
 #app{position:relative;height:100%;display:flex;align-items:center;justify-content:center}
@@ -308,7 +309,7 @@ body.touch #c{width:min(calc(100vw - 8px - var(--sal) - var(--sar)),calc((var(--
 .low #cred #roll{animation:none;transform:none;padding-top:16px}
 /* ===== Celular horizontal: la pantalla del juego usa todo el alto disponible (los controles quedan a los costados) ===== */
 @media(orientation:landscape) and (max-height:560px){
- body.touch #c{width:min(calc(100vw - 8px - var(--sal) - var(--sar) - 2*136px),calc((var(--vh) - var(--topH) - 12px - var(--sab))*1.6))}
+ body.touch #c{width:min(calc(100vw - 8px - var(--sal) - var(--sar) - 2*116px),calc((var(--vh) - var(--topH) - 12px - var(--sab))*1.6))}
  #dp{grid-template-columns:repeat(3,36px);grid-template-rows:repeat(3,36px);gap:2px}
  #ab button{width:48px;height:48px}
  #pad{bottom:calc(6px + var(--sab))}
@@ -1088,6 +1089,11 @@ function bk(g,T,s){
  mvh(g,T,h,40,h?h.y:0,0);mvh(g,T,c,48,24-(c&&c.hop||0),1);mvh(g,T,d,40,10-(d&&d.hop||0),2);
 }
 /* ---- Móvil: los lienzos ocupan todo el ancho y las mascotas caminan por todo el piso ---- */
+/* iOS a veces deja la página con zoom al girar el celu: se detecta y se reinicia la escala */
+(()=>{const m=document.querySelector('meta[name=viewport]'),vv=window.visualViewport;if(!m||!vv)return;const base=m.content;
+ const fix=()=>{if(vv.scale<=1.02)return;m.content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1";requestAnimationFrame(()=>setTimeout(()=>{m.content=base;scrollTo(0,0)},120))};
+ vv.addEventListener("resize",()=>setTimeout(fix,200));addEventListener("orientationchange",()=>setTimeout(fix,350));
+})();
 let lay={m:false,W:120,ox:0};
 const fit=()=>{
  const m=innerWidth<700,vw=document.documentElement.clientWidth||innerWidth,cw=Math.min(150,Math.max(84,innerWidth*.27)),sc=cw/120,W=m?Math.ceil(vw/sc):120;
