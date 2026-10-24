@@ -22,7 +22,7 @@
 
 Un juego kawaii de 8 bits donde recorrés mi CV y mis proyectos. Se termina en 2 minutos. ▶ [Jugar ahora](https://florbagnis.github.io/Portfolio-FlorBagnis/8bits/)
 
-
+---
 ## 🛠️ Tecnologías y Herramientas
 
 - **Frontend:** HTML5, CSS3, JavaScript, React, Vite, SASS, Bootstrap 5, Responsive Design
