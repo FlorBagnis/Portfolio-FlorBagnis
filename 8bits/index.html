@@ -396,37 +396,7 @@ body.touch #c{width:min(calc(100vw - 8px - var(--sal) - var(--sar)),calc((var(--
 #how:not(.side) .win>.wt{flex:none}
 #how:not(.side) .win>.wb{flex:1 1 auto;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
 
-/* --- PISO 3D PARA CÓMO JUGAR (IGUAL A PROYECTOS Y SOBRE MÍ) --- */
-@media (min-width: 700px) {
-    #how {
-        background: linear-gradient(#ffe9f6, #ffc2e2 55%, #ff9fd0);
-    }
-    #how::before {
-        content: "";
-        position: fixed;
-        left: -50%;
-        right: -50%;
-        bottom: 0;
-        height: 48%;
-        background: repeating-linear-gradient(90deg, #fffb 0 3px, transparent 3px 48px), 
-                    repeating-linear-gradient(0deg, #fffb 0 3px, transparent 3px 36px);
-        transform: perspective(260px) rotateX(62deg);
-        transform-origin: bottom;
-        animation: grid 1.2s linear infinite;
-        z-index: 0;
-        pointer-events: none;
-    }
-    .low #how::before {
-        animation: none;
-    }
-}
 
-/* Levantar la ventana para que el piso pase por detrás */
-#how > .win {
-    position: relative;
-    z-index: 1;
-}
- 
 </style>
 </head>
 <body>
