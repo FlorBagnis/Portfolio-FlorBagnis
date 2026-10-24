@@ -392,6 +392,44 @@ body.touch #c{width:min(calc(100vw - 8px - var(--sal) - var(--sar)),calc((var(--
 #how:not(.side) .win>.wb{flex:1 1 auto;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
 
 
+/* ===== ARREGLOS: piso de #how, desbordes, textos y barra superior ===== */
+html,body{max-width:100%}
+#app{overflow:hidden;max-width:100%}
+#how{clip-path:inset(0)}
+/* Piso de #how: SIEMPRE detrás de la ventana (igual que Proyectos), en todos los anchos */
+#how{background:linear-gradient(#ffe9f6,#ffc2e2 55%,#ff9fd0)}
+#how::before{content:"";position:fixed;left:-50%;right:-50%;bottom:0;height:34%;background:repeating-linear-gradient(90deg,#fffb 0 3px,transparent 3px 48px),repeating-linear-gradient(0deg,#fffb 0 3px,transparent 3px 36px);transform:perspective(260px) rotateX(62deg);transform-origin:bottom;animation:grid 1.2s linear infinite;z-index:0;pointer-events:none}
+@media(min-width:700px){#how::before{height:48%}}
+.low #how::before{animation:none}
+#how>.win{position:relative;z-index:1}
+#hsc{max-width:100vw}
+/* Textos de #how con aire */
+#how .wb{padding:18px 20px 22px;line-height:2.1}
+#how .ph{margin:22px 0 14px;line-height:1.8}
+#how .ph:first-child{margin-top:2px}
+#how .howg{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:20px 22px;align-items:center}
+#how .howg>div{line-height:2.1;min-width:0;overflow-wrap:break-word}
+#how .howg>div:nth-child(odd){display:flex;flex-wrap:wrap;justify-content:flex-end;align-items:center;gap:2px 4px;text-align:right}
+#how .kc{margin:3px 2px;line-height:1.1}
+#how .wb>p{margin:0 0 10px;line-height:2.3}
+#how .wb>p .kc{margin:2px 4px 8px}
+#how .steps{padding-left:34px;line-height:2.2}
+#how .steps li{margin-bottom:14px;padding-left:8px}
+#how .steps .kc,#how .tip .kc{margin:2px 4px 6px}
+#how .tip{margin:20px 0 6px;padding:14px 16px;line-height:2.2}
+#how .ic{margin:0 .35em}
+#how .row{margin-top:20px!important}
+@media(max-width:699px){
+ #how .howg{grid-template-columns:1fr;gap:6px}
+ #how .howg>div:nth-child(odd){justify-content:flex-start;text-align:left;margin-top:12px}
+ #how .howg>div:nth-child(odd):first-child{margin-top:0}
+ #how .wb{padding:14px 14px 18px}
+}
+/* Barra superior: nunca se pasa del ancho de la pantalla */
+#top{box-sizing:border-box;max-width:calc(100% - var(--sal) - var(--sar) - 16px);flex-wrap:wrap}
+#top>*{min-width:0;max-width:100%}
+@media(max-width:699px){#top{justify-content:center;gap:4px}}
+@media(max-width:380px){#top button,#top .btn{font-size:6px!important;padding:5px 4px!important}}
 </style>
 </head>
 <body>
@@ -1530,12 +1568,12 @@ const ball=(bx,y)=>{S([[bx-3,y,7,8,PK],[bx-4,y+1,9,6,PK]]);const a=bx*.5;R(bx+Ma
 const puOf=t=>1-sg(t,18.6,19.1)+sg(t,25.6,26.2);
 let W=320,k=1.5,t0=0,wasOn=false,gt=0,lastTs=0,lastKey='';
 let isSide=false;
-function fit(){const z=Math.max(1,Math.min(innerWidth/1280,innerHeight/760,2)),skc=Math.min((innerWidth-600*z)/2/192,innerHeight*.0035);how.style.setProperty('--hz',z);isSide=innerWidth>=1000&&innerHeight>=480&&skc>=1.4;k=isSide?skc:Math.max(.7,Math.min(innerWidth/310,innerHeight*.0028));how.classList.toggle('side',isSide);W=Math.max(240,Math.ceil(innerWidth/k)+1);cv.width=W;cv.height=H;g.imageSmoothingEnabled=false;cv.style.width=W*k+'px';cv.style.height=H*k+'px';how.style.setProperty('--hsH',H*k+'px');lastKey=''}
+function fit(){const z=Math.max(1,Math.min(innerWidth/1280,innerHeight/760,2)),skc=Math.min((innerWidth-600*z)/2/212,innerHeight*.0028);how.style.setProperty('--hz',z);isSide=innerWidth>=1000&&innerHeight>=480&&skc>=1.25;k=isSide?skc:Math.max(.7,Math.min(innerWidth/310,innerHeight*.0024));how.classList.toggle('side',isSide);W=Math.max(240,Math.ceil(innerWidth/k)+1);cv.width=W;cv.height=H;g.imageSmoothingEnabled=false;cv.style.width=Math.min(W*k,innerWidth)+'px';cv.style.height=H*k+'px';how.style.setProperty('--hsH',H*k+'px');lastKey=''}
 function floor(tf){const cx=W/2,n=Math.ceil(W/28)+3;
  for(let i=-n;i<=n;i++){const x=cx+i*14;L(x,FY,cx+(x-cx)*2.6,H,1,'rgba(255,255,255,.75)')}
  for(let j=0;j<4;j++){const ph=(tf*.7+j/4)%1;R(0,FY+Math.round(26*ph*ph),W,1,'rgba(255,255,255,.75)')}}
 function frame(t,tf){
- g.clearRect(0,0,W,H);g.imageSmoothingEnabled=false;floor(tf);g.save();
+ g.clearRect(0,0,W,H);g.imageSmoothingEnabled=false;/* el piso ahora es el de CSS (detrás de la ventana, como en Proyectos) */g.save();
  if(isSide){const r=how.querySelector('.win').getBoundingClientRect(),a=Math.max(0,(r.left-6)/k),b=Math.min(W,(r.right+12)/k);g.beginPath();g.rect(0,0,a,H);g.rect(b,0,W-b,H);g.clip()}
  const bx=W-(W<420?80:96),dogH=Fx-30,catH=Fx+32,dogR=W-52,catR=dogR-64,catC=Math.max(catH+30,bx-76);
  const [dx,,dm]=kf(t,[[0,dogH],[5,dogH],[10,dogR],[14,dogR],[19,dogH],[24.8,dogH],[28.5,bx-20],[34,bx-20],[39,dogH],[40,dogH]]);
