@@ -29,8 +29,8 @@ html,body{margin:0;height:100%;background:var(--night);color:var(--ink);font-fam
 h1,h2,.px,button{font-family:"Press Start 2P",monospace}
 #app{position:relative;height:100%;display:flex;align-items:center;justify-content:center}
 canvas{width:min(100vw,calc((var(--vh) - 150px)*1.6));aspect-ratio:8/5;image-rendering:pixelated;border:3px solid var(--pink);box-shadow:0 0 24px var(--violet)}
-.ov{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:20px;text-align:center;background:radial-gradient(circle at 50% 20%,#2b0a52,var(--night) 70%);overflow:auto;z-index:5}
-.ov.on{display:flex}
+.ov{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:20px;text-align:center;background:radial-gradient(circle at 50% 20%,#2b0a52,var(--night) 70%);overflow-x:hidden;overflow-y:auto;z-index:5}
+ .ov.on{display:flex}
 h1{color:var(--pink);font-size:clamp(16px,5vw,34px);margin:0;text-shadow:3px 3px var(--violet);line-height:1.4}
 .lema{max-width:520px;color:var(--pastel);font-size:17px;margin:0}
 button,.btn{background:var(--pink);color:#fff;border:3px solid var(--pastel);padding:12px 14px;font-size:11px;cursor:pointer;text-decoration:none;display:inline-block;box-shadow:4px 4px var(--violet)}
@@ -161,8 +161,8 @@ button:focus-visible,.btn:focus-visible{outline:none;background:#ffe27a;box-shad
 .ph{font-size:10px;color:#c2358a;margin:14px 0 8px;line-height:1.6}
 .ph:first-child{margin-top:0}
 .tip{margin:12px 0 0;padding:10px;background:#ffe9a8;border:3px dashed #7a4fb0;font-size:9px;line-height:1.9}
-.steps{margin:0;padding-left:20px;font-size:10px;line-height:2}
-.steps li{margin-bottom:6px}
+.steps{margin:0;padding-left:36px;font-size:10px;line-height:2.2}
+.steps li{margin-bottom:12px;padding-left:4px}
 #projw .win,#perfil .win{width:min(680px,100%)}
 #pgif{display:flex;width:100%;max-height:42vh;aspect-ratio:16/9;margin-bottom:10px;background:#150a2e;color:#8fdcff;align-items:center;justify-content:center;font-size:9px;border:3px solid #4a1d6b}
 #pgif img{width:100%;height:100%;object-fit:contain}
@@ -270,16 +270,11 @@ body.touch #c{width:min(calc(100vw - 8px - var(--sal) - var(--sar)),calc((var(--
 #sc1,#sc3{left:0;right:auto}#sc2,#sc4{right:0;left:auto}}
 /* PC (Ver proyectos): sin piso viejo en los muñequitos; piso rosa en movimiento de fondo, como en créditos */
 @media(min-width:700px){
-#projw{background:linear-gradient(#ffe9f6,#ffc2e2 55%,#ff9fd0)}
-#projw::before{content:"";position:fixed;left:-50%;right:-50%;bottom:0;height:48%;background:repeating-linear-gradient(90deg,#fffb 0 3px,transparent 3px 48px),repeating-linear-gradient(0deg,#fffb 0 3px,transparent 3px 36px);transform:perspective(260px) rotateX(62deg);transform-origin:bottom;animation:grid 1.2s linear infinite;z-index:0;pointer-events:none}
-.low #projw::before{animation:none}
-#projw>.win{position:relative;z-index:1}
-#scn2 canvas{z-index:1}
-#perfil{background:linear-gradient(#ffe9f6,#ffc2e2 55%,#ff9fd0)}
-#perfil::before{content:"";position:fixed;left:-50%;right:-50%;bottom:0;height:48%;background:repeating-linear-gradient(90deg,#fffb 0 3px,transparent 3px 48px),repeating-linear-gradient(0deg,#fffb 0 3px,transparent 3px 36px);transform:perspective(260px) rotateX(62deg);transform-origin:bottom;animation:grid 1.2s linear infinite;z-index:0;pointer-events:none}
-.low #perfil::before{animation:none}
-#perfil>.win{position:relative;z-index:1}
-#scn canvas{z-index:1}
+#projw, #perfil, #how {background:linear-gradient(#ffe9f6,#ffc2e2 55%,#ff9fd0)}
+#projw::before, #perfil::before, #how::before {content:"";position:fixed;left:-50%;right:-50%;bottom:0;height:48%;background:repeating-linear-gradient(90deg,#fffb 0 3px,transparent 3px 48px),repeating-linear-gradient(0deg,#fffb 0 3px,transparent 3px 36px);transform:perspective(260px) rotateX(62deg);transform-origin:bottom;animation:grid 1.2s linear infinite;z-index:0;pointer-events:none}
+.low #projw::before, .low #perfil::before, .low #how::before {animation:none}
+#projw>.win, #perfil>.win, #how>.win {position:relative;z-index:1}
+#scn2 canvas, #scn canvas {z-index:1}
 #scn canvas,#scn2 canvas{top:auto;bottom:0;transform:none}
 }
 /* Móvil: los muñequitos viven en una franja reservada abajo; solo la ventana scrollea */
