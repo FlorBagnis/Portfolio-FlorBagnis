@@ -395,6 +395,34 @@ body.touch #c{width:min(calc(100vw - 8px - var(--sal) - var(--sar)),calc((var(--
 #how:not(.side) .win{display:flex;flex-direction:column;flex:0 1 auto;min-height:0;max-height:100%;position:relative;z-index:1}
 #how:not(.side) .win>.wt{flex:none}
 #how:not(.side) .win>.wb{flex:1 1 auto;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+
+/* --- FIX PARA LA PANTALLA CÓMO JUGAR (#how) --- */
+
+/* 1. Levanta la ventana por encima del piso */
+#how > .win {
+    position: relative;
+    z-index: 1; 
+}
+
+/* 2. Asegura que el piso quede al fondo y no bloquee clics */
+#how::before {
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* 3. Levanta a los personajes (Flor, Venom, Effy) para que no los tape el piso */
+#how canvas,
+#scn3 canvas {
+    position: relative;
+    z-index: 1;
+}
+
+/* 4. Evita que la pantalla genere scroll horizontal desprolijo */
+#how.on {
+    overflow: hidden;
+}
+
+ 
 </style>
 </head>
 <body>
