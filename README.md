@@ -9,7 +9,7 @@
 ## 🌐 Portfolio Online
 
 <p align="center">
-  <a href="https://florbagnis.github.io/Portfolio-FlorBagnis/">
+  <a href="https://florbagnis.github.io/">
     <img src="https://img.shields.io/badge/Ver_Portfolio-Abrir_Proyecto-ff69b4?style=for-the-badge&logo=github&logoColor=white" alt="Ver Portfolio" />
   </a>
 </p>
@@ -18,9 +18,9 @@
 
 ## 🎮 Jugá mi portfolio en 8 bits
 
-[![Bitácora de mi mente](8bits/og-bitacora.png)](https://florbagnis.github.io/Portfolio-FlorBagnis/8bits/)
+[![Bitácora de mi mente](8bits/og-bitacora.png)](https://florbagnis.github.io/8bits/)
 
-Un juego kawaii de 8 bits donde recorrés mi CV y mis proyectos. Se termina en 2 minutos. ▶ [Jugar ahora](https://florbagnis.github.io/Portfolio-FlorBagnis/8bits/)
+Un juego kawaii de 8 bits donde recorrés mi CV y mis proyectos. Se termina en 2 minutos. ▶ [Jugar ahora](https://florbagnis.github.io/8bits/)
 
 ---
 ## 🛠️ Tecnologías y Herramientas
@@ -130,7 +130,7 @@ Soy **Customer Support & Technical Support Specialist** con formación continua 
 **Florencia Bagnis**
 
 * 💼 [LinkedIn](https://www.linkedin.com/in/florencia-bagnis)
-* 💻 [Portfolio](https://florbagnis.github.io/Portfolio-FlorBagnis/)
+* 💻 [Portfolio](https://florbagnis.github.io/)
 * 💌 [florenciasoledadbagnis@gmail.com](mailto:florenciasoledadbagnis@gmail.com)
 
 > 💻 Portfolio personal desarrollado para centralizar herramientas y proyectos orientados a operaciones, soporte y desarrollo web, combinando **HTML5 semántico**, **CSS moderno** y un fuerte sentido de accesibilidad y experiencia de usuario.
