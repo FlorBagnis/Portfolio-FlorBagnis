@@ -1,0 +1,153 @@
+/* ==================================
+   FOTO DE PERFIL EN EL HEADER
+================================== */
+
+header {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  column-gap: 40px;
+  align-items: center;
+}
+
+.foto-perfil {
+  grid-column: 1;
+  grid-row: 1 / span 4;
+  align-self: center;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 4px solid var(--rosa-brillante);
+  box-shadow: 0 8px 24px rgba(236, 72, 153, 0.25);
+  background: url("foto-florencia-600.webp") center / cover no-repeat;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+header > :not(.foto-perfil) {
+  grid-column: 2;
+}
+
+header .availability {
+  justify-self: start;
+}
+
+@media (max-width: 700px) {
+  header {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .foto-perfil {
+    grid-column: 1;
+    grid-row: auto;
+    justify-self: center;
+    width: 140px;
+    height: 140px;
+    margin-bottom: 20px;
+  }
+  header > :not(.foto-perfil) {
+    grid-column: 1;
+  }
+  header h1 {
+    justify-content: center !important;
+  }
+  header .availability {
+    justify-self: center;
+  }
+  header .header-socials {
+    justify-content: center;
+  }
+}
+
+/* ==================================
+   BOTÓN EXPORTAR PDF (mismo estilo que los íconos del header)
+================================== */
+.header-socials { align-items: center; flex-wrap: wrap; }
+
+.export-pdf-btn {
+  display: inline-block;
+  padding: 0;
+  background: none;
+  border: none;
+  color: var(--texto-secundario);
+  font-family: inherit;
+  font-size: 28px;
+  line-height: inherit;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.export-pdf-btn:hover:not(:disabled) {
+  color: var(--rosa-brillante);
+  transform: translateY(-3px);
+}
+.export-pdf-btn:disabled { opacity: 0.6; cursor: progress; }
+.export-pdf-label {
+  font-size: 14px;
+  font-weight: 700;
+  margin-left: 3px;
+  vertical-align: middle;
+}
+
+/* ==================================
+   IMPRESIÓN (Ctrl+P)
+================================== */
+@media print {
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  html, body { background-color: var(--rosa-fondo) !important; }
+
+  .sticky-nav-wrapper, #panel-toggle, #float-panel, #back-to-top,
+  .kawaii-bg-decor, .kawaii-modal, .gif-toggle-btn, .project-filters,
+  #export-pdf, #copy-email-btn, button[onclick^="openModal"] { display: none !important; }
+
+  /* Formulario de consultas y su desplegable: no se imprimen.
+     (export-pdf.js además marca el bloque con [data-pdf-hide] al imprimir) */
+  [data-pdf-hide],
+  #contacto details, #contacto .contact-accordion, #contactForm, #formSuccess, #formError { display: none !important; }
+
+  /* El "Desarrollado por…" vuelve al flujo normal y no se superpone */
+  footer { position: static !important; transform: none !important; margin-top: 32px !important; clear: both; }
+
+  /* Imprimir con TODOS los proyectos, sin importar el filtro activo */
+  #proyectos .project-group,
+  #proyectos .project-group.hide-card,
+  #proyectos .card.hide-card { display: block !important; }
+
+  header, section { opacity: 1 !important; animation: none !important; transform: none !important; }
+  .card, .github-calendar-card { break-inside: avoid; }
+}
+
+/* CV y PDF: misma regla = mismo tamaño */
+.header-socials a[aria-label="Descargar CV"],
+.header-socials #export-pdf,
+.header-socials .export-pdf-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 0;
+  margin: 0;
+  font-size: 28px;
+  line-height: inherit;
+}
+.header-socials a[aria-label="Descargar CV"] i,
+.header-socials #export-pdf i,
+.header-socials .export-pdf-btn i {
+  font-size: 26px;
+  line-height: inherit;
+}
+.header-socials .cv-label,
+.header-socials .export-pdf-label {
+  font-size: 14px !important;
+  font-weight: 700;
+  margin-left: 0;
+  vertical-align: baseline;
+}
+
+@media print {
+  .foto-perfil {
+    width: 150px !important;
+    height: 150px !important;
+    object-fit: cover !important;
+    border-radius: 50% !important;
+    border: 4px solid #ec4899 !important;
+  }
+}
