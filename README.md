@@ -1,6 +1,6 @@
 # 💼 Portfolio | Florencia Bagnis
 
-<img width="1442" height="852" alt="image" src="https://github.com/user-attachments/assets/e2c0b76a-cc2f-4cdf-a45e-7dc5c33de03d" />
+<img width="2560" height="1600" alt="florbagnis github io" src="https://github.com/user-attachments/assets/21441df4-af4d-4bc9-8447-345ecd91b5ed" />
 
 
 > Este repositorio contiene el código fuente de mi portfolio personal, diseñado para reflejar mi perfil profesional híbrido: un puente entre la experiencia técnica en **Customer Support** (SaaS y E-commerce) y el desarrollo de soluciones digitales orientadas a la experiencia de usuario y la resolución de problemas reales.
